@@ -19,8 +19,11 @@ supabase_key: str = os.environ.get("SUPABASE_KEY")
 supabase: Client = create_client(supabase_url, supabase_key)
 
 # Initialize Azure GPT-4 API settings
-GPT4V_KEY = os.environ.get("GPT4V_KEY")
-GPT4V_ENDPOINT = os.environ.get("GPT4V_ENDPOINT")
+AZURE_KEY = os.environ.get("AZURE_KEY")
+GPT4o_ENDPOINT = os.environ.get("GPT4o_ENDPOINT")
+GPT4o_MINI_ENDPOINT = os.environ.get("GPT4o_MINI_ENDPOINT")
+O1_PREVIEW_ENDPOINT = os.environ.get("O1_PREVIEW_ENDPOINT")
+O1_MINI_ENDPOINT = os.environ.get("O1_MINI_ENDPOINT")
 
 
 # fmt: off
@@ -107,24 +110,57 @@ ALL_COMPONENTS = {
 # fmt: on
 
 
-def call_gpt4_api(messages):
-    payload = {
-        "messages": messages,
-        "temperature": 0.7,
-        "top_p": 0.95,
-        "max_tokens": 4000,
-    }
+def call_gpt4_api(messages, model="gpt4o-azure"):
+    # endpoint = GPT4o_ENDPOINT
+    if model == "gpt4o-mini":
+        endpoint = GPT4o_MINI_ENDPOINT
+        payload = {
+            "messages": messages,
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "max_tokens": 4000,
+        }
+    elif model == "o1-preview":
+        endpoint = O1_PREVIEW_ENDPOINT
+        messages[0]["role"] = "user"
+        payload = {
+            # messages without system message
+            "messages": messages,
+            "max_completion_tokens": 1000,
+        }
+    elif model == "o1-mini":
+        endpoint = O1_MINI_ENDPOINT
+        messages[0]["role"] = "user"
+        payload = {
+            # messeges without system message
+            "messages": messages,
+            "max_completion_tokens": 50000,
+        }
+    else:
+        endpoint = GPT4o_ENDPOINT
+        payload = {
+            "messages": messages,
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "max_tokens": 4000,
+        }
+    # payload = {
+    #     "messages": messages,
+    #     "temperature": 0.7,
+    #     "top_p": 0.95,
+    #     "max_tokens": 4000,
+    # }
 
     headers = {
         "Content-Type": "application/json",
-        "api-key": GPT4V_KEY,
+        "api-key": AZURE_KEY,
     }
     try:
-        gpt4_response = requests.post(GPT4V_ENDPOINT, headers=headers, json=payload)
+        gpt4_response = requests.post(endpoint, headers=headers, json=payload)
         gpt4_response.raise_for_status()  #
         return gpt4_response.json()
     except requests.RequestException as e:
-        logging.error(f"Error calling GPT-4 API: {e}")
+        logging.error(f"Error calling GPT-4 API1: {e}")
         raise
 
 
@@ -190,7 +226,7 @@ The sections available to you are as follows:
         response_json = call_gpt4_api(messages)
         return response_json
     except requests.RequestException as e:
-        logging.error(f"Error calling GPT-4 API for componentized structure: {e}")
+        logging.error(f"Error calling GPT-4 API 2 for componentized structure: {e}")
         return {}
 
 
@@ -220,6 +256,7 @@ def get_website_pages_codes(
     website_name,
     website_description,
     component_codes,
+    model,
 ):
     system_prompt = """You are the lead Website developer at black wolf Designs. You excel at creating mesmerising websites that are based on the clients requirements.
     You also have a team of developers and designers with you, who have created the following sections(components) for you to use in the website you are going to develop for the user.
@@ -292,7 +329,7 @@ def get_website_pages_codes(
     try:
         final_response = ""
         while True:
-            response_json = call_gpt4_api(messages)
+            response_json = call_gpt4_api(messages, model)
             logging.info(f"response_json: {response_json}")
             response_text = (
                 response_json.get("choices")[0].get("message").get("content")
@@ -309,8 +346,8 @@ def get_website_pages_codes(
         # page_code = response_json.get("choices")[0].get("message").get("content")
         return page_code
     except requests.RequestException as e:
-        logging.error(f"Error calling GPT-4 API for website Code: {e}")
-        return "error calling GPT-4 API for website code. \n Error: {e}"
+        logging.error(f"Error calling GPT-4 API 3 for website Code: {e}")
+        return "error calling GPT-4 API  4 for website code. \n Error: {e}"
 
 
 def fetch_component_base_code(components):
@@ -358,6 +395,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
 
     user_id = req.params.get("user_id")
     website_id = req.params.get("website_id")
+    model = req.params.get("model")
 
     if not user_id or not website_id:
         try:
@@ -414,8 +452,8 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
 
                 # Call Azure GPT-4 API
                 try:
-
-                    gpt4_data = call_gpt4_api(messages)
+                    # TODO: change model to o1 preview for best results
+                    gpt4_data = call_gpt4_api(messages, model="gpt4o-azure")
                     if not gpt4_data:
                         return func.HttpResponse(
                             "GPT 4 call for website structure error"
@@ -524,6 +562,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                                     website_name,
                                                     website_description,
                                                     component_codes,
+                                                    model,
                                                 )
                                                 logging.info(
                                                     f"component_codes fetched successfully."
@@ -623,9 +662,9 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                 f"Error saving website structure: {e}", status_code=500
                             )
                 except requests.RequestException as e:
-                    logging.error(f"Error calling GPT-4 API: {e}")
+                    logging.error(f"Error calling GPT-4 API 6 : {e}")
                     return func.HttpResponse(
-                        f"Error calling GPT-4 API: {e}", status_code=500
+                        f"Error calling GPT-4 API 7 : {e}", status_code=500
                     )
             else:
                 return func.HttpResponse(

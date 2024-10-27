@@ -152,13 +152,15 @@ def call_gpt4_api(messages, model="gpt-4o-mini"):
     }
     logging.info(f"Calling {model} with endpoint: {endpoint}")
     logging.info(f"Payload: {payload}")
+    gpt4_response = None
     try:
         gpt4_response = requests.post(endpoint, headers=headers, json=payload)
-        gpt4_response.raise_for_status()  #
+        gpt4_response.raise_for_status()
         return gpt4_response.json()
     except requests.RequestException as e:
-        logging.error(gpt4_response.raw)
-        logging.error(f"Error calling GPT-4 API1: {e}")
+        if gpt4_response:
+            logging.error(gpt4_response.raw)
+        logging.error(f"Error calling GPT-4 API: {e}")
         raise
 
 

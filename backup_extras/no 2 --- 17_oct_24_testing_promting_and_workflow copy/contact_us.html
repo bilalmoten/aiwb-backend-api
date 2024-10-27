@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Wolf Designs - Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 1s forwards;
+        }
+
+        /* Sticky header background change */
+        .bg-transparent.scroll {
+            background-color: #1a365d;
+            /* bg-blue-900 */
+        }
+
+        .text-white.scroll {
+            color: #1a202c;
+            /* text-gray-800 */
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800">
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <div class="text-white text-xl font-bold">Black Wolf</div>
+            <nav>
+                <ul class="flex space-x-6 uppercase tracking-wide">
+                    <li><a href="index.html"
+                            class="nav-link hover:text-yellow-400 transition-colors duration-300">Home</a></li>
+                    <li><a href="about_us.html"
+                            class="nav-link hover:text-yellow-400 transition-colors duration-300">About</a></li>
+                    <li><a href="#contact"
+                            class="nav-link hover:text-yellow-400 transition-colors duration-300">Services</a></li>
+                    <li><a href="contact_us.html"
+                            class="nav-link hover:text-yellow-400 transition-colors duration-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Form -->
+    <section id="contact" class="pt-24 pb-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 animate-fadeIn">Get in Touch</h2>
+            <div class="max-w-2xl mx-auto">
+                <form class="bg-gray-100 p-8 rounded-lg shadow-lg">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">Name</label>
+                        <input type="text"
+                            class="w-full px-4 py-2 rounded border border-blue-900 focus:outline-none focus:border-yellow-400"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">Email</label>
+                        <input type="email"
+                            class="w-full px-4 py-2 rounded border border-blue-900 focus:outline-none focus:border-yellow-400"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">Subject</label>
+                        <input type="text"
+                            class="w-full px-4 py-2 rounded border border-blue-900 focus:outline-none focus:border-yellow-400"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">Message</label>
+                        <textarea
+                            class="w-full px-4 py-2 rounded border border-blue-900 focus:outline-none focus:border-yellow-400"
+                            rows="5" required></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-yellow-400 text-gray-800 py-2 rounded hover:bg-yellow-500 transition-colors duration-300">Send
+                        Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-6">Our Location</h2>
+            <div class="mx-auto mb-6 max-w-4xl">
+                <iframe src="https://www.google.com/maps/embed?..." class="w-full h-64 border border-yellow-400 rounded"
+                    allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="text-center">
+                <p class="text-xl font-bold">1234 Design Street, Creativity City, TX 75001</p>
+                <p class="text-lg mt-2">Phone: (123) 456-7890</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-6">
+            <div class="flex space-x-4 mb-4 md:mb-0">
+                <a href="#" class="hover:text-yellow-400 transition-colors duration-300"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-yellow-400 transition-colors duration-300"><i
+                        class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-yellow-400 transition-colors duration-300"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="hover:text-yellow-400 transition-colors duration-300"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+            <div>
+                <form class="flex">
+                    <input type="email" placeholder="Your Email"
+                        class="px-4 py-2 rounded-l-full bg-white border border-gray-300 focus:outline-none focus:border-yellow-400">
+                    <button type="submit"
+                        class="bg-yellow-400 px-6 py-2 rounded-r-full font-bold hover:bg-yellow-500 transition-colors duration-300">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            &copy; 2023 Black Wolf Designs. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Header background change on scroll  
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.remove('bg-transparent');
+                header.classList.add('bg-blue-900', 'text-gray-800');
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-gray-800');
+                });
+            } else {
+                header.classList.remove('bg-blue-900', 'text-gray-800');
+                header.classList.add('bg-transparent');
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('text-gray-800');
+                    link.classList.add('text-white');
+                });
+            }
+        });  
+    </script>
+</body>
+
+</html>

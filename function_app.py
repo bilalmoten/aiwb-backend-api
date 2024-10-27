@@ -110,9 +110,9 @@ ALL_COMPONENTS = {
 # fmt: on
 
 
-def call_gpt4_api(messages, model="gpt4o-azure"):
+def call_gpt4_api(messages, model="gpt-4o-mini"):
     # endpoint = GPT4o_ENDPOINT
-    if model == "gpt4o-mini":
+    if model == "gpt-4o-mini":
         endpoint = GPT4o_MINI_ENDPOINT
         payload = {
             "messages": messages,
@@ -136,6 +136,7 @@ def call_gpt4_api(messages, model="gpt4o-azure"):
             "messages": messages,
             "max_completion_tokens": 50000,
         }
+        # logging.info(payload)
     else:
         endpoint = GPT4o_ENDPOINT
         payload = {
@@ -144,22 +145,19 @@ def call_gpt4_api(messages, model="gpt4o-azure"):
             "top_p": 0.95,
             "max_tokens": 4000,
         }
-    # payload = {
-    #     "messages": messages,
-    #     "temperature": 0.7,
-    #     "top_p": 0.95,
-    #     "max_tokens": 4000,
-    # }
 
     headers = {
         "Content-Type": "application/json",
         "api-key": AZURE_KEY,
     }
+    logging.info(f"Calling {model} with endpoint: {endpoint}")
+    logging.info(f"Payload: {payload}")
     try:
         gpt4_response = requests.post(endpoint, headers=headers, json=payload)
         gpt4_response.raise_for_status()  #
         return gpt4_response.json()
     except requests.RequestException as e:
+        logging.error(gpt4_response.raw)
         logging.error(f"Error calling GPT-4 API1: {e}")
         raise
 
@@ -178,27 +176,25 @@ def get_componentized_structure(
 }"""
 
     system_prompt = """You are the lead Website developer at black wolf Designs. You excel at creating mesmerising websites that are based on the clients requirements. 
-You also have a team of developers and designers with you, who have created the following sections for you to use in the website you are developing.
+You also have a team of developers and designers with you, who have created the following sections for you to use in the websites you work on.
 Your job right now is to chose the best sections according to the clients requirements.
-You are required to consider the requirements and details about the user and the website, and any and all design preferences etc.
-Your output is expected to be the finalised websites, such that you return a json with all sections listed one by one for each page.
+You are required to consider the requirements and details about the user and the website, and any and all design preferences etc, and select the components to use based on that.
+The number of pages and sections depends on the user, but shouldnt exceed 3 pages.
+You are supposed to use your creativity and experience to create a unique website that is not only beautiful, but also functional and user friendly.
+Your output is expected to be the finalised website componentised structure, such that you return a json with all sections listed one by one for each page.
 for example:
 {sample_output}
 
-Remember to give just the json, no backticks (```) no other text nothing, os that the json is parsable.
-and so on.
-Make sure to use inly the sections from what is provided to you, dont invent your own sections.
-For each section you will find the best section from the sections provided to you.
-Your job is to make sure that all the sections work well together and the final website that u deliver, is a cohesive, aesthetically designed website that promises a great user experience, and jaw dropping UI deisgn.
+
+Remember to give just the json, no backticks (```) no other text nothing, so that the json is parsable.
+Make sure to use only the sections from what is provided to you, and only mention the codename of the section template to be used in the json. 
+REMEMBER DO NOT invent your own sections.
+For each section needed for the website you will find the most fitting section template from the ones provided to you.
 Make sure you consider the users requirements and the website description and structure provided to you.
-if the user doesnt provide any of the folowing, please ask them for the same and dont give the componentised website structure.
-- website name
-- website description
-- chat conversation
-- website structure
+
 The User Requirements will be provided to you in the user prompt.
 
-The sections available to you are as follows: 
+The section templates available to you are as follows: 
 {sections}
 
 """
@@ -223,7 +219,7 @@ The sections available to you are as follows:
 
     # Call GPT-4 API
     try:
-        response_json = call_gpt4_api(messages)
+        response_json = call_gpt4_api(messages, model="gpt-4o-mini")
         return response_json
     except requests.RequestException as e:
         logging.error(f"Error calling GPT-4 API 2 for componentized structure: {e}")
@@ -266,6 +262,10 @@ def get_website_pages_codes(
     
     REMEMBER: The Base Codes are to help you get started, and not to use them as is, if u do that, the website will look like a template and not a custom website. As an experienced website designer and developer, you are expected to use the base codes as a starting point and then build on them to create a custom website for the user. Colours, text, styling, additional effects, and everything is yours to customise, to make sure the user gets the best website possible.
     remember to include the following CDNs to ensure all icons and tailwind styling is applied correctly.
+    
+    The component codes and the structure and everything is to help you out. As the Lead developer, you are responsible for giving the full, complete, properly functional code for the website that the user wants.
+    Remember, the user's satisfaction is what matters the most. So give it your best and make sure to make any adjustments and edits needed to the code, to make sure the final code u deliver follows the best practices of the Industry.
+    From consistant colour themes, to proper layouts, to proper text, and images, working links, consistant header and footer on all pages, everything needs to be the best. The goal is to create a website that the user falls in love with and is ready to publish right from the first draft.
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
  
@@ -273,6 +273,11 @@ def get_website_pages_codes(
     Do Not add any Placeholders, comments, backticks (```) or any other text in your response
 
     Only Respond with a Properly Formatted MARKDOWN with the HTML code for each HTML file(each page) of the website.
+
+
+REMEMBER: Ensure that all pages have a consistent header and footer. The header should include navigation links to all pages of the website. The footer should be consistent across all pages as well.
+
+Ensure all pages have a consistent header with navigation and a consistent footer.
 
     Write 
     
@@ -305,7 +310,7 @@ def get_website_pages_codes(
     NOTHING ELSE. 
     
     """
-    user_prompt = f"""The Following Components are available for you to use, here are the component names and base codes:
+    user_prompt = f"""here are some component codes to help u out, please remember, the component codes are just to help u get started, and not to be used as is, if u do that, the website will look like a template and not a custom website. As an experienced website designer and developer, you are expected to use the base codes as a starting point and then build on them to create a custom website for the user. Colours, text, styling, additional effects, and everything is yours to customise, to make sure the user gets the best website possible.
     
     {component_codes}Here is the details of the website the user wants to create: 
                          Website Name: {website_name} \n
@@ -408,7 +413,14 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
 
     if user_id and website_id:
         # Fetch data from Supabase
+
         try:
+            result = (
+                supabase.table("pages").delete().eq("website_id", website_id).execute()
+            )
+            logging.info(
+                f"Deleted {len(result.data)} existing pages for website_id: {website_id}"
+            )
             response = (
                 supabase.table("websites")
                 .select("website_name, website_description, chat_conversation")
@@ -427,25 +439,26 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                 messages = [
                     {
                         "role": "system",
+                        # "content": "hi",
                         "content": """
                             You are Website Structure AI Agent
                             Your Goal is to Create a structured JSON outlining the website's structure based on users chat conversation with an AI website development company's Project Manager. You use the user conversation to create a json for the website structure that gives the different pages in the website, and the sections within each page(with section name and description only).
                             The section description would be a brief description of what the section is about and what it contains.
-                            REMEMBER: 2 pages is the maximum limit for the website, and 6 sections is the maximum limit for each page.
+                            REMEMBER: 3 pages is the maximum limit for the website, and 6 sections is the maximum limit for each page.
                             Remember to not have similar sections on different pages of the website
                             here is a sample of the kind of JSON you are expected to generate:
                             {"sitename":"BKF Pharma","pages":[{"name":"Home","sections":[{"name":"Hero Section","description":"A visually engaging hero image with an abstract, futuristic visual and a motivational tagline that reflects the company's mission."},{"name":"Mission Statement","description":"A brief overview of BKF Pharma's mission and innovative approach to cancer treatment."},{"name":"Introduction","description":"A short introduction to BKF Pharma, highlighting its goals and vision."}]},{"name":"About Us","sections":[{"name":"Company Overview","description":"Detailed information about BKF Pharma's mission, vision, and values."},{"name":"Our Team","description":"Images and brief bios of the team behind BKF Pharma to showcase expertise and collaborative spirit."},{"name":"Our Story","description":"The history and journey of BKF Pharma, including milestones and achievements."}]},{"name":"Contact","sections":[{"name":"Contact Information","description":"Relevant contact information for potential partners, investors, or other interested parties to get in touch with BKF Pharma."},{"name":"Contact Form","description":"A clean and minimalist contact form for visitors to send inquiries directly through the website."},{"name":"Call to Action","description":"Encouragement for visitors to reach out and connect with BKF Pharma for partnership or investment opportunities."}]}]}
-                            
                             REMEMBER: Do Not Include anything other then the website structure JSON in your reply, no backticks, no code blocks, no greetings, no signatures, no additional information.
-                            Remember: 2 pages is the maximum number of pages for a website, and 6 sections is the maximum number of sections per page.
+                            Remember: 3 pages is the maximum number of pages for a website, and 6 sections is the maximum number of sections per page.
                             """,
                     },
                     {
                         "role": "user",
-                        "content": f"""Here is the details of the website the user wants to create: 
+                        # "content": "hi",
+                        "content": f"""Here is the details of the website the user wants to create:
                          Website Name: {website_name}
                          Website Description: {website_description}
-                         Chat Conversation: 
+                         Chat Conversation:
                          {chat_conversation}""",
                     },
                 ]
@@ -453,7 +466,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                 # Call Azure GPT-4 API
                 try:
                     # TODO: change model to o1 preview for best results
-                    gpt4_data = call_gpt4_api(messages, model="gpt4o-azure")
+                    gpt4_data = call_gpt4_api(messages, model="gpt-4o-mini")
                     if not gpt4_data:
                         return func.HttpResponse(
                             "GPT 4 call for website structure error"
@@ -463,6 +476,8 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                         website_structure = (
                             gpt4_data.get("choices")[0].get("message").get("content")
                         )
+
+                        logging.info(f"website_structure: {website_structure}")
 
                         # Save website structure to Supabase
                         try:
@@ -481,6 +496,9 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                 .execute()
                             )
                             logging.info("Website structure saved successfully.")
+                            logging.info(
+                                f"Website structure: {website_structure}"
+                            )  # Fixed line
                             try:
                                 response_json = get_componentized_structure(
                                     website_name,
@@ -621,7 +639,13 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
 
                                                 return func.HttpResponse(
                                                     ## dont output the full code here, just a success message and a few lines of code
-                                                    f""" website code generated successfully. \n\nwebsite_code \n\n. This HTTP triggered function executed successfully. website code generated and saved successfully to supabase."""
+                                                    f""" website code generated successfully. \n\nwebsite_code \n\n. This HTTP triggered function executed successfully. website code generated and saved successfully to supabase.""",
+                                                    status_code=200,
+                                                    headers={
+                                                        "Access-Control-Allow-Origin": "http://localhost:3000",
+                                                        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+                                                        "Access-Control-Allow-Headers": "Content-Type",
+                                                    },
                                                 )
                                             except Exception as e:
                                                 logging.error(

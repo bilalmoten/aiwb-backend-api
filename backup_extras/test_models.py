@@ -33,7 +33,7 @@ def call_model(endpoint, messages, model_name):
         print("O1 model")
         payload = {
             "messages": messages,
-            "max_completion_tokens": 1000,
+            "max_completion_tokens": 5000,
         }
     else:
         payload = {

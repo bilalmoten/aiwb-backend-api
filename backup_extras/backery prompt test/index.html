@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Bakery - Home</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Free CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-pV5fZQufcw1+1JNIVHdxbIsBNbLW/BO9jO2yxmXyXxOq2A6sHc3Nsa/eECrjL5HGsPz2Yq3Gx5sFqX5YQ8j7vA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #fdf6e3;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Pacifico', cursive;
+        }
+
+        /* Header background transition */
+        .header-scrolled {
+            background-color: rgba(150, 111, 51, 0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Carousel styles */
+        .carousel-item {
+            display: none;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .carousel-item.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-yellow-50 text-gray-800">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <div class="text-yellow-600 text-3xl font-bold flex items-center">
+                <i class="fas fa-bread-slice mr-2"></i> Artisan Bakery
+            </div>
+            <nav>
+                <ul class="flex space-x-6 uppercase tracking-wide">
+                    <li><a href="#hero"
+                            class="text-gray-800 hover:text-yellow-400 transition-colors duration-300">Home</a></li>
+                    <li><a href="menu.html"
+                            class="text-gray-800 hover:text-yellow-400 transition-colors duration-300">Menu</a></li>
+                    <li><a href="contact.html"
+                            class="text-gray-800 hover:text-yellow-400 transition-colors duration-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="h-screen bg-cover bg-center flex items-center justify-center"
+        style="background-image: url('https://images.unsplash.com/photo-1604908177527-52c487c367a6?auto=format&fit=crop&w=1950&q=80');">
+        <div class="text-center text-white bg-black bg-opacity-40 p-8 rounded-lg">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">Artisanal Baking, Family Tradition.</h1>
+            <a href="menu.html"
+                class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-bold hover:bg-yellow-500 transition-transform duration-300 transform hover:scale-105">View
+                Our Menu</a>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-yellow-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Gallery</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1601048204676-8d6c0090d287?auto=format&fit=crop&w=800&q=80"
+                        alt="Sourdough Bread"
+                        class="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1599785209707-6e9fd58b29c3?auto=format&fit=crop&w=800&q=80"
+                        alt="Croissants"
+                        class="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1568051243855-6791230e3d14?auto=format&fit=crop&w=800&q=80"
+                        alt="Seasonal Tart"
+                        class="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1603031907433-3f4b4c76439e?auto=format&fit=crop&w=800&q=80"
+                        alt="Whole Wheat Bread"
+                        class="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1604908177603-5764c02b68b3?auto=format&fit=crop&w=800&q=80"
+                        alt="Chocolate Croissant"
+                        class="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=800&q=80"
+                        alt="Seasonal Tart"
+                        class="w-full h-64 object-cover transform hover:scale-105 transition-transform duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="featured" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Featured Products</h2>
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-gray-100 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://images.unsplash.com/photo-1601048204676-8d6c0090d287?auto=format&fit=crop&w=800&q=80"
+                            alt="Sourdough Bread" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Sourdough Bread</h3>
+                            <p class="text-gray-700">Our signature sourdough, made with a traditional starter.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-gray-100 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://images.unsplash.com/photo-1599785209707-6e9fd58b29c3?auto=format&fit=crop&w=800&q=80"
+                            alt="Croissants" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Butter Croissants</h3>
+                            <p class="text-gray-700">Flaky and buttery croissants, baked fresh daily.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-gray-100 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://images.unsplash.com/photo-1568051243855-6791230e3d14?auto=format&fit=crop&w=800&q=80"
+                            alt="Seasonal Tart" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Seasonal Tart</h3>
+                            <p class="text-gray-700">Delicious tarts featuring seasonal fruits and flavors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-yellow-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
+            <div class="carousel">
+                <div class="carousel-item active">
+                    <div class="max-w-2xl mx-auto bg-yellow-100 p-8 rounded-lg shadow-lg">
+                        <p class="italic text-lg mb-4">"The sourdough bread is absolutely divine! Fresh every morning."
+                        </p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/10.jpg"
+                                class="rounded-full w-12 h-12 mr-4" alt="Sarah K.">
+                            <div>
+                                <p class="font-bold">Sarah K.</p>
+                                <p class="text-sm">Local Chef</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="max-w-2xl mx-auto bg-yellow-100 p-8 rounded-lg shadow-lg">
+                        <p class="italic text-lg mb-4">"Best croissants in town! Flaky and buttery perfection."</p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/men/12.jpg"
+                                class="rounded-full w-12 h-12 mr-4" alt="Mike L.">
+                            <div>
+                                <p class="font-bold">Mike L.</p>
+                                <p class="text-sm">Coffee Enthusiast</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="max-w-2xl mx-auto bg-yellow-100 p-8 rounded-lg shadow-lg">
+                        <p class="italic text-lg mb-4">"Their seasonal tarts are a delightful treat for any occasion."
+                        </p>
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/women/14.jpg"
+                                class="rounded-full w-12 h-12 mr-4" alt="Emily R.">
+                            <div>
+                                <p class="font-bold">Emily R.</p>
+                                <p class="text-sm">Event Planner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center mt-6 space-x-4">
+                <button id="prev" aria-label="Previous testimonial"
+                    class="bg-yellow-600 p-2 rounded-full hover:bg-yellow-700 transition-colors duration-300">
+                    <i class="fas fa-chevron-left text-white"></i>
+                </button>
+                <button id="next" aria-label="Next testimonial"
+                    class="bg-yellow-600 p-2 rounded-full hover:bg-yellow-700 transition-colors duration-300">
+                    <i class="fas fa-chevron-right text-white"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section id="cta" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Ready to Order?</h2>
+            <p class="text-gray-700 mb-6">Experience the best of artisanal baking delivered fresh to your doorstep.</p>
+            <a href="menu.html"
+                class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-bold hover:bg-yellow-500 transition-transform duration-300 transform hover:scale-105">Explore
+                Our Menu</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                <p class="text-gray-300">1234 Baker Street, Sweet City, TX 75001</p>
+                <p class="text-gray-300 mt-2">Phone: (123) 456-7890</p>
+                <p class="text-gray-300 mt-2">Email: info@artisanbakery.com</p>
+            </div>
+
+            <!-- Social Media Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                <div class="flex space-x-4">
+                    <a href="#" aria-label="Facebook"
+                        class="text-gray-400 hover:text-yellow-400 transition-colors duration-300 text-2xl"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"
+                        class="text-gray-400 hover:text-yellow-400 transition-colors duration-300 text-2xl"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"
+                        class="text-gray-400 hover:text-yellow-400 transition-colors duration-300 text-2xl"><i
+                            class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links & Newsletter -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#hero" class="hover:text-yellow-400 transition-colors duration-300">Home</a></li>
+                    <li><a href="menu.html" class="hover:text-yellow-400 transition-colors duration-300">Menu</a></li>
+                    <li><a href="contact.html" class="hover:text-yellow-400 transition-colors duration-300">Contact</a>
+                    </li>
+                </ul>
+                <h3 class="text-xl font-bold mt-6 mb-4">Newsletter</h3>
+                <form action="https://formspree.io/f/yourFormID" method="POST" class="flex">
+                    <input type="email" name="email" required
+                        class="w-full px-3 py-2 rounded-l-full border border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                        placeholder="Your email" aria-label="Email for Newsletter">
+                    <button type="submit"
+                        class="bg-yellow-400 px-4 py-2 rounded-r-full hover:bg-yellow-500 transition-colors duration-300">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-8">
+            &copy; 2023 Artisan Bakery. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div id="back-to-top"
+        class="hidden bg-yellow-600 text-white rounded-full p-3 cursor-pointer hover:bg-yellow-700 transition-colors duration-300"
+        aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Header background change on scroll  
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+
+            // Back-to-top button visibility using Tailwind classes  
+            const backToTop = document.getElementById('back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('hidden');
+                backToTop.classList.add('block');
+            } else {
+                backToTop.classList.remove('block');
+                backToTop.classList.add('hidden');
+            }
+        });
+
+        // Back-to-top button functionality  
+        document.getElementById('back-to-top').addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Carousel functionality  
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        let current = 0;
+        const total = carouselItems.length;
+
+        function showSlide(index) {
+            carouselItems.forEach((item, i) => {
+                item.classList.remove('active');
+                if (i === index) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            current = (current === 0) ? total - 1 : current - 1;
+            showSlide(current);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            current = (current === total - 1) ? 0 : current + 1;
+            showSlide(current);
+        });
+
+        // Auto-rotate carousel  
+        setInterval(() => {
+            current = (current + 1) % total;
+            showSlide(current);
+        }, 7000);  
+    </script>
+
+</body>
+
+</html>

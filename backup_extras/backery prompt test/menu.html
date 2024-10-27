@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Bakery - Menu</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Free CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-pV5fZQufcw1+1JNIVHdxbIsBNbLW/BO9jO2yxmXyXxOq2A6sHc3Nsa/eECrjL5HGsPz2Yq3Gx5sFqX5YQ8j7vA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #fdf6e3;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Pacifico', cursive;
+        }
+
+        /* Header background transition */
+        .header-scrolled {
+            background-color: rgba(150, 111, 51, 0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Product card animation */
+        .product-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Carousel styles */
+        .carousel-item,
+        .carousel-item-offer {
+            display: none;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .carousel-item.active,
+        .carousel-item-offer.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-yellow-50 text-gray-800">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <div class="text-yellow-600 text-3xl font-bold flex items-center">
+                <i class="fas fa-bread-slice mr-2"></i> Artisan Bakery
+            </div>
+            <nav>
+                <ul class="flex space-x-6 uppercase tracking-wide">
+                    <li><a href="index.html"
+                            class="text-gray-800 hover:text-yellow-400 transition-colors duration-300">Home</a></li>
+                    <li><a href="#menu"
+                            class="text-gray-800 hover:text-yellow-400 transition-colors duration-300">Menu</a></li>
+                    <li><a href="contact.html"
+                            class="text-gray-800 hover:text-yellow-400 transition-colors duration-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section id="hero" class="h-64 md:h-96 bg-cover bg-center flex items-center justify-center"
+        style="background-image: url('https://images.unsplash.com/photo-1604908177527-52c487c367a6?auto=format&fit=crop&w=1950&q=80');">
+        <div class="text-center text-white bg-black bg-opacity-40 p-6 rounded-lg">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4">Explore Our Fresh, Handmade Delights</h1>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section id="categories" class="py-20 bg-yellow-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Product Categories</h2>
+            <div class="flex justify-center space-x-12">
+                <div class="flex flex-col items-center">
+                    <i
+                        class="fas fa-bread-slice text-4xl text-yellow-600 hover:text-yellow-800 transition-colors duration-300 mb-4"></i>
+                    <h3 class="text-xl font-bold">Bread</h3>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i
+                        class="fas fa-cookie text-4xl text-yellow-600 hover:text-yellow-800 transition-colors duration-300 mb-4"></i>
+                    <h3 class="text-xl font-bold">Pastries</h3>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i
+                        class="fas fa-leaf text-4xl text-yellow-600 hover:text-yellow-800 transition-colors duration-300 mb-4"></i>
+                    <h3 class="text-xl font-bold">Seasonal Specials</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Filters -->
+    <section id="filters" class="py-8 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center space-x-4">
+                <button
+                    class="filter-btn bg-yellow-400 text-gray-800 px-4 py-2 rounded-full hover:bg-yellow-500 transition-colors duration-300"
+                    data-category="all">All</button>
+                <button
+                    class="filter-btn bg-yellow-600 text-white px-4 py-2 rounded-full hover:bg-yellow-700 transition-colors duration-300"
+                    data-category="bread">Bread</button>
+                <button
+                    class="filter-btn bg-yellow-600 text-white px-4 py-2 rounded-full hover:bg-yellow-700 transition-colors duration-300"
+                    data-category="pastries">Pastries</button>
+                <button
+                    class="filter-btn bg-yellow-600 text-white px-4 py-2 rounded-full hover:bg-yellow-700 transition-colors duration-300"
+                    data-category="seasonals">Seasonals</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Cards -->
+    <section id="menu" class="py-20 bg-cover bg-center"
+        style="background-image: url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1950&q=80');">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-white">Our Menu</h2>
+            <div class="flex flex-wrap -mx-4">
+                <!-- Product Card -->
+                <div class="w-full md:w-1/3 px-4 mb-8 filter-item" data-category="bread">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden product-card">
+                        <img src="https://images.unsplash.com/photo-1603031907433-3f4b4c76439e?auto=format&fit=crop&w=800&q=80"
+                            alt="Whole Wheat Bread" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Whole Wheat Bread</h3>
+                            <p class="text-gray-700 mb-2">$4.50</p>
+                            <p class="text-gray-600">Rich and hearty, perfect for sandwiches.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card -->
+                <div class="w-full md:w-1/3 px-4 mb-8 filter-item" data-category="pastries">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden product-card">
+                        <img src="https://images.unsplash.com/photo-1604908177603-5764c02b68b3?auto=format&fit=crop&w=800&q=80"
+                            alt="Chocolate Croissant" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Chocolate Croissant</h3>
+                            <p class="text-gray-700 mb-2">$3.00</p>
+                            <p class="text-gray-600">Flaky and filled with rich chocolate.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card -->
+                <div class="w-full md:w-1/3 px-4 mb-8 filter-item" data-category="seasonals">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden product-card">
+                        <img src="https://images.unsplash.com/photo-1568051243855-6791230e3d14?auto=format&fit=crop&w=800&q=80"
+                            alt="Seasonal Tart" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Seasonal Tart</h3>
+                            <p class="text-gray-700 mb-2">$5.00</p>
+                            <p class="text-gray-600">Delightful flavors inspired by the season.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Additional Product Cards -->
+                <div class="w-full md:w-1/3 px-4 mb-8 filter-item" data-category="bread">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden product-card">
+                        <img src="https://images.unsplash.com/photo-1604908177603-5764c02b68b3?auto=format&fit=crop&w=800&q=80"
+                            alt="Multigrain Bread" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Multigrain Bread</h3>
+                            <p class="text-gray-700 mb-2">$5.00</p>
+                            <p class="text-gray-600">A healthy blend of grains and seeds.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 px-4 mb-8 filter-item" data-category="pastries">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden product-card">
+                        <img src="https://images.unsplash.com/photo-1604908177603-5764c02b68b3?auto=format&fit=crop&w=800&q=80"
+                            alt="Almond Danish" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Almond Danish</h3>
+                            <p class="text-gray-700 mb-2">$3.50</p>
+                            <p class="text-gray-600">Crisp pastry filled with almond cream.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 px-4 mb-8 filter-item" data-category="seasonals">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden product-card">
+                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=800&q=80"
+                            alt="Pumpkin Pie" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Pumpkin Pie</h3>
+                            <p class="text-gray-700 mb-2">$6.00</p>
+                            <p class="text-gray-600">Classic pumpkin pie with a flaky crust.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more product cards as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers Section -->
+    <section id="special-offers" class="py-20 bg-yellow-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Special Offers</h2>
+            <div class="carousel-offers">
+                <div class="carousel-item-offer active">
+                    <div class="max-w-2xl mx-auto bg-yellow-100 p-8 rounded-lg shadow-lg">
+                        <p class="italic text-lg mb-4">"Buy 2 Croissants, Get 1 Free!"</p>
+                    </div>
+                </div>
+                <div class="carousel-item-offer">
+                    <div class="max-w-2xl mx-auto bg-yellow-100 p-8 rounded-lg shadow-lg">
+                        <p class="italic text-lg mb-4">"Free Seasonal Tart with any Bread Purchase."</p>
+                    </div>
+                </div>
+                <div class="carousel-item-offer">
+                    <div class="max-w-2xl mx-auto bg-yellow-100 p-8 rounded-lg shadow-lg">
+                        <p class="italic text-lg mb-4">"20% Off on All Orders Over $30."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center mt-6 space-x-4">
+                <button id="prev-offer" aria-label="Previous special offer"
+                    class="bg-yellow-600 p-2 rounded-full hover:bg-yellow-700 transition-colors duration-300">
+                    <i class="fas fa-chevron-left text-white"></i>
+                </button>
+                <button id="next-offer" aria-label="Next special offer"
+                    class="bg-yellow-600 p-2 rounded-full hover:bg-yellow-700 transition-colors duration-300">
+                    <i class="fas fa-chevron-right text-white"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Recipe Section -->
+    <section id="recipe" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Featured Recipe</h2>
+            <div class="max-w-2xl mx-auto bg-gray-100 p-8 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-bold mb-4">Classic Sourdough Bread</h3>
+                <img src="https://images.unsplash.com/photo-1604908177527-52c487c367a6?auto=format&fit=crop&w=800&q=80"
+                    alt="Sourdough Bread Recipe" class="w-full h-64 object-cover rounded mb-4">
+                <p class="text-gray-700 mb-4">Our classic sourdough bread is crafted using a time-honored starter and a
+                    meticulous baking process. Perfectly crusty on the outside and soft on the inside.</p>
+                <a href="#"
+                    class="bg-yellow-400 text-gray-800 px-4 py-2 rounded-full font-bold hover:bg-yellow-500 transition-transform duration-300 transform hover:scale-105">Get
+                    the Recipe</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section id="cta" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Ready to Order?</h2>
+            <p class="text-gray-700 mb-6">Experience the best of artisanal baking delivered fresh to your doorstep.</p>
+            <a href="menu.html"
+                class="bg-yellow-400 text-gray-800 px-6 py-3 rounded-full font-bold hover:bg-yellow-500 transition-transform duration-300 transform hover:scale-105">Explore
+                Our Menu</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                <p class="text-gray-300">1234 Baker Street, Sweet City, TX 75001</p>
+                <p class="text-gray-300 mt-2">Phone: (123) 456-7890</p>
+                <p class="text-gray-300 mt-2">Email: info@artisanbakery.com</p>
+            </div>
+
+            <!-- Social Media Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                <div class="flex space-x-4">
+                    <a href="#" aria-label="Facebook"
+                        class="text-gray-400 hover:text-yellow-400 transition-colors duration-300 text-2xl"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"
+                        class="text-gray-400 hover:text-yellow-400 transition-colors duration-300 text-2xl"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"
+                        class="text-gray-400 hover:text-yellow-400 transition-colors duration-300 text-2xl"><i
+                            class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links & Newsletter -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="hover:text-yellow-400 transition-colors duration-300">Home</a></li>
+                    <li><a href="#menu" class="hover:text-yellow-400 transition-colors duration-300">Menu</a></li>
+                    <li><a href="contact.html" class="hover:text-yellow-400 transition-colors duration-300">Contact</a>
+                    </li>
+                </ul>
+                <h3 class="text-xl font-bold mt-6 mb-4">Newsletter</h3>
+                <form action="https://formspree.io/f/yourFormID" method="POST" class="flex">
+                    <input type="email" name="email" required class="w-full px-3 py-2 rounded-l text-gray-800"
+                        placeholder="Your email" aria-label="Email for Newsletter">
+                    <button type="submit"
+                        class="bg-yellow-400 px-4 py-2 rounded-r hover:bg-yellow-500 transition-colors duration-300">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-8">
+            &copy; 2023 Artisan Bakery. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div id="back-to-top"
+        class="hidden bg-yellow-600 text-white rounded-full p-3 cursor-pointer hover:bg-yellow-700 transition-colors duration-300"
+        aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Header background change on scroll  
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+
+            // Back-to-top button visibility using Tailwind classes  
+            const backToTop = document.getElementById('back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('hidden');
+                backToTop.classList.add('block');
+            } else {
+                backToTop.classList.remove('block');
+                backToTop.classList.add('hidden');
+            }
+        });
+
+        // Back-to-top button functionality  
+        document.getElementById('back-to-top').addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Carousel functionality for Testimonials  
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        let current = 0;
+        const total = carouselItems.length;
+
+        function showSlide(index) {
+            carouselItems.forEach((item, i) => {
+                item.classList.remove('active');
+                if (i === index) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            current = (current === 0) ? total - 1 : current - 1;
+            showSlide(current);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            current = (current === total - 1) ? 0 : current + 1;
+            showSlide(current);
+        });
+
+        // Auto-rotate testimonials carousel  
+        setInterval(() => {
+            current = (current + 1) % total;
+            showSlide(current);
+        }, 7000);
+
+        // Carousel functionality for Special Offers  
+        const offerItems = document.querySelectorAll('.carousel-item-offer');
+        const prevOfferBtn = document.getElementById('prev-offer');
+        const nextOfferBtn = document.getElementById('next-offer');
+        let currentOffer = 0;
+        const totalOffers = offerItems.length;
+
+        function showOfferSlide(index) {
+            offerItems.forEach((item, i) => {
+                item.classList.remove('active');
+                if (i === index) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        prevOfferBtn.addEventListener('click', () => {
+            currentOffer = (currentOffer === 0) ? totalOffers - 1 : currentOffer - 1;
+            showOfferSlide(currentOffer);
+        });
+
+        nextOfferBtn.addEventListener('click', () => {
+            currentOffer = (currentOffer === totalOffers - 1) ? 0 : currentOffer + 1;
+            showOfferSlide(currentOffer);
+        });
+
+        // Auto-rotate special offers carousel  
+        setInterval(() => {
+            currentOffer = (currentOffer + 1) % totalOffers;
+            showOfferSlide(currentOffer);
+        }, 7000);
+
+        // Product Filter Functionality  
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const filterItems = document.querySelectorAll('.filter-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.getAttribute('data-category');
+
+                filterButtons.forEach(btn => btn.classList.remove('bg-yellow-600', 'text-white'));
+                button.classList.add('bg-yellow-600', 'text-white');
+
+                filterItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });  
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+{
+  "messages": [
+    { "role": "user", "content": "hi" },
+    { "role": "user", "content": "hi" }
+  ],
+  "max_completion_tokens": 5000
+}

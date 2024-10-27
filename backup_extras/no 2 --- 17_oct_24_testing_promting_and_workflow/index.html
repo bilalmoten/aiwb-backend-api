@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Wolf Designs - Home</title>
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header background transition */
+        .header-scrolled {
+            background-color: rgba(28, 58, 87, 0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fadeInLeft {
+            animation: fadeInLeft 1s ease-out forwards;
+        }
+
+        /* Carousel styles */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-item {
+            display: none;
+            animation: fadeInLeft 1s ease-out forwards;
+        }
+
+        .carousel-item.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <div class="text-yellow-400 text-2xl font-bold">🐺 Black Wolf</div>
+            <nav>
+                <ul class="flex space-x-6 uppercase tracking-wide">
+                    <li><a href="#hero" class="text-white hover:text-yellow-400 transition-colors duration-300">Home</a>
+                    </li>
+                    <li><a href="#about"
+                            class="text-white hover:text-yellow-400 transition-colors duration-300">About</a></li>
+                    <li><a href="#services"
+                            class="text-white hover:text-yellow-400 transition-colors duration-300">Services</a></li>
+                    <li><a href="#contact"
+                            class="text-white hover:text-yellow-400 transition-colors duration-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="h-screen bg-cover bg-center flex items-center justify-center"
+        style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');">
+        <div class="text-center text-white">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-wide mb-4 opacity-0 animate-fadeInLeft">Innovate Your
+                Business</h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-0 animate-fadeInLeft delay-300">Transforming ideas into reality
+                with cutting-edge solutions.</p>
+            <a href="#services"
+                class="bg-yellow-400 text-gray-800 px-8 py-3 rounded-full font-bold hover:bg-yellow-500 transition-transform duration-300 transform hover:scale-105">Get
+                Started</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Our Services</h2>
+                <p class="text-gray-600 mt-4">We offer a wide range of services to meet your business needs.</p>
+            </div>
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                        <div class="flex items-center justify-center mb-4">
+                            <i class="fas fa-cogs text-yellow-400 text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-center">Custom Solutions</h3>
+                        <p class="text-gray-700 text-center">Tailored services to meet your unique business needs.</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                        <div class="flex items-center justify-center mb-4">
+                            <i class="fas fa-lightbulb text-yellow-400 text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-center">Innovative Ideas</h3>
+                        <p class="text-gray-700 text-center">Bringing creativity and innovation to every project.</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                        <div class="flex items-center justify-center mb-4">
+                            <i class="fas fa-shield-alt text-yellow-400 text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-center">Secure Solutions</h3>
+                        <p class="text-gray-700 text-center">Ensuring your business data is safe and secure.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-blue-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">What Our Clients Say</h2>
+            </div>
+            <div class="carousel">
+                <div class="carousel-item active">
+                    <div class="max-w-2xl mx-auto bg-blue-800 p-8 rounded-lg shadow-lg">
+                        <p class="italic text-lg md:text-xl mb-4">"Black Wolf Designs transformed our online presence.
+                            Highly recommend!"</p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://randomuser.me/api/portraits/women/1.jpg"
+                                class="rounded-full w-16 h-16 mr-4" alt="Client 1">
+                            <div>
+                                <p class="font-bold">Jane Doe</p>
+                                <p class="text-sm">CEO, ABC Corp</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="max-w-2xl mx-auto bg-blue-800 p-8 rounded-lg shadow-lg">
+                        <p class="italic text-lg md:text-xl mb-4">"Exceptional service and innovative solutions."</p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://randomuser.me/api/portraits/men/2.jpg" class="rounded-full w-16 h-16 mr-4"
+                                alt="Client 2">
+                            <div>
+                                <p class="font-bold">John Smith</p>
+                                <p class="text-sm">CTO, XYZ Ltd</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="max-w-2xl mx-auto bg-blue-800 p-8 rounded-lg shadow-lg">
+                        <p class="italic text-lg md:text-xl mb-4">"Their team is professional and delivered on time."
+                        </p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://randomuser.me/api/portraits/women/3.jpg"
+                                class="rounded-full w-16 h-16 mr-4" alt="Client 3">
+                            <div>
+                                <p class="font-bold">Emily Davis</p>
+                                <p class="text-sm">Marketing Manager, LMN Inc</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center mt-6 space-x-4">
+                <button id="prev"
+                    class="bg-yellow-400 p-2 rounded-full hover:bg-yellow-500 transition-colors duration-300">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="next"
+                    class="bg-yellow-400 p-2 rounded-full hover:bg-yellow-500 transition-colors duration-300">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Social Media Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300 text-2xl"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300 text-2xl"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300 text-2xl"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300 text-2xl"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Subscribe to our Newsletter</h3>
+                <form class="flex">
+                    <input type="email" placeholder="Your Email"
+                        class="px-4 py-2 rounded-l-full bg-white text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                    <button type="submit"
+                        class="bg-yellow-400 px-6 py-2 rounded-r-full font-bold hover:bg-yellow-500 transition-colors duration-300">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Company Info -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                <p class="text-gray-400">1234 Design Street, Creativity City, TX 75001</p>
+                <p class="text-gray-400 mt-2">Phone: (123) 456-7890</p>
+                <p class="text-gray-400 mt-2">Email: info@blackwolfdesigns.com</p>
+            </div>
+        </div>
+        <div class="text-center mt-8">
+            &copy; 2023 Black Wolf Designs. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Header background change on scroll  
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        // Carousel functionality  
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        let current = 0;
+
+        function showSlide(index) {
+            carouselItems.forEach((item, i) => {
+                item.classList.remove('active');
+                if (i === index) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            current = (current === 0) ? carouselItems.length - 1 : current - 1;
+            showSlide(current);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            current = (current === carouselItems.length - 1) ? 0 : current + 1;
+            showSlide(current);
+        });
+
+        // Auto-rotate carousel  
+        setInterval(() => {
+            current = (current + 1) % carouselItems.length;
+            showSlide(current);
+        }, 5000);  
+    </script>
+
+</body>
+
+</html>

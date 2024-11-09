@@ -10,6 +10,8 @@ from supabase import create_client, Client
 
 import requests
 
+#  url to check this function http://localhost:7071/api/code_website?user_id=a8d5d92f-b745-4b8c-b29e-d704ead7209b&website_id=51&model=claude-3-5-sonnet-20241022
+
 # # Load environment variables from .env file
 # load_dotenv()
 
@@ -24,6 +26,8 @@ GPT4o_ENDPOINT = os.environ.get("GPT4o_ENDPOINT")
 GPT4o_MINI_ENDPOINT = os.environ.get("GPT4o_MINI_ENDPOINT")
 O1_PREVIEW_ENDPOINT = os.environ.get("O1_PREVIEW_ENDPOINT")
 O1_MINI_ENDPOINT = os.environ.get("O1_MINI_ENDPOINT")
+GPT4o_MINI_AIWB_ENDPOINT = os.environ.get("GPT4o_MINI_AIWB_ENDPOINT")
+CLAUDE_API_KEY = os.environ.get("CLAUDE_API_KEY")
 
 
 # fmt: off
@@ -110,7 +114,44 @@ ALL_COMPONENTS = {
 # fmt: on
 
 
+def call_claude_api(messages):
+    endpoint = "https://api.anthropic.com/v1/messages"
+
+    # Convert messages to Claude's format if needed
+    claude_messages = messages
+    claude_messages[0]["role"] = "user"
+
+    payload = {
+        "model": "claude-3-5-sonnet-20241022",
+        "max_tokens": 8000,
+        "messages": claude_messages,
+    }
+
+    headers = {
+        "x-api-key": CLAUDE_API_KEY,
+        "anthropic-version": "2023-06-01",
+        "content-type": "application/json",
+    }
+
+    logging.info("Calling Claude API")
+    logging.info(f"Payload: {payload}")
+
+    claude_response = None
+    try:
+        claude_response = requests.post(endpoint, headers=headers, json=payload)
+        claude_response.raise_for_status()
+        print(claude_response.json())
+        return claude_response.json()
+    except requests.RequestException as e:
+        if claude_response:
+            logging.error(claude_response.raw)
+        logging.error(f"Error calling Claude API: {e}")
+        raise
+
+
 def call_gpt4_api(messages, model="gpt-4o-mini"):
+    if model == "claude-3-5-sonnet-20241022":
+        return call_claude_api(messages)
     # endpoint = GPT4o_ENDPOINT
     if model == "gpt-4o-mini":
         endpoint = GPT4o_MINI_ENDPOINT
@@ -338,9 +379,12 @@ Ensure all pages have a consistent header with navigation and a consistent foote
         while True:
             response_json = call_gpt4_api(messages, model)
             logging.info(f"response_json: {response_json}")
-            response_text = (
-                response_json.get("choices")[0].get("message").get("content")
-            )
+            if model == "claude-3-5-sonnet-20241022":
+                response_text = response_json.get("content")[0].get("text")
+            else:
+                response_text = (
+                    response_json.get("choices")[0].get("message").get("content")
+                )
             final_response += response_text + "\n"
 
             if response_text.strip().endswith("## All Files Completed"):
@@ -350,7 +394,6 @@ Ensure all pages have a consistent header with navigation and a consistent foote
 
         page_code = final_response
         logging.info(f"page_code: {page_code}")
-        # page_code = response_json.get("choices")[0].get("message").get("content")
         return page_code
     except requests.RequestException as e:
         logging.error(f"Error calling GPT-4 API 3 for website Code: {e}")
@@ -574,6 +617,9 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                                     )
                                                 )
                                                 ### then use components to get website code
+                                                logging.info(
+                                                    f"component_codes fetched successfully."
+                                                )
 
                                                 website_code = get_website_pages_codes(
                                                     website_structure,
@@ -583,9 +629,6 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                                     website_description,
                                                     component_codes,
                                                     model,
-                                                )
-                                                logging.info(
-                                                    f"component_codes fetched successfully."
                                                 )
 
                                                 ## parse markdown to get each page code seperatly, and then save to supabase

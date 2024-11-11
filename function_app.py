@@ -1,5 +1,7 @@
 import base64
+from datetime import datetime
 import json
+from logging.handlers import RotatingFileHandler
 import os
 import time
 import azure.functions as func
@@ -16,6 +18,21 @@ from supabase import create_client, Client
 
 import requests
 
+
+# Create logs directory in the function app root
+log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs")
+os.makedirs(log_dir, exist_ok=True)
+
+# Create a file handler
+log_file = os.path.join(
+    log_dir, f'website_generator_{datetime.now().strftime("%Y%m%d_%H%M%S")}.log'
+)
+file_handler = RotatingFileHandler(
+    log_file, maxBytes=1024 * 1024, backupCount=5, encoding="utf-8"  # 1MB
+)
+file_handler.setFormatter(
+    logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+)
 
 # never delete this line
 #  url to check this function with claude http://localhost:7071/api/code_website?user_id=a8d5d92f-b745-4b8c-b29e-d704ead7209b&website_id=51&model=claude-3-5-sonnet-20241022
@@ -1207,7 +1224,7 @@ def call_google_ai_api(messages, model="gemini-1.5-flash-002"):
             ],
             "systemInstruction": {"role": "user", "parts": [{"text": system}]},
             "generationConfig": {
-                "temperature": 0.7,
+                # "temperature": 0.7,
                 "maxOutputTokens": 8192,
             },
         }
@@ -1218,7 +1235,7 @@ def call_google_ai_api(messages, model="gemini-1.5-flash-002"):
         }
 
         logging.info(f"Calling Google AI API: {endpoint}")
-        # logging.info(f"Payload: {payload}")
+        logging.info(f"Payload: {payload}")
 
         try:
             response = requests.post(endpoint, headers=headers, json=payload)
@@ -1230,6 +1247,75 @@ def call_google_ai_api(messages, model="gemini-1.5-flash-002"):
             # # Direct Gemini response parsing - taking the last response chunk
             # last_chunk = data[-1]  # Get the last item in the response list
             # content = last_chunk["candidates"][0]["content"]["parts"][0]["text"]
+
+            return response.json()
+
+        except requests.RequestException as e:
+            if response:
+                logging.error(response.text)
+            logging.error(f"Error calling Google AI API: {e}")
+            raise
+
+    except Exception as e:
+        logging.error(f"Error in Google AI API call: {e}")
+        raise
+
+
+def call_google_llama(messages, model="meta/llama-3.1-8b-instruct-maas"):
+    """
+    Call Google's Vertex AI API with the provided messages.
+    """
+    # Google Cloud configuration
+    project_id = os.getenv("GOOGLE_CLOUD_PROJECT_ID")
+    location_id = "us-central1"
+    model_id = model
+
+    # Get credentials from environment variable
+    credentials_json = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
+    if not credentials_json:
+        raise ValueError("GOOGLE_APPLICATION_CREDENTIALS_JSON is not set")
+
+    try:
+        # Decode and parse credentials
+        credentials = json.loads(base64.b64decode(credentials_json))
+
+        # Get credentials and project
+        credentials, project = default(
+            scopes=["https://www.googleapis.com/auth/cloud-platform"]
+        )
+
+        # Refresh token if necessary
+        if not credentials.valid:
+            credentials.refresh(Request())
+
+        # Get access token
+        access_token = credentials.token
+        if not access_token:
+            raise ValueError("Failed to get access token")
+
+        endpoint = f"https://{location_id}-aiplatform.googleapis.com/v1beta1/projects/{project_id}/locations/{location_id}/endpoints/openapi/chat/completions"
+
+        payload = {
+            "model": model,
+            "messages": messages,
+            "stream": False,
+            "max_tokens": 8192,
+        }
+
+        headers = {
+            "Authorization": f"Bearer {access_token}",
+            "Content-Type": "application/json",
+        }
+
+        logging.info(f"Calling Google AI API: {endpoint}")
+        logging.info(f"Payload: {payload}")
+
+        try:
+            response = requests.post(endpoint, headers=headers, json=payload)
+            logging.info("google response recieved")
+            response.raise_for_status()
+
+            logging.info(response.json())
 
             return response.json()
 
@@ -1287,7 +1373,14 @@ def call_gpt4_api(messages, model="gpt-4o-mini"):
     if model == "claude-3-5-sonnet-20241022":
         return call_claude_api(messages)
     if model == "gemini-1.5-flash-002" or model == "gemini-1.5-pro-002":
-        return call_google_ai_api(messages)
+        return call_google_ai_api(messages, model)
+    if (
+        model == "meta/llama-3.2-90b-vision-instruct-maas"
+        or model == "meta/llama-3.1-8b-instruct-maas"
+        or model == "meta/llama-3.1-70b-instruct-maas"
+        or model == "meta/llama-3.1-405b-instruct-maas"
+    ):
+        return call_google_llama(messages, model)
     # endpoint = GPT4o_ENDPOINT
     if model == "gpt-4o-mini":
         endpoint = GPT4o_MINI_ENDPOINT
@@ -1383,6 +1476,8 @@ Make sure you consider the users requirements and the website description and st
 The User Requirements will be provided to you in the user prompt.
  REMEMBER TO ONLY USE THE SECTIONS PROVIDED TO YOU, DO NOT INVENT YOUR OWN SECTIONS. Each component you select should be from the ones provided to you. There is NO Component for Header seperatly, so do not use it.
 The section templates available to you are as follows: 
+
+
 {sections}
 
 
@@ -1601,12 +1696,25 @@ app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
 @app.route(route="code_website")
 def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
+    logger = logging.getLogger()
+    # Create logs directory in a location we're sure has write permissions
+
+    logger.info("Logging initialized successfully1")
+
+    # Add file handler if not already added
+    if not any(isinstance(handler, RotatingFileHandler) for handler in logger.handlers):
+        logger.addHandler(file_handler)
+
+    logger.info("Logging initialized successfully2")
+    logging.info("Logging initialized successfully")
+
     logging.info("Python HTTP trigger function processed a request.")
 
     user_id = req.params.get("user_id")
     website_id = req.params.get("website_id")
     model = req.params.get("model")
 
+    logging.info(f"user_id: {user_id}, website_id: {website_id}, model: {model}")
     if not user_id or not website_id:
         try:
             req_body = req.get_json()

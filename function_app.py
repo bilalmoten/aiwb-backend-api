@@ -1,8 +1,14 @@
+import base64
 import json
 import os
 import time
 import azure.functions as func
 import logging
+import json
+import os
+from google.auth import default
+from google.auth.transport.requests import Request
+
 
 from supabase import create_client, Client
 
@@ -10,7 +16,10 @@ from supabase import create_client, Client
 
 import requests
 
-#  url to check this function http://localhost:7071/api/code_website?user_id=a8d5d92f-b745-4b8c-b29e-d704ead7209b&website_id=51&model=claude-3-5-sonnet-20241022
+
+# never delete this line
+#  url to check this function with claude http://localhost:7071/api/code_website?user_id=a8d5d92f-b745-4b8c-b29e-d704ead7209b&website_id=51&model=claude-3-5-sonnet-20241022
+#  url to check this function with gemini http://localhost:7071/api/code_website?user_id=a8d5d92f-b745-4b8c-b29e-d704ead7209b&website_id=51&model=gemini-1.5-flash-002
 
 # # Load environment variables from .env file
 # load_dotenv()
@@ -112,7 +121,1127 @@ ALL_COMPONENTS = {
     "Reviews_1": '<div class="bg-white py-6 sm:py-8 lg:py-12">\n    <div class="mx-auto max-w-screen-2xl px-4 md:px-8">\n        <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl xl:mb-12">Customer Reviews</h2>\n\n        <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6">\n            <!-- review - start -->\n            <div class="flex flex-col gap-3 rounded-lg border p-4 md:p-6">\n                <div>\n                    <span class="block text-sm font-bold md:text-base">John McCulling</span>\n                    <span class="block text-sm text-gray-500">August 28, 2021</span>\n                </div>\n\n                <!-- stars - start -->\n                <div class="-ml-1 flex gap-0.5">\n                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"\n                        fill="currentColor">\n                        <path\n                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />\n                    </svg>\n\n                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"\n                        fill="currentColor">\n                        <path\n                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />\n                    </svg>\n\n                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"\n                        fill="currentColor">\n                        <path\n                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />\n                    </svg>\n\n                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"\n                        fill="currentColor">\n                        <path\n                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />\n                    </svg>\n\n                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"\n                        fill="currentColor">\n                        <path\n                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />\n                    </svg>\n                </div>\n                <!-- stars - end -->\n\n                <p class="text-gray-600">This is a section of some simple filler text, also known as placeholder text.\n                    It shares some characteristics of a real written text but is random or otherwise generated. It may\n                    be used to display a sample of fonts or generate text for testing.</p>\n            </div>\n            <!-- review - end -->\n\n            <!-- review - start -->\n            <div class="flex flex-col gap-3 rounded-lg border p-4 md:p-6">\n                <div>\n                    <span class="block text-sm font-bold md:text-base">Kate Berg</span>\n                    <span class="block text-sm text-gray-500">July 21, 2021</span>\n                </div>\n\n                <!-- stars - start -->\n                <div class="-ml-1 flex gap-0.5">\n                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"\n                        fill="currentColor">\n                        <path\n                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />\n                    </svg>\n\n                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"\n                        fill="currentColor">\n                        <path\n                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />\n                    </svg>\n\n                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"\n                        fill="currentColor">\n                        <path\n                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />\n                    </svg>\n\n                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"\n                        fill="currentColor">\n                        <path\n                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />\n                    </svg>\n\n                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"\n                        fill="currentColor">\n                        <path\n                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />\n                    </svg>\n                </div>\n                <!-- stars - end -->\n\n                <p class="text-gray-600">This is a section of some simple filler text, also known as placeholder text.\n                    It shares some characteristics of a real written text but is random or otherwise generated. It may\n                    be used to display a sample of fonts or generate text for testing.</p>\n            </div>\n            <!-- review - end -->\n\n            <!-- review - start -->\n            <div class="flex flex-col gap-3 rounded-lg border p-4 md:p-6">\n                <div>\n                    <span class="block text-sm font-bold md:text-base">Greg Jackson</span>\n                    <span class="block text-sm text-gray-500">March 16, 2021</span>\n                </div>\n\n                <!-- stars - start -->\n                <div class="-ml-1 flex gap-0.5">\n                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"\n                        fill="currentColor">\n                        <path\n                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />\n                    </svg>\n\n                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"\n                        fill="currentColor">\n                        <path\n                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />\n                    </svg>\n\n                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20"\n                        fill="currentColor">\n                        <path\n                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />\n                    </svg>\n\n                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-300" viewBox="0 0 20 20"\n                        fill="currentColor">\n                        <path\n                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />\n                    </svg>\n\n                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-300" viewBox="0 0 20 20"\n                        fill="currentColor">\n                        <path\n                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />\n                    </svg>\n                </div>\n                <!-- stars - end -->\n\n                <p class="text-gray-600">This is a section of some simple filler text, also known as placeholder text.\n                    It shares some characteristics of a real written text but is random or otherwise generated. It may\n                    be used to display a sample of fonts or generate text for testing.</p>\n            </div>\n            <!-- review - end -->\n        </div>\n    </div>\n</div>',
 }  
 
+sections  = {
+  "Footer_1": {
+    "Footer Section with Multiple Navigation Panels": {
+      "Layout": "Grid layout split into multiple columns,each containing various navigation links and a logo with introductory text.",
+      "Design": "Functional and organized. Each section is clearly labeled and links are well-separated for easy navigation.",
+      "Key Elements": {
+        "Logo and Description": "Positioned at the top of the leftmost section with a brief introductory text below.",
+        "Social Media Links": "Icons for various social media platforms aligned horizontally below the logo and text.",
+        "Navigation Panels": "Multiple navigation panels,each with a heading and several links. Sections include Products,Company,Support,and Legal.",
+        "Footer Note": "A bottom section with a border top that contains a copyright notice.",
+        "Grid Structure": "6-column layout for large screens,4-column for medium screens,and 2-column for smaller screens."
+      },
+      "Use Cases": "Ideal for corporate websites,SaaS platforms,and any site requiring organized,multi-faceted navigation in the footer."
+    }
+  },
+  "Footer_6": {
+    "Footer Section with Multiple Navigation Columns": {
+      "Layout": "Multi-column layout with distinct sections for logo,products,company,support,and legal information.",
+      "Design": "Clean and organized,featuring multiple navigation links grouped under bold,uppercase headings. The layout is responsive with adjustments for different screen sizes.",
+      "Key Elements": {
+        "Logo Section": "Contains the company logo and copyright information.",
+        "Navigation Columns": "Four columns titled 'Products,' 'Company,' 'Support,' and 'Legal,' each containing relevant links.",
+        "Responsive Design": "Adapts to different screen sizes,with grids and gaps adjusting for optimal readability."
+      },
+      "Use Cases": "Ideal for websites requiring comprehensive footer navigation,such as corporate sites,SaaS platforms,and e-commerce stores."
+    }
+  },
+  "Footer_7": {
+    "Footer Section with Multiple Navigation Columns and Social Links": {
+      "Layout": "Multi-column layout with divided sections for different navigation categories and social links.",
+      "Design": "Organized and structured. Includes a logo,brief descriptive text,multiple navigation menus,and social media links.",
+      "Key Elements": {
+        "Logo and Description": "Positioned at the top-left of the footer with brief company description.",
+        "Navigation Menus": "Several sections (e.g.,Products,Company,Support,Legal) each with multiple links for easy access to different pages.",
+        "Social Media Links": "Icons at the bottom-right for various social media platforms to enhance engagement.",
+        "Copyright Notice": "Placed at the bottom to inform users of ownership and rights."
+      },
+      "Use Cases": "Ideal for comprehensive websites needing clear and organized footer navigation,including corporate websites,e-commerce platforms,and SaaS providers."
+    }
+  },
+  "Footer_8": {
+    "Footer Section with Multiple Navigation Categories": {
+      "Layout": "Multi-column grid layout with distinct sections for various navigation categories.",
+      "Design": "Modern,informative,and structured. The footer is divided into several parts,each addressing different user needs,with a consistent style across all links and icons.",
+      "Key Elements": {
+        "Logo": "Located at the top-left corner for brand visibility.",
+        "Description": "Brief descriptive text about the company or site.",
+        "Social Media Links": "Set of social icons for social media engagement,positioned below the description.",
+        "Navigation Categories": "Multiple navigation columns categorized into Products,Company,Support,and Legal,each with several relevant links.",
+        "Copyright Notice": "Positioned at the bottom,providing copyright information and company credits."
+      },
+      "Use Cases": "Ideal for comprehensive websites,particularly those of large organizations or e-commerce platforms,that need to offer multiple navigation paths and information points in the footer for user convenience."
+    }
+  },
+  "Footer_4": {
+    "Footer Section with Newsletter Signup and Multiple Navigation Areas": {
+      "Layout": "Multi-column layout with an upper section for newsletter signup and a lower section for navigation links.",
+      "Design": "Clean and structured,divided into distinct areas for easy navigation and interaction.",
+      "Key Elements": {
+        "Newsletter Signup": "Located at the top with a bold title,accompanying description,email input field,and a 'Send' button.",
+        "Logo": "Prominently displayed at the start of the footer to maintain brand visibility.",
+        "Social Media Links": "Icons linking to social media profiles for increased engagement.",
+        "Navigation Menus": "Multiple columns,each dedicated to different categories (Products,Company,Support,Legal),offering quick access to various website sections.",
+        "Copyright Notice": "Located at the bottom,ensuring legal and ownership information is easily accessible."
+      },
+      "Use Cases": "Ideal for corporate websites,SaaS products,and businesses aiming to provide comprehensive footer navigation and newsletter subscription options."
+    }
+  },
+  "Footer_5": {
+    "Footer Section with Newsletter and Navigation": {
+      "Layout": "Two-tiered layout with a subscription form at the top and detailed navigation below.",
+      "Design": "Structured and functional. High emphasis on newsletter subscription,followed by comprehensive navigation links grouped into categories.",
+      "Key Elements": {
+        "Newsletter Section": "Prominent subscription form asking for an email address,with a call-to-action button for submission.",
+        "Logo": "Located at the top,providing brand visibility.",
+        "Social Media Links": "Icons for various social media platforms to increase engagement.",
+        "Navigation Links": "Organized into distinct categories (Products,Company,Support,Legal) for easy access.",
+        "Footer Disclaimer": "Text at the bottom providing copyright and any additional legal information."
+      },
+      "Use Cases": "Ideal for corporate websites,online platforms,and businesses looking to engage users with newsletters and provide comprehensive site navigation from the footer."
+    }
+  },
+  "Footer_2": {
+    "Footer Section with Navigation and Social Media Links": {
+      "Layout": "Single-column layout with centered alignment,featuring navigation links and social media icons.",
+      "Design": "Minimalistic and clean,focusing on easy access to important links and social media engagement.",
+      "Key Elements": {
+        "Navigation Menu": "Centered navigation with links to key company pages such as About,Investor Relations,Jobs,Press,and Blog.",
+        "Social Media Links": "Row of social media icons for platforms like Instagram,Twitter,LinkedIn,and GitHub,encouraging user engagement.",
+        "Copyright Notice": "Positioned at the bottom,providing legal information and branding."
+      },
+      "Use Cases": "Ideal for corporate websites,blogs,and agencies looking to provide quick access to company information and social media profiles."
+    }
+  },
+  "Footer_3": {
+    "Footer Section with Navigation and Social Media Links": {
+      "Layout": "Horizontal layout with a vertically stacked fallback for smaller screens. Flexbox used for alignment and spacing.",
+      "Design": "Clean,minimalistic,and functional design. Emphasis on easy navigation and social media connectivity.",
+      "Key Elements": {
+        "Navigation Links": "Centrally positioned with equal spacing,offering quick access to various pages like About,Investor Relations,Jobs,Press,and Blog.",
+        "Social Media Icons": "Aligned to the right,providing links to popular social media platforms,each with hover and active states for better interactivity.",
+        "Footer Note": "Centered at the bottom,offering copyright information."
+      },
+      "Use Cases": "Ideal for corporate websites,blogs,and portfolios that require clear navigation and social media engagement in the footer."
+    }
+  },
+  "Form_2": {
+    "Contact Form Section": {
+      "Layout": "Centralized text and form layout with a two-column grid for input fields and a single-column for larger text areas.",
+      "Design": "Clean and organized,with a strong emphasis on user input. The form is visually divided into labeled sections,ensuring clarity.",
+      "Key Elements": {
+        "Headline": "Prominent,centered headline encouraging users to get in touch.",
+        "Introductory Text": "Provides context or additional information,centered below the headline.",
+        "Form Inputs": "Includes fields for first name,last name,company,email,subject,and a large message textarea. Required fields are marked.",
+        "Submit Button": "Clearly labeled,prominent button for form submission,alongside a note indicating required fields.",
+        "Privacy Policy Link": "Subtle link to privacy policy,encouraging users to read terms before submission."
+      },
+      "Use Cases": "Ideal for contact pages,customer support inquiries,feedback forms,and other scenarios requiring user input and communication."
+    }
+  },
+  "Form_1": {
+    "Header with Navigation": {
+      "Layout": "Fixed top bar with a logo on the left and navigation links on the right.",
+      "Design": "Clean and organized with a focus on usability and accessibility.",
+      "Key Elements": {
+        "Logo": "Prominently displayed on the left,visually balancing the navigation links.",
+        "Navigation Links": "Evenly spaced links for easy access to different sections of the site,with hover and active states.",
+        "Responsive": "Adapts to different screen sizes with a mobile-friendly menu button appearing on smaller screens.",
+        "Call-to-Action Button": "Optional button for important actions like sign-up or contact."
+      },
+      "Use Cases": "Suitable for any website needing a clear and accessible navigation structure,including corporate sites,blogs,and e-commerce platforms."
+    }
+  },
+  "newsletter_signup_3": {
+    "Newsletter Signup Section": {
+      "Layout": "Centered and compact design with a focus on user engagement.",
+      "Design": "Clean and modern design with a clear call-to-action and well-defined form elements.",
+      "Key Elements": {
+        "Heading": "Prominent and eye-catching,encouraging users to subscribe.",
+        "Subheading": "Brief and supportive text explaining the benefit.",
+        "Email Input Field": "Well-integrated,with clear placeholder text.",
+        "Submit Button": "Clearly visible with a strong call-to-action phrase.",
+        "Terms and Privacy Links": "Provides legal assurance with underlined links for terms of service and privacy policy."
+      },
+      "Use Cases": "Ideal for businesses looking to grow their email list,engage users with updates,and provide a straightforward subscription method."
+    }
+  },
+  "newsletter_signup_2": {
+    "Newsletter Signup Section": {
+      "Layout": "Centered content with a top-aligned heading and subtext,followed by an email input form and a disclaimer text.",
+      "Design": "Clean and minimalistic,focusing on user engagement and ease of use. The section is enclosed within a rounded rectangular container with a light background.",
+      "Key Elements": {
+        "Heading": "Prominently displays a call to action to sign up for updates.",
+        "Subtext": "Briefly explains the benefit of signing up.",
+        "Email Input Form": "Includes a large input field for email and a prominent send button.",
+        "Disclaimer Text": "Informs users about terms and privacy policies,with links to detailed documents."
+      },
+      "Use Cases": "Ideal for websites aiming to grow their email subscriber list. Suitable for blogs,e-commerce sites,and businesses wanting to keep their customers informed about updates,offers,and news."
+    }
+  },
+  "newsletter_signup_1": {
+    "Newsletter Section with Image": {
+      "Layout": "Divided layout with an image on the left and a sign-up form on the right.",
+      "Design": "Clean and modern,with a focus on encouraging users to subscribe to a newsletter. The image enhances visual appeal while the form engages the user.",
+      "Key Elements": {
+        "Image": "Left-aligned,high-quality image that takes up half the screen width on larger devices.",
+        "Headline": "Bold,centered or left-aligned,emphasizing the subscription call-to-action.",
+        "Description": "Short text below the headline,encouraging users to sign up.",
+        "Form": "Includes an email input field and a prominent 'Send' button.",
+        "Legal Text": "Disclaimer about terms of service and privacy policy with links,positioned below the form."
+      },
+      "Use Cases": "Ideal for blogs,media sites,and businesses aiming to grow their email subscriber list."
+    }
+  },
+  "testimonials_1": {
+    "Testimonials Section": {
+      "Layout": "Centered header followed by a two-column grid layout with testimonials.",
+      "Design": "Clean and professional with prominent testimonial quotes in a card-like format.",
+      "Key Elements": {
+        "Header": "Prominently centered with a bold and engaging title.",
+        "Testimonial Cards": "Each card includes a quote,an image,and the person's name and title.",
+        "Quote": "Displayed in a larger font to capture attention.",
+        "Author Details": "Includes a circular image,name,and title,enhancing authenticity."
+      },
+      "Use Cases": "Ideal for showcasing customer reviews,client testimonials,or user feedback for businesses,products,or services."
+    }
+  },
+  "testimonials_2": {
+    "Testimonial Section with Quote": {
+      "Layout": "Centered content with a quote,author information,and an optional logo or icon at the top.",
+      "Design": "Clean and minimalistic,focusing on the testimonial text and author details. The design ensures the quote stands out,supported by subtle author information.",
+      "Key Elements": {
+        "Logo/Icon": "Positioned at the top,it could be replaced with a company logo or relevant icon.",
+        "Testimonial Text": "Center-aligned,making it easy to read and emphasizing the feedback.",
+        "Author Information": "Includes an author image,name,and title,all centrally aligned for coherence.",
+        "Author Image": "Circular and prominent,adding authenticity to the testimonial.",
+        "Author Name and Title": "Highlighted below the image,providing context about the author.",
+        "Responsive Design": "Adjusts well across various screen sizes,ensuring readability and visual appeal."
+      },
+      "Use Cases": "Ideal for showcasing customer testimonials,user feedback,or quotes from notable individuals. Suitable for product landing pages,service websites,and portfolio sites to build trust and credibility with visitors."
+    }
+  },
+  "testimonials_3": {
+    "Testimonials Section": {
+      "Layout": "Grid layout with one to three columns depending on the screen size,each containing a testimonial.",
+      "Design": "Clean and simple,focused on user testimonials with text,user image,and user details.",
+      "Key Elements": {
+        "Section Title": "Centered and bold,introducing the testimonials.",
+        "Testimonial Block": "Each block includes a quote,user image,and user details.",
+        "User Image": "Circular,with a shadow effect.",
+        "User Details": "Includes name,role,and company,aligned for visual clarity.",
+        "Responsive Design": "Adapts from a single column on small screens to multiple columns on larger screens."
+      },
+      "Use Cases": "Ideal for showcasing customer testimonials,reviews,or client feedback on company websites,particularly in service-oriented industries or for products with high user satisfaction."
+    }
+  },
+  "FAQ_1": {
+    "FAQ Section": {
+      "Layout": "Single-column layout for text header followed by a two-column grid for FAQ items.",
+      "Design": "Clean and organized with clearly defined question and answer pairs. Questions are placed within rounded cards that include a subtle border and padding.",
+      "Key Elements": {
+        "Section Header": "Centered with a bold headline and a brief descriptive text below it.",
+        "Question Cards": "Each card has a question at the top,often with an icon,followed by the answer.",
+        "Icons": "Accompanying each question for visual interest and quick identification.",
+        "Two-Column Grid": "Ensures that multiple FAQs can be displayed without overwhelming the user."
+      },
+      "Use Cases": "Ideal for any website needing to address common inquiries,including product pages,service descriptions,and customer support sections."
+    }
+  },
+  "FAQ_4": {
+    "FAQ Section": {
+      "Layout": "Grid-based layout with multiple columns,each containing a question and answer pair.",
+      "Design": "Clean,structured,and user-friendly. Each FAQ item is enclosed in a rounded card with an icon,question,and answer.",
+      "Key Elements": {
+        "Section Heading": "Centered,bold heading with a brief description or introduction.",
+        "Grid Layout": "Responsive grid that adapts to different screen sizes with three columns on larger screens and two columns on smaller screens.",
+        "FAQ Items": "Each item is a card with an embedded icon,a question in a bold font,and an answer in a lighter font.",
+        "Icons": "Positioned at the top-left of each card,visually distinguishing each FAQ item."
+      },
+      "Use Cases": "Ideal for product websites,service pages,and any platform needing a dedicated FAQ section to address common questions and enhance user experience."
+    }
+  },
+  "FAQ_3": {
+    "FAQ Section with Collapsible Questions": {
+      "Layout": "Centered,columnar layout with a text introduction followed by a list of questions and answers.",
+      "Design": "Organized and user-friendly. Each question is clickable,revealing the answer below it.",
+      "Key Elements": {
+        "Section Title": "Centered,bold,and slightly larger heading indicating the FAQ nature.",
+        "Introductory Text": "Short paragraph providing context or additional information,centered and easily readable.",
+        "Accordion Style Questions": "Each question can be clicked to reveal or hide the answer,enhancing user interaction.",
+        "Icons for Interaction": "Arrows indicating the collapsible nature,enhancing visual cues and user experience."
+      },
+      "Use Cases": "Ideal for product pages,service websites,or any platform where users might have common questions or need detailed information in an organized manner."
+    }
+  },
+  "FAQ_2": {
+    "FAQ Section": {
+      "Layout": "Single-column layout transitioning to multi-column (2 or 3 columns) on larger screens.",
+      "Design": "Clean and organized with a central heading followed by a grid of questions and answers.",
+      "Key Elements": {
+        "Heading": "Centrally-aligned,bold heading to introduce the FAQ section.",
+        "Introductory Text": "Centrally-aligned paragraph providing context or additional information.",
+        "Questions and Answers": "Grid layout with each question highlighted by a slightly larger font size and bold text,followed by descriptive text."
+      },
+      "Use Cases": "Ideal for product pages,service-oriented websites,and any site requiring an FAQ section to address common questions and concerns of users."
+    }
+  },
+  "Heading_2": {
+    "Header with Navigation and Call-to-Action": {
+      "Layout": "A header section with a centrally-aligned logo,horizontally-arranged navigation links,and two distinct call-to-action elements (a button and a menu icon).",
+      "Design": "Clean and modern with a strong brand presence. The layout adjusts for different screen sizes,ensuring usability on both desktop and mobile devices.",
+      "Key Elements": {
+        "Logo": "Prominently displayed logo with text,enhancing brand visibility.",
+        "Navigation Menu": "Horizontally-aligned links for Home,Features,Pricing,and About sections. Hidden on smaller screens.",
+        "Contact Button": "Distinct button for contacting sales,visible on larger screens.",
+        "Menu Button": "A collapsible menu icon for smaller screens,providing navigational functionality."
+      },
+      "Use Cases": "Ideal for businesses,startups,and companies with multiple service pages,looking to enhance user navigation and engagement with a clear call-to-action for sales inquiries."
+    }
+  },
+  "Heading_3": {
+    "Navigation Bar with Logo,Links,and Responsive Menu": {
+      "Layout": "Horizontal layout with centered logo,navigation links,and responsive elements.",
+      "Design": "Clean and functional design emphasizing navigation and user accessibility.",
+      "Key Elements": {
+        "Logo": "Positioned at the center with brand name and icon.",
+        "Navigation Links": "Horizontally aligned links to various sections (e.g.,Home,Features,Pricing,About).",
+        "Responsive Menu Button": "Visible on smaller screens for toggling the menu.",
+        "Contact Button": "Prominent link for contacting sales,visible on larger screens."
+      },
+      "Use Cases": "Ideal for corporate websites,SaaS platforms,and online services with multiple sections requiring easy navigation."
+    }
+  },
+  "Heading_1": {
+    "Header Section with Navigation and Call-to-Action": {
+      "Layout": "Top-aligned header with logo on the left and navigation links centered,accompanied by call-to-action buttons on the right.",
+      "Design": "Clean,organized,and balanced. Featuring a prominent logo,straightforward navigation menu,and call-to-action buttons for contact and menu.",
+      "Key Elements": {
+        "Logo": "Positioned on the left,easy to spot,includes a small accompanying icon.",
+        "Navigation Menu": "Centered with links to home,features,pricing,and about pages,becomes hidden on smaller screens.",
+        "Call-to-Action Buttons": "Two types — a 'Contact Sales' button on larger screens and a 'Menu' button on smaller screens."
+      },
+      "Use Cases": "Ideal for business websites,product-oriented sites,and platforms where easy navigation and quick access to contact options are vital."
+    }
+  },
+  "Features_2": {
+    "Features Section with Icons": {
+      "Layout": "Centered headline and description followed by a grid layout displaying features in individual cards.",
+      "Design": "Clean and organized. Each feature is encapsulated in a bordered card with an icon,headline,and description.",
+      "Key Elements": {
+        "Headline": "Centered,bold headline introducing the section.",
+        "Description": "Centered text providing an overview or introduction to the features.",
+        "Feature Cards": "Individual flex cards with divided sections,including an icon and text block.",
+        "Icons": "Visible and easily recognizable,adding visual interest to each feature card.",
+        "Text Blocks": "Contain an explanatory headline and a short description for each feature."
+      },
+      "Use Cases": "Ideal for showcasing product features,service benefits,or unique selling points in a visually appealing manner."
+    }
+  },
+  "Features_3": {
+    "Features Section with Grid Layout": {
+      "Layout": "Grid layout with responsive columns,offering flexibility for various screen sizes.",
+      "Design": "Modern and clean,with distinct feature blocks that include a heading,description,and call-to-action link.",
+      "Key Elements": {
+        "Section Heading": "Centered,bold,and larger for emphasis.",
+        "Feature Blocks": "Each block is rounded,bordered,and has consistent padding.",
+        "Feature Titles": "Prominent and bold to draw attention.",
+        "Feature Descriptions": "Short,concise,and informative.",
+        "Call-to-Action Links": "Clear and inviting,placed at the bottom of each feature block."
+      },
+      "Use Cases": "Ideal for showcasing product features,service offerings,or key differentiators in a structured and visually appealing manner."
+    }
+  },
+  "Features_4": {
+    "Features Presentation Section": {
+      "Layout": "Single-column structure with a centered introduction followed by a multi-column grid of features.",
+      "Design": "Clean,organized,and modern. Focuses on presenting multiple features with icons,headings,descriptions,and links.",
+      "Key Elements": {
+        "Section Header": "Centered heading and subheading providing an overview of the features.",
+        "Feature Grid": "Grid layout for displaying individual features,adaptable to different screen sizes (2 columns on small screens,3 columns on larger screens).",
+        "Feature Items": "Each feature includes an icon,a heading,a short description,and a link for more information."
+      },
+      "Use Cases": "Ideal for showcasing a product's or service's key features,benefits,or advantages. Suitable for tech companies,SaaS products,and services highlighting multiple attributes."
+    }
+  },
+  "Features_5": {
+    "Feature Section with Icons": {
+      "Layout": "Multi-column grid layout with individual feature cards.",
+      "Design": "Modern and clean with centered header and description followed by feature cards with icons,headings,descriptions,and links.",
+      "Key Elements": {
+        "Section Header": "Centered,bold headline and supporting descriptive text.",
+        "Feature Cards": "Grid of cards each with an icon,title,description,and link.",
+        "Icons": "Unique icons for each feature,enhancing visual appeal.",
+        "Headings": "Each feature has a clear,bold title.",
+        "Descriptions": "Brief,supportive text for each feature.",
+        "Links": "'More' links for additional information about each feature."
+      },
+      "Use Cases": "Ideal for showcasing multiple features or benefits of a product or service,such as SaaS products,software solutions,and service offerings."
+    }
+  },
+  "Features_1": {
+    "Features Section with Icons": {
+      "Layout": "Grid layout with multiple columns,presenting each feature in its own block.",
+      "Design": "Clean,organized,and visually appealing. Each feature block includes an icon,a headline,a brief description,and a 'More' link.",
+      "Key Elements": {
+        "Section Title": "Centered,bold headline with a supporting paragraph for introductory text.",
+        "Feature Blocks": "Each block includes an icon,a title,a description,and a call-to-action link.",
+        "Icons": "Visually distinct with a consistent style,enhancing feature recognition.",
+        "Grid System": "Responsive grid layout,adapting from two to three columns based on screen size."
+      },
+      "Use Cases": "Ideal for showcasing the advantages or main features of a product,service,or company on a landing page or about section."
+    }
+  },
+  "Navigation_2": {
+    "Sticky Bottom Navigation": {
+      "Layout": "Sticky bottom navigation bar with horizontally aligned links.",
+      "Design": "Compact,functional,and mobile-first. Sticky navigation stays at the bottom of the viewport as the user scrolls.",
+      "Key Elements": {
+        "Navigation Links": "Four equally spaced links directed towards Home,Features,Pricing,and About sections,each with an icon and label.",
+        "Icons": "Graphical representations above each label to enhance visual guidance.",
+        "Transition Effects": "Subtle hover and active state color transitions for interactive feedback."
+      },
+      "Use Cases": "Ideal for mobile applications or sites prioritizing easy access to key sections. Useful for single-page websites and providing persistent navigation in long-scrolling pages."
+    }
+  },
+  "Navigation_3": {
+    "Sticky Navigation with Floating Action Button": {
+      "Layout": "Sticky bottom navigation bar with a centered floating action button (FAB).",
+      "Design": "Modern,mobile-friendly design ensuring easy access to key sections. Floating action button enhances usability and visibility.",
+      "Key Elements": {
+        "Sticky Navigation": "Remains fixed at the bottom of the screen,providing continuous access to navigation.",
+        "Floating Action Button (FAB)": "Centered above the navigation bar for a standout call-to-action or primary function.",
+        "Icons with Labels": "Each navigation item includes an icon and label for easy recognition (e.g.,Home,Products,Search,About).",
+        "Hover and Active States": "Interactive elements change appearance on hover and active states,enhancing usability and feedback."
+      },
+      "Use Cases": "Ideal for mobile applications or mobile-responsive websites where quick access to main sections is crucial,such as e-commerce,social media platforms,or service-based sites."
+    }
+  },
+  "Navigation_1": {
+    "Sticky Footer Navigation": {
+      "Layout": "A sticky footer navigation bar that remains at the bottom of the viewport,featuring a full-width,centered design with evenly spaced navigation links.",
+      "Design": "Minimalistic and user-friendly. Each navigation item is represented with an icon and a label,making it easy for users to understand the different sections at a glance.",
+      "Key Elements": {
+        "Navigation Bar": "Sticky,bottom-positioned bar that stays in place as users scroll.",
+        "Navigation Links": "Includes Home,Features,Pricing,and About sections,each with an icon and a corresponding label.",
+        "Hover and Active States": "Links change color on hover and active states for better user interaction.",
+        "Responsive Design": "Adapts to various screen sizes with appropriate padding and font adjustments for mobile and desktop views."
+      },
+      "Use Cases": "Ideal for mobile-first websites,single-page applications,and platforms where continuous access to navigation is crucial (e.g.,e-commerce sites,social media apps)."
+    }
+  },
+  "Content_2": {
+    "Who We Are Section with Image": {
+      "Layout": "Two-column design with an image on the left and text content on the right.",
+      "Design": "Clean,professional layout with a focus on textual information supported by a visual element.",
+      "Key Elements": {
+        "Image": "High-quality,portrait-oriented image with a rounded border and shadow effect,adding visual interest.",
+        "Introductory Text": "Brief introduction with a bold tagline 'Who we are' to establish the section's focus.",
+        "Headline": "Medium-sized,bold headline highlighting the competitive advantage.",
+        "Body Text": "Detailed descriptive text with inline links for additional information.",
+        "Subheading": "'About us' subheading for further details about the entity.",
+        "Use Cases": "Ideal for company profiles,team introductions,or sections highlighting competitive advantages and core values."
+      }
+    }
+  },
+  "Content_1": {
+    "Feature Highlights Section": {
+      "Layout": "Grid layout with evenly spaced feature boxes,each containing an icon,title,description,and a 'More' link.",
+      "Design": "Minimalistic and modern. Each feature is represented by an icon within a colored circle,followed by a title and descriptive text centered for symmetry.",
+      "Key Elements": {
+        "Heading": "Prominent centered heading to introduce the section.",
+        "Subheading": "Provides additional context,centered beneath the heading.",
+        "Feature Boxes": "Flex containers that align items centrally.",
+        "Icons": "Distinctive icons within rounded colored backgrounds,enhancing visual appeal.",
+        "Feature Titles": "Bold titles for each feature,indicating the core benefit or aspect.",
+        "Descriptions": "Short,centered descriptive text under each title.",
+        "More Links": "Interactive 'More' links for additional information."
+      },
+      "Use Cases": "Ideal for showcasing the unique selling points or key features of a product,service,or company. Suitable for SaaS platforms,tech companies,and startups looking to highlight their advantages."
+    }
+  },
+  "Call_To_Action_4": {
+    "CTA Section with Free Trial": {
+      "Layout": "Centered content with a flexible arrangement that adapts well to different screen sizes.",
+      "Design": "Simple and clean with a focus on encouraging user action through a prominent call-to-action button.",
+      "Key Elements": {
+        "Headline": "Bold and attention-grabbing,promoting a free trial.",
+        "Supporting Text": "Additional text to reassure users (e.g.,'No Credit Card required').",
+        "Call-to-Action Button": "Highly visible button prompting users to start the trial.",
+        "Container": "Rounded and padded container for a soft,inviting look.",
+        "Responsive Design": "Adjusts layout for different screen sizes,stacking elements vertically on smaller screens."
+      },
+      "Use Cases": "Ideal for SaaS companies,subscription services,or any platform offering a free trial to encourage user sign-ups."
+    }
+  },
+  "Call_To_Action_2": {
+    "Split-Screen Content Section with Image": {
+      "Layout": "Horizontal split-screen design with an image on the left and content on the right.",
+      "Design": "Clean and structured. The section includes a headline,descriptive text,and a call-to-action button,all complemented by a background image for visual engagement.",
+      "Key Elements": {
+        "Image": "Positioned on the left (or top on small screens),it provides visual context and engagement.",
+        "Headline": "Prominently displayed,large,and bold to capture attention.",
+        "Descriptive Text": "Supports the headline with additional information,using a smaller font size.",
+        "Call-to-Action Button": "A prominent button located at the bottom of the content block for user engagement (e.g.,“Contact support”)."
+      },
+      "Use Cases": "Ideal for help centers,customer support pages,and informational sections that require a visual element alongside textual content."
+    }
+  },
+  "Call_To_Action_3": {
+    "Centered Hero Section with Call-to-Action Buttons": {
+      "Layout": "Single column layout centered both vertically and horizontally within the viewport for focused engagement.",
+      "Design": "Minimalistic and modern with a strong emphasis on the headline and call-to-action buttons.",
+      "Key Elements": {
+        "Introductory Text": "Brief and supportive,positioned above the headline.",
+        "Headline": "Large,bold,and attention-grabbing,designed to make a strong impact.",
+        "Call-to-Action Buttons": "Two prominent buttons aligned horizontally for primary and secondary actions (e.g.,“Start now” and “Take tour”)."
+      },
+      "Use Cases": "Ideal for landing pages,product announcements,and marketing campaigns aiming to drive user engagement and conversions through clear and compelling messaging."
+    }
+  },
+  "Call_To_Action_1": {
+    "Promo Section with Image": {
+      "Layout": "Horizontal split design with text content on the left and an image on the right.",
+      "Design": "Bold and compelling. Emphasis on a large headline and a clear call-to-action with supporting text.",
+      "Key Elements": {
+        "Headline": "Large and eye-catching,promoting a sale or special offer.",
+        "Supporting Text": "Brief and informative,providing additional details about the promotion.",
+        "Call-to-Action Button": "Encourages immediate action (e.g.,“Save now”).",
+        "Promo Image": "High-quality,visually appealing image complementing the text content.",
+        "Responsive Design": "Stacked content on smaller screens for better readability and user experience."
+      },
+      "Use Cases": "Ideal for e-commerce websites,seasonal promotions,and discount announcements to attract and convert customers."
+    }
+  },
+  "Blog_4": {
+    "Blog Section with Articles": {
+      "Layout": "Grid layout with multiple articles displayed in rows and columns,responsive to screen sizes.",
+      "Design": "Modern,clean,and visually appealing. Each article card includes an image,date,title,brief description,and a 'Read more' link.",
+      "Key Elements": {
+        "Section Title": "Centered,bold heading with a brief introductory text beneath it.",
+        "Article Cards": "Each card consists of an image,date,title,description,and 'Read more' link. Cards are displayed in a responsive grid format.",
+        "Images": "High-quality images that zoom on hover,making the articles visually engaging.",
+        "Responsive Grid": "Adjusts column count based on screen size,ensuring optimal display on all devices."
+      },
+      "Use Cases": "Ideal for blogs,news websites,or any platform looking to display multiple articles or posts in a structured and appealing manner."
+    }
+  },
+  "Blog_3": {
+    "Blog Section with Article Previews": {
+      "Layout": "Grid layout displaying article previews in a multi-column format,with each article having an image and a content overlay.",
+      "Design": "Visually engaging with a mix of images and text. Each article preview features a hover effect to draw attention.",
+      "Key Elements": {
+        "Header": "Centered header with a section title and description.",
+        "Article Previews": "Grid layout with responsive columns (up to four columns in larger screens) featuring individual articles.",
+        "Article Content": "Each article has an image with overlay text including a date,title,and a 'Read more' link.",
+        "Hover Effect": "Images scale slightly upon hover for a dynamic feel."
+      },
+      "Use Cases": "Ideal for blogs,news websites,and any platform that regularly publishes articles or updates,providing a snapshot of the latest content."
+    }
+  },
+  "Blog_2": {
+    "Blog Section with Articles": {
+      "Layout": "Centered text header followed by a grid layout for the articles.",
+      "Design": "Clean and organized with a focus on readability. Each article features a small image,title,date,and a short description.",
+      "Key Elements": {
+        "Header": "Centered with a bold title and supportive text.",
+        "Article Grid": "Displayed in a responsive grid layout with gaps between the articles.",
+        "Article Image": "Small,rounded,and positioned above or beside each article.",
+        "Article Title": "Bold and prominent,linked for further reading.",
+        "Article Date": "Displayed in a smaller font above the title.",
+        "Read More Link": "Prominent link encouraging readers to continue reading."
+      },
+      "Use Cases": "Ideal for blogs,news websites,or any content-heavy site looking to showcase multiple articles in a clean,organized manner."
+    }
+  },
+  "Blog_1": {
+    "Blog Section with Grid of Articles": {
+      "Layout": "Grid layout with multiple articles arranged in rows and columns.",
+      "Design": "Clean and organized,each article is presented within a card-like structure with an image,title,brief description,and author details.",
+      "Key Elements": {
+        "Section Title": "Centered,bold title introducing the blog section.",
+        "Description Text": "Centered,short description providing context or introduction.",
+        "Article Cards": "Each card includes an image,title,brief text,author information,and publish date.",
+        "Grid System": "Responsive grid that adjusts based on screen size,ranging from single-column on small screens to multi-column on larger screens."
+      },
+      "Use Cases": "Ideal for blog pages,news sections,or any content-heavy site showcasing multiple articles or posts in an organized manner."
+    }
+  },
+  "logo_cloud_2": {
+    "Logo Grid Section": {
+      "Layout": "Single-column layout with multiple logos displayed in a grid format,arranged in rows with even spacing between them.",
+      "Design": "Clean and professional design with rounded corners and centralized alignment for logos.",
+      "Key Elements": {
+        "Section Header": "The header includes a large,bold title ('Trusted by the best') centered with a brief description below it.",
+        "Logos": "Logos are presented inside flex containers with rounded corners and background shading,evenly spaced within the grid.",
+        "Grid Structure": "Logos are arranged in a responsive grid that adjusts from 2 columns on smaller screens to 3 columns on medium screens,ensuring optimal viewing experience.",
+        "Use Cases": "Ideal for showcasing brand partnerships,client logos,or sponsors to establish credibility and trust with potential customers or partners."
+      }
+    }
+  },
+  "logo_cloud_3": {
+    "Trusted by the Best Section": {
+      "Layout": "Single column layout with a centered headline followed by a grid of company logos.",
+      "Design": "Clean and straightforward,featuring a headline that emphasizes credibility and a balanced grid layout for displaying logos.",
+      "Key Elements": {
+        "Headline": "Centered,bold,and larger font size for emphasis.",
+        "Logo Grid": "A grid layout with evenly spaced logos,rounded corners,and background color to distinguish the section. Responsive design adapts from two columns on smaller screens to four columns on larger screens.",
+        "Logos": "Displayed within a grid,each logo is centered and given ample space,ensuring they are easily recognizable."
+      },
+      "Use Cases": "Ideal for showcasing client logos,trusted partners,or affiliations to build trust and credibility. Suitable for homepages,about pages,or landing pages."
+    }
+  },
+  "logo_cloud_1": {
+    "Logo Grid Section": {
+      "Layout": "Centered header followed by a grid of logos.",
+      "Design": "Simple and clean with a clear emphasis on logos representing trusted partners or clients.",
+      "Key Elements": {
+        "Header": "Centered,bold font highlighting trustworthiness.",
+        "Logo Grid": "A responsive grid layout displaying multiple logos,ensuring visual consistency and recognition."
+      },
+      "Use Cases": "Ideal for showcasing partnerships,client logos,or brands that the company collaborates with or is recognized by. Suitable for testimonials or credibility sections."
+    }
+  },
+  "Team_1": {
+    "Team Section with Profiles": {
+      "Layout": "Grid format displaying multiple team members in a responsive and visually appealing manner.",
+      "Design": "Clean and professional. Each team member is presented in a card-like layout with a profile picture,name,title,and social media links.",
+      "Key Elements": {
+        "Section Title": "Centered heading introducing the team.",
+        "Introductory Text": "Brief description positioned below the title,providing context.",
+        "Team Grid": "Responsive grid layout that adjusts based on screen size,displaying two columns on small screens,three columns on medium screens,and four columns on large screens.",
+        "Team Member Card": "Each card includes a profile image,name,title,and social media links.",
+        "Profile Image": "Circular image with a shadow effect for visual separation.",
+        "Social Media Links": "Icons for various social media platforms,allowing users to connect with team members."
+      },
+      "Use Cases": "Ideal for corporate websites,startups,and agencies looking to showcase their team in a professional and engaging way."
+    }
+  },
+  "Team_4": {
+    "Team Section with Profiles": {
+      "Layout": "Grid layout with multiple rows and columns,showcasing individual team member profiles.",
+      "Design": "Professional and visually appealing. Each profile includes an image,name,designation,and social media links.",
+      "Key Elements": {
+        "Section Header": "A bold,centered title followed by a brief introductory text.",
+        "Team Member Profiles": "Each profile comprises a rounded image,name in bold,designation,and social media links.",
+        "Responsive Design": "Grid adjusts for different screen sizes with varying column counts.",
+        "Visual Hierarchy": "Consistent styling for names and designations for easy readability."
+      },
+      "Use Cases": "Ideal for company websites,agency portfolios,and any platform aiming to highlight team members or contributors."
+    }
+  },
+  "Team_2": {
+    "Team Section with Profiles": {
+      "Layout": "Grid layout featuring team member profiles,organized in responsive columns.",
+      "Design": "Professional and approachable. Each team member is showcased with a photo and brief text description.",
+      "Key Elements": {
+        "Section Header": "Centered with a bold heading and brief introductory text.",
+        "Profile Grid": "Responsive grid layout with rows of team member profiles.",
+        "Photo": "Circular,high-quality images of team members.",
+        "Name and Title": "Each profile includes the team member's name and position,styled for readability.",
+        "Responsive Design": "Adjusts layout for different screen sizes to ensure optimal viewing experience."
+      },
+      "Use Cases": "Ideal for company about pages,agency websites,and any site aiming to highlight its team members and their roles."
+    }
+  },
+  "Team_3": {
+    "Team Section with Grid Layout": {
+      "Layout": "Centered text block at the top followed by a grid-based arrangement of team member profiles.",
+      "Design": "Clean,organized,and visually appealing. Each team member is displayed in a consistent style,making it easy to scan through multiple profiles.",
+      "Key Elements": {
+        "Introduction Text": "Includes a headline and a brief description,both centered to set the context for the section.",
+        "Team Grid": "Consists of individual team member cards arranged in a responsive grid layout,adapting to different screen sizes (2 columns on small screens,4 on larger screens).",
+        "Profile Image": "Each team member's image is displayed in a circular frame,providing a personal touch.",
+        "Name and Title": "Displayed below the image in a bold,easily readable font.",
+        "Social Media Links": "Icons for social media links are consistent across profiles,encouraging engagement."
+      },
+      "Use Cases": "Ideal for corporate websites,agency portfolios,and any organization wanting to highlight their team's diversity and talent in a professional and approachable manner."
+    }
+  },
+  "Product_detail_1": {
+    "Product Detail Section": {
+      "Layout": "Two-column layout with a focus on product imagery on the left and detailed product information on the right.",
+      "Design": "Visual-centric and user-friendly. Multiple product images arranged in a grid on the left side,with a primary large image and secondary smaller images. The right side focuses on product details,ratings,color and size options,pricing,and action buttons.",
+      "Key Elements": {
+        "Image Gallery": "Multiple images showcasing the product,with one highlighted large image and smaller supporting images.",
+        "Product Name": "Prominently displayed with an optional brand name.",
+        "Rating": "Includes star rating and number of ratings.",
+        "Color Options": "Selectable color circles for visual clarity.",
+        "Size Options": "Clickable size options,indicating available and unavailable sizes.",
+        "Pricing": "Displays the current price with an optional discount price.",
+        "Shipping Notice": "Estimated shipping time to inform customers.",
+        "Action Buttons": "Buttons for adding the product to cart and buying immediately."
+      },
+      "Use Cases": "Ideal for e-commerce websites,particularly for fashion and accessories. This layout helps in presenting the product attractively and providing all necessary details for a purchase decision."
+    }
+  },
+  "Product_detail_2": {
+    "Product Detail Section with Images and Ratings": {
+      "Layout": "Two-column design with images on the left and product details on the right.",
+      "Design": "Modern and clean layout with a focus on high-quality imagery and clear product information.",
+      "Key Elements": {
+        "Main Image": "Large,featured image with a 'sale' badge overlay for promotional items.",
+        "Secondary Images": "Smaller images displayed in a grid format.",
+        "Product Name": "Prominently displayed with brand name and title.",
+        "Rating": "Star ratings with a count of total reviews and a link to view all reviews.",
+        "Color Options": "Circular color swatches for selecting different product colors.",
+        "Size Options": "Buttons for selecting different sizes with visual indicators for selected or unavailable sizes.",
+        "Price": "Displayed with original and discounted prices if applicable.",
+        "Shipping Notice": "Icon and text indicating estimated shipping times.",
+        "Action Buttons": "'Add to cart' button and a wish list button with icons.",
+        "Product Description": "Detailed product description at the bottom."
+      },
+      "Use Cases": "Ideal for e-commerce websites,especially fashion and apparel stores,for showcasing product details,images,and customer ratings."
+    }
+  },
+  "Product_grid_3": {
+    "Product Grid Section": {
+      "Layout": "Grid-based structure with multiple columns,adjusting from two to four columns based on screen size.",
+      "Design": "Clean and modern design,with a focus on product images and pricing information. Each product is presented in a card-like format with space for images,titles,descriptions,and prices.",
+      "Key Elements": {
+        "Heading": "Centered,bold heading with a supporting text paragraph.",
+        "Product Cards": "Individual product listings with images,titles,brand names,and prices.",
+        "Images": "High-quality product images with hover effects that slightly enlarge the image.",
+        "Pricing": "Prominent display of current and original prices,indicating discounts where applicable.",
+        "Call-to-Action": "Each product card links to a detailed product page."
+      },
+      "Use Cases": "Ideal for e-commerce websites,online retail stores,and marketplaces looking to showcase multiple products in an organized and visually appealing manner."
+    }
+  },
+  "Product_grid_2": {
+    "Product Grid Section": {
+      "Layout": "Grid layout with multiple product cards arranged in rows and columns. The grid adjusts to different screen sizes using responsive design.",
+      "Design": "Clean and modern design with emphasis on product imagery and key details. Each product card uses a hover effect to enhance user interaction.",
+      "Key Elements": {
+        "Section Heading": "Bold section title with an optional 'Show more' link to view additional products.",
+        "Product Card": "Each card includes an image,product name,price,and any discount or sale notifications.",
+        "Hover Effect": "Images zoom slightly on hover,adding a dynamic feel.",
+        "Discount Badge": "Products on sale feature a prominent badge to attract attention."
+      },
+      "Use Cases": "Ideal for e-commerce websites showcasing products,special deals,and promotions. Suitable for highlighting featured or selected items."
+    }
+  },
+  "Product_grid_1": {
+    "Product Grid Section": {
+      "Layout": "Grid-based design with multiple columns,adaptable to various screen sizes.",
+      "Design": "Modern and clean layout featuring product images,names,brands,and prices with hover effects on images.",
+      "Key Elements": {
+        "Header Text": "Centrally aligned heading and subheading for introducing the section.",
+        "Product Cards": "Individual product items displayed in a grid format with images,titles,brands,and pricing details.",
+        "Product Images": "High-quality images with a hover zoom effect.",
+        "Labels": "Optional labels such as discount and new for promotional purposes.",
+        "Price Information": "Displayed prominently with original and discounted prices if applicable."
+      },
+      "Use Cases": "Ideal for e-commerce websites,product catalogs,and online stores to showcase a variety of products efficiently."
+    }
+  },
+  "Hero_1": {
+    "Hero Section with Call-to-Action": {
+      "Layout": "Split-screen layout with a left-aligned text block and a right-aligned image.",
+      "Design": "Modern and clean with a prominent headline,supporting text,and call-to-action buttons.",
+      "Key Elements": {
+        "Logo and Navigation Menu": "Top-aligned,featuring a logo and links to Home,Features,Pricing,and About pages.",
+        "Introductory Text": "Contextual text introducing the key message or feature.",
+        "Headline": "Prominent,large,and bold headline to grab attention.",
+        "Supporting Text": "Additional information in a relaxed,readable format.",
+        "Call-to-Action Buttons": "Primary (Start now) and secondary (Take tour) buttons to drive user actions.",
+        "Hero Image": "High-quality,full-height image on the right to visually support the text."
+      },
+      "Use Cases": "Ideal for showcasing new products,services,or startups,and motivating users to take immediate actions such as signing up or starting a trial."
+    }
+  },
+  "Hero_7": {
+    "Header with Notification and Hero Section": {
+      "Layout": "Top header with logo,navigation,contact button,and menu icon. Below it,a centered notification banner followed by a hero section with a headline,subtext,and call-to-action buttons.",
+      "Design": "Modern and clean header design with a border at the bottom. The hero section features a prominent title and supporting text aligned centrally.",
+      "Key Elements": {
+        "Logo": "Positioned at the top-left,featuring a graphic and text.",
+        "Navigation Menu": "Top-right with links to main site sections,hidden on mobile.",
+        "Contact Button": "Visible in the header on larger screens.",
+        "Menu Icon": "Visible on mobile for expanded navigation.",
+        "Notification Banner": "Centered below the header,featuring new information and an action link.",
+        "Hero Section": "Includes an introductory text,bold headline,descriptive sub-text,and two call-to-action buttons aligned centrally."
+      },
+      "Use Cases": "Ideal for SaaS companies,marketing websites,and businesses launching new products or services."
+    }
+  },
+  "Hero_6": {
+    "Hero Section with Buttons and Image": {
+      "Layout": "Split-screen design with a left-aligned text block,call-to-action buttons,and a right-aligned image.",
+      "Design": "Sleek,engaging,and dynamic. Large,bold headline with a supporting introductory text and two call-to-action buttons.",
+      "Key Elements": {
+        "Logo and Navigation Menu": "Positioned at the top,providing links to home,features,pricing,and about pages.",
+        "Introductory Text": "Highlighting a key message or feature.",
+        "Headline": "Large,bold,and impactful.",
+        "Call-to-Action Buttons": "Two prominent buttons for primary and secondary actions (e.g.,“Start now” and “Take tour”).",
+        "Hero Image": "High-quality,full-height image on the right.",
+        "Stats Section": "Highlighting key metrics (e.g.,people,projects,customers).",
+        "Social Media Links": "Positioned at the bottom for increased engagement."
+      },
+      "Use Cases": "Suitable for startups,product launches,and companies looking to drive immediate action from visitors (e.g.,sign-ups,product trials)."
+    }
+  },
+  "Hero_5": {
+    "Hero Section with Form and Image": {
+      "Layout": "Split-screen design with a left-aligned text block and form,and a right-aligned image.",
+      "Design": "Modern and clean. Prominent headline,supporting text,and an email signup form.",
+      "Key Elements": {
+        "Logo and Navigation Menu": "Positioned at the top,providing links to home,features,pricing,and about pages.",
+        "Headline": "Large,bold,and impactful.",
+        "Introductory Text": "Descriptive text providing context or details.",
+        "Email Signup Form": "Includes an input field for email and a signup button.",
+        "Hero Image": "High-quality,full-height image on the right."
+      },
+      "Use Cases": "Ideal for companies promoting newsletters,gated content,or email subscriptions,and looking to capture visitor information."
+    }
+  },
+  "Hero_8": {
+    "E-commerce Hero Section with Dual Images": {
+      "Layout": "Header with navigation and utility buttons followed by a hero section with a left-aligned text block and dual images to the right.",
+      "Design": "Modern and clean with a focus on e-commerce. Includes a prominent logo,navigation menu,utility buttons,and a captivating hero section.",
+      "Key Elements": {
+        "Logo and Navigation Menu": "Positioned at the top,providing links to home,collections,sale,and about pages.",
+        "Utility Buttons": "Wishlist,account,cart,and menu buttons for quick access to key actions.",
+        "Hero Section": "Highlights a headline and a brief descriptive text aligned to the left.",
+        "Dual Images": "Two visually appealing images aligned to the right,adding dynamism.",
+        "Category Links": "Three linked buttons for different shopping categories (Men,Women,Teens).",
+        "Social Media Links": "Positioned at the bottom for enhanced social engagement."
+      },
+      "Use Cases": "Suitable for online retail stores,fashion brands,and e-commerce platforms aiming to showcase their products and facilitate shopping."
+    }
+  },
+  "Hero_4": {
+    "Centered Hero Section with Social Links": {
+      "Layout": "Single-column centered layout with a focus on the main message,call-to-action buttons,and social media links.",
+      "Design": "Streamlined and minimalist. Center-aligned text and buttons create a focused and engaging experience.",
+      "Key Elements": {
+        "Logo and Navigation Menu": "Positioned at the top with links to home,features,pricing,and about pages.",
+        "Introductory Text": "Supporting text that sets the stage for the main headline.",
+        "Headline": "Large and bold,designed to capture immediate attention.",
+        "Call-to-Action Buttons": "Two central buttons for primary and secondary actions (e.g.,“Start now” and “Take tour”).",
+        "Social Media Links": "Integrated at the bottom,promoting social engagement."
+      },
+      "Use Cases": "Ideal for product launches,personal portfolios,or service promotions where capturing visitor attention is crucial."
+    }
+  },
+  "Hero_3": {
+    "Hero Section with Social Links": {
+      "Layout": "Split-screen design with a left-aligned text block,social media links,call-to-action buttons,and a right-aligned image.",
+      "Design": "Elegant and professional. Large,bold headline with a supporting introductory text,social media icons for user engagement,and two call-to-action buttons.",
+      "Key Elements": {
+        "Logo and Navigation Menu": "Positioned at the top with a border-bottom,providing links to home,features,pricing,and about pages.",
+        "Introductory Text": "Highlighting a key message or feature.",
+        "Headline": "Large,bold,and impactful.",
+        "Call-to-Action Buttons": "Two prominent buttons for primary and secondary actions (e.g.,“Start now” and “Take tour”).",
+        "Social Media Links": "Positioned below the text block for increased engagement with social platforms.",
+        "Hero Image": "High-quality,full-height image on the right."
+      },
+      "Use Cases": "Ideal for businesses and influencers looking to build a professional web presence,increase social media engagement,and drive user actions (e.g.,sign-ups,product trials)."
+    }
+  },
+  "Hero_2": {
+    "Hero Section with Text Overlay": {
+      "Layout": "Full-screen image background with a centered text block and call-to-action buttons.",
+      "Design": "Visually striking with a blend of text and image overlay,creating an engaging experience. The text is prominently positioned in the center with high contrast against the image.",
+      "Key Elements": {
+        "Logo and Navigation Menu": "Positioned at the top,providing quick access to key sections like home,features,pricing,and about.",
+        "Full-screen Background Image": "High-quality,full-height image that sets the visual tone.",
+        "Overlay": "Semi-transparent overlay for text readability.",
+        "Centered Text Block": "Includes a headline,subheading,and two call-to-action buttons.",
+        "Call-to-Action Buttons": "Two prominent buttons for primary and secondary actions (e.g.,“Start now” and “Take tour”)."
+      },
+      "Use Cases": "Suitable for product launches,promotional campaigns,or any landing page aiming to captivate the audience with a strong visual impression and clear calls-to-action."
+    }
+  },
+  "Collections_1": {
+    "Product Showcase Section": {
+      "Layout": "Grid layout with multiple columns,adjusting based on screen size (2 columns on small screens,up to 4 columns on extra-large screens).",
+      "Design": "Clean and modern,emphasizing high-quality product images with subtle hover effects to enhance interactivity.",
+      "Key Elements": {
+        "Header": "Includes a bold section title (Collections) with a supplementary 'Show more' button for additional navigation.",
+        "Product Cards": "Each card displays an image,category,and product name. The images have a hover effect that zooms in slightly for a dynamic feel.",
+        "Call-to-Action Button": "A prominent button at the top right for displaying more products."
+      },
+      "Use Cases": "Ideal for e-commerce platforms,online fashion stores,or any website needing to highlight multiple products or categories prominently."
+    }
+  },
+  "Collections_3": {
+    "Product Gallery Section": {
+      "Layout": "Grid layout with variable column numbers based on screen size,ranging from two columns on small screens to four columns on extra-large screens.",
+      "Design": "Clean and modern design with large product images,centered text overlays,and subtle hover effects.",
+      "Key Elements": {
+        "Section Title": "Centrally aligned,bold heading that introduces the section.",
+        "Product Cards": "Each product is displayed in a card format featuring an image,category,and title. The image scales slightly on hover for a dynamic effect.",
+        "Image": "High-quality,full-height image for each product,ensuring visual appeal.",
+        "Text Overlay": "Overlay text describing the product category and name,centrally aligned for readability.",
+        "Hover Effect": "Slight zoom effect on the product image when hovered over,attracting user interaction."
+      },
+      "Use Cases": "Ideal for e-commerce websites and online stores showcasing various product collections or featured items. Can be used for fashion,electronics,home decor,or any other product-focused site."
+    }
+  },
+  "Collections_2": {
+    "Product Collections Section": {
+      "Layout": "Single-column layout with centered text followed by a two-column grid of product cards.",
+      "Design": "Modern and clean with a focus on showcasing products with high-quality images. The product cards have a hover effect for interactivity.",
+      "Key Elements": {
+        "Section Header": "Includes a bold,centered heading and a subheading for introductory text.",
+        "Product Cards": "Each card features a high-resolution image with overlay text. The cards expand slightly on hover.",
+        "Overlay Text": "Provides category and sub-category names with a gradient background for readability.",
+        "Grid Structure": "Two-column layout for product cards at smaller screens,ensuring all products are displayed prominently."
+      },
+      "Use Cases": "Ideal for e-commerce websites to display featured products or collections,such as home decor,fashion,or electronics."
+    }
+  },
+  "Pricing_1": {
+    "Pricing Section with Multiple Plans": {
+      "Layout": "Grid layout with multiple pricing plans displayed in columns.",
+      "Design": "Clean,structured,and clear. Each pricing plan is enclosed in a card with defined borders and distinct background colors for headers.",
+      "Key Elements": {
+        "Section Title": "Centrally aligned heading 'Pricing' at the top.",
+        "Pricing Cards": "Three distinct plans (Free Trial,Team,Enterprise) each within a card layout.",
+        "Plan Highlights": "Each plan includes a title,description,feature list,and call-to-action button.",
+        "Feature List": "Bullet points using icons to list features/benefits of each plan.",
+        "Call-to-Action Buttons": "Prominent buttons at the bottom of each pricing card for user action (e.g.,sign-up)."
+      },
+      "Use Cases": "Ideal for SaaS products,subscription-based services,or any business offering tiered pricing plans."
+    }
+  },
+  "Pricing_3": {
+    "Pricing Section with Bundles": {
+      "Layout": "Two-column layout with each column representing a different bundle option:Basic and Pro.",
+      "Design": "Clean and structured with clear distinctions between the bundle options. Highlighted elements such as 'Best value' badge and strikethrough original prices enhance the perceived value.",
+      "Key Elements": {
+        "Section Header": "Centered header with a brief introduction and description.",
+        "Bundle Options": "Two distinct bundles with different features and pricing.",
+        "Price Display": "Prominent display of current and original prices.",
+        "Feature List": "Bulleted list of features included in each bundle,accompanied by checkmark icons.",
+        "Call-to-Action Buttons": "Buttons to purchase each bundle,clearly labeled and easily accessible."
+      },
+      "Use Cases": "Ideal for product or service offerings where multiple pricing tiers or package options are available,such as software subscriptions,educational courses,or membership plans."
+    }
+  },
+  "Pricing_2": {
+    "Pricing Plan Section": {
+      "Layout": "Grid layout with multiple columns,each containing a plan card.",
+      "Design": "Clean,organized presentation with each plan distinctly outlined and key features highlighted.",
+      "Key Elements": {
+        "Section Title": "Centered,bold title inviting visitors to pick a plan.",
+        "Plan Cards": "Each card includes the plan name,price,key features,and a call-to-action button.",
+        "Highlighted Plan": "One plan is marked as the 'most popular' with a label for emphasis.",
+        "Features List": "Each plan's features are listed with icons for clarity.",
+        "Call-to-Action Buttons": "Prominent buttons for selecting each plan."
+      },
+      "Use Cases": "Ideal for SaaS products,subscription services,and any business offering tiered pricing plans."
+    }
+  },
+  "Pricing_4": {
+    "Pricing Section with Plans": {
+      "Layout": "Grid layout presenting multiple pricing plans,each in its own card format.",
+      "Design": "Clean,modern,and structured with clear distinctions between different pricing tiers. Each plan features a title,description,list of features,and a call-to-action button.",
+      "Key Elements": {
+        "Section Header": "A centrally-aligned title introducing the pricing plans.",
+        "Plan Cards": "Individual cards for each plan,encapsulating the plan name,description,feature list,and pricing details.",
+        "Feature List": "Bullet points highlighting the key offerings of each plan,enhanced with checkmark icons.",
+        "Pricing Details": "Prominent display of the cost associated with each plan,formatted attractively.",
+        "Call-to-Action Buttons": "Buttons to initiate sign-up or further action for each plan.",
+        "Most Popular Badge": "Special badge to highlight the most popular plan.",
+        "Footer Note": "Additional CTA for users needing assistance,with a link for further contact."
+      },
+      "Use Cases": "Ideal for SaaS companies,subscription services,and any businesses offering tiered pricing plans to cater to a range of customer needs."
+    }
+  },
+  "Stats_1": {
+    "Stats Section with Header": {
+      "Layout": "Single-column layout with a header section followed by a grid of statistics.",
+      "Design": "Clean and straightforward,focusing on key numbers with supportive text. The header section includes a title and a brief description.",
+      "Key Elements": {
+        "Header Text": "Centered title with a subtitle providing context or an introduction.",
+        "Statistics Grid": "4-column grid layout on larger screens,containing individual stat blocks.",
+        "Stat Blocks": "Each block includes a number and a label,with uniform styling for coherence."
+      },
+      "Use Cases": "Ideal for showcasing team achievements,company metrics,or key performance indicators in a visually appealing format."
+    }
+  },
+  "Stats_2": {
+    "Team Stats Section": {
+      "Layout": "Single-column layout with a central block of text followed by a grid of statistical highlights.",
+      "Design": "Clean,professional look with a centralized heading and description text transitioning into a stat grid. The stats are displayed against a highlighted background,making them stand out.",
+      "Key Elements": {
+        "Heading and Description": "Centrally aligned,providing an overview and context.",
+        "Stat Grid": "Four-column grid showcasing key metrics,each with a bold numerical value and descriptive label.",
+        "Highlighted Background": "Background color for the stat grid to create contrast and draw attention."
+      },
+      "Use Cases": "Ideal for showcasing team achievements,company milestones,or any quantifiable metrics in a corporate or professional setting."
+    }
+  },
+  "Stats_3": {
+    "Statistics Section": {
+      "Layout": "Grid-based,with four equal columns in a 2x2 layout for small screens and a 4x1 layout for medium to large screens.",
+      "Design": "Clean and organized,focusing on key performance metrics with simple,bold typography and minimalistic separators.",
+      "Key Elements": {
+        "Section Header": "Centered heading with a supporting paragraph,providing context for the statistics.",
+        "Stat Blocks": "Four individual statistic blocks,each comprising a numerical value and a descriptive label.",
+        "Numerical Values": "Large,bold,and often colorful to draw attention.",
+        "Descriptive Labels": "Smaller,yet prominent,providing context for the numerical values.",
+        "Responsive Design": "Adjustable grid layout to ensure readability across different screen sizes."
+      },
+      "Use Cases": "Ideal for showcasing company achievements,user statistics,milestones,or any quantifiable data in a visually appealing manner."
+    }
+  },
+  "banner_2": {
+    "Banner Section with Call-to-Action": {
+      "Layout": "Single-row layout with a text message,a call-to-action button,and a close button.",
+      "Design": "Compact and attention-grabbing,featuring a central text block with supportive elements for action and dismissal.",
+      "Key Elements": {
+        "Text Message": "Centered or left-aligned,providing essential information or a brief announcement.",
+        "Call-to-Action Button": "Prominently displayed next to the text message,encouraging users to take immediate action (e.g.,'Learn more').",
+        "Close Button": "Positioned to the right,allowing users to dismiss the banner easily."
+      },
+      "Use Cases": "Ideal for notifications,announcements,promotions,or urgent messages that need to capture the user's attention quickly."
+    }
+  },
+  "banner_1": {
+    "Banner Section with Call-to-Action": {
+      "Layout": "Horizontal banner layout with text and call-to-action link,including a close button for dismissing the banner.",
+      "Design": "Bright and attention-grabbing,designed to highlight important information or announcements with a primary action button.",
+      "Key Elements": {
+        "Banner Container": "Full-width,flexible layout with padding and rounded corners.",
+        "Text Block": "Compact,informative text area displaying a brief message or announcement.",
+        "Call-to-Action Button": "Prominent button inviting users to take an action,such as 'Learn more'.",
+        "Close Button": "Small,easily accessible close button allowing users to dismiss the banner."
+      },
+      "Use Cases": "Ideal for announcements,promotional messages,or important updates that require user attention and engagement."
+    }
+  },
+  "Reviews_1": {
+    "Customer Reviews Section": {
+      "Layout": "Grid layout with multiple columns,featuring individual review blocks.",
+      "Design": "Clean and organized design with a top-aligned section title. Each review block contains reviewer details,rating stars,and a text review.",
+      "Key Elements": {
+        "Section Title": "Centered,bold heading text.",
+        "Review Blocks": "Each block comprises a reviewer's name,review date,rating stars,and review text.",
+        "Grid System": "Responsive grid adapting to different screen sizes (2 columns for small screens,3 columns for medium screens).",
+        "Rating Stars": "Visual representation of the review rating using star icons."
+      },
+      "Use Cases": "Ideal for displaying customer feedback or testimonials on product pages,service websites,or company landing pages to build credibility and trust with potential customers."
+    }
+  },
+  "Reviews_3": {
+    "Customer Reviews Section": {
+      "Layout": "Centered layout with a combination of text and graphical elements,designed to showcase customer feedback.",
+      "Design": "Text-centric with clear and organized presentation of reviews,supported by star ratings and call-to-action (CTA) for user engagement.",
+      "Key Elements": {
+        "Section Title": "Prominent heading at the top with a bold and larger font size to attract attention.",
+        "Review Summary": "Displays an aggregated star rating and a 'Write a review' button for user interaction.",
+        "Review Entries": "Each review consists of the reviewer's name,date,star rating,and the review text.",
+        "Star Ratings": "Graphical representation of ratings using star icons to provide a quick visual cue.",
+        "Call-to-Action Button": "Encourages users to add their own reviews,enhancing engagement."
+      },
+      "Use Cases": "Ideal for e-commerce websites,service-based businesses,or any platform where customer feedback is vital for building trust and credibility."
+    }
+  },
+  "Reviews_2": {
+    "Customer Reviews Section": {
+      "Layout": "Grid-based layout with a focus on customer reviews. Divided into three columns on larger screens and two on smaller screens.",
+      "Design": "Clean and organized layout. Emphasizes customer feedback through star ratings,individual reviews,and an invitation to write a review.",
+      "Key Elements": {
+        "Overview Box": "Includes a header,star rating,summary information,and a call-to-action button to write a review.",
+        "Star Rating Visualization": "Displays distribution of different star ratings using progress bars.",
+        "Individual Reviews": "Detailed reviews with star ratings,reviewer names,dates,and comments.",
+        "Call-to-Action": "",
+        "Read All Reviews Link": "Prominent link encouraging users to read more reviews."
+      },
+      "Use Cases": "Ideal for e-commerce sites,service providers,and platforms that rely heavily on user feedback to build trust and credibility."
+    }
+  }
+}
+
 # fmt: on
+
+
+def call_google_ai_api(messages, model="gemini-1.5-flash-002"):
+    """
+    Call Google's Vertex AI API with the provided messages.
+    """
+    # Google Cloud configuration
+    project_id = os.getenv("GOOGLE_CLOUD_PROJECT_ID")
+    location_id = "us-central1"
+    model_id = model
+
+    # Get credentials from environment variable
+    credentials_json = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
+    if not credentials_json:
+        raise ValueError("GOOGLE_APPLICATION_CREDENTIALS_JSON is not set")
+
+    try:
+        # Decode and parse credentials
+        credentials = json.loads(base64.b64decode(credentials_json))
+
+        # Get credentials and project
+        credentials, project = default(
+            scopes=["https://www.googleapis.com/auth/cloud-platform"]
+        )
+
+        # Refresh token if necessary
+        if not credentials.valid:
+            credentials.refresh(Request())
+
+        # Get access token
+        access_token = credentials.token
+        if not access_token:
+            raise ValueError("Failed to get access token")
+
+        endpoint = f"https://{location_id}-aiplatform.googleapis.com/v1/projects/{project_id}/locations/{location_id}/publishers/google/models/{model_id}:generateContent"
+        geminimessages = messages
+        system = messages[0]["content"]
+        geminimessages.pop(0)
+
+        payload = {
+            "contents": [
+                {
+                    "role": "user",
+                    "parts": [{"text": messages[0]["content"]}],
+                }
+            ],
+            "systemInstruction": {"role": "user", "parts": [{"text": system}]},
+            "generationConfig": {
+                "temperature": 0.7,
+                "maxOutputTokens": 8192,
+            },
+        }
+
+        headers = {
+            "Authorization": f"Bearer {access_token}",
+            "Content-Type": "application/json",
+        }
+
+        logging.info(f"Calling Google AI API: {endpoint}")
+        # logging.info(f"Payload: {payload}")
+
+        try:
+            response = requests.post(endpoint, headers=headers, json=payload)
+            logging.info("google response recieved")
+            response.raise_for_status()
+
+            logging.info(response.json())
+            # data = response.json()
+            # # Direct Gemini response parsing - taking the last response chunk
+            # last_chunk = data[-1]  # Get the last item in the response list
+            # content = last_chunk["candidates"][0]["content"]["parts"][0]["text"]
+
+            return response.json()
+
+        except requests.RequestException as e:
+            if response:
+                logging.error(response.text)
+            logging.error(f"Error calling Google AI API: {e}")
+            raise
+
+    except Exception as e:
+        logging.error(f"Error in Google AI API call: {e}")
+        raise
 
 
 def call_claude_api(messages):
@@ -137,13 +1266,13 @@ def call_claude_api(messages):
     }
 
     logging.info("Calling Claude API")
-    logging.info(f"Payload: {payload}")
+    # logging.info(f"Payload: {payload}")
 
     claude_response = None
     try:
         claude_response = requests.post(endpoint, headers=headers, json=payload)
         claude_response.raise_for_status()
-        print(claude_response.json())
+        # print(claude_response.json())
         return claude_response.json()
     except requests.RequestException as e:
         if claude_response:
@@ -154,8 +1283,11 @@ def call_claude_api(messages):
 
 def call_gpt4_api(messages, model="gpt-4o-mini"):
     auth_key = AZURE_KEY
+
     if model == "claude-3-5-sonnet-20241022":
         return call_claude_api(messages)
+    if model == "gemini-1.5-flash-002" or model == "gemini-1.5-pro-002":
+        return call_google_ai_api(messages)
     # endpoint = GPT4o_ENDPOINT
     if model == "gpt-4o-mini":
         endpoint = GPT4o_MINI_ENDPOINT
@@ -205,7 +1337,7 @@ def call_gpt4_api(messages, model="gpt-4o-mini"):
         "api-key": auth_key,
     }
     logging.info(f"Calling {model} with endpoint: {endpoint}")
-    logging.info(f"Payload: {payload}")
+    # logging.info(f"Payload: {payload}")
     gpt4_response = None
     try:
         gpt4_response = requests.post(endpoint, headers=headers, json=payload)
@@ -223,8 +1355,8 @@ def get_componentized_structure(
     website_description: str,
     website_structure: str,
     chat_conversation: str,
+    model,
 ) -> dict:
-    sections = {"Footer_1":{"Footer Section with Multiple Navigation Panels":{"Layout":"Grid layout split into multiple columns,each containing various navigation links and a logo with introductory text.","Design":"Functional and organized. Each section is clearly labeled and links are well-separated for easy navigation.","Key Elements":{"Logo and Description":"Positioned at the top of the leftmost section with a brief introductory text below.","Social Media Links":"Icons for various social media platforms aligned horizontally below the logo and text.","Navigation Panels":"Multiple navigation panels,each with a heading and several links. Sections include Products,Company,Support,and Legal.","Footer Note":"A bottom section with a border top that contains a copyright notice.","Grid Structure":"6-column layout for large screens,4-column for medium screens,and 2-column for smaller screens."},"Use Cases":"Ideal for corporate websites,SaaS platforms,and any site requiring organized,multi-faceted navigation in the footer."}},"Footer_6":{"Footer Section with Multiple Navigation Columns":{"Layout":"Multi-column layout with distinct sections for logo,products,company,support,and legal information.","Design":"Clean and organized,featuring multiple navigation links grouped under bold,uppercase headings. The layout is responsive with adjustments for different screen sizes.","Key Elements":{"Logo Section":"Contains the company logo and copyright information.","Navigation Columns":"Four columns titled 'Products,' 'Company,' 'Support,' and 'Legal,' each containing relevant links.","Responsive Design":"Adapts to different screen sizes,with grids and gaps adjusting for optimal readability."},"Use Cases":"Ideal for websites requiring comprehensive footer navigation,such as corporate sites,SaaS platforms,and e-commerce stores."}},"Footer_7":{"Footer Section with Multiple Navigation Columns and Social Links":{"Layout":"Multi-column layout with divided sections for different navigation categories and social links.","Design":"Organized and structured. Includes a logo,brief descriptive text,multiple navigation menus,and social media links.","Key Elements":{"Logo and Description":"Positioned at the top-left of the footer with brief company description.","Navigation Menus":"Several sections (e.g.,Products,Company,Support,Legal) each with multiple links for easy access to different pages.","Social Media Links":"Icons at the bottom-right for various social media platforms to enhance engagement.","Copyright Notice":"Placed at the bottom to inform users of ownership and rights."},"Use Cases":"Ideal for comprehensive websites needing clear and organized footer navigation,including corporate websites,e-commerce platforms,and SaaS providers."}},"Footer_8":{"Footer Section with Multiple Navigation Categories":{"Layout":"Multi-column grid layout with distinct sections for various navigation categories.","Design":"Modern,informative,and structured. The footer is divided into several parts,each addressing different user needs,with a consistent style across all links and icons.","Key Elements":{"Logo":"Located at the top-left corner for brand visibility.","Description":"Brief descriptive text about the company or site.","Social Media Links":"Set of social icons for social media engagement,positioned below the description.","Navigation Categories":"Multiple navigation columns categorized into Products,Company,Support,and Legal,each with several relevant links.","Copyright Notice":"Positioned at the bottom,providing copyright information and company credits."},"Use Cases":"Ideal for comprehensive websites,particularly those of large organizations or e-commerce platforms,that need to offer multiple navigation paths and information points in the footer for user convenience."}},"Footer_4":{"Footer Section with Newsletter Signup and Multiple Navigation Areas":{"Layout":"Multi-column layout with an upper section for newsletter signup and a lower section for navigation links.","Design":"Clean and structured,divided into distinct areas for easy navigation and interaction.","Key Elements":{"Newsletter Signup":"Located at the top with a bold title,accompanying description,email input field,and a 'Send' button.","Logo":"Prominently displayed at the start of the footer to maintain brand visibility.","Social Media Links":"Icons linking to social media profiles for increased engagement.","Navigation Menus":"Multiple columns,each dedicated to different categories (Products,Company,Support,Legal),offering quick access to various website sections.","Copyright Notice":"Located at the bottom,ensuring legal and ownership information is easily accessible."},"Use Cases":"Ideal for corporate websites,SaaS products,and businesses aiming to provide comprehensive footer navigation and newsletter subscription options."}},"Footer_5":{"Footer Section with Newsletter and Navigation":{"Layout":"Two-tiered layout with a subscription form at the top and detailed navigation below.","Design":"Structured and functional. High emphasis on newsletter subscription,followed by comprehensive navigation links grouped into categories.","Key Elements":{"Newsletter Section":"Prominent subscription form asking for an email address,with a call-to-action button for submission.","Logo":"Located at the top,providing brand visibility.","Social Media Links":"Icons for various social media platforms to increase engagement.","Navigation Links":"Organized into distinct categories (Products,Company,Support,Legal) for easy access.","Footer Disclaimer":"Text at the bottom providing copyright and any additional legal information."},"Use Cases":"Ideal for corporate websites,online platforms,and businesses looking to engage users with newsletters and provide comprehensive site navigation from the footer."}},"Footer_2":{"Footer Section with Navigation and Social Media Links":{"Layout":"Single-column layout with centered alignment,featuring navigation links and social media icons.","Design":"Minimalistic and clean,focusing on easy access to important links and social media engagement.","Key Elements":{"Navigation Menu":"Centered navigation with links to key company pages such as About,Investor Relations,Jobs,Press,and Blog.","Social Media Links":"Row of social media icons for platforms like Instagram,Twitter,LinkedIn,and GitHub,encouraging user engagement.","Copyright Notice":"Positioned at the bottom,providing legal information and branding."},"Use Cases":"Ideal for corporate websites,blogs,and agencies looking to provide quick access to company information and social media profiles."}},"Footer_3":{"Footer Section with Navigation and Social Media Links":{"Layout":"Horizontal layout with a vertically stacked fallback for smaller screens. Flexbox used for alignment and spacing.","Design":"Clean,minimalistic,and functional design. Emphasis on easy navigation and social media connectivity.","Key Elements":{"Navigation Links":"Centrally positioned with equal spacing,offering quick access to various pages like About,Investor Relations,Jobs,Press,and Blog.","Social Media Icons":"Aligned to the right,providing links to popular social media platforms,each with hover and active states for better interactivity.","Footer Note":"Centered at the bottom,offering copyright information."},"Use Cases":"Ideal for corporate websites,blogs,and portfolios that require clear navigation and social media engagement in the footer."}},"Form_2":{"Contact Form Section":{"Layout":"Centralized text and form layout with a two-column grid for input fields and a single-column for larger text areas.","Design":"Clean and organized,with a strong emphasis on user input. The form is visually divided into labeled sections,ensuring clarity.","Key Elements":{"Headline":"Prominent,centered headline encouraging users to get in touch.","Introductory Text":"Provides context or additional information,centered below the headline.","Form Inputs":"Includes fields for first name,last name,company,email,subject,and a large message textarea. Required fields are marked.","Submit Button":"Clearly labeled,prominent button for form submission,alongside a note indicating required fields.","Privacy Policy Link":"Subtle link to privacy policy,encouraging users to read terms before submission."},"Use Cases":"Ideal for contact pages,customer support inquiries,feedback forms,and other scenarios requiring user input and communication."}},"Form_1":{"Header with Navigation":{"Layout":"Fixed top bar with a logo on the left and navigation links on the right.","Design":"Clean and organized with a focus on usability and accessibility.","Key Elements":{"Logo":"Prominently displayed on the left,visually balancing the navigation links.","Navigation Links":"Evenly spaced links for easy access to different sections of the site,with hover and active states.","Responsive":"Adapts to different screen sizes with a mobile-friendly menu button appearing on smaller screens.","Call-to-Action Button":"Optional button for important actions like sign-up or contact."},"Use Cases":"Suitable for any website needing a clear and accessible navigation structure,including corporate sites,blogs,and e-commerce platforms."}},"newsletter_signup_3":{"Newsletter Signup Section":{"Layout":"Centered and compact design with a focus on user engagement.","Design":"Clean and modern design with a clear call-to-action and well-defined form elements.","Key Elements":{"Heading":"Prominent and eye-catching,encouraging users to subscribe.","Subheading":"Brief and supportive text explaining the benefit.","Email Input Field":"Well-integrated,with clear placeholder text.","Submit Button":"Clearly visible with a strong call-to-action phrase.","Terms and Privacy Links":"Provides legal assurance with underlined links for terms of service and privacy policy."},"Use Cases":"Ideal for businesses looking to grow their email list,engage users with updates,and provide a straightforward subscription method."}},"newsletter_signup_2":{"Newsletter Signup Section":{"Layout":"Centered content with a top-aligned heading and subtext,followed by an email input form and a disclaimer text.","Design":"Clean and minimalistic,focusing on user engagement and ease of use. The section is enclosed within a rounded rectangular container with a light background.","Key Elements":{"Heading":"Prominently displays a call to action to sign up for updates.","Subtext":"Briefly explains the benefit of signing up.","Email Input Form":"Includes a large input field for email and a prominent send button.","Disclaimer Text":"Informs users about terms and privacy policies,with links to detailed documents."},"Use Cases":"Ideal for websites aiming to grow their email subscriber list. Suitable for blogs,e-commerce sites,and businesses wanting to keep their customers informed about updates,offers,and news."}},"newsletter_signup_1":{"Newsletter Section with Image":{"Layout":"Divided layout with an image on the left and a sign-up form on the right.","Design":"Clean and modern,with a focus on encouraging users to subscribe to a newsletter. The image enhances visual appeal while the form engages the user.","Key Elements":{"Image":"Left-aligned,high-quality image that takes up half the screen width on larger devices.","Headline":"Bold,centered or left-aligned,emphasizing the subscription call-to-action.","Description":"Short text below the headline,encouraging users to sign up.","Form":"Includes an email input field and a prominent 'Send' button.","Legal Text":"Disclaimer about terms of service and privacy policy with links,positioned below the form."},"Use Cases":"Ideal for blogs,media sites,and businesses aiming to grow their email subscriber list."}},"testimonials_1":{"Testimonials Section":{"Layout":"Centered header followed by a two-column grid layout with testimonials.","Design":"Clean and professional with prominent testimonial quotes in a card-like format.","Key Elements":{"Header":"Prominently centered with a bold and engaging title.","Testimonial Cards":"Each card includes a quote,an image,and the person's name and title.","Quote":"Displayed in a larger font to capture attention.","Author Details":"Includes a circular image,name,and title,enhancing authenticity."},"Use Cases":"Ideal for showcasing customer reviews,client testimonials,or user feedback for businesses,products,or services."}},"testimonials_2":{"Testimonial Section with Quote":{"Layout":"Centered content with a quote,author information,and an optional logo or icon at the top.","Design":"Clean and minimalistic,focusing on the testimonial text and author details. The design ensures the quote stands out,supported by subtle author information.","Key Elements":{"Logo/Icon":"Positioned at the top,it could be replaced with a company logo or relevant icon.","Testimonial Text":"Center-aligned,making it easy to read and emphasizing the feedback.","Author Information":"Includes an author image,name,and title,all centrally aligned for coherence.","Author Image":"Circular and prominent,adding authenticity to the testimonial.","Author Name and Title":"Highlighted below the image,providing context about the author.","Responsive Design":"Adjusts well across various screen sizes,ensuring readability and visual appeal."},"Use Cases":"Ideal for showcasing customer testimonials,user feedback,or quotes from notable individuals. Suitable for product landing pages,service websites,and portfolio sites to build trust and credibility with visitors."}},"testimonials_3":{"Testimonials Section":{"Layout":"Grid layout with one to three columns depending on the screen size,each containing a testimonial.","Design":"Clean and simple,focused on user testimonials with text,user image,and user details.","Key Elements":{"Section Title":"Centered and bold,introducing the testimonials.","Testimonial Block":"Each block includes a quote,user image,and user details.","User Image":"Circular,with a shadow effect.","User Details":"Includes name,role,and company,aligned for visual clarity.","Responsive Design":"Adapts from a single column on small screens to multiple columns on larger screens."},"Use Cases":"Ideal for showcasing customer testimonials,reviews,or client feedback on company websites,particularly in service-oriented industries or for products with high user satisfaction."}},"FAQ_1":{"FAQ Section":{"Layout":"Single-column layout for text header followed by a two-column grid for FAQ items.","Design":"Clean and organized with clearly defined question and answer pairs. Questions are placed within rounded cards that include a subtle border and padding.","Key Elements":{"Section Header":"Centered with a bold headline and a brief descriptive text below it.","Question Cards":"Each card has a question at the top,often with an icon,followed by the answer.","Icons":"Accompanying each question for visual interest and quick identification.","Two-Column Grid":"Ensures that multiple FAQs can be displayed without overwhelming the user."},"Use Cases":"Ideal for any website needing to address common inquiries,including product pages,service descriptions,and customer support sections."}},"FAQ_4":{"FAQ Section":{"Layout":"Grid-based layout with multiple columns,each containing a question and answer pair.","Design":"Clean,structured,and user-friendly. Each FAQ item is enclosed in a rounded card with an icon,question,and answer.","Key Elements":{"Section Heading":"Centered,bold heading with a brief description or introduction.","Grid Layout":"Responsive grid that adapts to different screen sizes with three columns on larger screens and two columns on smaller screens.","FAQ Items":"Each item is a card with an embedded icon,a question in a bold font,and an answer in a lighter font.","Icons":"Positioned at the top-left of each card,visually distinguishing each FAQ item."},"Use Cases":"Ideal for product websites,service pages,and any platform needing a dedicated FAQ section to address common questions and enhance user experience."}},"FAQ_3":{"FAQ Section with Collapsible Questions":{"Layout":"Centered,columnar layout with a text introduction followed by a list of questions and answers.","Design":"Organized and user-friendly. Each question is clickable,revealing the answer below it.","Key Elements":{"Section Title":"Centered,bold,and slightly larger heading indicating the FAQ nature.","Introductory Text":"Short paragraph providing context or additional information,centered and easily readable.","Accordion Style Questions":"Each question can be clicked to reveal or hide the answer,enhancing user interaction.","Icons for Interaction":"Arrows indicating the collapsible nature,enhancing visual cues and user experience."},"Use Cases":"Ideal for product pages,service websites,or any platform where users might have common questions or need detailed information in an organized manner."}},"FAQ_2":{"FAQ Section":{"Layout":"Single-column layout transitioning to multi-column (2 or 3 columns) on larger screens.","Design":"Clean and organized with a central heading followed by a grid of questions and answers.","Key Elements":{"Heading":"Centrally-aligned,bold heading to introduce the FAQ section.","Introductory Text":"Centrally-aligned paragraph providing context or additional information.","Questions and Answers":"Grid layout with each question highlighted by a slightly larger font size and bold text,followed by descriptive text."},"Use Cases":"Ideal for product pages,service-oriented websites,and any site requiring an FAQ section to address common questions and concerns of users."}},"Heading_2":{"Header with Navigation and Call-to-Action":{"Layout":"A header section with a centrally-aligned logo,horizontally-arranged navigation links,and two distinct call-to-action elements (a button and a menu icon).","Design":"Clean and modern with a strong brand presence. The layout adjusts for different screen sizes,ensuring usability on both desktop and mobile devices.","Key Elements":{"Logo":"Prominently displayed logo with text,enhancing brand visibility.","Navigation Menu":"Horizontally-aligned links for Home,Features,Pricing,and About sections. Hidden on smaller screens.","Contact Button":"Distinct button for contacting sales,visible on larger screens.","Menu Button":"A collapsible menu icon for smaller screens,providing navigational functionality."},"Use Cases":"Ideal for businesses,startups,and companies with multiple service pages,looking to enhance user navigation and engagement with a clear call-to-action for sales inquiries."}},"Heading_3":{"Navigation Bar with Logo,Links,and Responsive Menu":{"Layout":"Horizontal layout with centered logo,navigation links,and responsive elements.","Design":"Clean and functional design emphasizing navigation and user accessibility.","Key Elements":{"Logo":"Positioned at the center with brand name and icon.","Navigation Links":"Horizontally aligned links to various sections (e.g.,Home,Features,Pricing,About).","Responsive Menu Button":"Visible on smaller screens for toggling the menu.","Contact Button":"Prominent link for contacting sales,visible on larger screens."},"Use Cases":"Ideal for corporate websites,SaaS platforms,and online services with multiple sections requiring easy navigation."}},"Heading_1":{"Header Section with Navigation and Call-to-Action":{"Layout":"Top-aligned header with logo on the left and navigation links centered,accompanied by call-to-action buttons on the right.","Design":"Clean,organized,and balanced. Featuring a prominent logo,straightforward navigation menu,and call-to-action buttons for contact and menu.","Key Elements":{"Logo":"Positioned on the left,easy to spot,includes a small accompanying icon.","Navigation Menu":"Centered with links to home,features,pricing,and about pages,becomes hidden on smaller screens.","Call-to-Action Buttons":"Two types — a 'Contact Sales' button on larger screens and a 'Menu' button on smaller screens."},"Use Cases":"Ideal for business websites,product-oriented sites,and platforms where easy navigation and quick access to contact options are vital."}},"Features_2":{"Features Section with Icons":{"Layout":"Centered headline and description followed by a grid layout displaying features in individual cards.","Design":"Clean and organized. Each feature is encapsulated in a bordered card with an icon,headline,and description.","Key Elements":{"Headline":"Centered,bold headline introducing the section.","Description":"Centered text providing an overview or introduction to the features.","Feature Cards":"Individual flex cards with divided sections,including an icon and text block.","Icons":"Visible and easily recognizable,adding visual interest to each feature card.","Text Blocks":"Contain an explanatory headline and a short description for each feature."},"Use Cases":"Ideal for showcasing product features,service benefits,or unique selling points in a visually appealing manner."}},"Features_3":{"Features Section with Grid Layout":{"Layout":"Grid layout with responsive columns,offering flexibility for various screen sizes.","Design":"Modern and clean,with distinct feature blocks that include a heading,description,and call-to-action link.","Key Elements":{"Section Heading":"Centered,bold,and larger for emphasis.","Feature Blocks":"Each block is rounded,bordered,and has consistent padding.","Feature Titles":"Prominent and bold to draw attention.","Feature Descriptions":"Short,concise,and informative.","Call-to-Action Links":"Clear and inviting,placed at the bottom of each feature block."},"Use Cases":"Ideal for showcasing product features,service offerings,or key differentiators in a structured and visually appealing manner."}},"Features_4":{"Features Presentation Section":{"Layout":"Single-column structure with a centered introduction followed by a multi-column grid of features.","Design":"Clean,organized,and modern. Focuses on presenting multiple features with icons,headings,descriptions,and links.","Key Elements":{"Section Header":"Centered heading and subheading providing an overview of the features.","Feature Grid":"Grid layout for displaying individual features,adaptable to different screen sizes (2 columns on small screens,3 columns on larger screens).","Feature Items":"Each feature includes an icon,a heading,a short description,and a link for more information."},"Use Cases":"Ideal for showcasing a product's or service's key features,benefits,or advantages. Suitable for tech companies,SaaS products,and services highlighting multiple attributes."}},"Features_5":{"Feature Section with Icons":{"Layout":"Multi-column grid layout with individual feature cards.","Design":"Modern and clean with centered header and description followed by feature cards with icons,headings,descriptions,and links.","Key Elements":{"Section Header":"Centered,bold headline and supporting descriptive text.","Feature Cards":"Grid of cards each with an icon,title,description,and link.","Icons":"Unique icons for each feature,enhancing visual appeal.","Headings":"Each feature has a clear,bold title.","Descriptions":"Brief,supportive text for each feature.","Links":"'More' links for additional information about each feature."},"Use Cases":"Ideal for showcasing multiple features or benefits of a product or service,such as SaaS products,software solutions,and service offerings."}},"Features_1":{"Features Section with Icons":{"Layout":"Grid layout with multiple columns,presenting each feature in its own block.","Design":"Clean,organized,and visually appealing. Each feature block includes an icon,a headline,a brief description,and a 'More' link.","Key Elements":{"Section Title":"Centered,bold headline with a supporting paragraph for introductory text.","Feature Blocks":"Each block includes an icon,a title,a description,and a call-to-action link.","Icons":"Visually distinct with a consistent style,enhancing feature recognition.","Grid System":"Responsive grid layout,adapting from two to three columns based on screen size."},"Use Cases":"Ideal for showcasing the advantages or main features of a product,service,or company on a landing page or about section."}},"Navigation_2":{"Sticky Bottom Navigation":{"Layout":"Sticky bottom navigation bar with horizontally aligned links.","Design":"Compact,functional,and mobile-first. Sticky navigation stays at the bottom of the viewport as the user scrolls.","Key Elements":{"Navigation Links":"Four equally spaced links directed towards Home,Features,Pricing,and About sections,each with an icon and label.","Icons":"Graphical representations above each label to enhance visual guidance.","Transition Effects":"Subtle hover and active state color transitions for interactive feedback."},"Use Cases":"Ideal for mobile applications or sites prioritizing easy access to key sections. Useful for single-page websites and providing persistent navigation in long-scrolling pages."}},"Navigation_3":{"Sticky Navigation with Floating Action Button":{"Layout":"Sticky bottom navigation bar with a centered floating action button (FAB).","Design":"Modern,mobile-friendly design ensuring easy access to key sections. Floating action button enhances usability and visibility.","Key Elements":{"Sticky Navigation":"Remains fixed at the bottom of the screen,providing continuous access to navigation.","Floating Action Button (FAB)":"Centered above the navigation bar for a standout call-to-action or primary function.","Icons with Labels":"Each navigation item includes an icon and label for easy recognition (e.g.,Home,Products,Search,About).","Hover and Active States":"Interactive elements change appearance on hover and active states,enhancing usability and feedback."},"Use Cases":"Ideal for mobile applications or mobile-responsive websites where quick access to main sections is crucial,such as e-commerce,social media platforms,or service-based sites."}},"Navigation_1":{"Sticky Footer Navigation":{"Layout":"A sticky footer navigation bar that remains at the bottom of the viewport,featuring a full-width,centered design with evenly spaced navigation links.","Design":"Minimalistic and user-friendly. Each navigation item is represented with an icon and a label,making it easy for users to understand the different sections at a glance.","Key Elements":{"Navigation Bar":"Sticky,bottom-positioned bar that stays in place as users scroll.","Navigation Links":"Includes Home,Features,Pricing,and About sections,each with an icon and a corresponding label.","Hover and Active States":"Links change color on hover and active states for better user interaction.","Responsive Design":"Adapts to various screen sizes with appropriate padding and font adjustments for mobile and desktop views."},"Use Cases":"Ideal for mobile-first websites,single-page applications,and platforms where continuous access to navigation is crucial (e.g.,e-commerce sites,social media apps)."}},"Content_2":{"Who We Are Section with Image":{"Layout":"Two-column design with an image on the left and text content on the right.","Design":"Clean,professional layout with a focus on textual information supported by a visual element.","Key Elements":{"Image":"High-quality,portrait-oriented image with a rounded border and shadow effect,adding visual interest.","Introductory Text":"Brief introduction with a bold tagline 'Who we are' to establish the section's focus.","Headline":"Medium-sized,bold headline highlighting the competitive advantage.","Body Text":"Detailed descriptive text with inline links for additional information.","Subheading":"'About us' subheading for further details about the entity.","Use Cases":"Ideal for company profiles,team introductions,or sections highlighting competitive advantages and core values."}}},"Content_1":{"Feature Highlights Section":{"Layout":"Grid layout with evenly spaced feature boxes,each containing an icon,title,description,and a 'More' link.","Design":"Minimalistic and modern. Each feature is represented by an icon within a colored circle,followed by a title and descriptive text centered for symmetry.","Key Elements":{"Heading":"Prominent centered heading to introduce the section.","Subheading":"Provides additional context,centered beneath the heading.","Feature Boxes":"Flex containers that align items centrally.","Icons":"Distinctive icons within rounded colored backgrounds,enhancing visual appeal.","Feature Titles":"Bold titles for each feature,indicating the core benefit or aspect.","Descriptions":"Short,centered descriptive text under each title.","More Links":"Interactive 'More' links for additional information."},"Use Cases":"Ideal for showcasing the unique selling points or key features of a product,service,or company. Suitable for SaaS platforms,tech companies,and startups looking to highlight their advantages."}},"Call_To_Action_4":{"CTA Section with Free Trial":{"Layout":"Centered content with a flexible arrangement that adapts well to different screen sizes.","Design":"Simple and clean with a focus on encouraging user action through a prominent call-to-action button.","Key Elements":{"Headline":"Bold and attention-grabbing,promoting a free trial.","Supporting Text":"Additional text to reassure users (e.g.,'No Credit Card required').","Call-to-Action Button":"Highly visible button prompting users to start the trial.","Container":"Rounded and padded container for a soft,inviting look.","Responsive Design":"Adjusts layout for different screen sizes,stacking elements vertically on smaller screens."},"Use Cases":"Ideal for SaaS companies,subscription services,or any platform offering a free trial to encourage user sign-ups."}},"Call_To_Action_2":{"Split-Screen Content Section with Image":{"Layout":"Horizontal split-screen design with an image on the left and content on the right.","Design":"Clean and structured. The section includes a headline,descriptive text,and a call-to-action button,all complemented by a background image for visual engagement.","Key Elements":{"Image":"Positioned on the left (or top on small screens),it provides visual context and engagement.","Headline":"Prominently displayed,large,and bold to capture attention.","Descriptive Text":"Supports the headline with additional information,using a smaller font size.","Call-to-Action Button":"A prominent button located at the bottom of the content block for user engagement (e.g.,“Contact support”)."},"Use Cases":"Ideal for help centers,customer support pages,and informational sections that require a visual element alongside textual content."}},"Call_To_Action_3":{"Centered Hero Section with Call-to-Action Buttons":{"Layout":"Single column layout centered both vertically and horizontally within the viewport for focused engagement.","Design":"Minimalistic and modern with a strong emphasis on the headline and call-to-action buttons.","Key Elements":{"Introductory Text":"Brief and supportive,positioned above the headline.","Headline":"Large,bold,and attention-grabbing,designed to make a strong impact.","Call-to-Action Buttons":"Two prominent buttons aligned horizontally for primary and secondary actions (e.g.,“Start now” and “Take tour”)."},"Use Cases":"Ideal for landing pages,product announcements,and marketing campaigns aiming to drive user engagement and conversions through clear and compelling messaging."}},"Call_To_Action_1":{"Promo Section with Image":{"Layout":"Horizontal split design with text content on the left and an image on the right.","Design":"Bold and compelling. Emphasis on a large headline and a clear call-to-action with supporting text.","Key Elements":{"Headline":"Large and eye-catching,promoting a sale or special offer.","Supporting Text":"Brief and informative,providing additional details about the promotion.","Call-to-Action Button":"Encourages immediate action (e.g.,“Save now”).","Promo Image":"High-quality,visually appealing image complementing the text content.","Responsive Design":"Stacked content on smaller screens for better readability and user experience."},"Use Cases":"Ideal for e-commerce websites,seasonal promotions,and discount announcements to attract and convert customers."}},"Blog_4":{"Blog Section with Articles":{"Layout":"Grid layout with multiple articles displayed in rows and columns,responsive to screen sizes.","Design":"Modern,clean,and visually appealing. Each article card includes an image,date,title,brief description,and a 'Read more' link.","Key Elements":{"Section Title":"Centered,bold heading with a brief introductory text beneath it.","Article Cards":"Each card consists of an image,date,title,description,and 'Read more' link. Cards are displayed in a responsive grid format.","Images":"High-quality images that zoom on hover,making the articles visually engaging.","Responsive Grid":"Adjusts column count based on screen size,ensuring optimal display on all devices."},"Use Cases":"Ideal for blogs,news websites,or any platform looking to display multiple articles or posts in a structured and appealing manner."}},"Blog_3":{"Blog Section with Article Previews":{"Layout":"Grid layout displaying article previews in a multi-column format,with each article having an image and a content overlay.","Design":"Visually engaging with a mix of images and text. Each article preview features a hover effect to draw attention.","Key Elements":{"Header":"Centered header with a section title and description.","Article Previews":"Grid layout with responsive columns (up to four columns in larger screens) featuring individual articles.","Article Content":"Each article has an image with overlay text including a date,title,and a 'Read more' link.","Hover Effect":"Images scale slightly upon hover for a dynamic feel."},"Use Cases":"Ideal for blogs,news websites,and any platform that regularly publishes articles or updates,providing a snapshot of the latest content."}},"Blog_2":{"Blog Section with Articles":{"Layout":"Centered text header followed by a grid layout for the articles.","Design":"Clean and organized with a focus on readability. Each article features a small image,title,date,and a short description.","Key Elements":{"Header":"Centered with a bold title and supportive text.","Article Grid":"Displayed in a responsive grid layout with gaps between the articles.","Article Image":"Small,rounded,and positioned above or beside each article.","Article Title":"Bold and prominent,linked for further reading.","Article Date":"Displayed in a smaller font above the title.","Read More Link":"Prominent link encouraging readers to continue reading."},"Use Cases":"Ideal for blogs,news websites,or any content-heavy site looking to showcase multiple articles in a clean,organized manner."}},"Blog_1":{"Blog Section with Grid of Articles":{"Layout":"Grid layout with multiple articles arranged in rows and columns.","Design":"Clean and organized,each article is presented within a card-like structure with an image,title,brief description,and author details.","Key Elements":{"Section Title":"Centered,bold title introducing the blog section.","Description Text":"Centered,short description providing context or introduction.","Article Cards":"Each card includes an image,title,brief text,author information,and publish date.","Grid System":"Responsive grid that adjusts based on screen size,ranging from single-column on small screens to multi-column on larger screens."},"Use Cases":"Ideal for blog pages,news sections,or any content-heavy site showcasing multiple articles or posts in an organized manner."}},"logo_cloud_2":{"Logo Grid Section":{"Layout":"Single-column layout with multiple logos displayed in a grid format,arranged in rows with even spacing between them.","Design":"Clean and professional design with rounded corners and centralized alignment for logos.","Key Elements":{"Section Header":"The header includes a large,bold title ('Trusted by the best') centered with a brief description below it.","Logos":"Logos are presented inside flex containers with rounded corners and background shading,evenly spaced within the grid.","Grid Structure":"Logos are arranged in a responsive grid that adjusts from 2 columns on smaller screens to 3 columns on medium screens,ensuring optimal viewing experience.","Use Cases":"Ideal for showcasing brand partnerships,client logos,or sponsors to establish credibility and trust with potential customers or partners."}}},"logo_cloud_3":{"Trusted by the Best Section":{"Layout":"Single column layout with a centered headline followed by a grid of company logos.","Design":"Clean and straightforward,featuring a headline that emphasizes credibility and a balanced grid layout for displaying logos.","Key Elements":{"Headline":"Centered,bold,and larger font size for emphasis.","Logo Grid":"A grid layout with evenly spaced logos,rounded corners,and background color to distinguish the section. Responsive design adapts from two columns on smaller screens to four columns on larger screens.","Logos":"Displayed within a grid,each logo is centered and given ample space,ensuring they are easily recognizable."},"Use Cases":"Ideal for showcasing client logos,trusted partners,or affiliations to build trust and credibility. Suitable for homepages,about pages,or landing pages."}},"logo_cloud_1":{"Logo Grid Section":{"Layout":"Centered header followed by a grid of logos.","Design":"Simple and clean with a clear emphasis on logos representing trusted partners or clients.","Key Elements":{"Header":"Centered,bold font highlighting trustworthiness.","Logo Grid":"A responsive grid layout displaying multiple logos,ensuring visual consistency and recognition."},"Use Cases":"Ideal for showcasing partnerships,client logos,or brands that the company collaborates with or is recognized by. Suitable for testimonials or credibility sections."}},"Team_1":{"Team Section with Profiles":{"Layout":"Grid format displaying multiple team members in a responsive and visually appealing manner.","Design":"Clean and professional. Each team member is presented in a card-like layout with a profile picture,name,title,and social media links.","Key Elements":{"Section Title":"Centered heading introducing the team.","Introductory Text":"Brief description positioned below the title,providing context.","Team Grid":"Responsive grid layout that adjusts based on screen size,displaying two columns on small screens,three columns on medium screens,and four columns on large screens.","Team Member Card":"Each card includes a profile image,name,title,and social media links.","Profile Image":"Circular image with a shadow effect for visual separation.","Social Media Links":"Icons for various social media platforms,allowing users to connect with team members."},"Use Cases":"Ideal for corporate websites,startups,and agencies looking to showcase their team in a professional and engaging way."}},"Team_4":{"Team Section with Profiles":{"Layout":"Grid layout with multiple rows and columns,showcasing individual team member profiles.","Design":"Professional and visually appealing. Each profile includes an image,name,designation,and social media links.","Key Elements":{"Section Header":"A bold,centered title followed by a brief introductory text.","Team Member Profiles":"Each profile comprises a rounded image,name in bold,designation,and social media links.","Responsive Design":"Grid adjusts for different screen sizes with varying column counts.","Visual Hierarchy":"Consistent styling for names and designations for easy readability."},"Use Cases":"Ideal for company websites,agency portfolios,and any platform aiming to highlight team members or contributors."}},"Team_2":{"Team Section with Profiles":{"Layout":"Grid layout featuring team member profiles,organized in responsive columns.","Design":"Professional and approachable. Each team member is showcased with a photo and brief text description.","Key Elements":{"Section Header":"Centered with a bold heading and brief introductory text.","Profile Grid":"Responsive grid layout with rows of team member profiles.","Photo":"Circular,high-quality images of team members.","Name and Title":"Each profile includes the team member's name and position,styled for readability.","Responsive Design":"Adjusts layout for different screen sizes to ensure optimal viewing experience."},"Use Cases":"Ideal for company about pages,agency websites,and any site aiming to highlight its team members and their roles."}},"Team_3":{"Team Section with Grid Layout":{"Layout":"Centered text block at the top followed by a grid-based arrangement of team member profiles.","Design":"Clean,organized,and visually appealing. Each team member is displayed in a consistent style,making it easy to scan through multiple profiles.","Key Elements":{"Introduction Text":"Includes a headline and a brief description,both centered to set the context for the section.","Team Grid":"Consists of individual team member cards arranged in a responsive grid layout,adapting to different screen sizes (2 columns on small screens,4 on larger screens).","Profile Image":"Each team member's image is displayed in a circular frame,providing a personal touch.","Name and Title":"Displayed below the image in a bold,easily readable font.","Social Media Links":"Icons for social media links are consistent across profiles,encouraging engagement."},"Use Cases":"Ideal for corporate websites,agency portfolios,and any organization wanting to highlight their team's diversity and talent in a professional and approachable manner."}},"Product_detail_1":{"Product Detail Section":{"Layout":"Two-column layout with a focus on product imagery on the left and detailed product information on the right.","Design":"Visual-centric and user-friendly. Multiple product images arranged in a grid on the left side,with a primary large image and secondary smaller images. The right side focuses on product details,ratings,color and size options,pricing,and action buttons.","Key Elements":{"Image Gallery":"Multiple images showcasing the product,with one highlighted large image and smaller supporting images.","Product Name":"Prominently displayed with an optional brand name.","Rating":"Includes star rating and number of ratings.","Color Options":"Selectable color circles for visual clarity.","Size Options":"Clickable size options,indicating available and unavailable sizes.","Pricing":"Displays the current price with an optional discount price.","Shipping Notice":"Estimated shipping time to inform customers.","Action Buttons":"Buttons for adding the product to cart and buying immediately."},"Use Cases":"Ideal for e-commerce websites,particularly for fashion and accessories. This layout helps in presenting the product attractively and providing all necessary details for a purchase decision."}},"Product_detail_2":{"Product Detail Section with Images and Ratings":{"Layout":"Two-column design with images on the left and product details on the right.","Design":"Modern and clean layout with a focus on high-quality imagery and clear product information.","Key Elements":{"Main Image":"Large,featured image with a 'sale' badge overlay for promotional items.","Secondary Images":"Smaller images displayed in a grid format.","Product Name":"Prominently displayed with brand name and title.","Rating":"Star ratings with a count of total reviews and a link to view all reviews.","Color Options":"Circular color swatches for selecting different product colors.","Size Options":"Buttons for selecting different sizes with visual indicators for selected or unavailable sizes.","Price":"Displayed with original and discounted prices if applicable.","Shipping Notice":"Icon and text indicating estimated shipping times.","Action Buttons":"'Add to cart' button and a wish list button with icons.","Product Description":"Detailed product description at the bottom."},"Use Cases":"Ideal for e-commerce websites,especially fashion and apparel stores,for showcasing product details,images,and customer ratings."}},"Product_grid_3":{"Product Grid Section":{"Layout":"Grid-based structure with multiple columns,adjusting from two to four columns based on screen size.","Design":"Clean and modern design,with a focus on product images and pricing information. Each product is presented in a card-like format with space for images,titles,descriptions,and prices.","Key Elements":{"Heading":"Centered,bold heading with a supporting text paragraph.","Product Cards":"Individual product listings with images,titles,brand names,and prices.","Images":"High-quality product images with hover effects that slightly enlarge the image.","Pricing":"Prominent display of current and original prices,indicating discounts where applicable.","Call-to-Action":"Each product card links to a detailed product page."},"Use Cases":"Ideal for e-commerce websites,online retail stores,and marketplaces looking to showcase multiple products in an organized and visually appealing manner."}},"Product_grid_2":{"Product Grid Section":{"Layout":"Grid layout with multiple product cards arranged in rows and columns. The grid adjusts to different screen sizes using responsive design.","Design":"Clean and modern design with emphasis on product imagery and key details. Each product card uses a hover effect to enhance user interaction.","Key Elements":{"Section Heading":"Bold section title with an optional 'Show more' link to view additional products.","Product Card":"Each card includes an image,product name,price,and any discount or sale notifications.","Hover Effect":"Images zoom slightly on hover,adding a dynamic feel.","Discount Badge":"Products on sale feature a prominent badge to attract attention."},"Use Cases":"Ideal for e-commerce websites showcasing products,special deals,and promotions. Suitable for highlighting featured or selected items."}},"Product_grid_1":{"Product Grid Section":{"Layout":"Grid-based design with multiple columns,adaptable to various screen sizes.","Design":"Modern and clean layout featuring product images,names,brands,and prices with hover effects on images.","Key Elements":{"Header Text":"Centrally aligned heading and subheading for introducing the section.","Product Cards":"Individual product items displayed in a grid format with images,titles,brands,and pricing details.","Product Images":"High-quality images with a hover zoom effect.","Labels":"Optional labels such as discount and new for promotional purposes.","Price Information":"Displayed prominently with original and discounted prices if applicable."},"Use Cases":"Ideal for e-commerce websites,product catalogs,and online stores to showcase a variety of products efficiently."}},"Hero_1":{"Hero Section with Call-to-Action":{"Layout":"Split-screen layout with a left-aligned text block and a right-aligned image.","Design":"Modern and clean with a prominent headline,supporting text,and call-to-action buttons.","Key Elements":{"Logo and Navigation Menu":"Top-aligned,featuring a logo and links to Home,Features,Pricing,and About pages.","Introductory Text":"Contextual text introducing the key message or feature.","Headline":"Prominent,large,and bold headline to grab attention.","Supporting Text":"Additional information in a relaxed,readable format.","Call-to-Action Buttons":"Primary (Start now) and secondary (Take tour) buttons to drive user actions.","Hero Image":"High-quality,full-height image on the right to visually support the text."},"Use Cases":"Ideal for showcasing new products,services,or startups,and motivating users to take immediate actions such as signing up or starting a trial."}},"Hero_7":{"Header with Notification and Hero Section":{"Layout":"Top header with logo,navigation,contact button,and menu icon. Below it,a centered notification banner followed by a hero section with a headline,subtext,and call-to-action buttons.","Design":"Modern and clean header design with a border at the bottom. The hero section features a prominent title and supporting text aligned centrally.","Key Elements":{"Logo":"Positioned at the top-left,featuring a graphic and text.","Navigation Menu":"Top-right with links to main site sections,hidden on mobile.","Contact Button":"Visible in the header on larger screens.","Menu Icon":"Visible on mobile for expanded navigation.","Notification Banner":"Centered below the header,featuring new information and an action link.","Hero Section":"Includes an introductory text,bold headline,descriptive sub-text,and two call-to-action buttons aligned centrally."},"Use Cases":"Ideal for SaaS companies,marketing websites,and businesses launching new products or services."}},"Hero_6":{"Hero Section with Buttons and Image":{"Layout":"Split-screen design with a left-aligned text block,call-to-action buttons,and a right-aligned image.","Design":"Sleek,engaging,and dynamic. Large,bold headline with a supporting introductory text and two call-to-action buttons.","Key Elements":{"Logo and Navigation Menu":"Positioned at the top,providing links to home,features,pricing,and about pages.","Introductory Text":"Highlighting a key message or feature.","Headline":"Large,bold,and impactful.","Call-to-Action Buttons":"Two prominent buttons for primary and secondary actions (e.g.,“Start now” and “Take tour”).","Hero Image":"High-quality,full-height image on the right.","Stats Section":"Highlighting key metrics (e.g.,people,projects,customers).","Social Media Links":"Positioned at the bottom for increased engagement."},"Use Cases":"Suitable for startups,product launches,and companies looking to drive immediate action from visitors (e.g.,sign-ups,product trials)."}},"Hero_5":{"Hero Section with Form and Image":{"Layout":"Split-screen design with a left-aligned text block and form,and a right-aligned image.","Design":"Modern and clean. Prominent headline,supporting text,and an email signup form.","Key Elements":{"Logo and Navigation Menu":"Positioned at the top,providing links to home,features,pricing,and about pages.","Headline":"Large,bold,and impactful.","Introductory Text":"Descriptive text providing context or details.","Email Signup Form":"Includes an input field for email and a signup button.","Hero Image":"High-quality,full-height image on the right."},"Use Cases":"Ideal for companies promoting newsletters,gated content,or email subscriptions,and looking to capture visitor information."}},"Hero_8":{"E-commerce Hero Section with Dual Images":{"Layout":"Header with navigation and utility buttons followed by a hero section with a left-aligned text block and dual images to the right.","Design":"Modern and clean with a focus on e-commerce. Includes a prominent logo,navigation menu,utility buttons,and a captivating hero section.","Key Elements":{"Logo and Navigation Menu":"Positioned at the top,providing links to home,collections,sale,and about pages.","Utility Buttons":"Wishlist,account,cart,and menu buttons for quick access to key actions.","Hero Section":"Highlights a headline and a brief descriptive text aligned to the left.","Dual Images":"Two visually appealing images aligned to the right,adding dynamism.","Category Links":"Three linked buttons for different shopping categories (Men,Women,Teens).","Social Media Links":"Positioned at the bottom for enhanced social engagement."},"Use Cases":"Suitable for online retail stores,fashion brands,and e-commerce platforms aiming to showcase their products and facilitate shopping."}},"Hero_4":{"Centered Hero Section with Social Links":{"Layout":"Single-column centered layout with a focus on the main message,call-to-action buttons,and social media links.","Design":"Streamlined and minimalist. Center-aligned text and buttons create a focused and engaging experience.","Key Elements":{"Logo and Navigation Menu":"Positioned at the top with links to home,features,pricing,and about pages.","Introductory Text":"Supporting text that sets the stage for the main headline.","Headline":"Large and bold,designed to capture immediate attention.","Call-to-Action Buttons":"Two central buttons for primary and secondary actions (e.g.,“Start now” and “Take tour”).","Social Media Links":"Integrated at the bottom,promoting social engagement."},"Use Cases":"Ideal for product launches,personal portfolios,or service promotions where capturing visitor attention is crucial."}},"Hero_3":{"Hero Section with Social Links":{"Layout":"Split-screen design with a left-aligned text block,social media links,call-to-action buttons,and a right-aligned image.","Design":"Elegant and professional. Large,bold headline with a supporting introductory text,social media icons for user engagement,and two call-to-action buttons.","Key Elements":{"Logo and Navigation Menu":"Positioned at the top with a border-bottom,providing links to home,features,pricing,and about pages.","Introductory Text":"Highlighting a key message or feature.","Headline":"Large,bold,and impactful.","Call-to-Action Buttons":"Two prominent buttons for primary and secondary actions (e.g.,“Start now” and “Take tour”).","Social Media Links":"Positioned below the text block for increased engagement with social platforms.","Hero Image":"High-quality,full-height image on the right."},"Use Cases":"Ideal for businesses and influencers looking to build a professional web presence,increase social media engagement,and drive user actions (e.g.,sign-ups,product trials)."}},"Hero_2":{"Hero Section with Text Overlay":{"Layout":"Full-screen image background with a centered text block and call-to-action buttons.","Design":"Visually striking with a blend of text and image overlay,creating an engaging experience. The text is prominently positioned in the center with high contrast against the image.","Key Elements":{"Logo and Navigation Menu":"Positioned at the top,providing quick access to key sections like home,features,pricing,and about.","Full-screen Background Image":"High-quality,full-height image that sets the visual tone.","Overlay":"Semi-transparent overlay for text readability.","Centered Text Block":"Includes a headline,subheading,and two call-to-action buttons.","Call-to-Action Buttons":"Two prominent buttons for primary and secondary actions (e.g.,“Start now” and “Take tour”)."},"Use Cases":"Suitable for product launches,promotional campaigns,or any landing page aiming to captivate the audience with a strong visual impression and clear calls-to-action."}},"Collections_1":{"Product Showcase Section":{"Layout":"Grid layout with multiple columns,adjusting based on screen size (2 columns on small screens,up to 4 columns on extra-large screens).","Design":"Clean and modern,emphasizing high-quality product images with subtle hover effects to enhance interactivity.","Key Elements":{"Header":"Includes a bold section title (Collections) with a supplementary 'Show more' button for additional navigation.","Product Cards":"Each card displays an image,category,and product name. The images have a hover effect that zooms in slightly for a dynamic feel.","Call-to-Action Button":"A prominent button at the top right for displaying more products."},"Use Cases":"Ideal for e-commerce platforms,online fashion stores,or any website needing to highlight multiple products or categories prominently."}},"Collections_3":{"Product Gallery Section":{"Layout":"Grid layout with variable column numbers based on screen size,ranging from two columns on small screens to four columns on extra-large screens.","Design":"Clean and modern design with large product images,centered text overlays,and subtle hover effects.","Key Elements":{"Section Title":"Centrally aligned,bold heading that introduces the section.","Product Cards":"Each product is displayed in a card format featuring an image,category,and title. The image scales slightly on hover for a dynamic effect.","Image":"High-quality,full-height image for each product,ensuring visual appeal.","Text Overlay":"Overlay text describing the product category and name,centrally aligned for readability.","Hover Effect":"Slight zoom effect on the product image when hovered over,attracting user interaction."},"Use Cases":"Ideal for e-commerce websites and online stores showcasing various product collections or featured items. Can be used for fashion,electronics,home decor,or any other product-focused site."}},"Collections_2":{"Product Collections Section":{"Layout":"Single-column layout with centered text followed by a two-column grid of product cards.","Design":"Modern and clean with a focus on showcasing products with high-quality images. The product cards have a hover effect for interactivity.","Key Elements":{"Section Header":"Includes a bold,centered heading and a subheading for introductory text.","Product Cards":"Each card features a high-resolution image with overlay text. The cards expand slightly on hover.","Overlay Text":"Provides category and sub-category names with a gradient background for readability.","Grid Structure":"Two-column layout for product cards at smaller screens,ensuring all products are displayed prominently."},"Use Cases":"Ideal for e-commerce websites to display featured products or collections,such as home decor,fashion,or electronics."}},"Pricing_1":{"Pricing Section with Multiple Plans":{"Layout":"Grid layout with multiple pricing plans displayed in columns.","Design":"Clean,structured,and clear. Each pricing plan is enclosed in a card with defined borders and distinct background colors for headers.","Key Elements":{"Section Title":"Centrally aligned heading 'Pricing' at the top.","Pricing Cards":"Three distinct plans (Free Trial,Team,Enterprise) each within a card layout.","Plan Highlights":"Each plan includes a title,description,feature list,and call-to-action button.","Feature List":"Bullet points using icons to list features/benefits of each plan.","Call-to-Action Buttons":"Prominent buttons at the bottom of each pricing card for user action (e.g.,sign-up)."},"Use Cases":"Ideal for SaaS products,subscription-based services,or any business offering tiered pricing plans."}},"Pricing_3":{"Pricing Section with Bundles":{"Layout":"Two-column layout with each column representing a different bundle option:Basic and Pro.","Design":"Clean and structured with clear distinctions between the bundle options. Highlighted elements such as 'Best value' badge and strikethrough original prices enhance the perceived value.","Key Elements":{"Section Header":"Centered header with a brief introduction and description.","Bundle Options":"Two distinct bundles with different features and pricing.","Price Display":"Prominent display of current and original prices.","Feature List":"Bulleted list of features included in each bundle,accompanied by checkmark icons.","Call-to-Action Buttons":"Buttons to purchase each bundle,clearly labeled and easily accessible."},"Use Cases":"Ideal for product or service offerings where multiple pricing tiers or package options are available,such as software subscriptions,educational courses,or membership plans."}},"Pricing_2":{"Pricing Plan Section":{"Layout":"Grid layout with multiple columns,each containing a plan card.","Design":"Clean,organized presentation with each plan distinctly outlined and key features highlighted.","Key Elements":{"Section Title":"Centered,bold title inviting visitors to pick a plan.","Plan Cards":"Each card includes the plan name,price,key features,and a call-to-action button.","Highlighted Plan":"One plan is marked as the 'most popular' with a label for emphasis.","Features List":"Each plan's features are listed with icons for clarity.","Call-to-Action Buttons":"Prominent buttons for selecting each plan."},"Use Cases":"Ideal for SaaS products,subscription services,and any business offering tiered pricing plans."}},"Pricing_4":{"Pricing Section with Plans":{"Layout":"Grid layout presenting multiple pricing plans,each in its own card format.","Design":"Clean,modern,and structured with clear distinctions between different pricing tiers. Each plan features a title,description,list of features,and a call-to-action button.","Key Elements":{"Section Header":"A centrally-aligned title introducing the pricing plans.","Plan Cards":"Individual cards for each plan,encapsulating the plan name,description,feature list,and pricing details.","Feature List":"Bullet points highlighting the key offerings of each plan,enhanced with checkmark icons.","Pricing Details":"Prominent display of the cost associated with each plan,formatted attractively.","Call-to-Action Buttons":"Buttons to initiate sign-up or further action for each plan.","Most Popular Badge":"Special badge to highlight the most popular plan.","Footer Note":"Additional CTA for users needing assistance,with a link for further contact."},"Use Cases":"Ideal for SaaS companies,subscription services,and any businesses offering tiered pricing plans to cater to a range of customer needs."}},"Stats_1":{"Stats Section with Header":{"Layout":"Single-column layout with a header section followed by a grid of statistics.","Design":"Clean and straightforward,focusing on key numbers with supportive text. The header section includes a title and a brief description.","Key Elements":{"Header Text":"Centered title with a subtitle providing context or an introduction.","Statistics Grid":"4-column grid layout on larger screens,containing individual stat blocks.","Stat Blocks":"Each block includes a number and a label,with uniform styling for coherence."},"Use Cases":"Ideal for showcasing team achievements,company metrics,or key performance indicators in a visually appealing format."}},"Stats_2":{"Team Stats Section":{"Layout":"Single-column layout with a central block of text followed by a grid of statistical highlights.","Design":"Clean,professional look with a centralized heading and description text transitioning into a stat grid. The stats are displayed against a highlighted background,making them stand out.","Key Elements":{"Heading and Description":"Centrally aligned,providing an overview and context.","Stat Grid":"Four-column grid showcasing key metrics,each with a bold numerical value and descriptive label.","Highlighted Background":"Background color for the stat grid to create contrast and draw attention."},"Use Cases":"Ideal for showcasing team achievements,company milestones,or any quantifiable metrics in a corporate or professional setting."}},"Stats_3":{"Statistics Section":{"Layout":"Grid-based,with four equal columns in a 2x2 layout for small screens and a 4x1 layout for medium to large screens.","Design":"Clean and organized,focusing on key performance metrics with simple,bold typography and minimalistic separators.","Key Elements":{"Section Header":"Centered heading with a supporting paragraph,providing context for the statistics.","Stat Blocks":"Four individual statistic blocks,each comprising a numerical value and a descriptive label.","Numerical Values":"Large,bold,and often colorful to draw attention.","Descriptive Labels":"Smaller,yet prominent,providing context for the numerical values.","Responsive Design":"Adjustable grid layout to ensure readability across different screen sizes."},"Use Cases":"Ideal for showcasing company achievements,user statistics,milestones,or any quantifiable data in a visually appealing manner."}},"banner_2":{"Banner Section with Call-to-Action":{"Layout":"Single-row layout with a text message,a call-to-action button,and a close button.","Design":"Compact and attention-grabbing,featuring a central text block with supportive elements for action and dismissal.","Key Elements":{"Text Message":"Centered or left-aligned,providing essential information or a brief announcement.","Call-to-Action Button":"Prominently displayed next to the text message,encouraging users to take immediate action (e.g.,'Learn more').","Close Button":"Positioned to the right,allowing users to dismiss the banner easily."},"Use Cases":"Ideal for notifications,announcements,promotions,or urgent messages that need to capture the user's attention quickly."}},"banner_1":{"Banner Section with Call-to-Action":{"Layout":"Horizontal banner layout with text and call-to-action link,including a close button for dismissing the banner.","Design":"Bright and attention-grabbing,designed to highlight important information or announcements with a primary action button.","Key Elements":{"Banner Container":"Full-width,flexible layout with padding and rounded corners.","Text Block":"Compact,informative text area displaying a brief message or announcement.","Call-to-Action Button":"Prominent button inviting users to take an action,such as 'Learn more'.","Close Button":"Small,easily accessible close button allowing users to dismiss the banner."},"Use Cases":"Ideal for announcements,promotional messages,or important updates that require user attention and engagement."}},"Reviews_1":{"Customer Reviews Section":{"Layout":"Grid layout with multiple columns,featuring individual review blocks.","Design":"Clean and organized design with a top-aligned section title. Each review block contains reviewer details,rating stars,and a text review.","Key Elements":{"Section Title":"Centered,bold heading text.","Review Blocks":"Each block comprises a reviewer's name,review date,rating stars,and review text.","Grid System":"Responsive grid adapting to different screen sizes (2 columns for small screens,3 columns for medium screens).","Rating Stars":"Visual representation of the review rating using star icons."},"Use Cases":"Ideal for displaying customer feedback or testimonials on product pages,service websites,or company landing pages to build credibility and trust with potential customers."}},"Reviews_3":{"Customer Reviews Section":{"Layout":"Centered layout with a combination of text and graphical elements,designed to showcase customer feedback.","Design":"Text-centric with clear and organized presentation of reviews,supported by star ratings and call-to-action (CTA) for user engagement.","Key Elements":{"Section Title":"Prominent heading at the top with a bold and larger font size to attract attention.","Review Summary":"Displays an aggregated star rating and a 'Write a review' button for user interaction.","Review Entries":"Each review consists of the reviewer's name,date,star rating,and the review text.","Star Ratings":"Graphical representation of ratings using star icons to provide a quick visual cue.","Call-to-Action Button":"Encourages users to add their own reviews,enhancing engagement."},"Use Cases":"Ideal for e-commerce websites,service-based businesses,or any platform where customer feedback is vital for building trust and credibility."}},"Reviews_2":{"Customer Reviews Section":{"Layout":"Grid-based layout with a focus on customer reviews. Divided into three columns on larger screens and two on smaller screens.","Design":"Clean and organized layout. Emphasizes customer feedback through star ratings,individual reviews,and an invitation to write a review.","Key Elements":{"Overview Box":"Includes a header,star rating,summary information,and a call-to-action button to write a review.","Star Rating Visualization":"Displays distribution of different star ratings using progress bars.","Individual Reviews":"Detailed reviews with star ratings,reviewer names,dates,and comments.","Call-to-Action":"","Read All Reviews Link":"Prominent link encouraging users to read more reviews."},"Use Cases":"Ideal for e-commerce sites,service providers,and platforms that rely heavily on user feedback to build trust and credibility."}}}  # fmt: skip
 
     sample_output = """{
   "homepage": ["Hero_1", "features_3", "product_grid_2"],
@@ -253,6 +1385,8 @@ The User Requirements will be provided to you in the user prompt.
 The section templates available to you are as follows: 
 {sections}
 
+
+REMEMBER: 1 page only, no more than 1 page. AND only use the sections provided to you. Output only the json, nothing else, no backticks (```) no other text nothing, so that the json is parsable.
 """
     # Prepare payload for GPT-4 API
     messages = [
@@ -275,7 +1409,7 @@ The section templates available to you are as follows:
 
     # Call GPT-4 API
     try:
-        response_json = call_gpt4_api(messages, model="gpt-4o-mini")
+        response_json = call_gpt4_api(messages, model)
         return response_json
     except requests.RequestException as e:
         logging.error(f"Error calling GPT-4 API 2 for componentized structure: {e}")
@@ -310,7 +1444,7 @@ def get_website_pages_codes(
     component_codes,
     model,
 ):
-    system_prompt = """You are the lead Website developer at black wolf Designs. You excel at creating mesmerising websites that are based on the clients requirements.
+    system_prompt = f"""You are the lead Website developer at black wolf Designs. You excel at creating mesmerising websites that are based on the clients requirements.
     You also have a team of developers and designers with you, who have created the following sections(components) for you to use in the website you are going to develop for the user.
     the plan for you is to use the website structure, and the componentised website structure to understand the components that have been planned to be used in the development of the website.
     the user requirements(the chat conversation between the client and an AI agent about the client's requirements) will be provided to you along with other website details.
@@ -335,6 +1469,10 @@ def get_website_pages_codes(
 REMEMBER: Ensure that all pages have a consistent header and footer. The header should include navigation links to all pages of the website. The footer should be consistent across all pages as well.
 
 Ensure all pages have a consistent header with navigation and a consistent footer.
+
+here are some component codes to help u out, please remember, the component codes are just to help u get started, and not to be used as is, if u do that, the website will look like a template and not a custom website. As an experienced website designer and developer, you are expected to use the base codes as a starting point and then build on them to create a custom website for the user. Colours, text, styling, additional effects, and everything is yours to customise, to make sure the user gets the best website possible.
+    
+    {component_codes}
 
     Write 
     
@@ -367,15 +1505,18 @@ Ensure all pages have a consistent header with navigation and a consistent foote
     NOTHING ELSE. 
     
     """
-    user_prompt = f"""here are some component codes to help u out, please remember, the component codes are just to help u get started, and not to be used as is, if u do that, the website will look like a template and not a custom website. As an experienced website designer and developer, you are expected to use the base codes as a starting point and then build on them to create a custom website for the user. Colours, text, styling, additional effects, and everything is yours to customise, to make sure the user gets the best website possible.
+    user_prompt = f"""
     
-    {component_codes}Here is the details of the website the user wants to create: 
+    Here is the details of the website the user wants to create: 
                          Website Name: {website_name} \n
                          Website Description: {website_description} \n
                          website_structure: {website_structure} \n
                          website_componentised_structure: {website_componentised_structure} \n
                          Chat Conversation: 
-                         {chat_conversation}"""
+                         {chat_conversation}
+                         
+                         ONCE AGAIN, REMEMBER: Output only the markdown, nothing else, no backticks (```) no other text nothing, so that the markdown is parsable. And the markdown should include each codeblock seperatly with language specified as HTML, and heading as name of the file, and a final heading of code completed.
+                         """
     messages = [
         {
             "role": "system",
@@ -395,6 +1536,11 @@ Ensure all pages have a consistent header with navigation and a consistent foote
             logging.info(f"response_json: {response_json}")
             if model == "claude-3-5-sonnet-20241022":
                 response_text = response_json.get("content")[0].get("text")
+            elif model == "gemini-1.5-flash-002" or model == "gemini-1.5-pro-002":
+                # last_chunk = response_json[-1]  # Get the last item in the response list
+                response_text = response_json["candidates"][0]["content"]["parts"][0][
+                    "text"
+                ]
             else:
                 response_text = (
                     response_json.get("choices")[0].get("message").get("content")
@@ -506,9 +1652,18 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                             REMEMBER: 3 pages is the maximum limit for the website, and 6 sections is the maximum limit for each page.
                             Remember to not have similar sections on different pages of the website
                             here is a sample of the kind of JSON you are expected to generate:
+                            
+                            
                             {"sitename":"BKF Pharma","pages":[{"name":"Home","sections":[{"name":"Hero Section","description":"A visually engaging hero image with an abstract, futuristic visual and a motivational tagline that reflects the company's mission."},{"name":"Mission Statement","description":"A brief overview of BKF Pharma's mission and innovative approach to cancer treatment."},{"name":"Introduction","description":"A short introduction to BKF Pharma, highlighting its goals and vision."}]},{"name":"About Us","sections":[{"name":"Company Overview","description":"Detailed information about BKF Pharma's mission, vision, and values."},{"name":"Our Team","description":"Images and brief bios of the team behind BKF Pharma to showcase expertise and collaborative spirit."},{"name":"Our Story","description":"The history and journey of BKF Pharma, including milestones and achievements."}]},{"name":"Contact","sections":[{"name":"Contact Information","description":"Relevant contact information for potential partners, investors, or other interested parties to get in touch with BKF Pharma."},{"name":"Contact Form","description":"A clean and minimalist contact form for visitors to send inquiries directly through the website."},{"name":"Call to Action","description":"Encouragement for visitors to reach out and connect with BKF Pharma for partnership or investment opportunities."}]}]}
+                            
+                            
+                            Output only the json, nothing else, no backticks (```) no other text nothing, so that the json is parsable.
+                            
                             REMEMBER: Do Not Include anything other then the website structure JSON in your reply, no backticks, no code blocks, no greetings, no signatures, no additional information.
                             Remember: 3 pages is the maximum number of pages for a website, and 6 sections is the maximum number of sections per page.
+                            
+                            
+                            Output only the json, nothing else, no backticks (```) no other text nothing, so that the json is parsable.
                             """,
                     },
                     {
@@ -524,8 +1679,10 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
 
                 # Call Azure GPT-4 API
                 try:
+                    logging.info("working here 1")
                     # TODO: change model to o1 preview for best results
                     gpt4_data = call_gpt4_api(messages, model)
+                    logging.info("working here 1.5")
                     if not gpt4_data:
                         return func.HttpResponse(
                             "GPT 4 call for website structure error"
@@ -537,6 +1694,18 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                         # )
                         if model == "claude-3-5-sonnet-20241022":
                             website_structure = gpt4_data.get("content")[0].get("text")
+                        elif (
+                            model == "gemini-1.5-flash-002"
+                            or model == "gemini-1.5-pro-002"
+                        ):
+                            # last_chunk = gpt4_data[
+                            #     -1
+                            # ]  # Get the last item in the response list
+                            logging.info("working here 2")
+                            website_structure = gpt4_data["candidates"][0]["content"][
+                                "parts"
+                            ][0]["text"]
+                            logging.info("working here 3")
                         else:
                             website_structure = (
                                 gpt4_data.get("choices")[0]
@@ -555,6 +1724,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                 .eq("id", website_id)
                                 .execute()
                             )
+                            logging.info("working here 4")
                             response = (
                                 supabase.table("websites")
                                 .update({"status": "20%"})
@@ -562,6 +1732,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                 .eq("id", website_id)
                                 .execute()
                             )
+                            logging.info("working here 5")
                             logging.info("Website structure saved successfully.")
                             logging.info(
                                 f"Website structure: {website_structure}"
@@ -572,17 +1743,41 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                     website_description,
                                     chat_conversation,
                                     website_structure,
+                                    model,
                                 )
                                 if response_json:
                                     try:
-                                        website_componentised_structure = (
-                                            response_json.get("choices")[0]
-                                            .get("message")
-                                            .get("content")
-                                        )
+                                        if model == "claude-3-5-sonnet-20241022":
+                                            website_componentised_structure = (
+                                                response_json.get("content")[0].get(
+                                                    "text"
+                                                )
+                                            )
+                                        elif (
+                                            model == "gemini-1.5-flash-002"
+                                            or model == "gemini-1.5-pro-002"
+                                        ):
+                                            # last_chunk = response_json[-1]  # Get the last item in the response list
+                                            website_componentised_structure = (
+                                                response_json["candidates"][0][
+                                                    "content"
+                                                ]["parts"][0]["text"]
+                                            )
+                                        else:
+                                            website_componentised_structure = (
+                                                response_json.get("choices")[0]
+                                                .get("message")
+                                                .get("content")
+                                            )
+                                        # website_componentised_structure = (
+                                        #     response_json.get("choices")[0]
+                                        #     .get("message")
+                                        #     .get("content")
+                                        # )
                                         logging.info(
                                             f"website_componentised_structure: {website_componentised_structure}"
                                         )
+                                        logging.info("working here 6")
                                         # Save website componentised structure to Supabase
                                         response = (
                                             supabase.table("websites")
@@ -595,6 +1790,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                             .eq("id", website_id)
                                             .execute()
                                         )
+                                        logging.info("working here 7")
 
                                         ## update website status
 
@@ -605,12 +1801,12 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                             .eq("id", website_id)
                                             .execute()
                                         )
-
+                                        logging.info("working here 8")
                                         ## next step: website code
 
                                         if response:
                                             try:
-
+                                                logging.info("working here 9")
                                                 # Step 1: Extract all components
                                                 try:
                                                     website_componentized_structure_dict = json.loads(
@@ -622,7 +1818,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                                         "Failed to parse the componentized structure:",
                                                         e,
                                                     )
-
+                                                logging.info("working here 10")
                                                 all_components = []
                                                 for (
                                                     page,
@@ -638,6 +1834,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                                         all_components
                                                     )
                                                 )
+                                                logging.info("working here 11")
                                                 ### then use components to get website code
                                                 logging.info(
                                                     f"component_codes fetched successfully."
@@ -652,12 +1849,13 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                                     component_codes,
                                                     model,
                                                 )
-
+                                                logging.info("working here 12")
                                                 ## parse markdown to get each page code seperatly, and then save to supabase
 
                                                 page_codes = parse_markdown(
                                                     website_code
                                                 )
+                                                logging.info("working here 13")
                                                 # pages_list = list(
                                                 #     website_componentized_structure_dict.keys()
                                                 # )
@@ -686,6 +1884,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                                     logging.info(
                                                         f"{page_name} code saved successfully."
                                                     )
+                                                logging.info("working here 14")
                                                 response = (
                                                     supabase.table("websites")
                                                     .update({"pages": all_pages})
@@ -693,7 +1892,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                                     .eq("id", website_id)
                                                     .execute()
                                                 )
-
+                                                logging.info("working here 15")
                                                 ## update website status
 
                                                 response = (
@@ -703,7 +1902,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                                                     .eq("id", website_id)
                                                     .execute()
                                                 )
-
+                                                logging.info("working here 16")
                                                 return func.HttpResponse(
                                                     ## dont output the full code here, just a success message and a few lines of code
                                                     f""" website code generated successfully. \n\nwebsite_code \n\n. This HTTP triggered function executed successfully. website code generated and saved successfully to supabase.""",

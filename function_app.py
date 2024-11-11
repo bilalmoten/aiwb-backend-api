@@ -22,6 +22,7 @@ supabase: Client = create_client(supabase_url, supabase_key)
 
 # Initialize Azure GPT-4 API settings
 AZURE_KEY = os.environ.get("AZURE_KEY")
+AZURE_KEY2 = os.environ.get("AZURE_KEY2")
 GPT4o_ENDPOINT = os.environ.get("GPT4o_ENDPOINT")
 GPT4o_MINI_ENDPOINT = os.environ.get("GPT4o_MINI_ENDPOINT")
 O1_PREVIEW_ENDPOINT = os.environ.get("O1_PREVIEW_ENDPOINT")
@@ -119,10 +120,12 @@ def call_claude_api(messages):
 
     # Convert messages to Claude's format if needed
     claude_messages = messages
-    claude_messages[0]["role"] = "user"
+    system = messages[0]["content"]
+    claude_messages.pop(0)
 
     payload = {
         "model": "claude-3-5-sonnet-20241022",
+        "system": system,
         "max_tokens": 8000,
         "messages": claude_messages,
     }
@@ -150,11 +153,21 @@ def call_claude_api(messages):
 
 
 def call_gpt4_api(messages, model="gpt-4o-mini"):
+    auth_key = AZURE_KEY
     if model == "claude-3-5-sonnet-20241022":
         return call_claude_api(messages)
     # endpoint = GPT4o_ENDPOINT
     if model == "gpt-4o-mini":
         endpoint = GPT4o_MINI_ENDPOINT
+        payload = {
+            "messages": messages,
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "max_tokens": 4000,
+        }
+    elif model == "gpt-4o-mini-aiwb":
+        endpoint = GPT4o_MINI_AIWB_ENDPOINT
+        auth_key = AZURE_KEY2
         payload = {
             "messages": messages,
             "temperature": 0.7,
@@ -189,7 +202,7 @@ def call_gpt4_api(messages, model="gpt-4o-mini"):
 
     headers = {
         "Content-Type": "application/json",
-        "api-key": AZURE_KEY,
+        "api-key": auth_key,
     }
     logging.info(f"Calling {model} with endpoint: {endpoint}")
     logging.info(f"Payload: {payload}")
@@ -222,7 +235,7 @@ def get_componentized_structure(
 You also have a team of developers and designers with you, who have created the following sections for you to use in the websites you work on.
 Your job right now is to chose the best sections according to the clients requirements.
 You are required to consider the requirements and details about the user and the website, and any and all design preferences etc, and select the components to use based on that.
-The number of pages and sections depends on the user, but shouldnt exceed 3 pages.
+The number of pages and sections depends on the user, but shouldnt exceed 1 page.
 You are supposed to use your creativity and experience to create a unique website that is not only beautiful, but also functional and user friendly.
 Your output is expected to be the finalised website componentised structure, such that you return a json with all sections listed one by one for each page.
 for example:
@@ -236,7 +249,7 @@ For each section needed for the website you will find the most fitting section t
 Make sure you consider the users requirements and the website description and structure provided to you.
 
 The User Requirements will be provided to you in the user prompt.
-
+ REMEMBER TO ONLY USE THE SECTIONS PROVIDED TO YOU, DO NOT INVENT YOUR OWN SECTIONS. Each component you select should be from the ones provided to you. There is NO Component for Header seperatly, so do not use it.
 The section templates available to you are as follows: 
 {sections}
 
@@ -313,6 +326,7 @@ def get_website_pages_codes(
     <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
  
     Example Output:
+    Remember, the code you give is supposed to be the final code for the user, so using your own knowledge and experience, make sure each page is fully complete, without needing any content or anything else from the user. do not add comments like content here or same section as above or anything, give the complete code, that is ready to publish, without any post processing.
     Do Not add any Placeholders, comments, backticks (```) or any other text in your response
 
     Only Respond with a Properly Formatted MARKDOWN with the HTML code for each HTML file(each page) of the website.
@@ -511,16 +525,24 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                 # Call Azure GPT-4 API
                 try:
                     # TODO: change model to o1 preview for best results
-                    gpt4_data = call_gpt4_api(messages, model="gpt-4o-mini")
+                    gpt4_data = call_gpt4_api(messages, model)
                     if not gpt4_data:
                         return func.HttpResponse(
                             "GPT 4 call for website structure error"
                         )
 
                     else:
-                        website_structure = (
-                            gpt4_data.get("choices")[0].get("message").get("content")
-                        )
+                        # website_structure = (
+                        #     gpt4_data.get("choices")[0].get("message").get("content")
+                        # )
+                        if model == "claude-3-5-sonnet-20241022":
+                            website_structure = gpt4_data.get("content")[0].get("text")
+                        else:
+                            website_structure = (
+                                gpt4_data.get("choices")[0]
+                                .get("message")
+                                .get("content")
+                            )
 
                         logging.info(f"website_structure: {website_structure}")
 

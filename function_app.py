@@ -1235,7 +1235,7 @@ def call_google_ai_api(messages, model="gemini-1.5-flash-002"):
         }
 
         logging.info(f"Calling Google AI API: {endpoint}")
-        logging.info(f"Payload: {payload}")
+        # logging.info(f"Payload: {payload}")
 
         try:
             response = requests.post(endpoint, headers=headers, json=payload)
@@ -1308,7 +1308,7 @@ def call_google_llama(messages, model="meta/llama-3.1-8b-instruct-maas"):
         }
 
         logging.info(f"Calling Google AI API: {endpoint}")
-        logging.info(f"Payload: {payload}")
+        # logging.info(f"Payload: {payload}")
 
         try:
             response = requests.post(endpoint, headers=headers, json=payload)
@@ -1845,6 +1845,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                             logging.info(
                                 f"Website structure: {website_structure}"
                             )  # Fixed line
+
                             try:
                                 response_json = get_componentized_structure(
                                     website_name,

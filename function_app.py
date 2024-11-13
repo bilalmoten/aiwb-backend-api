@@ -348,8 +348,8 @@ def get_componentized_structure(
 ) -> dict:
     model = "gpt-4o-mini"
     sample_output = {
-        "pagename": ["navbar-4", "layout-388", "portfolio-11", "footer-1"],
-        "pagename": ["navbar-4", "layout-340", "footer-1"],
+        "page_name": ["navbar-4", "layout-388", "portfolio-11", "footer-1"],
+        "page_name": ["navbar-4", "layout-340", "footer-1"],
     }
 
     system_prompt = """

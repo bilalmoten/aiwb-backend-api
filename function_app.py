@@ -348,8 +348,13 @@ def get_componentized_structure(
 ) -> dict:
     model = "gpt-4o-mini"
     sample_output = {
-        "page_name": ["navbar-4", "layout-388", "portfolio-11", "footer-1"],
-        "page_name": ["navbar-4", "layout-340", "footer-1"],
+        "page_name_without_spaces": [
+            "navbar-4",
+            "layout-388",
+            "portfolio-11",
+            "footer-1",
+        ],
+        "page_name_without_spaces": ["navbar-4", "layout-340", "footer-1"],
     }
 
     system_prompt = """
@@ -357,13 +362,13 @@ def get_componentized_structure(
     
     Remember, you are selecting components based on the layout and structure of the component, not the text, as that would be changed. So choose only from the given components, and no new components should be named.
     
-    Keep max 3 pages, 3-10 components per page.
+    REMEMBER: MAX 3 PAGES, 3-10 COMPONENTS PER PAGE.
 
         Sample Output:
         {sample_output}
     Remember to give just the json, no backticks (```) no other text, no explantions. nothing excpet json, so that the json is parsable.
     
-    You have blog-header, blog-post-header, career, contact, features, footer, hero, layout, portfolio, pricing, team, testimonials, event-header, event-item-header, faq, legal-pages, links, timeline, comparision, footer, logo, contact, gallery, navbar, contact-modal, header, portfolio, content, portfolio-header and hero components as defined below.
+    You have the following components to choose from, and you can only choose from these components, no new components should be named.
 
         {sections}
 

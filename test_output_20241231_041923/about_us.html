@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&family=Lato:wght@700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>About Us - Cosmetica</title>
+</head>
+
+<body class="font-sans">
+    <!-- Header -->
+    <header class="fixed w-full bg-white bg-opacity-80 backdrop-blur-md shadow z-50 transition-all">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <a href="index.html" class="text-2xl font-playfair text-green-600">Cosmetica</a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="text-gray-700 md:hidden focus:outline-none"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <!-- Navigation -->
+            <nav id="nav-menu" class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                    <li><a href="about_us.html"
+                            class="text-gray-700 hover:text-green-600 transition active:text-green-600"
+                            aria-current="page">About Us</a></li>
+                    <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-nav" class="md:hidden hidden bg-white bg-opacity-90 backdrop-blur-md">
+            <ul class="flex flex-col space-y-4 py-4 px-6">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition active:text-green-600"
+                        aria-current="page">About Us</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Brand Story Section -->
+    <section class="pt-24 bg-white py-16 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h2 class="font-playfair text-4xl font-bold text-charcoal-800 mb-4">Our Story</h2>
+                <p class="font-open text-lg text-charcoal-800 leading-relaxed">Founded in the heart of Pakistan,
+                    Cosmetica was born out of a passion for natural beauty and a commitment to sustainable practices.
+                    Our founder, Ayesha Malik, envisioned a brand that not only enhances beauty but also respects the
+                    environment and the people who use our products.</p>
+                <p class="font-open text-lg text-charcoal-800 leading-relaxed mt-4">From sourcing the finest organic
+                    ingredients to employing ethical production methods, every step of our process is meticulously
+                    crafted to ensure quality and integrity. Join us on a journey towards healthier skin and a healthier
+                    planet.</p>
+            </div>
+            <div class="md:w-1/2 grid grid-cols-2 gap-4">
+                <img src="https://images.unsplash.com/photo-1719937051230-8798ae2ebe86?q=80&w=3544&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Founder" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+                <img src="https://images.unsplash.com/photo-1719937051230-8798ae2ebe86?q=80&w=3544&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Team" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+                <img src="https://images.unsplash.com/photo-1719937051230-8798ae2ebe86?q=80&w=3544&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Team Meeting" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+                <img src="https://images.unsplash.com/photo-1719937051230-8798ae2ebe86?q=80&w=3544&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Office" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission and Values Section -->
+    <section class="bg-green-50 py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="font-playfair text-3xl font-bold text-charcoal-800 text-center mb-12">Our Mission & Values</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Organic -->
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-leaf text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-lato text-xl font-bold text-green-500 mb-2">Organic</h3>
+                    <p class="font-open text-gray-700">We use only the purest organic ingredients to ensure the best for
+                        your skin.</p>
+                </div>
+                <!-- Cruelty-Free -->
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-heart text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-lato text-xl font-bold text-green-500 mb-2">Cruelty-Free</h3>
+                    <p class="font-open text-gray-700">Our products are never tested on animals, ensuring ethical
+                        practices.</p>
+                </div>
+                <!-- Sustainability -->
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-recycle text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-lato text-xl font-bold text-green-500 mb-2">Sustainability</h3>
+                    <p class="font-open text-gray-700">Committed to sustainable sourcing and eco-friendly packaging.</p>
+                </div>
+                <!-- Customer Well-being -->
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-smile text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-lato text-xl font-bold text-green-500 mb-2">Customer Well-being</h3>
+                    <p class="font-open text-gray-700">Dedicated to enhancing your natural beauty and overall wellness.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ingredient Commitment Section -->
+    <section class="py-16 px-6">
+        <div class="container mx-auto">
+            <!-- Ingredient 1 -->
+            <div class="flex flex-col md:flex-row items-center mb-16">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Aloe Vera" class="rounded-full shadow-lg hover:shadow-2xl transition transform">
+                </div>
+                <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
+                    <h3 class="font-playfair text-2xl font-bold text-green-500 mb-4">Aloe Vera</h3>
+                    <p class="font-open text-gray-700">Aloe Vera is renowned for its soothing and hydrating properties.
+                        It helps in reducing skin inflammation and promoting healing.</p>
+                    <a href="#" class="text-green-500 font-open underline mt-2 inline-block">Read More</a>
+                </div>
+            </div>
+            <!-- Ingredient 2 -->
+            <div class="flex flex-col md:flex-row-reverse items-center mb-16">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1564869731662-5c6cb1662562?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Green Tea" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+                </div>
+                <div class="md:w-1/2 md:pr-12 mt-8 md:mt-0">
+                    <h3 class="font-playfair text-2xl font-bold text-green-500 mb-4">Green Tea</h3>
+                    <p class="font-open text-gray-700">Green Tea is rich in antioxidants that protect the skin from
+                        environmental stressors and promote a youthful complexion.</p>
+                    <a href="#" class="text-green-500 font-open underline mt-2 inline-block">Read More</a>
+                </div>
+            </div>
+            <!-- Ingredient 3 -->
+            <div class="flex flex-col md:flex-row items-center mb-16">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Chamomile" class="rounded-full shadow-lg hover:shadow-2xl transition transform">
+                </div>
+                <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
+                    <h3 class="font-playfair text-2xl font-bold text-green-500 mb-4">Chamomile</h3>
+                    <p class="font-open text-gray-700">Chamomile offers anti-inflammatory benefits, helping to calm
+                        irritated skin and reduce redness.</p>
+                    <a href="#" class="text-green-500 font-open underline mt-2 inline-block">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability and Ethical Practices Section -->
+    <section class="bg-beige-200 py-16 px-6">
+        <div class="container mx-auto text-center">
+            <h2 class="font-playfair text-3xl font-bold text-charcoal-800 mb-8">Sustainability & Ethical Practices</h2>
+            <p class="font-open text-lg text-gray-700 mb-8">At Cosmetica, sustainability is at the core of everything we
+                do. From eco-friendly packaging to ethical sourcing, we ensure that our products are kind to both your
+                skin and the planet.</p>
+            <div class="flex flex-wrap justify-center space-x-4">
+                <div class="m-4">
+                    <img src="https://images.unsplash.com/photo-1564869731662-5c6cb1662562?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                        alt="Certified Organic" class="w-20 h-20 mx-auto mb-2 hover:scale-105 transition transform">
+                    <p class="font-open text-gray-600">Certified Organic</p>
+                </div>
+                <div class="m-4">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                        alt="Cruelty-Free" class="w-20 h-20 mx-auto mb-2 hover:scale-105 transition transform">
+                    <p class="font-open text-gray-600">Cruelty-Free</p>
+                </div>
+                <div class="m-4">
+                    <img src="https://images.unsplash.com/photo-1552034736-814bfb01b3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                        alt="Eco-Friendly Packaging"
+                        class="w-20 h-20 mx-auto mb-2 hover:scale-105 transition transform">
+                    <p class="font-open text-gray-600">Eco-Friendly Packaging</p>
+                </div>
+                <div class="m-4">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                        alt="Renewable Resources" class="w-20 h-20 mx-auto mb-2 hover:scale-105 transition transform">
+                    <p class="font-open text-gray-600">Renewable Resources</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <a href="index.html" class="text-2xl font-playfair text-green-600 mb-4 md:mb-0">Cosmetica</a>
+            <ul class="flex space-x-6 mb-4 md:mb-0">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+                <li><a href="contact_us.html" class="text-gray-700 hover:text-green-600 transition">Contact Us</a></li>
+                <li><a href="privacy_policy.html" class="text-gray-700 hover:text-green-600 transition">Privacy
+                        Policy</a></li>
+                <li><a href="terms_of_service.html" class="text-gray-700 hover:text-green-600 transition">Terms of
+                        Service</a></li>
+                <li><a href="faq.html" class="text-gray-700 hover:text-green-600 transition">FAQ</a></li>
+            </ul>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Twitter"><i
+                        class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 mt-4">
+            &copy; 2023 Cosmetica. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+        });
+
+        // GSAP Animations
+        gsap.from(".font-playfair", { duration: 1.5, y: -50, opacity: 0, ease: "bounce.out" });
+        gsap.from(".font-open", { duration: 2, y: 50, opacity: 0, delay: 0.5 });
+
+        // Scroll Animations using GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Fade-in for Brand Story
+        gsap.from(".pt-24 div > div:first-child", {
+            scrollTrigger: ".pt-24",
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: "power1.out"
+        });
+
+        gsap.from(".pt-24 div > div:last-child", {
+            scrollTrigger: ".pt-24",
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: "power1.out",
+            delay: 0.5
+        });
+
+        // Enhanced Hover Effects for Images
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('mouseenter', () => {
+                gsap.to(img, { scale: 1.05, duration: 0.3 });
+            });
+            img.addEventListener('mouseleave', () => {
+                gsap.to(img, { scale: 1, duration: 0.3 });
+            });
+        });
+    </script>
+</body>
+
+</html>

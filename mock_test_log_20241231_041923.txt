@@ -1,0 +1,2636 @@
+[2024-12-31 04:19:23] Starting mock test
+[2024-12-31 04:19:23] 
+Mock Website Data:
+[2024-12-31 04:19:23] {
+  "website_name": "Test Website",
+  "website_description": "A test website",
+  "chat_conversation": "Test conversation"
+}
+[2024-12-31 04:19:23] 
+✓ Mock Plan created:
+[2024-12-31 04:19:23] - **Website Summary**:
+  Cosmetica is a premier 100% organic and cruelty-free skincare brand based in Pakistan. The website aims to showcase Cosmetica's dedication to using the finest natural ingredients to create products that nurture the skin without causing harm. Targeting environmentally conscious individuals, predominantly women aged 18-45, the website will provide comprehensive product information, educate visitors on the benefits of organic skincare, and reinforce the brand's commitment to ethical practices. Key features include a visually appealing homepage, an informative About Us section, a detailed Products catalog, customer testimonials, and easy contact options.
+
+- **Pages**:
+  - **Home**: Serves as the main entry point, highlighting the brand's essence, featured products, and key messages.
+  - **About Us**: Shares Cosmetica's brand story, mission, values, and commitment to organic and cruelty-free practices.
+  - **Products**: Showcases the complete range of skincare products with detailed descriptions, ingredients, and usage instructions.
+
+- **Sections for Each Page**:
+
+  - **Home**:
+    - **Hero Section**:
+      - **Description**: Captivates visitors with a strong visual and a compelling tagline.
+      - **Content Suggestions**:
+        - **Heading**: "Nurture Your Skin Naturally"
+        - **Subheading**: "Discover our 100% organic and cruelty-free skincare range."
+        - **Background Image**: High-quality image of featured products in a natural setting.
+        - **Call-to-Action (CTA)**: "Shop Now" button linking to the Products page.
+    - **Introduction Section**:
+      - **Description**: Brief overview of Cosmetica and its core values.
+      - **Content Suggestions**:
+        - **Text**: "At Cosmetica, we believe in harnessing the power of nature to create skincare products that are gentle on your skin and kind to the planet."
+        - **Image**: Collage of natural ingredients used in products.
+    - **Featured Products Section**:
+      - **Description**: Highlights best-selling or new products to entice visitors.
+      - **Content Suggestions**:
+        - **Product Thumbnails**: Images of 3-4 featured products.
+        - **Product Names and Short Descriptions**.
+        - **CTA**: "View All Products" button linking to the Products page.
+    - **Testimonials Section**:
+      - **Description**: Builds trust by showcasing customer reviews.
+      - **Content Suggestions**:
+        - **Customer Quotes**: 2-3 positive testimonials.
+        - **Customer Photos**: Small images of customers (with permission).
+    - **Newsletter Signup Section**:
+      - **Description**: Encourages visitors to subscribe for updates and skincare tips.
+      - **Content Suggestions**:
+        - **Heading**: "Join Our Community"
+        - **Subheading**: "Subscribe to receive the latest updates and exclusive offers."
+        - **Form Fields**: Name and Email.
+        - **CTA**: "Subscribe" button.
+
+  - **About Us**:
+    - **Brand Story Section**:
+      - **Description**: Narrates the inception and journey of Cosmetica.
+      - **Content Suggestions**:
+        - **Heading**: "Our Story"
+        - **Text**: Detailed narrative about how and why Cosmetica was founded.
+        - **Images**: Photos of the founder(s) and the team.
+    - **Mission and Values Section**:
+      - **Description**: Outlines the brand's mission and core values.
+      - **Content Suggestions**:
+        - **Heading**: "Our Mission & Values"
+        - **Text**: Statements about commitment to organic ingredients, cruelty-free practices, sustainability, and customer well-being.
+        - **Icons**: Visual representations of each core value (e.g., leaf for organic, heart for cruelty-free).
+    - **Ingredient Commitment Section**:
+      - **Description**: Details the natural ingredients used and their benefits.
+      - **Content Suggestions**:
+        - **Heading**: "Pure Ingredients for Pure Beauty"
+        - **Text**: Information about key ingredients and their skincare benefits.
+        - **Images**: Close-ups of ingredients like aloe vera, chamomile, etc.
+    - **Sustainability and Ethical Practices Section**:
+      - **Description**: Highlights the brand's dedication to ethical sourcing and sustainability.
+      - **Content Suggestions**:
+        - **Heading**: "Committed to a Better Planet"
+        - **Text**: Description of sustainable practices, packaging, and cruelty-free certifications.
+        - **Icons/Badges**: Certifications and eco-friendly symbols.
+
+  - **Products**:
+    - **Product Gallery Section**:
+      - **Description**: Displays the full range of Cosmetica products in an organized manner.
+      - **Content Suggestions**:
+        - **Product Thumbnails**: High-quality images of each product.
+        - **Product Names**: Clear and descriptive.
+        - **Short Descriptions**: Brief overview of each product's purpose.
+        - **Categories**: Filters or tabs (e.g., Cleansers, Moisturizers, Treatments) for easy navigation.
+    - **Individual Product Details Section**:
+      - **Description**: Provides in-depth information for each product.
+      - **Content Suggestions**:
+        - **Product Image**: Large, high-resolution image.
+        - **Product Name and Price**.
+        - **Detailed Description**: Benefits, usage instructions, and unique selling points.
+        - **Ingredient List**: Detailed list of all ingredients with explanations of their benefits.
+        - **Customer Reviews**: Section for user-generated reviews and ratings.
+        - **Add to Cart Button**: If e-commerce functionality is planned.
+    - **Best Sellers and New Arrivals Section**:
+      - **Description**: Highlights popular and newly launched products.
+      - **Content Suggestions**:
+        - **Product Thumbnails**: Images of best-selling and new products.
+        - **Labels**: "Best Seller" and "New Arrival" badges.
+        - **CTA**: "Shop Now" buttons for quick access.
+    - **Ingredient Spotlight Section**:
+      - **Description**: Educates visitors on specific key ingredients used in products.
+      - **Content Suggestions**:
+        - **Heading**: "Ingredient Spotlight: [Ingredient Name]"
+        - **Text**: Detailed information about the ingredient's benefits.
+        - **Image**: Visual representation of the ingredient.
+
+- **Feasibility Check**:
+  - **E-commerce Functionality**: The initial conversation does not explicitly mention selling products online. If the intention is to include an online store with features like shopping cart, payment processing, and order tracking, this adds complexity. If not feasible within the current scope, consider providing detailed product information with contact options for purchases.
+  - **Blog Integration**: While content-rich sections like blogs enhance SEO and customer engagement, integrating a full-fledged blog might exceed the three-page limit. Instead, incorporate a "Skincare Tips" section within the Home or About Us page to share valuable content without adding an extra page.
+  - **Customer Reviews**: Implementing dynamic customer review functionality can be technically demanding. As an alternative, include curated testimonials on the Home and About Us pages to maintain credibility without complex systems.
+  - **Responsive Design**: Ensure the website is fully responsive across all devices. This is essential but requires careful design and testing to achieve a seamless user experience.
+  - **High-Quality Imagery**: Sourcing or creating high-resolution images for products and ingredients is crucial for aesthetic appeal. Ensure availability of professional photography resources.
+  - **SEO Optimization**: To enhance visibility, incorporate SEO best practices in content and structure. This includes keyword optimization, meta tags, and optimized images. Allocate resources for ongoing SEO efforts post-launch.
+  - **Maintenance and Updates**: Regular updates to product information, testimonials, and content sections are necessary to keep the website current. Plan for ongoing maintenance to ensure functionality and relevance.
+
+  **Suggestions**:
+  - Prioritize essential features that align with the brand's goals and resource capabilities.
+  - If e-commerce is a future goal, design the Products page with scalability in mind, allowing easy integration of shopping features later.
+  - Utilize content management systems like WordPress with appropriate plugins to balance functionality and ease of use.
+  - Ensure all design elements reflect the brand's organic and cruelty-free ethos to maintain consistency and authenticity.
+[2024-12-31 04:19:23] 
+✓ Mock Blueprint created:
+[2024-12-31 04:19:23] ---
+
+**Page Name**: Home
+
+---
+
+### **Section Name**: Hero Section
+
+- **Layout**:
+  - **Structure**: Full-width section occupying the viewport height.
+  - **Elements Placement**:
+    - **Background Image**: Positioned absolutely to cover the entire section.
+    - **Overlay**: Semi-transparent layer over the background image to enhance text readability.
+    - **Content Container**: Centered both vertically and horizontally, containing the heading, subheading, and CTA button.
+    - **Spacing**: Ample padding to ensure content does not touch screen edges; responsive margins for different devices.
+    - **Alignment**: Text and CTA button centered.
+
+- **Colors**:
+  - **Primary Colors**:
+    - **Overlay**: rgba(0, 0, 0, 0.4) to darken the background image subtly.
+    - **Heading & Subheading Text**: White (#FFFFFF).
+    - **CTA Button**: Soft green (#4CAF50) to reflect the organic theme.
+    - **CTA Hover**: Darker green (#388E3C).
+
+- **Typography**:
+  - **Heading**:
+    - **Font**: Serif typeface (e.g., Playfair Display) for elegance.
+    - **Size**: 48px on desktop, scaling down to 32px on mobile.
+    - **Weight**: Bold.
+    - **Case**: Capitalized.
+  - **Subheading**:
+    - **Font**: Sans-serif typeface (e.g., Open Sans).
+    - **Size**: 24px on desktop, scaling to 18px on mobile.
+    - **Weight**: Regular.
+    - **Color**: Slightly off-white (#F5F5F5) for hierarchy.
+  - **CTA Button**:
+    - **Font**: Sans-serif (e.g., Open Sans).
+    - **Size**: 18px.
+    - **Weight**: Semi-bold.
+    - **Case**: Uppercase.
+
+- **Images**:
+  - **Background Image**: High-resolution image depicting featured products arranged aesthetically in a natural setting. Example: [Unsplash Link](https://unsplash.com/photos/oe8dxIbH5kY).
+  - **Overlay**: Subtle gradient to ensure text stands out.
+
+- **Interactivity**:
+  - **Animations**: 
+    - **Content Fade-In**: Smooth fade-in effect for heading, subheading, and CTA on page load.
+    - **Parallax Effect**: Slight parallax scrolling for the background image to add depth.
+  - **Hover Effects**:
+    - **CTA Button**: Slight scale-up (1.05x) and color darkening on hover.
+
+- **Buttons/Links**:
+  - **CTA Button ("Shop Now")**:
+    - **Styling**: Rounded corners (4px radius), subtle shadow for depth.
+    - **Hover Effect**: Background color transitions to a darker green with a slight lift (shadow increases).
+    - **Link**: Smooth scroll or navigation to the Products page.
+
+- **Other Notes**:
+  - **Accessibility**: Ensure sufficient color contrast for text over the background image.
+  - **Responsive Design**: Optimize layout and typography for various screen sizes, ensuring touch-friendly buttons on mobile devices.
+
+---
+
+### **Section Name**: Introduction Section
+
+- **Layout**:
+  - **Structure**: Two-column layout on desktop, single-column on mobile.
+    - **Left Column**: Text content.
+    - **Right Column**: Collage of natural ingredients.
+  - **Spacing**: 60px padding on desktop, reduced to 20px on mobile.
+  - **Alignment**: Left-aligned text with centered images.
+
+- **Colors**:
+  - **Background**: Light beige (#FDF6F0) to evoke natural warmth.
+  - **Text**: Dark charcoal (#333333) for readability.
+  - **Accent Colors**: Soft green highlights (#4CAF50) for emphasis.
+
+- **Typography**:
+  - **Heading**:
+    - **Font**: Sans-serif (e.g., Lato).
+    - **Size**: 32px on desktop, 24px on mobile.
+    - **Weight**: Bold.
+    - **Color**: Dark charcoal (#333333).
+  - **Body Text**:
+    - **Font**: Sans-serif (e.g., Open Sans).
+    - **Size**: 18px on desktop, 16px on mobile.
+    - **Line Height**: 1.6 for optimal readability.
+    - **Color**: Dark charcoal (#333333).
+
+- **Images**:
+  - **Collage Image**: High-quality collage showcasing natural ingredients like aloe vera, chamomile, and green tea. Example: [Unsplash Link](https://unsplash.com/photos/wXOKoAcrEoQ).
+  - **Image Styling**: Soft rounded corners (8px radius) and subtle drop shadow to make them pop.
+
+- **Interactivity**:
+  - **Scroll Animations**: Fade-in effect as the section enters the viewport.
+  - **Image Hover**: Slight zoom (1.05x) on ingredient images for engagement.
+
+- **Buttons/Links**:
+  - **None** in this section to maintain focus on the introduction content.
+
+- **Other Notes**:
+  - **Responsive Adjustments**: Stack columns vertically on smaller screens with images appearing below the text.
+  - **Consistency**: Maintain consistent image style and color palette with the overall website theme.
+
+---
+
+### **Section Name**: Featured Products Section
+
+- **Layout**:
+  - **Structure**: Grid layout displaying 3-4 products per row on desktop, 2 per row on tablets, and 1 per row on mobile.
+  - **Elements**:
+    - **Product Thumbnails**: Each containing product image, name, short description, and a CTA.
+  - **Spacing**: 30px gap between grid items on desktop, adjusted for smaller screens.
+
+- **Colors**:
+  - **Background**: White (#FFFFFF) for a clean look.
+  - **Text**: Dark charcoal (#333333).
+  - **CTA Buttons**: Soft green (#4CAF50) with white text.
+  - **Hover Effects**: Darker green (#388E3C).
+
+- **Typography**:
+  - **Product Name**:
+    - **Font**: Sans-serif (e.g., Lato).
+    - **Size**: 20px.
+    - **Weight**: Bold.
+    - **Color**: Dark charcoal (#333333).
+  - **Short Description**:
+    - **Font**: Sans-serif (e.g., Open Sans).
+    - **Size**: 16px.
+    - **Weight**: Regular.
+    - **Color**: #666666.
+  - **CTA Button Text**:
+    - **Font**: Sans-serif.
+    - **Size**: 16px.
+    - **Weight**: Semi-bold.
+    - **Color**: White (#FFFFFF).
+
+- **Images**:
+  - **Product Thumbnails**: High-resolution images with transparent backgrounds to maintain consistency.
+  - **Image Style**: Uniform sizing and padding to ensure a harmonious grid layout.
+
+- **Interactivity**:
+  - **Hover Effects**:
+    - **Product Image**: Slight elevation with box-shadow.
+    - **CTA Button**: Color transition and slight scale-up.
+  - **On Click**: Smooth transition to the detailed Products page.
+
+- **Buttons/Links**:
+  - **CTA Button ("View All Products")**:
+    - **Styling**: Rounded corners (4px radius), consistent with other buttons.
+    - **Hover Effects**: Background color darkens, cursor changes to pointer.
+    - **Placement**: Centered below the grid of featured products.
+    - **Link**: Navigates to the Products page.
+
+- **Other Notes**:
+  - **Highlighting**: Optionally, use subtle badges (e.g., "New", "Best Seller") on featured products for added appeal.
+  - **Accessibility**: Ensure all images have descriptive alt text for screen readers.
+
+---
+
+### **Section Name**: Testimonials Section
+
+- **Layout**:
+  - **Structure**: Carousel slider displaying 2-3 testimonials at a time on desktop, 1 per view on mobile.
+  - **Elements**:
+    - **Customer Quotes**: Styled in quote blocks.
+    - **Customer Photos**: Circular thumbnails adjacent to quotes.
+  - **Spacing**: Adequate padding around each testimonial for clarity.
+
+- **Colors**:
+  - **Background**: Light gray (#F5F5F5) to differentiate from other sections.
+  - **Text**: Dark charcoal (#333333) for quotes, secondary text color (#666666) for customer names.
+  - **Accent Elements**: Soft green (#4CAF50) for quotes' opening marks or divider lines.
+
+- **Typography**:
+  - **Customer Quotes**:
+    - **Font**: Italic-serif (e.g., Georgia Italic) to emphasize the testimonial.
+    - **Size**: 18px on desktop, 16px on mobile.
+    - **Color**: Dark charcoal (#333333).
+  - **Customer Names**:
+    - **Font**: Sans-serif (e.g., Open Sans).
+    - **Size**: 16px.
+    - **Weight**: Bold.
+    - **Color**: #666666.
+
+- **Images**:
+  - **Customer Photos**: High-quality, circular cropped images of customers, maintaining privacy and consent.
+  - **Image Source**: Secure storage with optimized loading (e.g., compressed formats).
+
+- **Interactivity**:
+  - **Carousel Navigation**:
+    - **Arrows**: Left and right navigation arrows with smooth transitions.
+    - **Dots**: Pagination indicators below the testimonials.
+  - **Auto-Slide**: Testimonials transition automatically every 5 seconds, with pause on hover.
+
+- **Buttons/Links**:
+  - **Navigation Arrows**:
+    - **Styling**: Minimalistic arrows in soft green or dark charcoal.
+    - **Hover Effects**: Slight color change or increase in size.
+    - **Accessibility**: Keyboard navigable and labeled for screen readers.
+
+- **Other Notes**:
+  - **Content Curation**: Select diverse testimonials that highlight different product benefits and customer experiences.
+  - **Trust Signals**: Optionally include star ratings or social proof elements alongside testimonials.
+
+---
+
+### **Section Name**: Newsletter Signup Section
+
+- **Layout**:
+  - **Structure**: Centered content with heading, subheading, and signup form stacked vertically.
+  - **Elements Placement**:
+    - **Heading**
+    - **Subheading**
+    - **Form Fields**
+    - **Subscribe Button**
+  - **Spacing**: Generous padding to create a spacious and inviting area.
+
+- **Colors**:
+  - **Background**: Soft pastel green (#E8F5E9) to align with organic theme.
+  - **Text**: Dark charcoal (#333333) for readability.
+  - **Form Fields**: White background with soft gray borders (#CCCCCC).
+  - **Subscribe Button**: Vibrant green (#4CAF50) with white text.
+  - **Button Hover**: Darker green (#388E3C).
+
+- **Typography**:
+  - **Heading**:
+    - **Font**: Sans-serif (e.g., Lato).
+    - **Size**: 28px on desktop, 24px on mobile.
+    - **Weight**: Bold.
+    - **Color**: Dark charcoal (#333333).
+  - **Subheading**:
+    - **Font**: Sans-serif (e.g., Open Sans).
+    - **Size**: 18px on desktop, 16px on mobile.
+    - **Weight**: Regular.
+    - **Color**: #555555.
+  - **Form Input Text**:
+    - **Font**: Sans-serif.
+    - **Size**: 16px.
+    - **Color**: #333333.
+
+- **Images**:
+  - **None** to maintain focus on the signup functionality.
+
+- **Interactivity**:
+  - **Form Validation**: Real-time validation for email format with error messages.
+  - **Button Feedback**: On click, show a loading spinner followed by a success message.
+  - **Transition Effects**: Smooth transitions for form appearance and success confirmation.
+
+- **Buttons/Links**:
+  - **Subscribe Button**:
+    - **Styling**: Rounded corners (4px radius), consistent with other buttons.
+    - **Hover Effects**: Background color darkens, slight scale-up.
+    - **Accessibility**: Ensure high contrast and focus states for keyboard navigation.
+
+- **Other Notes**:
+  - **Privacy Assurance**: Include a brief statement below the form about data privacy (e.g., "We respect your privacy. Unsubscribe at any time.").
+  - **Integration**: Connect the form to a reliable email marketing service (e.g., Mailchimp) for seamless subscriber management.
+
+---
+
+**Page Name**: About Us
+
+---
+
+### **Section Name**: Brand Story Section
+
+- **Layout**:
+  - **Structure**: Split-section with text and images side by side on desktop, stacked on mobile.
+    - **Left Side**: Text content.
+    - **Right Side**: Photos of founder(s) and team.
+  - **Spacing**: 60px padding on desktop, reduced to 20px on mobile.
+  - **Alignment**: Text aligned to the left, images aligned to the right.
+
+- **Colors**:
+  - **Background**: White (#FFFFFF) for a clean narrative space.
+  - **Text**: Dark charcoal (#333333).
+  - **Accent Colors**: Soft green (#4CAF50) for headings and icons.
+
+- **Typography**:
+  - **Heading**:
+    - **Font**: Serif (e.g., Playfair Display).
+    - **Size**: 32px on desktop, 24px on mobile.
+    - **Weight**: Bold.
+    - **Color**: Dark charcoal (#333333).
+  - **Body Text**:
+    - **Font**: Sans-serif (e.g., Open Sans).
+    - **Size**: 18px on desktop, 16px on mobile.
+    - **Line Height**: 1.6.
+    - **Color**: #333333.
+
+- **Images**:
+  - **Team Photos**: Professional, high-resolution images of the founder(s) and team members.
+    - **Style**: Consistent lighting and backdrop to maintain a cohesive look.
+    - **Arrangement**: Group photos and individual portraits.
+    - **Example URL**: [Unsplash People](https://unsplash.com/photos/f91wN4NQZRc).
+  - **Image Styling**: Rounded corners (8px radius) and uniform sizing.
+
+- **Interactivity**:
+  - **Image Gallery**: Lightbox feature for enlarging team photos on click.
+  - **Scroll Animations**: Fade-in for text and images as they enter the viewport.
+  - **Hover Effects**: Slight elevation and shadow on team photos when hovered.
+
+- **Buttons/Links**:
+  - **None** directly within this section, but could include links to team member profiles if applicable.
+
+- **Other Notes**:
+  - **Narrative Flow**: Ensure the brand story is engaging, authentic, and aligns with the brand’s values.
+  - **Accessibility**: Provide alt text for all images describing the individuals and their roles.
+
+---
+
+### **Section Name**: Mission and Values Section
+
+- **Layout**:
+  - **Structure**: Grid layout with icons and corresponding text for each core value.
+    - **Columns**: Typically 3-4 columns depending on the number of values.
+  - **Elements Placement**: Each grid item contains an icon and a brief description.
+  - **Spacing**: 40px grid gap on desktop, adjusted for smaller screens.
+
+- **Colors**:
+  - **Background**: Light green (#E0F2F1) to signify growth and sustainability.
+  - **Text**: Dark charcoal (#333333).
+  - **Icons**: Soft green (#4CAF50) to maintain theme consistency.
+
+- **Typography**:
+  - **Heading**:
+    - **Font**: Serif (e.g., Playfair Display).
+    - **Size**: 28px on desktop, 24px on mobile.
+    - **Weight**: Bold.
+    - **Color**: Dark charcoal (#333333).
+  - **Value Titles**:
+    - **Font**: Sans-serif (e.g., Lato).
+    - **Size**: 20px.
+    - **Weight**: Bold.
+    - **Color**: #4CAF50.
+  - **Value Descriptions**:
+    - **Font**: Sans-serif (e.g., Open Sans).
+    - **Size**: 16px.
+    - **Weight**: Regular.
+    - **Color**: #333333.
+
+- **Images**:
+  - **Icons**: Custom-designed or sourced from a consistent icon set.
+    - **Examples**:
+      - **Organic**: Leaf icon.
+      - **Cruelty-Free**: Heart with paws.
+      - **Sustainability**: Recycling symbol.
+      - **Customer Well-being**: Smiling face or skin icon.
+    - **Source Example**: [Unsplash Icons](https://unsplash.com/s/photos/icons).
+
+- **Interactivity**:
+  - **Hover Effects**: Icons slightly enlarge (1.1x) with a drop shadow on hover.
+  - **Tooltip**: Optional brief explanation of each value when hovering over icons.
+
+- **Buttons/Links**:
+  - **None** in this section to keep focus on mission and values.
+
+- **Other Notes**:
+  - **Consistency**: Ensure all icons share the same style, color palette, and size for a uniform appearance.
+  - **Responsiveness**: Adjust the number of columns based on screen size to maintain readability and aesthetic balance.
+
+---
+
+### **Section Name**: Ingredient Commitment Section
+
+- **Layout**:
+  - **Structure**: Alternating text and image layout for each key ingredient, creating a zigzag pattern.
+    - **Example**: First ingredient with text on the left and image on the right, second ingredient vice versa.
+  - **Spacing**: 50px padding between each ingredient block.
+  - **Alignment**: Consistent alignment within each row for a structured look.
+
+- **Colors**:
+  - **Background**: White (#FFFFFF) to highlight the natural ingredients.
+  - **Text**: Dark charcoal (#333333).
+  - **Accent Elements**: Soft green (#4CAF50) for headings and highlights.
+
+- **Typography**:
+  - **Heading**:
+    - **Font**: Serif (e.g., Playfair Display).
+    - **Size**: 26px on desktop, 22px on mobile.
+    - **Weight**: Bold.
+    - **Color**: #4CAF50.
+  - **Body Text**:
+    - **Font**: Sans-serif (e.g., Open Sans).
+    - **Size**: 16px.
+    - **Line Height**: 1.6.
+    - **Color**: #333333.
+
+- **Images**:
+  - **Ingredient Images**: High-resolution close-ups of organic ingredients like aloe vera leaves, chamomile flowers, etc.
+  - **Image Styling**: Circular crop or soft-edged rectangles to add visual interest.
+  - **Example URL**: [Unsplash Ingredients](https://unsplash.com/s/photos/ingredients).
+
+- **Interactivity**:
+  - **Hover Effects**: Images slightly lift with a soft shadow when hovered.
+  - **Lightbox**: Click to enlarge images for a closer view.
+  - **Scroll Animations**: Fade-in from sides as each ingredient block enters the viewport.
+
+- **Buttons/Links**:
+  - **Read More Links**:
+    - **Placement**: Below each ingredient description.
+    - **Styling**: Underlined text link in soft green (#4CAF50).
+    - **Hover Effects**: Color darkens with a smooth transition.
+
+- **Other Notes**:
+  - **Educational Content**: Ensure descriptions are informative yet concise, highlighting the benefits of each ingredient.
+  - **Visual Consistency**: Maintain uniform image sizes and text alignment for a cohesive section appearance.
+
+---
+
+### **Section Name**: Sustainability and Ethical Practices Section
+
+- **Layout**:
+  - **Structure**: Single-column layout with text and icons, accompanied by certification badges.
+  - **Elements Placement**:
+    - **Heading**
+    - **Text Content**
+    - **Certification Icons/Badges**
+  - **Spacing**: 60px padding for ample breathing space.
+
+- **Colors**:
+  - **Background**: Light beige (#F9F3F1) to signify warmth and responsibility.
+  - **Text**: Dark charcoal (#333333).
+  - **Icons/Badges**: Soft green (#4CAF50) and white for contrast.
+
+- **Typography**:
+  - **Heading**:
+    - **Font**: Serif (e.g., Playfair Display).
+    - **Size**: 30px on desktop, 24px on mobile.
+    - **Weight**: Bold.
+    - **Color**: Dark charcoal (#333333).
+  - **Body Text**:
+    - **Font**: Sans-serif (e.g., Open Sans).
+    - **Size**: 18px on desktop, 16px on mobile.
+    - **Line Height**: 1.6.
+    - **Color**: #333333.
+  - **Certification Text**:
+    - **Font**: Sans-serif.
+    - **Size**: 16px.
+    - **Weight**: Regular.
+    - **Color**: #555555.
+
+- **Images**:
+  - **Icons/Badges**:
+    - **Types**: Certified Organic, Cruelty-Free, Eco-Friendly Packaging, Renewable Resources.
+    - **Style**: Simple, clean icons with label texts.
+    - **Example URL**: [Unsplash Certifications](https://unsplash.com/s/photos/certification-icons).
+
+- **Interactivity**:
+  - **Hover Effects**: Certification badges enlarge slightly (1.05x) and display tooltip descriptions.
+  - **Scroll Animations**: Certifications slide in from the bottom as they enter the viewport.
+
+- **Buttons/Links**:
+  - **None** directly within this section to maintain focus on sustainability content.
+
+- **Other Notes**:
+  - **Verification**: Ensure all certification badges are accurate and up-to-date.
+  - **Trust Building**: Clearly display certifications to reinforce brand credibility and commitment.
+
+---
+
+**Page Name**: Products
+
+---
+
+### **Section Name**: Product Gallery Section
+
+- **Layout**:
+  - **Structure**: Masonry grid layout to accommodate varying product image sizes elegantly.
+  - **Elements Placement**:
+    - **Product Thumbnails**: Each containing image, name, short description, and category tag.
+    - **Categories**: Positioned as filters or tabs at the top of the gallery for easy navigation.
+  - **Spacing**: 20px gaps between grid items, responsive to screen size.
+
+- **Colors**:
+  - **Background**: White (#FFFFFF) for a clean product-focused display.
+  - **Text**: Dark charcoal (#333333).
+  - **Category Filters**: Soft green (#4CAF50) for active filters, light gray (#EEEEEE) for inactive.
+  - **Hover Effects**: Slight color accent on category filters when hovered.
+
+- **Typography**:
+  - **Product Names**:
+    - **Font**: Sans-serif (e.g., Lato).
+    - **Size**: 18px.
+    - **Weight**: Bold.
+    - **Color**: Dark charcoal (#333333).
+  - **Short Descriptions**:
+    - **Font**: Sans-serif (e.g., Open Sans).
+    - **Size**: 14px.
+    - **Weight**: Regular.
+    - **Color**: #666666.
+  - **Category Filters**:
+    - **Font**: Sans-serif.
+    - **Size**: 16px.
+    - **Weight**: Semi-bold.
+    - **Color**: #333333.
+
+- **Images**:
+  - **Product Thumbnails**: High-resolution images with consistent lighting and background.
+    - **Style**: Square or uniform aspect ratio to maintain grid consistency.
+    - **Example URL**: [Unsplash Products](https://unsplash.com/s/photos/skincare-products).
+
+- **Interactivity**:
+  - **Filters/Tags**: Clickable filters that dynamically update the displayed products with smooth transition effects.
+  - **Hover Effects**:
+    - **Product Thumbnail**: Slight enlargement and shadow to indicate interactivity.
+    - **CTA Button (e.g., "View Product")**: Appears on hover with a fade-in effect.
+  - **Lazy Loading**: Implement lazy loading for images to enhance page load speed.
+
+- **Buttons/Links**:
+  - **Category Filters**:
+    - **Styling**: Pill-shaped buttons with soft green background when active.
+    - **Hover Effects**: Background transitions to a darker shade with slight scale-up.
+  - **View All Products Button**:
+    - **Placement**: Below the product grid.
+    - **Styling**: Consistent with other CTA buttons.
+    - **Hover Effects**: Color darkens and slight animation.
+    - **Link**: Remains on the same page with filters or redirects to a more detailed catalog if applicable.
+
+- **Other Notes**:
+  - **Search Functionality**: Optionally include a search bar above the gallery for users to find specific products quickly.
+  - **Pagination vs. Infinite Scroll**: Depending on the number of products, choose between paginated navigation or infinite scrolling with "Load More" buttons.
+
+---
+
+### **Section Name**: Individual Product Details Section
+
+- **Layout**:
+  - **Structure**: Detailed product view with image gallery, description, ingredients, and reviews.
+    - **Top Area**: Product images gallery on the left, product name, price, and basic info on the right.
+    - **Middle Area**: Detailed description and ingredient list.
+    - **Bottom Area**: Customer reviews and Add to Cart button.
+  - **Spacing**: 40px padding around sections, adjusted for responsive design.
+
+- **Colors**:
+  - **Background**: White (#FFFFFF) to keep focus on product details.
+  - **Text**: Dark charcoal (#333333).
+  - **CTA Button**: Soft green (#4CAF50).
+  - **Button Hover**: Darker green (#388E3C).
+
+- **Typography**:
+  - **Product Name**:
+    - **Font**: Serif (e.g., Playfair Display).
+    - **Size**: 28px on desktop, 24px on mobile.
+    - **Weight**: Bold.
+    - **Color**: Dark charcoal (#333333).
+  - **Price**:
+    - **Font**: Sans-serif (e.g., Lato).
+    - **Size**: 22px.
+    - **Weight**: Semi-bold.
+    - **Color**: #4CAF50.
+  - **Detailed Description**:
+    - **Font**: Sans-serif (e.g., Open Sans).
+    - **Size**: 16px.
+    - **Line Height**: 1.6.
+    - **Color**: #333333.
+  - **Ingredient List**:
+    - **Font**: Sans-serif.
+    - **Size**: 14px.
+    - **Weight**: Regular.
+    - **Color**: #555555.
+  - **Customer Reviews**:
+    - **Font**: Sans-serif.
+    - **Size**: 16px.
+    - **Color**: #333333.
+
+- **Images**:
+  - **Product Image Gallery**:
+    - **Primary Image**: Large, high-resolution display.
+    - **Thumbnail Images**: Smaller images below or beside the primary image for additional views.
+    - **Image Style**: Consistent aspect ratios; zoom functionality on click.
+    - **Example URL**: [Unsplash Product Detail](https://unsplash.com/photos/VzJbjLRqhOY).
+
+- **Interactivity**:
+  - **Image Gallery**:
+    - **Carousel Functionality**: Click through multiple product images.
+    - **Zoom Feature**: Hover or click to zoom into the primary image.
+  - **Add to Cart**:
+    - **Feedback**: Animation or confirmation message on adding a product.
+  - **Customer Reviews**:
+    - **Interaction**: Option to sort reviews by rating or date.
+    - **Write a Review**: Button/link to submit a new review, if applicable.
+
+- **Buttons/Links**:
+  - **Add to Cart Button**:
+    - **Styling**: Prominent placement below product details, rounded corners.
+    - **Hover Effects**: Color darkens, slight elevation.
+    - **Functionality**: Adds product to shopping cart; if e-commerce is planned, includes quantity selector.
+  - **View Larger Image Links**: Next to thumbnails for quick navigation.
+
+- **Other Notes**:
+  - **E-commerce Readiness**: Design the layout to accommodate future e-commerce features like stock levels, related products, and upsells.
+  - **Accessibility**: Ensure all interactive elements are keyboard navigable and have appropriate ARIA labels.
+
+---
+
+### **Section Name**: Best Sellers and New Arrivals Section
+
+- **Layout**:
+  - **Structure**: Two subsections within the main section—Best Sellers and New Arrivals.
+    - **Each Subsection**: Title, product thumbnails, and CTA button.
+  - **Grid Layout**: Similar to Featured Products, with 3-4 products per row on desktop.
+  - **Spacing**: 40px padding between subsections and within grids.
+
+- **Colors**:
+  - **Background**: Alternating between white (#FFFFFF) and very light green (#F1F8F5) for differentiation.
+  - **Text**: Dark charcoal (#333333).
+    - **Subsection Titles**: Soft green (#4CAF50) to highlight.
+  - **CTA Buttons**: Consistent with other CTAs (soft green with white text).
+
+- **Typography**:
+  - **Subsection Titles**:
+    - **Font**: Serif (e.g., Playfair Display).
+    - **Size**: 26px on desktop, 22px on mobile.
+    - **Weight**: Bold.
+    - **Color**: #4CAF50.
+  - **Product Names**:
+    - **Font**: Sans-serif (e.g., Lato).
+    - **Size**: 18px.
+    - **Weight**: Bold.
+    - **Color**: Dark charcoal (#333333).
+  - **Short Descriptions**:
+    - **Font**: Sans-serif (e.g., Open Sans).
+    - **Size**: 14px.
+    - **Color**: #666666.
+  - **CTA Button Text**:
+    - **Font**: Sans-serif.
+    - **Size**: 16px.
+    - **Weight**: Semi-bold.
+    - **Color**: White (#FFFFFF).
+
+- **Images**:
+  - **Product Thumbnails**: High-quality images, consistent with gallery styling.
+    - **Style**: Uniform background and lighting.
+    - **Example URL**: [Unsplash Best Sellers](https://unsplash.com/s/photos/skincare-best-sellers).
+
+- **Interactivity**:
+  - **Hover Effects**:
+    - **Product Images**: Slight elevation and shadow.
+    - **CTA Buttons**: Color darkens and scales up slightly.
+  - **Dynamic Labels**: "Best Seller" and "New Arrival" badges appear on respective products with subtle animations.
+
+- **Buttons/Links**:
+  - **CTA Buttons ("Shop Now")**:
+    - **Styling**: Consistent with global CTA styles; prominent and easily clickable.
+    - **Hover Effects**: Slight color transition and elevation.
+    - **Link**: Navigates to the Products page with relevant filters applied (e.g., Best Sellers or New Arrivals).
+
+- **Other Notes**:
+  - **Dynamic Content**: Regularly update sections to reflect current best sellers and latest arrivals.
+  - **Badge Design**: Use visually appealing badges that complement the overall design without being intrusive.
+
+---
+
+### **Section Name**: Ingredient Spotlight Section
+
+- **Layout**:
+  - **Structure**: Focused layout highlighting a single ingredient per instance.
+    - **Elements Placement**:
+      - **Heading**: "Ingredient Spotlight: [Ingredient Name]"
+      - **Text Description**: Detailed benefits and usage.
+      - **Image**: Large visual representation of the ingredient.
+  - **Spacing**: 50px padding on desktop, adjusted for mobile.
+
+- **Colors**:
+  - **Background**: White (#FFFFFF) to keep focus on the ingredient.
+  - **Text**: Dark charcoal (#333333).
+  - **Accent Elements**: Soft green for headings and highlights (#4CAF50).
+
+- **Typography**:
+  - **Heading**:
+    - **Font**: Serif (e.g., Playfair Display).
+    - **Size**: 30px on desktop, 24px on mobile.
+    - **Weight**: Bold.
+    - **Color**: #4CAF50.
+  - **Body Text**:
+    - **Font**: Sans-serif (e.g., Open Sans).
+    - **Size**: 16px.
+    - **Line Height**: 1.6.
+    - **Color**: #333333.
+
+- **Images**:
+  - **Ingredient Image**: High-resolution, visually appealing image showcasing the ingredient in its natural form.
+    - **Example**: Close-up of aloe vera leaves or chamomile flowers.
+    - **Style**: Clean and vibrant, with consistent aspect ratio.
+    - **Example URL**: [Unsplash Ingredients](https://unsplash.com/s/photos/ingredient).
+
+- **Interactivity**:
+  - **Image Hover**: Slight zoom-in effect to engage users.
+  - **Read More Links**: Option to expand additional details or related products seamlessly.
+  - **Scroll Animations**: Smooth fade-in as the section enters the viewport.
+
+- **Buttons/Links**:
+  - **None** directly within this section, but could include links to products containing the spotlighted ingredient.
+
+- **Other Notes**:
+  - **Rotational Spotlight**: Implement a carousel or timed rotation to feature multiple ingredients sequentially.
+  - **User Engagement**: Encourage users to learn more by linking ingredients to relevant products or blog posts (if implemented).
+
+---
+
+# Additional Enhancements and Suggestions
+
+To elevate Cosmetica's website beyond the provided plan and ensure it remains jaw-droppingly beautiful while aligning with modern design standards, consider the following enhancements:
+
+1. **Responsive and Mobile-First Design**:
+   - Prioritize mobile responsiveness to cater to the growing number of mobile users.
+   - Use flexible grid systems and media queries to ensure seamless layout adjustments across devices.
+
+2. **Accessibility Compliance**:
+   - Ensure all elements meet WCAG guidelines for color contrast, keyboard navigation, and screen reader compatibility.
+   - Provide alt text for all images and ARIA labels for interactive elements.
+
+3. **Consistent Branding and Visual Language**:
+   - Maintain a cohesive color palette, typography, and imagery style throughout the website.
+   - Utilize brand elements such as logos, patterns, or unique icons consistently across all sections.
+
+4. **High-Quality Visual Content**:
+   - Invest in professional photography for products and ingredients to enhance visual appeal.
+   - Use vector illustrations or custom icons to add uniqueness to the design.
+
+5. **Performance Optimization**:
+   - Optimize images and media files for faster loading times without compromising quality.
+   - Implement efficient coding practices and leverage caching mechanisms.
+
+6. **SEO Best Practices**:
+   - Structure content with proper heading hierarchies (H1, H2, H3, etc.).
+   - Incorporate relevant keywords naturally into content, meta descriptions, and alt texts.
+   - Use clean URLs and implement schema markup for enhanced search engine visibility.
+
+7. **Interactive Elements**:
+   - Incorporate subtle micro-interactions (e.g., button animations, hover effects) to enhance user engagement.
+   - Use interactive quizzes or product finders to help users select suitable products based on their skincare needs.
+
+8. **User-Generated Content (UGC)**:
+   - Showcase UGC such as Instagram feeds or customer photos using Cosmetica products to build community and trust.
+   - Encourage customers to share their experiences on social media with branded hashtags.
+
+9. **Enhanced Navigation and User Experience**:
+   - Implement sticky navigation bars for easy access to different pages.
+   - Use breadcrumb trails on the Products page for better orientation.
+   - Provide a comprehensive footer with links to important pages, social media, and contact information.
+
+10. **Multi-Language Support**:
+    - Considering the brand is based in Pakistan, offering multilingual options (e.g., English and Urdu) can broaden the audience reach.
+
+11. **Analytics and Tracking Integration**:
+    - Integrate tools like Google Analytics to monitor user behavior, traffic sources, and conversion rates.
+    - Use insights from analytics to continuously improve the website's performance and user experience.
+
+12. **Secure and Reliable Hosting**:
+    - Choose a reputable hosting provider to ensure website uptime, security, and fast load times.
+    - Implement SSL certificates to secure data transmission and build user trust.
+
+13. **Content Management System (CMS) Integration**:
+    - Utilize a CMS like WordPress with custom themes or Shopify if e-commerce is to be implemented in the future.
+    - Ensure the CMS allows easy updates to content, products, and other dynamic elements without technical expertise.
+
+14. **Future-Proofing for E-commerce Expansion**:
+    - Even if e-commerce functionality is not immediately feasible, design the Products page with scalability in mind.
+    - Structure the backend to allow easy integration of shopping cart, payment processing, and order tracking features when resources permit.
+
+15. **Interactive Educational Content**:
+    - Incorporate infographics or animated videos explaining the benefits of organic skincare and Cosmetica's processes.
+    - Use interactive sliders or tabs to present information in engaging formats.
+
+By implementing these enhancements, Cosmetica's website will not only meet the initial goals but also provide an exceptional user experience that fosters trust, engagement, and loyalty among environmentally conscious consumers.
+[2024-12-31 04:19:23] 
+✓ Mock Code generated:
+[2024-12-31 04:19:23] ## index.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&family=Lato:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>Cosmetica - Home</title>
+</head>
+<body class="font-sans">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow z-50">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <a href="index.html" class="text-2xl font-playfair text-green-600">Cosmetica</a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                    <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                    <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-center text-white">
+        <img src="https://images.unsplash.com/photo-1612831664404-1cd4fa75b179?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        <div class="relative z-10 px-6">
+            <h1 class="font-playfair text-4xl md:text-6xl font-bold uppercase mb-4 opacity-0">Welcome to Cosmetica</h1>
+            <p class="font-open text-xl md:text-2xl mb-8 opacity-0">Naturally enhancing your beauty</p>
+            <a href="products.html" class="bg-green-500 hover:bg-green-700 text-white font-open uppercase py-3 px-6 rounded shadow-lg transform hover:scale-105 transition opacity-0" id="cta-button">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="bg-beige-100 py-16 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h2 class="font-lato text-3xl md:text-4xl font-bold text-charcoal-800 mb-4">Discover the Power of Nature</h2>
+                <p class="font-open text-lg md:text-xl text-charcoal-800 leading-relaxed">At Cosmetica, we believe in harnessing the purest natural ingredients to create skincare products that not only enhance your beauty but also promote overall well-being. Our commitment to sustainability and ethical practices ensures that you receive products that are as good for the environment as they are for your skin.</p>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1592496001469-f3a9ec7e1ddb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Natural Ingredients" class="rounded-lg shadow-lg hover:scale-105 transition transform">
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-lato font-bold text-charcoal-800 text-center mb-12">Featured Products</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Product 1" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Aloe Vera Gel</h3>
+                    <p class="font-open text-gray-600 mt-2">Pure aloe vera gel to soothe and hydrate your skin.</p>
+                    <a href="products.html" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- Product 2 -->
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform">
+                    <img src="https://images.unsplash.com/photo-1614769826802-2a346c7a3c6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Product 2" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Chamomile Cream</h3>
+                    <p class="font-open text-gray-600 mt-2">Calming cream enriched with chamomile extracts.</p>
+                    <a href="products.html" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- Product 3 -->
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform">
+                    <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Product 3" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Green Tea Serum</h3>
+                    <p class="font-open text-gray-600 mt-2">Antioxidant-rich serum to rejuvenate your skin.</p>
+                    <a href="products.html" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="products.html" class="bg-green-500 hover:bg-green-700 text-white font-open py-3 px-6 rounded shadow-lg transition transform hover:scale-105">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="bg-gray-100 py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-lato font-bold text-charcoal-800 text-center mb-12">What Our Customers Say</h2>
+            <div class="relative">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <!-- Testimonial 1 -->
+                        <div class="swiper-slide bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Customer 1" class="w-24 h-24 rounded-full mb-4">
+                            <p class="font-serif italic text-gray-800 mb-2">"Cosmetica's products have transformed my skincare routine. I feel more confident and my skin has never looked better!"</p>
+                            <span class="font-open text-gray-600">- Ayesha K.</span>
+                        </div>
+                        <!-- Testimonial 2 -->
+                        <div class="swiper-slide bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <img src="https://images.unsplash.com/photo-1584534880955-73ae79e13d2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Customer 2" class="w-24 h-24 rounded-full mb-4">
+                            <p class="font-serif italic text-gray-800 mb-2">"I love that Cosmetica uses natural ingredients. My skin feels nourished and healthy every day."</p>
+                            <span class="font-open text-gray-600">- Zara M.</span>
+                        </div>
+                        <!-- Testimonial 3 -->
+                        <div class="swiper-slide bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Customer 3" class="w-24 h-24 rounded-full mb-4">
+                            <p class="font-serif italic text-gray-800 mb-2">"The chamomile cream is my go-to for a calming evening routine. Highly recommend Cosmetica!"</p>
+                            <span class="font-open text-gray-600">- Fatima S.</span>
+                        </div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination mt-4"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup Section -->
+    <section class="bg-green-100 py-16 px-6">
+        <div class="container mx-auto text-center">
+            <h2 class="font-lato text-3xl font-bold text-charcoal-800 mb-4">Join Our Newsletter</h2>
+            <p class="font-open text-xl text-gray-700 mb-8">Stay updated with the latest products and special offers.</p>
+            <form class="max-w-md mx-auto">
+                <div class="flex flex-col md:flex-row items-center">
+                    <input type="email" placeholder="Enter your email" class="w-full md:w-auto flex-grow p-3 rounded-l-md border border-gray-300 focus:outline-none">
+                    <button type="submit" class="mt-4 md:mt-0 bg-green-500 hover:bg-green-700 text-white font-open py-3 px-6 rounded-r-md transition transform hover:scale-105">Subscribe</button>
+                </div>
+                <p class="text-sm text-gray-600 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <a href="index.html" class="text-2xl font-playfair text-green-600 mb-4 md:mb-0">Cosmetica</a>
+            <ul class="flex space-x-6 mb-4 md:mb-0">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+            </ul>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-700 hover:text-green-600 transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 mt-4">
+            &copy; 2023 Cosmetica. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Swiper JS for Testimonials Carousel -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <script>
+        // Initialize Swiper
+        const swiper = new Swiper('.swiper-container', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+        });
+
+        // GSAP Animations
+        gsap.from(".font-playfair", { duration: 1.5, y: -50, opacity: 0, ease: "bounce.out" });
+        gsap.from(".font-open", { duration: 2, y: 50, opacity: 0, delay: 0.5 });
+
+        // Parallax Effect
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('section.relative');
+            hero.style.backgroundPositionY = -(scrolled * 0.5) + "px";
+        });
+    </script>
+</body>
+</html>
+```
+
+## about_us.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&family=Lato:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>About Us - Cosmetica</title>
+</head>
+<body class="font-sans">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow z-50">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <a href="index.html" class="text-2xl font-playfair text-green-600">Cosmetica</a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                    <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                    <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Brand Story Section -->
+    <section class="pt-24 bg-white py-16 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h2 class="font-playfair text-4xl font-bold text-charcoal-800 mb-4">Our Story</h2>
+                <p class="font-open text-lg text-charcoal-800 leading-relaxed">Founded in the heart of Pakistan, Cosmetica was born out of a passion for natural beauty and a commitment to sustainable practices. Our founder, Ayesha Malik, envisioned a brand that not only enhances beauty but also respects the environment and the people who use our products.</p>
+                <p class="font-open text-lg text-charcoal-800 leading-relaxed mt-4">From sourcing the finest organic ingredients to employing ethical production methods, every step of our process is meticulously crafted to ensure quality and integrity. Join us on a journey towards healthier skin and a healthier planet.</p>
+            </div>
+            <div class="md:w-1/2 grid grid-cols-2 gap-4">
+                <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Founder" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+                <img src="https://images.unsplash.com/photo-1584534880955-73ae79e13d2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Team" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+                <img src="https://images.unsplash.com/photo-1564869731662-5c6cb1662562?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Team Meeting" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+                <img src="https://images.unsplash.com/photo-1581349487647-c7a4fd3b0f74?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Office" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission and Values Section -->
+    <section class="bg-green-50 py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="font-playfair text-3xl font-bold text-charcoal-800 text-center mb-12">Our Mission & Values</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Organic -->
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-leaf text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-lato text-xl font-bold text-green-500 mb-2">Organic</h3>
+                    <p class="font-open text-gray-700">We use only the purest organic ingredients to ensure the best for your skin.</p>
+                </div>
+                <!-- Cruelty-Free -->
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-heart text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-lato text-xl font-bold text-green-500 mb-2">Cruelty-Free</h3>
+                    <p class="font-open text-gray-700">Our products are never tested on animals, ensuring ethical practices.</p>
+                </div>
+                <!-- Sustainability -->
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-recycle text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-lato text-xl font-bold text-green-500 mb-2">Sustainability</h3>
+                    <p class="font-open text-gray-700">Committed to sustainable sourcing and eco-friendly packaging.</p>
+                </div>
+                <!-- Customer Well-being -->
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-smile text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-lato text-xl font-bold text-green-500 mb-2">Customer Well-being</h3>
+                    <p class="font-open text-gray-700">Dedicated to enhancing your natural beauty and overall wellness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ingredient Commitment Section -->
+    <section class="py-16 px-6">
+        <div class="container mx-auto">
+            <!-- Ingredient 1 -->
+            <div class="flex flex-col md:flex-row items-center mb-16">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Aloe Vera" class="rounded-full shadow-lg hover:shadow-2xl transition transform">
+                </div>
+                <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
+                    <h3 class="font-playfair text-2xl font-bold text-green-500 mb-4">Aloe Vera</h3>
+                    <p class="font-open text-gray-700">Aloe Vera is renowned for its soothing and hydrating properties. It helps in reducing skin inflammation and promoting healing.</p>
+                    <a href="#" class="text-green-500 font-open underline mt-2 inline-block">Read More</a>
+                </div>
+            </div>
+            <!-- Ingredient 2 -->
+            <div class="flex flex-col md:flex-row-reverse items-center mb-16">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1564869731662-5c6cb1662562?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Green Tea" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+                </div>
+                <div class="md:w-1/2 md:pr-12 mt-8 md:mt-0">
+                    <h3 class="font-playfair text-2xl font-bold text-green-500 mb-4">Green Tea</h3>
+                    <p class="font-open text-gray-700">Green Tea is rich in antioxidants that protect the skin from environmental stressors and promote a youthful complexion.</p>
+                    <a href="#" class="text-green-500 font-open underline mt-2 inline-block">Read More</a>
+                </div>
+            </div>
+            <!-- Ingredient 3 -->
+            <div class="flex flex-col md:flex-row items-center mb-16">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chamomile" class="rounded-full shadow-lg hover:shadow-2xl transition transform">
+                </div>
+                <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
+                    <h3 class="font-playfair text-2xl font-bold text-green-500 mb-4">Chamomile</h3>
+                    <p class="font-open text-gray-700">Chamomile offers anti-inflammatory benefits, helping to calm irritated skin and reduce redness.</p>
+                    <a href="#" class="text-green-500 font-open underline mt-2 inline-block">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability and Ethical Practices Section -->
+    <section class="bg-beige-200 py-16 px-6">
+        <div class="container mx-auto text-center">
+            <h2 class="font-playfair text-3xl font-bold text-charcoal-800 mb-8">Sustainability & Ethical Practices</h2>
+            <p class="font-open text-lg text-gray-700 mb-8">At Cosmetica, sustainability is at the core of everything we do. From eco-friendly packaging to ethical sourcing, we ensure that our products are kind to both your skin and the planet.</p>
+            <div class="flex flex-wrap justify-center space-x-4">
+                <div class="m-4">
+                    <img src="https://images.unsplash.com/photo-1564869731662-5c6cb1662562?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Certified Organic" class="w-20 h-20 mx-auto mb-2 hover:scale-105 transition transform">
+                    <p class="font-open text-gray-600">Certified Organic</p>
+                </div>
+                <div class="m-4">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Cruelty-Free" class="w-20 h-20 mx-auto mb-2 hover:scale-105 transition transform">
+                    <p class="font-open text-gray-600">Cruelty-Free</p>
+                </div>
+                <div class="m-4">
+                    <img src="https://images.unsplash.com/photo-1552034736-814bfb01b3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Eco-Friendly Packaging" class="w-20 h-20 mx-auto mb-2 hover:scale-105 transition transform">
+                    <p class="font-open text-gray-600">Eco-Friendly Packaging</p>
+                </div>
+                <div class="m-4">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Renewable Resources" class="w-20 h-20 mx-auto mb-2 hover:scale-105 transition transform">
+                    <p class="font-open text-gray-600">Renewable Resources</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <a href="index.html" class="text-2xl font-playfair text-green-600 mb-4 md:mb-0">Cosmetica</a>
+            <ul class="flex space-x-6 mb-4 md:mb-0">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+            </ul>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-700 hover:text-green-600 transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 mt-4">
+            &copy; 2023 Cosmetica. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // GSAP Animations
+        gsap.from(".font-playfair", { duration: 1.5, y: -50, opacity: 0, ease: "bounce.out" });
+        gsap.from(".font-open", { duration: 2, y: 50, opacity: 0, delay: 0.5 });
+
+        // Scroll Animations using GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Fade-in for Brand Story
+        gsap.from(".pt-24 div > div:first-child", {
+            scrollTrigger: ".pt-24",
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: "power1.out"
+        });
+
+        gsap.from(".pt-24 div > div:last-child", {
+            scrollTrigger: ".pt-24",
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: "power1.out",
+            delay: 0.5
+        });
+
+        // Hover Effects are handled via Tailwind classes
+    </script>
+</body>
+</html>
+```
+
+## products.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>Products - Cosmetica</title>
+</head>
+<body class="font-sans">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow z-50">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <a href="index.html" class="text-2xl font-playfair text-green-600">Cosmetica</a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                    <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                    <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Product Gallery Section -->
+    <section class="pt-24 bg-white py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="font-lato text-3xl font-bold text-charcoal-800 text-center mb-8">Our Products</h2>
+            <div class="flex justify-center mb-12">
+                <button class="filter-btn bg-green-500 text-white font-open py-2 px-4 rounded-l-md">All</button>
+                <button class="filter-btn bg-gray-200 text-gray-700 font-open py-2 px-4">Skincare</button>
+                <button class="filter-btn bg-gray-200 text-gray-700 font-open py-2 px-4">Haircare</button>
+                <button class="filter-btn bg-gray-200 text-gray-700 font-open py-2 px-4 rounded-r-md">Bodycare</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6" id="product-gallery">
+                <!-- Product 1 -->
+                <div class="product-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Aloe Vera Gel" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Aloe Vera Gel</h3>
+                    <p class="font-open text-gray-600 mt-2">Pure aloe vera gel to soothe and hydrate your skin.</p>
+                    <span class="font-open text-green-500 mt-2 block">Category: Skincare</span>
+                    <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                    <img src="https://images.unsplash.com/photo-1614769826802-2a346c7a3c6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chamomile Cream" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Chamomile Cream</h3>
+                    <p class="font-open text-gray-600 mt-2">Calming cream enriched with chamomile extracts.</p>
+                    <span class="font-open text-green-500 mt-2 block">Category: Skincare</span>
+                    <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                    <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Green Tea Serum" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Green Tea Serum</h3>
+                    <p class="font-open text-gray-600 mt-2">Antioxidant-rich serum to rejuvenate your skin.</p>
+                    <span class="font-open text-green-500 mt-2 block">Category: Skincare</span>
+                    <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                    <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Herbal Shampoo" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Herbal Shampoo</h3>
+                    <p class="font-open text-gray-600 mt-2">Nourishing shampoo with natural herbs for healthy hair.</p>
+                    <span class="font-open text-green-500 mt-2 block">Category: Haircare</span>
+                    <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- Product 5 -->
+                <div class="product-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Body Lotion" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Body Lotion</h3>
+                    <p class="font-open text-gray-600 mt-2">Hydrating lotion to keep your skin soft and smooth all day.</p>
+                    <span class="font-open text-green-500 mt-2 block">Category: Bodycare</span>
+                    <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- More Products can be added similarly -->
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="bg-green-500 hover:bg-green-700 text-white font-open py-3 px-6 rounded shadow-lg transition transform hover:scale-105">Load More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Sellers and New Arrivals Section -->
+    <section class="bg-green-50 py-16 px-6">
+        <div class="container mx-auto">
+            <!-- Best Sellers -->
+            <div class="mb-16">
+                <h3 class="font-playfair text-2xl font-bold text-green-500 mb-8 text-center">Best Sellers</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Best Seller 1 -->
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                        <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Best Seller 1" class="w-full h-48 object-cover rounded">
+                        <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Aloe Vera Gel</h4>
+                        <p class="font-open text-gray-600 mt-2">Our most popular aloe vera gel for all skin types.</p>
+                        <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                        <span class="inline-block bg-yellow-300 text-yellow-800 text-xs px-2 py-1 rounded mt-2">Best Seller</span>
+                    </div>
+                    <!-- Best Seller 2 -->
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                        <img src="https://images.unsplash.com/photo-1614769826802-2a346c7a3c6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Best Seller 2" class="w-full h-48 object-cover rounded">
+                        <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Chamomile Cream</h4>
+                        <p class="font-open text-gray-600 mt-2">Experience the calming effects of chamomile in our cream.</p>
+                        <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                        <span class="inline-block bg-yellow-300 text-yellow-800 text-xs px-2 py-1 rounded mt-2">Best Seller</span>
+                    </div>
+                    <!-- Best Seller 3 -->
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                        <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Best Seller 3" class="w-full h-48 object-cover rounded">
+                        <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Green Tea Serum</h4>
+                        <p class="font-open text-gray-600 mt-2">Rejuvenate your skin with our antioxidant-rich serum.</p>
+                        <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                        <span class="inline-block bg-yellow-300 text-yellow-800 text-xs px-2 py-1 rounded mt-2">Best Seller</span>
+                    </div>
+                </div>
+            </div>
+            <!-- New Arrivals -->
+            <div>
+                <h3 class="font-playfair text-2xl font-bold text-green-500 mb-8 text-center">New Arrivals</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- New Arrival 1 -->
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                        <img src="https://images.unsplash.com/photo-1584534880955-73ae79e13d2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="New Arrival 1" class="w-full h-48 object-cover rounded">
+                        <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Herbal Shampoo</h4>
+                        <p class="font-open text-gray-600 mt-2">Nourishing shampoo with natural herbs for healthy hair.</p>
+                        <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                        <span class="inline-block bg-blue-300 text-blue-800 text-xs px-2 py-1 rounded mt-2">New Arrival</span>
+                    </div>
+                    <!-- New Arrival 2 -->
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                        <img src="https://images.unsplash.com/photo-1564869731662-5c6cb1662562?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="New Arrival 2" class="w-full h-48 object-cover rounded">
+                        <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Body Lotion</h4>
+                        <p class="font-open text-gray-600 mt-2">Hydrating lotion to keep your skin soft and smooth all day.</p>
+                        <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                        <span class="inline-block bg-blue-300 text-blue-800 text-xs px-2 py-1 rounded mt-2">New Arrival</span>
+                    </div>
+                    <!-- New Arrival 3 -->
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                        <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="New Arrival 3" class="w-full h-48 object-cover rounded">
+                        <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Vitamin C Serum</h4>
+                        <p class="font-open text-gray-600 mt-2">Brightening serum infused with Vitamin C for radiant skin.</p>
+                        <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                        <span class="inline-block bg-blue-300 text-blue-800 text-xs px-2 py-1 rounded mt-2">New Arrival</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ingredient Spotlight Section -->
+    <section class="py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="font-playfair text-3xl font-bold text-green-500 text-center mb-8">Ingredient Spotlight: Lavender</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lavender" class="w-full h-64 object-cover rounded-lg shadow-lg hover:shadow-2xl transition transform">
+                </div>
+                <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
+                    <p class="font-open text-gray-700 leading-relaxed">Lavender is renowned for its calming and soothing properties. In our products, it helps to reduce redness, irritation, and provides a pleasant fragrance. Lavender oil also promotes healthy skin regeneration and maintains the skin's moisture balance.</p>
+                    <a href="#" class="text-green-500 font-open underline mt-4 inline-block">Discover More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <a href="index.html" class="text-2xl font-playfair text-green-600 mb-4 md:mb-0">Cosmetica</a>
+            <ul class="flex space-x-6 mb-4 md:mb-0">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+            </ul>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-700 hover:text-green-600 transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 mt-4">
+            &copy; 2023 Cosmetica. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // GSAP Animations
+        gsap.from(".font-playfair", { duration: 1.5, y: -50, opacity: 0, ease: "bounce.out" });
+        gsap.from(".font-open", { duration: 2, y: 50, opacity: 0, delay: 0.5 });
+
+        // Scroll Animations using GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Fade-in for Sections
+        gsap.utils.toArray('.container > div').forEach((section) => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                },
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                ease: "power1.out"
+            });
+        });
+
+        // Hover Effects are handled via Tailwind classes
+    </script>
+</body>
+</html>
+```
+
+## All Files Completed.
+[2024-12-31 04:19:23] 
+✓ Mock Feedback generated:
+[2024-12-31 04:19:23] ### **index.html**
+
+#### **Header**
+- **Current Design**:
+  - A fixed header with a white background and shadow for depth.
+  - Contains the brand logo "Cosmetica" styled with the Playfair font in green.
+  - Navigation menu with links to "Home," "About Us," and "Products," utilizing gray text that changes to green on hover.
+  - Utilizes Tailwind CSS for styling and responsive layout.
+
+- **Suggestion for Improvement**:
+  - **Responsive Navigation**: Implement a hamburger menu for mobile devices to enhance usability on smaller screens. Tailwind CSS offers utilities like `hidden`, `block`, and `md:hidden` to manage visibility across breakpoints.
+  - **Header Transparency & Blur**: Introduce a semi-transparent background with a blur effect (`bg-white bg-opacity-80 backdrop-blur`) to give the header a modern, sleek appearance without sacrificing readability.
+  - **Active Link Indicator**: Highlight the currently active page in the navigation menu using a distinct color or underline to improve user orientation.
+  - **Accessibility Enhancements**: Ensure that the navigation is keyboard navigable and include `aria` labels for better accessibility.
+
+#### **Hero Section**
+- **Current Design**:
+  - A full-screen hero section with a background image overlaid by a semi-transparent black layer.
+  - Contains a welcoming heading, a subheading, and a "Shop Now" CTA button.
+  - Utilizes GSAP for fade-in animations on load.
+
+- **Suggestion for Improvement**:
+  - **Enhanced Animations**: Incorporate more dynamic animations such as a subtle parallax effect or text sliding in from different directions to create a more engaging entrance.
+  - **Overlay Gradient**: Replace the solid black overlay with a gradient to soften the transition between the image and the text, enhancing visual depth.
+  - **Call-to-Action Visibility**: Increase the contrast between the CTA button and the background to make it more prominent. Consider using a bolder shade of green or adding a slight drop shadow.
+  - **Responsive Typography**: Ensure that the heading and subheading scale appropriately on all devices for optimal readability.
+
+#### **Introduction Section**
+- **Current Design**:
+  - Features a beige background with a two-column layout on medium and larger screens.
+  - Left column contains a heading and descriptive paragraph highlighting the brand's natural ingredients and sustainability.
+  - Right column displays an image of natural ingredients with rounded corners and a hover scale effect.
+  - Utilizes Tailwind CSS for responsive design.
+
+- **Suggestion for Improvement**:
+  - **Asymmetric Layout**: Create a more dynamic layout by offsetting the image slightly or using diagonal dividers to break the monotony of standard columns.
+  - **Interactive Elements**: Add icons or infographics to visually represent key points about natural ingredients and sustainability.
+  - **Image Optimization**: Use higher-resolution images and implement lazy loading to improve load times without compromising quality.
+  - **Consistent Hover Effects**: Enhance interactivity by adding subtle animations or overlay effects to the image, such as a color overlay or brief description on hover.
+
+#### **Featured Products Section**
+- **Current Design**:
+  - Centered heading with a grid layout showcasing three featured products.
+  - Each product card includes an image, title, description, and a "View Product" button.
+  - Products have a white background, shadow, rounded corners, and hover effects that elevate the card and scale the image slightly.
+  - A "View All Products" button is centered below the product grid.
+
+- **Suggestion for Improvement**:
+  - **Dynamic Product Display**: Incorporate a carousel or slider for featured products to display more items without cluttering the page.
+  - **Quick View Functionality**: Allow users to hover over a product and view a quick summary or add to cart option without navigating away.
+  - **Consistent Image Dimensions**: Ensure all product images have uniform dimensions and aspect ratios to maintain a cohesive grid appearance.
+  - **Enhanced Button Design**: Make the "View Product" buttons more prominent by using larger font sizes or adding icons to indicate action.
+
+#### **Testimonials Section**
+- **Current Design**:
+  - Utilizes Swiper.js to create a carousel of three customer testimonials.
+  - Each slide contains a customer image, their testimonial, and their name.
+  - Includes navigation arrows and pagination indicators.
+  - The section has a light gray background to differentiate it from other sections.
+
+- **Suggestion for Improvement**:
+  - **Rich Media Integration**: Add video testimonials or star ratings to provide more depth and authenticity to customer feedback.
+  - **Custom Swiper Styling**: Customize the pagination bullets and navigation arrows to match the website’s color scheme for a more integrated look.
+  - **Accessibility Considerations**: Ensure that the carousel is navigable via keyboard and that screen readers can interpret the testimonials effectively.
+  - **Mobile Optimization**: Adjust the number of visible testimonials or the swipe sensitivity to enhance user experience on touch devices.
+
+#### **Newsletter Signup Section**
+- **Current Design**:
+  - Features a green background with centered content encouraging users to join the newsletter.
+  - Includes a heading, a descriptive paragraph, and an email input field with a "Subscribe" button.
+  - Utilizes Tailwind CSS for responsive design and hover effects on the button.
+
+- **Suggestion for Improvement**:
+  - **Visual Hierarchy**: Increase the prominence of the heading and button by using larger font sizes or contrasting colors to draw more attention.
+  - **Form Validation**: Implement real-time validation feedback to inform users if their email input is valid, enhancing usability.
+  - **Success Feedback**: After submission, display a thank-you message or animation to acknowledge the user's action positively.
+  - **Incentive Display**: Highlight any incentives for subscribing, such as exclusive discounts or early access to products, to boost conversion rates.
+
+#### **Footer**
+- **Current Design**:
+  - White background with a container that includes the brand logo, navigation links, and social media icons.
+  - Uses Font Awesome for social media icons with hover color transitions.
+  - Contains a copyright notice.
+
+- **Suggestion for Improvement**:
+  - **Additional Links**: Incorporate links to "Contact Us," "Privacy Policy," "Terms of Service," and "FAQ" to provide comprehensive navigation options.
+  - **Newsletter Integration**: Add a small newsletter signup form within the footer for users who scroll to the bottom.
+  - **Improved Iconography**: Upgrade social media icons to SVGs for better scalability and customization. Consider using branded colors for each platform to enhance recognition.
+  - **Layout Enhancement**: Use a multi-column layout to organize links and information more efficiently, especially on larger screens.
+
+---
+
+### **about_us.html**
+
+#### **Header**
+- **Current Design**:
+  - Identical to the header in `index.html`, featuring a fixed white background with a shadow, brand logo, and navigation links.
+  
+- **Suggestion for Improvement**:
+  - **Consistency Across Pages**: Ensure that any enhancements suggested for the `index.html` header (such as responsive navigation and active link indicators) are uniformly applied here for a consistent user experience.
+  - **Sticky Behavior**: Confirm that the header remains fixed during scrolling without obstructing content, especially on smaller devices.
+
+#### **Brand Story Section**
+- **Current Design**:
+  - Two-column layout with text on the left detailing the brand's history and mission.
+  - Right column showcases a grid of four images related to the founder, team, and office environment.
+  - Images have rounded corners and hover shadows for interactivity.
+
+- **Suggestion for Improvement**:
+  - **Interactive Storytelling**: Implement a timeline or interactive sliders that allow users to navigate through different milestones of the brand’s history.
+  - **Image Variety**: Use a mix of portrait and action shots to better convey the brand’s personality and values.
+  - **Visual Hierarchy**: Emphasize key points in the brand story with bold typography or highlighted text to guide the reader’s attention.
+  - **Enhanced Image Effects**: Introduce more engaging hover effects, such as image overlays with short descriptions or slight rotations for added dynamism.
+
+#### **Mission and Values Section**
+- **Current Design**:
+  - Green-tinged background with a centered heading.
+  - Features a four-column grid displaying the brand’s core values: Organic, Cruelty-Free, Sustainability, Customer Well-being.
+  - Each value includes an icon, title, and descriptive text.
+
+- **Suggestion for Improvement**:
+  - **Icon Enhancement**: Use custom-designed SVG icons that better represent each value, possibly with subtle animations to capture attention.
+  - **Interactive Elements**: Allow users to click on each value to reveal more detailed information or related content in a modal or accordion format.
+  - **Color Differentiation**: Assign distinct shades of green or complementary colors to each value to visually differentiate them while maintaining a cohesive theme.
+  - **Responsive Design**: Ensure that the grid adjusts gracefully on smaller screens, possibly stacking the values vertically or using a two-column layout for better readability.
+
+#### **Ingredient Commitment Section**
+- **Current Design**:
+  - Multiple flex rows alternating the image and text alignment for different ingredients (Aloe Vera, Green Tea, Chamomile).
+  - Each ingredient features an image, a heading with the ingredient name, descriptive text, and a "Read More" link.
+  - Images have hover shadows to enhance interactivity.
+
+- **Suggestion for Improvement**:
+  - **Consistent Image Styling**: Standardize image sizes and shapes (e.g., all circular or rectangular) to maintain visual consistency across different ingredients.
+  - **Interactive Details**: Replace "Read More" links with expandable sections or hover-triggered pop-ups that provide additional information without navigating away from the page.
+  - **Visual Breaks**: Incorporate dividers or alternating background colors between each ingredient block to create clear separations and enhance readability.
+  - **Infographic Integration**: Include small infographics or icons that highlight the key benefits of each ingredient for quick reference.
+
+#### **Sustainability and Ethical Practices Section**
+- **Current Design**:
+  - Beige background with a centered heading and descriptive paragraph.
+  - Displays four certifications (Certified Organic, Cruelty-Free, Eco-Friendly Packaging, Renewable Resources) in a flex row with images and labels.
+  - Certification images have hover scale effects for interactivity.
+
+- **Suggestion for Improvement**:
+  - **Detailed Descriptions**: Provide brief explanations or tooltips for each certification icon to inform users about what each certification signifies.
+  - **Certification Logos**: Use official certification logos to enhance credibility and recognition among users.
+  - **Interactive Elements**: Implement clickable certifications that open detailed pages or modals explaining the brand's commitment to each practice.
+  - **Visual Hierarchy**: Arrange certifications in order of importance or recognition, possibly using size or prominence to guide user attention.
+
+#### **Footer**
+- **Current Design**:
+  - Identical to the footer in `index.html`, featuring the brand logo, navigation links, social media icons, and a copyright notice.
+  
+- **Suggestion for Improvement**:
+  - **Unified Enhancements**: Apply the same footer improvement suggestions provided for `index.html` to ensure consistency.
+  - **Additional Information**: Consider adding store locator links, customer service contact options, or a sitemap for enhanced navigation.
+
+---
+
+### **products.html**
+
+#### **Header**
+- **Current Design**:
+  - Matches the header design in `index.html`, including the fixed white background, brand logo, and navigation links.
+  
+- **Suggestion for Improvement**:
+  - **Consistency Across Pages**: Ensure that any proposed header enhancements (responsive navigation, active link indicators) are implemented here to maintain a uniform user experience.
+  - **Sticky Optimization**: Verify that the header remains accessible without hindering the product browsing experience, especially on mobile devices.
+
+#### **Product Gallery Section**
+- **Current Design**:
+  - Features a centered heading "Our Products" and a row of filter buttons ("All," "Skincare," "Haircare," "Bodycare").
+  - Displays products in a responsive grid layout with each product card containing an image, title, description, category label, and a "View Product" button.
+  - Includes a "Load More" button centered below the product grid.
+  - Utilizes Tailwind CSS for responsive design and transitions.
+
+- **Suggestion for Improvement**:
+  - **Enhanced Filtering UI**: Implement active state indicators for filter buttons to show the current selection clearly. Use transitions or color changes to provide visual feedback when filters are applied.
+  - **Dynamic Filtering with Animations**: Incorporate smooth animations when filtering products, such as fading out non-selected items and sliding in selected ones, to create a more engaging experience.
+  - **Lazy Loading**: Optimize performance by implementing lazy loading for product images, ensuring faster initial load times especially when more products are added.
+  - **Pagination Over "Load More"**: Consider using infinite scrolling or pagination alternatives to manage a large number of products without overwhelming the user.
+  - **Product Quick View**: Add a "Quick View" option on hover, allowing users to see more details or add products to their cart without leaving the page.
+
+#### **Best Sellers and New Arrivals Section**
+- **Current Design**:
+  - Divided into two subsections: "Best Sellers" and "New Arrivals."
+  - Each subsection contains a grid of products similar to the main product gallery, with additional labels indicating "Best Seller" or "New Arrival."
+  - Products feature images, titles, descriptions, "Shop Now" buttons, and corresponding labels.
+  - Uses a green-tinged background for the "Best Sellers" and "New Arrivals" areas.
+
+- **Suggestion for Improvement**:
+  - **Distinct Visual Treatments**: Use different background shades or design elements for "Best Sellers" and "New Arrivals" to differentiate them visually and enhance user focus.
+  - **Reviewer Ratings**: Incorporate star ratings or review counts to add credibility to best-selling products.
+  - **Highlight Limited Editions**: For new arrivals, emphasize any limited edition or exclusive releases with badges or countdown timers to create urgency.
+  - **Carousel Integration**: Utilize carousels for each subsection to allow users to navigate through more products without extensive scrolling.
+
+#### **Ingredient Spotlight Section**
+- **Current Design**:
+  - Highlights an ingredient ("Lavender") with a centered heading, an image on the left, and descriptive text on the right.
+  - Includes a "Discover More" link for additional information.
+  - Utilizes a flexbox layout for responsiveness.
+
+- **Suggestion for Improvement**:
+  - **Rotating Spotlights**: Implement a rotating spotlight feature that cycles through different ingredients periodically, keeping the content fresh and engaging.
+  - **Interactive Media**: Add videos or interactive animations that demonstrate the benefits and usage of the spotlighted ingredient.
+  - **Visual Emphasis**: Use larger images or unique shapes (e.g., circular images) to make the spotlight section more visually appealing.
+  - **Enhanced Link Actions**: Replace the "Discover More" text link with a button or an expandable section to encourage user interaction and exploration.
+
+#### **Footer**
+- **Current Design**:
+  - Mirrors the footer design in `index.html`, containing the brand logo, navigation links, social media icons, and a copyright.
+  
+- **Suggestion for Improvement**:
+  - **Consistency Across Pages**: Apply all prior footer enhancement suggestions to maintain uniformity across the website.
+  - **Enhanced Navigation**: Include breadcrumbs or category links related to the products to aid user navigation directly from the footer.
+
+---
+
+### **General Recommendations Across All Pages**
+
+#### **Visual Appeal & Creativity**
+- **Unique Color Palette**: While the green theme aligns with the brand's natural focus, consider incorporating complementary colors to add vibrancy and prevent the palette from feeling monotonous. Tools like Adobe Color can help in selecting harmonious color schemes.
+- **Typography Variation**: Utilize a combination of font weights and styles to create a more dynamic and engaging typographic hierarchy. For example, pair bold headings with lighter subheadings for contrast.
+- **Consistent Iconography**: Ensure that all icons across the website share a consistent style (outline, solid, filled) to maintain visual cohesion.
+
+#### **Animations & Interactivity**
+- **Balanced Animations**: Avoid overusing animations to prevent overwhelming the user. Focus on subtle, purposeful animations that enhance the user experience, such as button hover effects or section entrance animations.
+- **Interactive Feedback**: Provide immediate visual feedback for user interactions, such as button clicks or form submissions, to improve engagement and usability.
+- **Microinteractions**: Incorporate small interactive elements like rating stars that light up on hover or toggles that animate when switched to add a delightful touch.
+
+#### **Responsiveness & Mobile Optimization**
+- **Fluid Typography**: Use responsive typography techniques (e.g., `clamp()` in CSS) to ensure text scales gracefully across different screen sizes.
+- **Touch-Friendly Elements**: Ensure that all interactive elements like buttons and links are adequately sized and spaced for touch interaction on mobile devices.
+- **Navigation Accessibility**: Optimize the mobile navigation to be easily accessible and intuitive, reducing the number of taps required to reach desired sections.
+
+#### **Usability & User Experience**
+- **Clear Call-to-Actions**: Ensure that all CTA buttons are clearly visible and communicate the intended action effectively. Use action-oriented text and sufficient contrast.
+- **Consistent Layouts**: Maintain consistent layouts and design patterns across all pages to create a predictable and user-friendly experience.
+- **Accessible Design**: Adhere to WCAG guidelines by ensuring sufficient color contrast, providing alt text for images, and enabling keyboard navigation to make the website accessible to all users.
+
+#### **Functionality & Performance**
+- **Optimize Loading Times**: Compress images and leverage browser caching to improve page load speeds, enhancing overall user satisfaction.
+- **Minimize JavaScript Usage**: Evaluate the necessity of each JavaScript library and remove any redundant scripts to reduce page weight and improve performance.
+- **Error Handling**: Implement proper error handling for forms and interactive elements to guide users in case of issues, such as invalid email inputs or failed submissions.
+
+#### **Consistency Across Pages**
+- **Unified Design Language**: Ensure that fonts, colors, button styles, and other UI elements are consistent across all pages to reinforce brand identity and provide a seamless browsing experience.
+- **Shared Components**: Utilize shared components like headers, footers, and buttons to maintain uniformity and simplify future updates or redesigns.
+
+By implementing these recommendations, **Cosmetica** can significantly enhance its website's visual appeal, functionality, and user experience, ultimately leading to increased user engagement and satisfaction.
+[2024-12-31 04:19:24] 
+✓ Mock Code refined:
+[2024-12-31 04:19:24] ## index.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&family=Lato:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>Cosmetica - Home</title>
+</head>
+<body class="font-sans">
+    <!-- Header -->
+    <header class="fixed w-full bg-white bg-opacity-80 backdrop-blur-md shadow z-50 transition-all">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <a href="index.html" class="text-2xl font-playfair text-green-600">Cosmetica</a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="text-gray-700 md:hidden focus:outline-none" aria-label="Toggle navigation">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <!-- Navigation -->
+            <nav id="nav-menu" class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition active:text-green-600" aria-current="page">Home</a></li>
+                    <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                    <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-nav" class="md:hidden hidden bg-white bg-opacity-90 backdrop-blur-md">
+            <ul class="flex flex-col space-y-4 py-4 px-6">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition active:text-green-600" aria-current="page">Home</a></li>
+                <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-center text-white">
+        <img src="https://images.unsplash.com/photo-1612831664404-1cd4fa75b179?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-60"></div>
+        <div class="relative z-10 px-6">
+            <h1 class="font-playfair text-4xl md:text-6xl font-bold uppercase mb-4 opacity-0">Welcome to Cosmetica</h1>
+            <p class="font-open text-xl md:text-2xl mb-8 opacity-0">Naturally enhancing your beauty</p>
+            <a href="products.html" class="bg-green-600 hover:bg-green-800 text-white font-open uppercase py-3 px-6 rounded shadow-lg transform hover:scale-105 transition opacity-0" id="cta-button">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="bg-beige-100 py-16 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h2 class="font-lato text-3xl md:text-4xl font-bold text-charcoal-800 mb-4">Discover the Power of Nature</h2>
+                <p class="font-open text-lg md:text-xl text-charcoal-800 leading-relaxed">At Cosmetica, we believe in harnessing the purest natural ingredients to create skincare products that not only enhance your beauty but also promote overall well-being. Our commitment to sustainability and ethical practices ensures that you receive products that are as good for the environment as they are for your skin.</p>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1592496001469-f3a9ec7e1ddb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Natural Ingredients" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-lato font-bold text-charcoal-800 text-center mb-12">Featured Products</h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Product 1 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform">
+                            <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Aloe Vera Gel" class="w-full h-48 object-cover rounded">
+                            <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Aloe Vera Gel</h3>
+                            <p class="font-open text-gray-600 mt-2">Pure aloe vera gel to soothe and hydrate your skin.</p>
+                            <a href="products.html" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                        </div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform">
+                            <img src="https://images.unsplash.com/photo-1614769826802-2a346c7a3c6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chamomile Cream" class="w-full h-48 object-cover rounded">
+                            <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Chamomile Cream</h3>
+                            <p class="font-open text-gray-600 mt-2">Calming cream enriched with chamomile extracts.</p>
+                            <a href="products.html" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                        </div>
+                    </div>
+                    <!-- Product 3 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform">
+                            <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Green Tea Serum" class="w-full h-48 object-cover rounded">
+                            <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Green Tea Serum</h3>
+                            <p class="font-open text-gray-600 mt-2">Antioxidant-rich serum to rejuvenate your skin.</p>
+                            <a href="products.html" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination mt-4"></div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="products.html" class="bg-green-500 hover:bg-green-700 text-white font-open py-3 px-6 rounded shadow-lg transition transform hover:scale-105">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="bg-gray-100 py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-lato font-bold text-charcoal-800 text-center mb-12">What Our Customers Say</h2>
+            <div class="relative">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <!-- Testimonial 1 -->
+                        <div class="swiper-slide bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Customer 1" class="w-24 h-24 rounded-full mb-4">
+                            <p class="font-serif italic text-gray-800 mb-2">"Cosmetica's products have transformed my skincare routine. I feel more confident and my skin has never looked better!"</p>
+                            <span class="font-open text-gray-600">- Ayesha K.</span>
+                        </div>
+                        <!-- Testimonial 2 -->
+                        <div class="swiper-slide bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <img src="https://images.unsplash.com/photo-1584534880955-73ae79e13d2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Customer 2" class="w-24 h-24 rounded-full mb-4">
+                            <p class="font-serif italic text-gray-800 mb-2">"I love that Cosmetica uses natural ingredients. My skin feels nourished and healthy every day."</p>
+                            <span class="font-open text-gray-600">- Zara M.</span>
+                        </div>
+                        <!-- Testimonial 3 -->
+                        <div class="swiper-slide bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Customer 3" class="w-24 h-24 rounded-full mb-4">
+                            <p class="font-serif italic text-gray-800 mb-2">"The chamomile cream is my go-to for a calming evening routine. Highly recommend Cosmetica!"</p>
+                            <span class="font-open text-gray-600">- Fatima S.</span>
+                        </div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination mt-4"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup Section -->
+    <section class="bg-green-100 py-16 px-6">
+        <div class="container mx-auto text-center">
+            <h2 class="font-lato text-3xl font-bold text-charcoal-800 mb-4">Join Our Newsletter</h2>
+            <p class="font-open text-xl text-gray-700 mb-8">Stay updated with the latest products and special offers.</p>
+            <form class="max-w-md mx-auto" id="newsletter-form">
+                <div class="flex flex-col md:flex-row items-center">
+                    <input type="email" id="newsletter-email" placeholder="Enter your email" class="w-full md:w-auto flex-grow p-3 rounded-l-md border border-gray-300 focus:outline-none" required aria-label="Email Address">
+                    <button type="submit" class="mt-4 md:mt-0 bg-green-500 hover:bg-green-700 text-white font-open py-3 px-6 rounded-r-md transition transform hover:scale-105">Subscribe</button>
+                </div>
+                <p class="text-sm text-gray-600 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+                <p id="newsletter-message" class="text-sm text-green-600 mt-2 hidden">Thank you for subscribing!</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <a href="index.html" class="text-2xl font-playfair text-green-600 mb-4 md:mb-0">Cosmetica</a>
+            <ul class="flex space-x-6 mb-4 md:mb-0">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+                <li><a href="contact_us.html" class="text-gray-700 hover:text-green-600 transition">Contact Us</a></li>
+                <li><a href="privacy_policy.html" class="text-gray-700 hover:text-green-600 transition">Privacy Policy</a></li>
+                <li><a href="terms_of_service.html" class="text-gray-700 hover:text-green-600 transition">Terms of Service</a></li>
+                <li><a href="faq.html" class="text-gray-700 hover:text-green-600 transition">FAQ</a></li>
+            </ul>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 mt-4">
+            &copy; 2023 Cosmetica. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Swiper JS for Testimonials and Featured Products Carousel -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+        });
+
+        // Initialize Swiper for Featured Products
+        const featuredSwiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // Initialize Swiper for Testimonials
+        const testimonialsSwiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 7000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // GSAP Animations
+        gsap.from(".font-playfair", { duration: 1.5, y: -50, opacity: 0, ease: "bounce.out" });
+        gsap.from(".font-open", { duration: 2, y: 50, opacity: 0, delay: 0.5 });
+        gsap.from("#cta-button", { duration: 1.5, scale: 0.9, opacity: 0, delay: 1, ease: "power2.out" });
+
+        // Parallax Effect
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('section.relative');
+            hero.style.backgroundPositionY = -(scrolled * 0.5) + "px";
+        });
+
+        // Newsletter Form Handling
+        const newsletterForm = document.getElementById('newsletter-form');
+        const newsletterMessage = document.getElementById('newsletter-message');
+
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Simple validation
+            const email = document.getElementById('newsletter-email').value;
+            if (validateEmail(email)) {
+                newsletterMessage.classList.remove('hidden');
+                newsletterForm.reset();
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i;
+            return re.test(String(email).toLowerCase());
+        }
+    </script>
+</body>
+</html>
+```
+
+## about_us.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&family=Lato:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>About Us - Cosmetica</title>
+</head>
+<body class="font-sans">
+    <!-- Header -->
+    <header class="fixed w-full bg-white bg-opacity-80 backdrop-blur-md shadow z-50 transition-all">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <a href="index.html" class="text-2xl font-playfair text-green-600">Cosmetica</a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="text-gray-700 md:hidden focus:outline-none" aria-label="Toggle navigation">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <!-- Navigation -->
+            <nav id="nav-menu" class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                    <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition active:text-green-600" aria-current="page">About Us</a></li>
+                    <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-nav" class="md:hidden hidden bg-white bg-opacity-90 backdrop-blur-md">
+            <ul class="flex flex-col space-y-4 py-4 px-6">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition active:text-green-600" aria-current="page">About Us</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Brand Story Section -->
+    <section class="pt-24 bg-white py-16 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h2 class="font-playfair text-4xl font-bold text-charcoal-800 mb-4">Our Story</h2>
+                <p class="font-open text-lg text-charcoal-800 leading-relaxed">Founded in the heart of Pakistan, Cosmetica was born out of a passion for natural beauty and a commitment to sustainable practices. Our founder, Ayesha Malik, envisioned a brand that not only enhances beauty but also respects the environment and the people who use our products.</p>
+                <p class="font-open text-lg text-charcoal-800 leading-relaxed mt-4">From sourcing the finest organic ingredients to employing ethical production methods, every step of our process is meticulously crafted to ensure quality and integrity. Join us on a journey towards healthier skin and a healthier planet.</p>
+            </div>
+            <div class="md:w-1/2 grid grid-cols-2 gap-4">
+                <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Founder" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+                <img src="https://images.unsplash.com/photo-1584534880955-73ae79e13d2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Team" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+                <img src="https://images.unsplash.com/photo-1564869731662-5c6cb1662562?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Team Meeting" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+                <img src="https://images.unsplash.com/photo-1581349487647-c7a4fd3b0f74?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Office" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission and Values Section -->
+    <section class="bg-green-50 py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="font-playfair text-3xl font-bold text-charcoal-800 text-center mb-12">Our Mission & Values</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Organic -->
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-leaf text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-lato text-xl font-bold text-green-500 mb-2">Organic</h3>
+                    <p class="font-open text-gray-700">We use only the purest organic ingredients to ensure the best for your skin.</p>
+                </div>
+                <!-- Cruelty-Free -->
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-heart text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-lato text-xl font-bold text-green-500 mb-2">Cruelty-Free</h3>
+                    <p class="font-open text-gray-700">Our products are never tested on animals, ensuring ethical practices.</p>
+                </div>
+                <!-- Sustainability -->
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-recycle text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-lato text-xl font-bold text-green-500 mb-2">Sustainability</h3>
+                    <p class="font-open text-gray-700">Committed to sustainable sourcing and eco-friendly packaging.</p>
+                </div>
+                <!-- Customer Well-being -->
+                <div class="flex flex-col items-center text-center">
+                    <i class="fas fa-smile text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-lato text-xl font-bold text-green-500 mb-2">Customer Well-being</h3>
+                    <p class="font-open text-gray-700">Dedicated to enhancing your natural beauty and overall wellness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ingredient Commitment Section -->
+    <section class="py-16 px-6">
+        <div class="container mx-auto">
+            <!-- Ingredient 1 -->
+            <div class="flex flex-col md:flex-row items-center mb-16">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Aloe Vera" class="rounded-full shadow-lg hover:shadow-2xl transition transform">
+                </div>
+                <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
+                    <h3 class="font-playfair text-2xl font-bold text-green-500 mb-4">Aloe Vera</h3>
+                    <p class="font-open text-gray-700">Aloe Vera is renowned for its soothing and hydrating properties. It helps in reducing skin inflammation and promoting healing.</p>
+                    <a href="#" class="text-green-500 font-open underline mt-2 inline-block">Read More</a>
+                </div>
+            </div>
+            <!-- Ingredient 2 -->
+            <div class="flex flex-col md:flex-row-reverse items-center mb-16">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1564869731662-5c6cb1662562?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Green Tea" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+                </div>
+                <div class="md:w-1/2 md:pr-12 mt-8 md:mt-0">
+                    <h3 class="font-playfair text-2xl font-bold text-green-500 mb-4">Green Tea</h3>
+                    <p class="font-open text-gray-700">Green Tea is rich in antioxidants that protect the skin from environmental stressors and promote a youthful complexion.</p>
+                    <a href="#" class="text-green-500 font-open underline mt-2 inline-block">Read More</a>
+                </div>
+            </div>
+            <!-- Ingredient 3 -->
+            <div class="flex flex-col md:flex-row items-center mb-16">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chamomile" class="rounded-full shadow-lg hover:shadow-2xl transition transform">
+                </div>
+                <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
+                    <h3 class="font-playfair text-2xl font-bold text-green-500 mb-4">Chamomile</h3>
+                    <p class="font-open text-gray-700">Chamomile offers anti-inflammatory benefits, helping to calm irritated skin and reduce redness.</p>
+                    <a href="#" class="text-green-500 font-open underline mt-2 inline-block">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability and Ethical Practices Section -->
+    <section class="bg-beige-200 py-16 px-6">
+        <div class="container mx-auto text-center">
+            <h2 class="font-playfair text-3xl font-bold text-charcoal-800 mb-8">Sustainability & Ethical Practices</h2>
+            <p class="font-open text-lg text-gray-700 mb-8">At Cosmetica, sustainability is at the core of everything we do. From eco-friendly packaging to ethical sourcing, we ensure that our products are kind to both your skin and the planet.</p>
+            <div class="flex flex-wrap justify-center space-x-4">
+                <div class="m-4">
+                    <img src="https://images.unsplash.com/photo-1564869731662-5c6cb1662562?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Certified Organic" class="w-20 h-20 mx-auto mb-2 hover:scale-105 transition transform">
+                    <p class="font-open text-gray-600">Certified Organic</p>
+                </div>
+                <div class="m-4">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Cruelty-Free" class="w-20 h-20 mx-auto mb-2 hover:scale-105 transition transform">
+                    <p class="font-open text-gray-600">Cruelty-Free</p>
+                </div>
+                <div class="m-4">
+                    <img src="https://images.unsplash.com/photo-1552034736-814bfb01b3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Eco-Friendly Packaging" class="w-20 h-20 mx-auto mb-2 hover:scale-105 transition transform">
+                    <p class="font-open text-gray-600">Eco-Friendly Packaging</p>
+                </div>
+                <div class="m-4">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Renewable Resources" class="w-20 h-20 mx-auto mb-2 hover:scale-105 transition transform">
+                    <p class="font-open text-gray-600">Renewable Resources</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <a href="index.html" class="text-2xl font-playfair text-green-600 mb-4 md:mb-0">Cosmetica</a>
+            <ul class="flex space-x-6 mb-4 md:mb-0">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+                <li><a href="contact_us.html" class="text-gray-700 hover:text-green-600 transition">Contact Us</a></li>
+                <li><a href="privacy_policy.html" class="text-gray-700 hover:text-green-600 transition">Privacy Policy</a></li>
+                <li><a href="terms_of_service.html" class="text-gray-700 hover:text-green-600 transition">Terms of Service</a></li>
+                <li><a href="faq.html" class="text-gray-700 hover:text-green-600 transition">FAQ</a></li>
+            </ul>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 mt-4">
+            &copy; 2023 Cosmetica. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+        });
+
+        // GSAP Animations
+        gsap.from(".font-playfair", { duration: 1.5, y: -50, opacity: 0, ease: "bounce.out" });
+        gsap.from(".font-open", { duration: 2, y: 50, opacity: 0, delay: 0.5 });
+
+        // Scroll Animations using GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Fade-in for Brand Story
+        gsap.from(".pt-24 div > div:first-child", {
+            scrollTrigger: ".pt-24",
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: "power1.out"
+        });
+
+        gsap.from(".pt-24 div > div:last-child", {
+            scrollTrigger: ".pt-24",
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: "power1.out",
+            delay: 0.5
+        });
+
+        // Enhanced Hover Effects for Images
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('mouseenter', () => {
+                gsap.to(img, { scale: 1.05, duration: 0.3 });
+            });
+            img.addEventListener('mouseleave', () => {
+                gsap.to(img, { scale: 1, duration: 0.3 });
+            });
+        });
+    </script>
+</body>
+</html>
+```
+
+## products.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>Products - Cosmetica</title>
+</head>
+<body class="font-sans">
+    <!-- Header -->
+    <header class="fixed w-full bg-white bg-opacity-80 backdrop-blur-md shadow z-50 transition-all">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <a href="index.html" class="text-2xl font-playfair text-green-600">Cosmetica</a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="text-gray-700 md:hidden focus:outline-none" aria-label="Toggle navigation">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <!-- Navigation -->
+            <nav id="nav-menu" class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                    <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                    <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition active:text-green-600" aria-current="page">Products</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-nav" class="md:hidden hidden bg-white bg-opacity-90 backdrop-blur-md">
+            <ul class="flex flex-col space-y-4 py-4 px-6">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition active:text-green-600" aria-current="page">Products</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Product Gallery Section -->
+    <section class="pt-24 bg-white py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="font-lato text-3xl font-bold text-charcoal-800 text-center mb-8">Our Products</h2>
+            <div class="flex justify-center mb-12 space-x-2">
+                <button class="filter-btn bg-green-600 text-white font-open py-2 px-4 rounded-l-md active-filter">All</button>
+                <button class="filter-btn bg-gray-200 text-gray-700 font-open py-2 px-4">Skincare</button>
+                <button class="filter-btn bg-gray-200 text-gray-700 font-open py-2 px-4">Haircare</button>
+                <button class="filter-btn bg-gray-200 text-gray-700 font-open py-2 px-4 rounded-r-md">Bodycare</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6" id="product-gallery">
+                <!-- Product 1 -->
+                <div class="product-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform" data-category="Skincare">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Aloe Vera Gel" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Aloe Vera Gel</h3>
+                    <p class="font-open text-gray-600 mt-2">Pure aloe vera gel to soothe and hydrate your skin.</p>
+                    <span class="font-open text-green-500 mt-2 block">Category: Skincare</span>
+                    <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform" data-category="Skincare">
+                    <img src="https://images.unsplash.com/photo-1614769826802-2a346c7a3c6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chamomile Cream" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Chamomile Cream</h3>
+                    <p class="font-open text-gray-600 mt-2">Calming cream enriched with chamomile extracts.</p>
+                    <span class="font-open text-green-500 mt-2 block">Category: Skincare</span>
+                    <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform" data-category="Skincare">
+                    <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Green Tea Serum" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Green Tea Serum</h3>
+                    <p class="font-open text-gray-600 mt-2">Antioxidant-rich serum to rejuvenate your skin.</p>
+                    <span class="font-open text-green-500 mt-2 block">Category: Skincare</span>
+                    <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform" data-category="Haircare">
+                    <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Herbal Shampoo" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Herbal Shampoo</h3>
+                    <p class="font-open text-gray-600 mt-2">Nourishing shampoo with natural herbs for healthy hair.</p>
+                    <span class="font-open text-green-500 mt-2 block">Category: Haircare</span>
+                    <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- Product 5 -->
+                <div class="product-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform" data-category="Bodycare">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Body Lotion" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Body Lotion</h3>
+                    <p class="font-open text-gray-600 mt-2">Hydrating lotion to keep your skin soft and smooth all day.</p>
+                    <span class="font-open text-green-500 mt-2 block">Category: Bodycare</span>
+                    <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- More Products can be added similarly -->
+            </div>
+            <div class="text-center mt-12">
+                <button id="load-more" class="bg-green-500 hover:bg-green-700 text-white font-open py-3 px-6 rounded shadow-lg transition transform hover:scale-105">Load More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Sellers and New Arrivals Section -->
+    <section class="bg-green-50 py-16 px-6">
+        <div class="container mx-auto">
+            <!-- Best Sellers -->
+            <div class="mb-16">
+                <h3 class="font-playfair text-2xl font-bold text-green-500 mb-8 text-center">Best Sellers</h3>
+                <div class="swiper-container best-sellers-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Best Seller 1 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                                <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Best Seller 1" class="w-full h-48 object-cover rounded">
+                                <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Aloe Vera Gel</h4>
+                                <p class="font-open text-gray-600 mt-2">Our most popular aloe vera gel for all skin types.</p>
+                                <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                                <span class="inline-block bg-yellow-300 text-yellow-800 text-xs px-2 py-1 rounded mt-2">Best Seller</span>
+                            </div>
+                        </div>
+                        <!-- Best Seller 2 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                                <img src="https://images.unsplash.com/photo-1614769826802-2a346c7a3c6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Best Seller 2" class="w-full h-48 object-cover rounded">
+                                <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Chamomile Cream</h4>
+                                <p class="font-open text-gray-600 mt-2">Experience the calming effects of chamomile in our cream.</p>
+                                <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                                <span class="inline-block bg-yellow-300 text-yellow-800 text-xs px-2 py-1 rounded mt-2">Best Seller</span>
+                            </div>
+                        </div>
+                        <!-- Best Seller 3 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                                <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Best Seller 3" class="w-full h-48 object-cover rounded">
+                                <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Green Tea Serum</h4>
+                                <p class="font-open text-gray-600 mt-2">Rejuvenate your skin with our antioxidant-rich serum.</p>
+                                <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                                <span class="inline-block bg-yellow-300 text-yellow-800 text-xs px-2 py-1 rounded mt-2">Best Seller</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination mt-4"></div>
+                </div>
+            </div>
+            <!-- New Arrivals -->
+            <div>
+                <h3 class="font-playfair text-2xl font-bold text-green-500 mb-8 text-center">New Arrivals</h3>
+                <div class="swiper-container new-arrivals-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- New Arrival 1 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                                <img src="https://images.unsplash.com/photo-1584534880955-73ae79e13d2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="New Arrival 1" class="w-full h-48 object-cover rounded">
+                                <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Herbal Shampoo</h4>
+                                <p class="font-open text-gray-600 mt-2">Nourishing shampoo with natural herbs for healthy hair.</p>
+                                <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                                <span class="inline-block bg-blue-300 text-blue-800 text-xs px-2 py-1 rounded mt-2">New Arrival</span>
+                            </div>
+                        </div>
+                        <!-- New Arrival 2 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                                <img src="https://images.unsplash.com/photo-1564869731662-5c6cb1662562?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="New Arrival 2" class="w-full h-48 object-cover rounded">
+                                <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Body Lotion</h4>
+                                <p class="font-open text-gray-600 mt-2">Hydrating lotion to keep your skin soft and smooth all day.</p>
+                                <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                                <span class="inline-block bg-blue-300 text-blue-800 text-xs px-2 py-1 rounded mt-2">New Arrival</span>
+                            </div>
+                        </div>
+                        <!-- New Arrival 3 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                                <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="New Arrival 3" class="w-full h-48 object-cover rounded">
+                                <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Vitamin C Serum</h4>
+                                <p class="font-open text-gray-600 mt-2">Brightening serum infused with Vitamin C for radiant skin.</p>
+                                <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                                <span class="inline-block bg-blue-300 text-blue-800 text-xs px-2 py-1 rounded mt-2">New Arrival</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination mt-4"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ingredient Spotlight Section -->
+    <section class="py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="font-playfair text-3xl font-bold text-green-500 text-center mb-8">Ingredient Spotlight: Lavender</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lavender" class="w-full h-64 object-cover rounded-lg shadow-lg hover:shadow-2xl transition transform">
+                </div>
+                <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
+                    <p class="font-open text-gray-700 leading-relaxed">Lavender is renowned for its calming and soothing properties. In our products, it helps to reduce redness, irritation, and provides a pleasant fragrance. Lavender oil also promotes healthy skin regeneration and maintains the skin's moisture balance.</p>
+                    <a href="#" class="text-green-500 font-open underline mt-4 inline-block">Discover More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <a href="index.html" class="text-2xl font-playfair text-green-600 mb-4 md:mb-0">Cosmetica</a>
+            <ul class="flex space-x-6 mb-4 md:mb-0">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+                <li><a href="contact_us.html" class="text-gray-700 hover:text-green-600 transition">Contact Us</a></li>
+                <li><a href="privacy_policy.html" class="text-gray-700 hover:text-green-600 transition">Privacy Policy</a></li>
+                <li><a href="terms_of_service.html" class="text-gray-700 hover:text-green-600 transition">Terms of Service</a></li>
+                <li><a href="faq.html" class="text-gray-700 hover:text-green-600 transition">FAQ</a></li>
+            </ul>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 mt-4">
+            &copy; 2023 Cosmetica. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Swiper JS for Carousels -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+        });
+
+        // Filter Functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productItems = document.querySelectorAll('.product-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active state from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active-filter'));
+                // Add active state to clicked button
+                button.classList.add('active-filter');
+
+                const filter = button.textContent;
+                productItems.forEach(item => {
+                    if (filter === 'All' || item.getAttribute('data-category') === filter) {
+                        item.classList.remove('hidden');
+                        gsap.to(item, { opacity: 1, duration: 0.5, y: 0, display: 'block' });
+                    } else {
+                        gsap.to(item, { opacity: 0, duration: 0.5, y: -20, display: 'none' });
+                        setTimeout(() => item.classList.add('hidden'), 500);
+                    }
+                });
+            });
+        });
+
+        // Load More Functionality (Placeholder)
+        const loadMoreButton = document.getElementById('load-more');
+        loadMoreButton.addEventListener('click', () => {
+            alert('Load More functionality is not implemented yet.');
+        });
+
+        // Initialize Swiper for Best Sellers
+        const bestSellersSwiper = new Swiper('.best-sellers-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false,
+            },
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.best-sellers-swiper .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.best-sellers-swiper .swiper-button-next',
+                prevEl: '.best-sellers-swiper .swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
+        // Initialize Swiper for New Arrivals
+        const newArrivalsSwiper = new Swiper('.new-arrivals-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false,
+            },
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.new-arrivals-swiper .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.new-arrivals-swiper .swiper-button-next',
+                prevEl: '.new-arrivals-swiper .swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
+        // GSAP Animations
+        gsap.from(".font-playfair", { duration: 1.5, y: -50, opacity: 0, ease: "bounce.out" });
+        gsap.from(".font-open", { duration: 2, y: 50, opacity: 0, delay: 0.5 });
+
+        // Fade-in for Sections
+        gsap.utils.toArray('.container > div').forEach((section) => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                },
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                ease: "power1.out"
+            });
+        });
+
+        // Enhanced Hover Effects for Products
+        const productImages = document.querySelectorAll('.product-item img');
+        productImages.forEach(img => {
+            img.addEventListener('mouseenter', () => {
+                gsap.to(img, { scale: 1.05, duration: 0.3 });
+            });
+            img.addEventListener('mouseleave', () => {
+                gsap.to(img, { scale: 1, duration: 0.3 });
+            });
+        });
+    </script>
+</body>
+</html>
+```
+
+## All Files Completed
+[2024-12-31 04:19:24] 
+✓ Files saved locally in test_output_20241231_041923

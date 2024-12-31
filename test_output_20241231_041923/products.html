@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>Products - Cosmetica</title>
+</head>
+<body class="font-sans">
+    <!-- Header -->
+    <header class="fixed w-full bg-white bg-opacity-80 backdrop-blur-md shadow z-50 transition-all">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <a href="index.html" class="text-2xl font-playfair text-green-600">Cosmetica</a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="text-gray-700 md:hidden focus:outline-none" aria-label="Toggle navigation">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <!-- Navigation -->
+            <nav id="nav-menu" class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                    <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                    <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition active:text-green-600" aria-current="page">Products</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-nav" class="md:hidden hidden bg-white bg-opacity-90 backdrop-blur-md">
+            <ul class="flex flex-col space-y-4 py-4 px-6">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition active:text-green-600" aria-current="page">Products</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Product Gallery Section -->
+    <section class="pt-24 bg-white py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="font-lato text-3xl font-bold text-charcoal-800 text-center mb-8">Our Products</h2>
+            <div class="flex justify-center mb-12 space-x-2">
+                <button class="filter-btn bg-green-600 text-white font-open py-2 px-4 rounded-l-md active-filter">All</button>
+                <button class="filter-btn bg-gray-200 text-gray-700 font-open py-2 px-4">Skincare</button>
+                <button class="filter-btn bg-gray-200 text-gray-700 font-open py-2 px-4">Haircare</button>
+                <button class="filter-btn bg-gray-200 text-gray-700 font-open py-2 px-4 rounded-r-md">Bodycare</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6" id="product-gallery">
+                <!-- Product 1 -->
+                <div class="product-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform" data-category="Skincare">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Aloe Vera Gel" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Aloe Vera Gel</h3>
+                    <p class="font-open text-gray-600 mt-2">Pure aloe vera gel to soothe and hydrate your skin.</p>
+                    <span class="font-open text-green-500 mt-2 block">Category: Skincare</span>
+                    <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform" data-category="Skincare">
+                    <img src="https://images.unsplash.com/photo-1614769826802-2a346c7a3c6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chamomile Cream" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Chamomile Cream</h3>
+                    <p class="font-open text-gray-600 mt-2">Calming cream enriched with chamomile extracts.</p>
+                    <span class="font-open text-green-500 mt-2 block">Category: Skincare</span>
+                    <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform" data-category="Skincare">
+                    <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Green Tea Serum" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Green Tea Serum</h3>
+                    <p class="font-open text-gray-600 mt-2">Antioxidant-rich serum to rejuvenate your skin.</p>
+                    <span class="font-open text-green-500 mt-2 block">Category: Skincare</span>
+                    <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform" data-category="Haircare">
+                    <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Herbal Shampoo" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Herbal Shampoo</h3>
+                    <p class="font-open text-gray-600 mt-2">Nourishing shampoo with natural herbs for healthy hair.</p>
+                    <span class="font-open text-green-500 mt-2 block">Category: Haircare</span>
+                    <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- Product 5 -->
+                <div class="product-item bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform" data-category="Bodycare">
+                    <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Body Lotion" class="w-full h-48 object-cover rounded">
+                    <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Body Lotion</h3>
+                    <p class="font-open text-gray-600 mt-2">Hydrating lotion to keep your skin soft and smooth all day.</p>
+                    <span class="font-open text-green-500 mt-2 block">Category: Bodycare</span>
+                    <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                </div>
+                <!-- More Products can be added similarly -->
+            </div>
+            <div class="text-center mt-12">
+                <button id="load-more" class="bg-green-500 hover:bg-green-700 text-white font-open py-3 px-6 rounded shadow-lg transition transform hover:scale-105">Load More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Sellers and New Arrivals Section -->
+    <section class="bg-green-50 py-16 px-6">
+        <div class="container mx-auto">
+            <!-- Best Sellers -->
+            <div class="mb-16">
+                <h3 class="font-playfair text-2xl font-bold text-green-500 mb-8 text-center">Best Sellers</h3>
+                <div class="swiper-container best-sellers-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Best Seller 1 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                                <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Best Seller 1" class="w-full h-48 object-cover rounded">
+                                <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Aloe Vera Gel</h4>
+                                <p class="font-open text-gray-600 mt-2">Our most popular aloe vera gel for all skin types.</p>
+                                <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                                <span class="inline-block bg-yellow-300 text-yellow-800 text-xs px-2 py-1 rounded mt-2">Best Seller</span>
+                            </div>
+                        </div>
+                        <!-- Best Seller 2 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                                <img src="https://images.unsplash.com/photo-1614769826802-2a346c7a3c6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Best Seller 2" class="w-full h-48 object-cover rounded">
+                                <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Chamomile Cream</h4>
+                                <p class="font-open text-gray-600 mt-2">Experience the calming effects of chamomile in our cream.</p>
+                                <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                                <span class="inline-block bg-yellow-300 text-yellow-800 text-xs px-2 py-1 rounded mt-2">Best Seller</span>
+                            </div>
+                        </div>
+                        <!-- Best Seller 3 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                                <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Best Seller 3" class="w-full h-48 object-cover rounded">
+                                <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Green Tea Serum</h4>
+                                <p class="font-open text-gray-600 mt-2">Rejuvenate your skin with our antioxidant-rich serum.</p>
+                                <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                                <span class="inline-block bg-yellow-300 text-yellow-800 text-xs px-2 py-1 rounded mt-2">Best Seller</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination mt-4"></div>
+                </div>
+            </div>
+            <!-- New Arrivals -->
+            <div>
+                <h3 class="font-playfair text-2xl font-bold text-green-500 mb-8 text-center">New Arrivals</h3>
+                <div class="swiper-container new-arrivals-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- New Arrival 1 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                                <img src="https://images.unsplash.com/photo-1584534880955-73ae79e13d2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="New Arrival 1" class="w-full h-48 object-cover rounded">
+                                <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Herbal Shampoo</h4>
+                                <p class="font-open text-gray-600 mt-2">Nourishing shampoo with natural herbs for healthy hair.</p>
+                                <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                                <span class="inline-block bg-blue-300 text-blue-800 text-xs px-2 py-1 rounded mt-2">New Arrival</span>
+                            </div>
+                        </div>
+                        <!-- New Arrival 2 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                                <img src="https://images.unsplash.com/photo-1564869731662-5c6cb1662562?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="New Arrival 2" class="w-full h-48 object-cover rounded">
+                                <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Body Lotion</h4>
+                                <p class="font-open text-gray-600 mt-2">Hydrating lotion to keep your skin soft and smooth all day.</p>
+                                <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                                <span class="inline-block bg-blue-300 text-blue-800 text-xs px-2 py-1 rounded mt-2">New Arrival</span>
+                            </div>
+                        </div>
+                        <!-- New Arrival 3 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition transform">
+                                <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="New Arrival 3" class="w-full h-48 object-cover rounded">
+                                <h4 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Vitamin C Serum</h4>
+                                <p class="font-open text-gray-600 mt-2">Brightening serum infused with Vitamin C for radiant skin.</p>
+                                <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">Shop Now</a>
+                                <span class="inline-block bg-blue-300 text-blue-800 text-xs px-2 py-1 rounded mt-2">New Arrival</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination mt-4"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ingredient Spotlight Section -->
+    <section class="py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="font-playfair text-3xl font-bold text-green-500 text-center mb-8">Ingredient Spotlight: Lavender</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lavender" class="w-full h-64 object-cover rounded-lg shadow-lg hover:shadow-2xl transition transform">
+                </div>
+                <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
+                    <p class="font-open text-gray-700 leading-relaxed">Lavender is renowned for its calming and soothing properties. In our products, it helps to reduce redness, irritation, and provides a pleasant fragrance. Lavender oil also promotes healthy skin regeneration and maintains the skin's moisture balance.</p>
+                    <a href="#" class="text-green-500 font-open underline mt-4 inline-block">Discover More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <a href="index.html" class="text-2xl font-playfair text-green-600 mb-4 md:mb-0">Cosmetica</a>
+            <ul class="flex space-x-6 mb-4 md:mb-0">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+                <li><a href="contact_us.html" class="text-gray-700 hover:text-green-600 transition">Contact Us</a></li>
+                <li><a href="privacy_policy.html" class="text-gray-700 hover:text-green-600 transition">Privacy Policy</a></li>
+                <li><a href="terms_of_service.html" class="text-gray-700 hover:text-green-600 transition">Terms of Service</a></li>
+                <li><a href="faq.html" class="text-gray-700 hover:text-green-600 transition">FAQ</a></li>
+            </ul>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 mt-4">
+            &copy; 2023 Cosmetica. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Swiper JS for Carousels -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+        });
+
+        // Filter Functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productItems = document.querySelectorAll('.product-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active state from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active-filter'));
+                // Add active state to clicked button
+                button.classList.add('active-filter');
+
+                const filter = button.textContent;
+                productItems.forEach(item => {
+                    if (filter === 'All' || item.getAttribute('data-category') === filter) {
+                        item.classList.remove('hidden');
+                        gsap.to(item, { opacity: 1, duration: 0.5, y: 0, display: 'block' });
+                    } else {
+                        gsap.to(item, { opacity: 0, duration: 0.5, y: -20, display: 'none' });
+                        setTimeout(() => item.classList.add('hidden'), 500);
+                    }
+                });
+            });
+        });
+
+        // Load More Functionality (Placeholder)
+        const loadMoreButton = document.getElementById('load-more');
+        loadMoreButton.addEventListener('click', () => {
+            alert('Load More functionality is not implemented yet.');
+        });
+
+        // Initialize Swiper for Best Sellers
+        const bestSellersSwiper = new Swiper('.best-sellers-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false,
+            },
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.best-sellers-swiper .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.best-sellers-swiper .swiper-button-next',
+                prevEl: '.best-sellers-swiper .swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
+        // Initialize Swiper for New Arrivals
+        const newArrivalsSwiper = new Swiper('.new-arrivals-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false,
+            },
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.new-arrivals-swiper .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.new-arrivals-swiper .swiper-button-next',
+                prevEl: '.new-arrivals-swiper .swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
+        // GSAP Animations
+        gsap.from(".font-playfair", { duration: 1.5, y: -50, opacity: 0, ease: "bounce.out" });
+        gsap.from(".font-open", { duration: 2, y: 50, opacity: 0, delay: 0.5 });
+
+        // Fade-in for Sections
+        gsap.utils.toArray('.container > div').forEach((section) => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                },
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                ease: "power1.out"
+            });
+        });
+
+        // Enhanced Hover Effects for Products
+        const productImages = document.querySelectorAll('.product-item img');
+        productImages.forEach(img => {
+            img.addEventListener('mouseenter', () => {
+                gsap.to(img, { scale: 1.05, duration: 0.3 });
+            });
+            img.addEventListener('mouseleave', () => {
+                gsap.to(img, { scale: 1, duration: 0.3 });
+            });
+        });
+    </script>
+</body>
+</html>

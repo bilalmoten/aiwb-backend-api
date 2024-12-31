@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&family=Lato:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>Cosmetica - Home</title>
+</head>
+<body class="font-sans">
+    <!-- Header -->
+    <header class="fixed w-full bg-white bg-opacity-80 backdrop-blur-md shadow z-50 transition-all">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <a href="index.html" class="text-2xl font-playfair text-green-600">Cosmetica</a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="text-gray-700 md:hidden focus:outline-none" aria-label="Toggle navigation">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <!-- Navigation -->
+            <nav id="nav-menu" class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition active:text-green-600" aria-current="page">Home</a></li>
+                    <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                    <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-nav" class="md:hidden hidden bg-white bg-opacity-90 backdrop-blur-md">
+            <ul class="flex flex-col space-y-4 py-4 px-6">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition active:text-green-600" aria-current="page">Home</a></li>
+                <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-center text-white">
+        <img src="https://images.unsplash.com/photo-1612831664404-1cd4fa75b179?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-60"></div>
+        <div class="relative z-10 px-6">
+            <h1 class="font-playfair text-4xl md:text-6xl font-bold uppercase mb-4 opacity-0">Welcome to Cosmetica</h1>
+            <p class="font-open text-xl md:text-2xl mb-8 opacity-0">Naturally enhancing your beauty</p>
+            <a href="products.html" class="bg-green-600 hover:bg-green-800 text-white font-open uppercase py-3 px-6 rounded shadow-lg transform hover:scale-105 transition opacity-0" id="cta-button">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="bg-beige-100 py-16 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h2 class="font-lato text-3xl md:text-4xl font-bold text-charcoal-800 mb-4">Discover the Power of Nature</h2>
+                <p class="font-open text-lg md:text-xl text-charcoal-800 leading-relaxed">At Cosmetica, we believe in harnessing the purest natural ingredients to create skincare products that not only enhance your beauty but also promote overall well-being. Our commitment to sustainability and ethical practices ensures that you receive products that are as good for the environment as they are for your skin.</p>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1592496001469-f3a9ec7e1ddb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Natural Ingredients" class="rounded-lg shadow-lg hover:shadow-2xl transition transform">
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-lato font-bold text-charcoal-800 text-center mb-12">Featured Products</h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Product 1 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform">
+                            <img src="https://images.unsplash.com/photo-1586075758181-82555ad6a450?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Aloe Vera Gel" class="w-full h-48 object-cover rounded">
+                            <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Aloe Vera Gel</h3>
+                            <p class="font-open text-gray-600 mt-2">Pure aloe vera gel to soothe and hydrate your skin.</p>
+                            <a href="products.html" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                        </div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform">
+                            <img src="https://images.unsplash.com/photo-1614769826802-2a346c7a3c6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chamomile Cream" class="w-full h-48 object-cover rounded">
+                            <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Chamomile Cream</h3>
+                            <p class="font-open text-gray-600 mt-2">Calming cream enriched with chamomile extracts.</p>
+                            <a href="products.html" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                        </div>
+                    </div>
+                    <!-- Product 3 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform">
+                            <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Green Tea Serum" class="w-full h-48 object-cover rounded">
+                            <h3 class="font-lato text-xl font-bold text-charcoal-800 mt-4">Green Tea Serum</h3>
+                            <p class="font-open text-gray-600 mt-2">Antioxidant-rich serum to rejuvenate your skin.</p>
+                            <a href="products.html" class="mt-4 inline-block bg-green-500 hover:bg-green-700 text-white font-open py-2 px-4 rounded transition transform hover:scale-105">View Product</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination mt-4"></div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="products.html" class="bg-green-500 hover:bg-green-700 text-white font-open py-3 px-6 rounded shadow-lg transition transform hover:scale-105">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="bg-gray-100 py-16 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-lato font-bold text-charcoal-800 text-center mb-12">What Our Customers Say</h2>
+            <div class="relative">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <!-- Testimonial 1 -->
+                        <div class="swiper-slide bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Customer 1" class="w-24 h-24 rounded-full mb-4">
+                            <p class="font-serif italic text-gray-800 mb-2">"Cosmetica's products have transformed my skincare routine. I feel more confident and my skin has never looked better!"</p>
+                            <span class="font-open text-gray-600">- Ayesha K.</span>
+                        </div>
+                        <!-- Testimonial 2 -->
+                        <div class="swiper-slide bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <img src="https://images.unsplash.com/photo-1584534880955-73ae79e13d2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Customer 2" class="w-24 h-24 rounded-full mb-4">
+                            <p class="font-serif italic text-gray-800 mb-2">"I love that Cosmetica uses natural ingredients. My skin feels nourished and healthy every day."</p>
+                            <span class="font-open text-gray-600">- Zara M.</span>
+                        </div>
+                        <!-- Testimonial 3 -->
+                        <div class="swiper-slide bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+                            <img src="https://images.unsplash.com/photo-1603415526960-f80e4d3a8cde?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Customer 3" class="w-24 h-24 rounded-full mb-4">
+                            <p class="font-serif italic text-gray-800 mb-2">"The chamomile cream is my go-to for a calming evening routine. Highly recommend Cosmetica!"</p>
+                            <span class="font-open text-gray-600">- Fatima S.</span>
+                        </div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination mt-4"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup Section -->
+    <section class="bg-green-100 py-16 px-6">
+        <div class="container mx-auto text-center">
+            <h2 class="font-lato text-3xl font-bold text-charcoal-800 mb-4">Join Our Newsletter</h2>
+            <p class="font-open text-xl text-gray-700 mb-8">Stay updated with the latest products and special offers.</p>
+            <form class="max-w-md mx-auto" id="newsletter-form">
+                <div class="flex flex-col md:flex-row items-center">
+                    <input type="email" id="newsletter-email" placeholder="Enter your email" class="w-full md:w-auto flex-grow p-3 rounded-l-md border border-gray-300 focus:outline-none" required aria-label="Email Address">
+                    <button type="submit" class="mt-4 md:mt-0 bg-green-500 hover:bg-green-700 text-white font-open py-3 px-6 rounded-r-md transition transform hover:scale-105">Subscribe</button>
+                </div>
+                <p class="text-sm text-gray-600 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+                <p id="newsletter-message" class="text-sm text-green-600 mt-2 hidden">Thank you for subscribing!</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <a href="index.html" class="text-2xl font-playfair text-green-600 mb-4 md:mb-0">Cosmetica</a>
+            <ul class="flex space-x-6 mb-4 md:mb-0">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a></li>
+                <li><a href="about_us.html" class="text-gray-700 hover:text-green-600 transition">About Us</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-600 transition">Products</a></li>
+                <li><a href="contact_us.html" class="text-gray-700 hover:text-green-600 transition">Contact Us</a></li>
+                <li><a href="privacy_policy.html" class="text-gray-700 hover:text-green-600 transition">Privacy Policy</a></li>
+                <li><a href="terms_of_service.html" class="text-gray-700 hover:text-green-600 transition">Terms of Service</a></li>
+                <li><a href="faq.html" class="text-gray-700 hover:text-green-600 transition">FAQ</a></li>
+            </ul>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-700 hover:text-green-600 transition" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 mt-4">
+            &copy; 2023 Cosmetica. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Swiper JS for Testimonials and Featured Products Carousel -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+        });
+
+        // Initialize Swiper for Featured Products
+        const featuredSwiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // Initialize Swiper for Testimonials
+        const testimonialsSwiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 7000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // GSAP Animations
+        gsap.from(".font-playfair", { duration: 1.5, y: -50, opacity: 0, ease: "bounce.out" });
+        gsap.from(".font-open", { duration: 2, y: 50, opacity: 0, delay: 0.5 });
+        gsap.from("#cta-button", { duration: 1.5, scale: 0.9, opacity: 0, delay: 1, ease: "power2.out" });
+
+        // Parallax Effect
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('section.relative');
+            hero.style.backgroundPositionY = -(scrolled * 0.5) + "px";
+        });
+
+        // Newsletter Form Handling
+        const newsletterForm = document.getElementById('newsletter-form');
+        const newsletterMessage = document.getElementById('newsletter-message');
+
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Simple validation
+            const email = document.getElementById('newsletter-email').value;
+            if (validateEmail(email)) {
+                newsletterMessage.classList.remove('hidden');
+                newsletterForm.reset();
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i;
+            return re.test(String(email).toLowerCase());
+        }
+    </script>
+</body>
+</html>

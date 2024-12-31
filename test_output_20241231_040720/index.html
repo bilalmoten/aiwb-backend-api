@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>Cosmetica - Nurture Your Skin Naturally</title>
+</head>
+<body>
+    <section class="h-screen flex items-center justify-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1516150241860-f17e2a0e1a0f');">
+        <div class="bg-green-800 bg-opacity-50 p-10 text-center">
+            <h1 class="text-white text-6xl font-bold mb-5 shadow-lg">Nurture Your Skin Naturally</h1>
+            <a href="#featured" class="bg-gradient-to-r from-green-400 to-green-600 text-white text-lg font-semibold py-2 px-4 rounded hover:bg-green-700 transform hover:scale-105 transition duration-300">Shop Now</a>
+        </div>
+    </section>
+
+    <section class="py-20 bg-beige-100">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 p-10">
+                <h2 class="text-3xl font-bold text-green-800">Welcome to Cosmetica</h2>
+                <p class="text-lg text-brown-800 mt-4">Discover the beauty of natural skincare products crafted with love and care for your skin.</p>
+                <div class="flex mt-6">
+                    <i class="fas fa-leaf text-green-600 mr-2"></i> <span class="text-brown-800">Organic</span>
+                    <i class="fas fa-paw text-green-600 ml-4 mr-2"></i> <span class="text-brown-800">Cruelty-Free</span>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://unsplash.com/photos/Oz1h4WmH7Ww" alt="Organic Ingredients" class="w-full h-auto rounded-lg shadow-lg" />
+            </div>
+        </div>
+    </section>
+
+    <section id="featured" class="py-20 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-center text-3xl font-bold text-green-800 mb-10">Featured Products</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-green-100 p-5 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
+                    <img src="https://unsplash.com/photos/DJzZ1dQzD1c" alt="Product 1" class="w-full h-48 object-cover rounded-md" />
+                    <h3 class="text-lg font-bold mt-2">Product Name 1</h3>
+                    <p class="text-sm">Short description of the product. <span class="font-semibold">$19.99</span></p>
+                </div>
+                <div class="bg-green-100 p-5 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
+                    <img src="https://unsplash.com/photos/DJzZ1dQzD1c" alt="Product 2" class="w-full h-48 object-cover rounded-md" />
+                    <h3 class="text-lg font-bold mt-2">Product Name 2</h3>
+                    <p class="text-sm">Short description of the product. <span class="font-semibold">$24.99</span></p>
+                </div>
+                <div class="bg-green-100 p-5 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
+                    <img src="https://unsplash.com/photos/DJzZ1dQzD1c" alt="Product 3" class="w-full h-48 object-cover rounded-md" />
+                    <h3 class="text-lg font-bold mt-2">Product Name 3</h3>
+                    <p class="text-sm">Short description of the product. <span class="font-semibold">$29.99</span></p>
+                </div>
+                <div class="bg-green-100 p-5 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
+                    <img src="https://unsplash.com/photos/DJzZ1dQzD1c" alt="Product 4" class="w-full h-48 object-cover rounded-md" />
+                    <h3 class="text-lg font-bold mt-2">Product Name 4</h3>
+                    <p class="text-sm">Short description of the product. <span class="font-semibold">$34.99</span></p>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="#" class="text-green-600 font-semibold">See All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-purple-100">
+        <div class="container mx-auto">
+            <h2 class="text-center text-3xl font-bold text-gray-800 mb-10">Testimonials</h2>
+            <div class="carousel">
+                <div class="bg-white p-5 rounded-lg shadow-md">
+                    <p class="text-xl italic">"This product changed my skin for the better!"</p>
+                    <p class="mt-4 text-lg font-semibold">- Customer Name</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow-md mt-5">
+                    <p class="text-xl italic">"Absolutely love the natural ingredients!"</p>
+                    <p class="mt-4 text-lg font-semibold">- Customer Name</p>
+                </div>
+                <button class="mt-5 bg-green-600 text-white px-4 py-2 rounded">Share Your Experience</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white p-5">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2023 Cosmetica. All rights reserved.</p>
+            <div class="flex justify-center mt-3">
+                <a href="#" class="mx-2"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="mx-2"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="mt-3">
+                <a href="#about" class="text-green-300 mx-2">About Us</a>
+                <a href="#products" class="text-green-300 mx-2">Products</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

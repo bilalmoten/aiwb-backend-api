@@ -1,23 +1,27 @@
 import base64
 from datetime import datetime
 import json
-from logging.handlers import RotatingFileHandler
+import logging
 import os
 import time
+
+# Third-party imports
 import azure.functions as func
-import logging
-import json
-import os
-from google.auth import default
 from google.auth.transport.requests import Request
 from google.oauth2 import service_account
-from new import sections2
-
-
+from google.auth import default
+import requests
 from supabase import create_client, Client
 
-
-import requests
+# Local imports
+from new import sections2
+from prompts import (
+    WEBSITE_PLAN_PROMPT,
+    DESIGN_BLUEPRINT_PROMPT,
+    WEBSITE_CODE_PROMPT,
+    DESIGN_FEEDBACK_PROMPT,
+    CODE_REFINEMENT_PROMPT,
+)
 
 sections = sections2
 # Initialize the Supabase client
@@ -36,6 +40,141 @@ O1_MINI_ENDPOINT = os.environ.get("O1_MINI_ENDPOINT")
 O1_MINI_ENDPOINT2 = os.environ.get("O1_MINI_ENDPOINT2")
 GPT4o_MINI_AIWB_ENDPOINT = os.environ.get("GPT4o_MINI_AIWB_ENDPOINT")
 CLAUDE_API_KEY = os.environ.get("CLAUDE_API_KEY")
+
+ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://aiwebsitebuilder.tech",
+    "https://www.aiwebsitebuilder.tech",
+]
+
+
+def pre_assemble_pages(website_componentised_structure, component_codes):
+    """
+    Creates markdown formatted pages from components before AI enhancement
+    """
+    html_boilerplate_start = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js></script>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>{title}</title>
+</head>
+<body>"""
+
+    html_boilerplate_end = """<div class="AI WEBSITE BUILDER POPUP fixed bottom-0 left-0 right-0 bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-3 text-center shadow-lg">
+  <div class="container mx-auto flex flex-col sm:flex-row items-center justify-center gap-4">
+    <p class="text-sm font-medium">
+      This website was created with AI Website Builder
+    </p>
+    <a 
+      href="https://aiwebsitebuilder.tech" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="inline-flex items-center px-4 py-1.5 text-sm font-semibold bg-white text-purple-600 rounded-full hover:bg-purple-50 transition-colors duration-200"
+    >
+      Build Your Free Website →
+    </a>
+  </div>
+</div>
+</body>
+</html>"""
+
+    markdown_output = ""
+
+    try:
+        structure = json.loads(website_componentised_structure)
+
+        for page_name, components in structure.items():
+            page_content = []
+            page_content.append(html_boilerplate_start.format(title=page_name))
+
+            for component_id in components:
+                if component_id in component_codes:
+                    page_content.append(component_codes[component_id])
+                else:
+                    logging.warning(
+                        f"Missing component {component_id} for page {page_name}"
+                    )
+
+            page_content.append(html_boilerplate_end)
+
+            markdown_output += f"\n## {page_name}.html\n```html\n"
+            markdown_output += "\n".join(page_content)
+            markdown_output += "\n```\n"
+
+        markdown_output += "\n## All Files Completed"
+        # print(markdown_output)
+        return markdown_output
+
+    except Exception as e:
+        logging.error(f"Error pre-assembling pages: {e}")
+        raise
+
+
+def generate_request_id(user_id: str, website_id: str) -> str:
+    """
+    Creates a traceable but unique request ID
+    Format: user_id__website_id__timestamp
+    """
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    return f"{user_id}__{website_id}__{timestamp}"
+
+
+def execute_step(step_name: str, request_id: str, func, *args, **kwargs):
+    """
+    Wrapper function to handle execution, retries, and logging
+    """
+    max_retries = 2
+    attempt = 0
+
+    while attempt < max_retries:
+        try:
+            start_time = time.time()
+            result = func(*args, **kwargs)
+            duration = time.time() - start_time
+
+            log_entry = {
+                "request_id": request_id,
+                "user_id": kwargs.get("user_id"),
+                "website_id": kwargs.get("website_id"),
+                "step": step_name,
+                "status": "success",
+                "attempt": attempt + 1,
+                "duration": duration,
+                "timestamp": datetime.now().isoformat(),
+                "error": None,
+            }
+
+            supabase.table("website_generation_logs").insert(log_entry).execute()
+            return result
+
+        except Exception as e:
+            attempt += 1
+            error_msg = str(e)
+
+            log_entry = {
+                "request_id": request_id,
+                "user_id": kwargs.get("user_id"),
+                "website_id": kwargs.get("website_id"),
+                "step": step_name,
+                "status": "failed",
+                "attempt": attempt,
+                "error": error_msg,
+                "timestamp": datetime.now().isoformat(),
+            }
+
+            supabase.table("website_generation_logs").insert(log_entry).execute()
+
+            if attempt == max_retries:
+                raise Exception(
+                    f"Step {step_name} failed after {max_retries} attempts: {error_msg}"
+                )
+
+            time.sleep(2**attempt)
 
 
 def call_google_ai_api(messages, model="gemini-1.5-flash-002"):
@@ -317,87 +456,22 @@ def call_gpt4_api(messages, model="gpt-4o-mini"):
         gpt4_response.raise_for_status()
         return gpt4_response.json()
     except requests.RequestException as e:
-        # if gpt4_response:
-        #     logging.error(gpt4_response.raw)
-        # logging.error(f"Error calling GPT-4 API11: {e}")
         error_details = {
-            "status_code": gpt4_response.status_code,
+            "status_code": gpt4_response.status_code if gpt4_response else None,
             "error_message": str(e),
-            "response_text": gpt4_response,
-            "response_json": gpt4_response,
-            "response_headers": dict(gpt4_response.headers),
-            "request_url": gpt4_response.url,
-            "request_method": gpt4_response.request.method,
-            "request_headers": (dict(gpt4_response.request.headers)),
-            # "request_body": payload,
+            "response_text": gpt4_response.text if gpt4_response else None,
+            "response_headers": dict(gpt4_response.headers) if gpt4_response else None,
+            "request_url": endpoint,
+            "request_method": "POST",
+            "request_headers": headers,
+            "model": model,
         }
 
-        logging.error("Detailed GPT-4 API Error:")
+        logging.error("GPT-4 API Error Details:")
         for key, value in error_details.items():
             logging.error(f"{key}: {value}")
 
-        raise
-
-
-def get_componentized_structure(
-    website_name: str,
-    website_description: str,
-    chat_conversation: str,
-    # sections: str,
-    model,
-) -> dict:
-    model = "gpt-4o-mini"
-    sample_output = {
-        "page_name_without_spaces": [
-            "navbar-4",
-            "layout-388",
-            "portfolio-11",
-            "footer-1",
-        ],
-        "page_name_without_spaces": ["navbar-4", "layout-340", "footer-1"],
-    }
-
-    system_prompt = """
-    you are an expert web developer. Your goal is to output a json for the component wise website structure based on the user requirements, using the sections provided to you, each page having consistant Navbar and Footer components as shown below.
-    
-    Remember, you are selecting components based on the layout and structure of the component, not the text, as that would be changed. So choose only from the given components, and no new components should be named.
-    
-    REMEMBER: MAX 3 PAGES, 3-10 COMPONENTS PER PAGE.
-
-        Sample Output:
-        {sample_output}
-    Remember to give just the json, no backticks (```) no other text, no explantions. nothing excpet json, so that the json is parsable.
-    
-    You have the following components to choose from, and you can only choose from these components, no new components should be named.
-
-        {sections}
-
-        """
-    # Prepare payload for GPT-4 API
-    messages = [
-        {
-            "role": "system",
-            "content": system_prompt.format(
-                sections=sections, sample_output=sample_output
-            ),
-        },
-        {
-            "role": "user",
-            "content": f"""Here is the details of the website the user wants to create: 
-                         Website Name: {website_name} \n
-                         Website Description: {website_description} \n
-                         Chat Conversation: 
-                         {chat_conversation}""",
-        },
-    ]
-
-    # Call GPT-4 API
-    try:
-        response_json = call_gpt4_api(messages, model)
-        return response_json
-    except requests.RequestException as e:
-        logging.error(f"Error calling GPT-4 API 2 for componentized structure: {e}")
-        return {}
+        raise Exception(f"API call failed for model {model}: {str(e)}")
 
 
 def parse_markdown(markdown):
@@ -418,202 +492,285 @@ def parse_markdown(markdown):
             file_contents.append((filename, file_content))
     return file_contents
 
+    # def pre_assemble_pages(website_componentised_structure, component_codes):
+    #     """
+    #     Creates markdown formatted pages from components before AI enhancement
+    #     """
+    #     html_boilerplate_start = """<!DOCTYPE html>
+    # <html lang="en">
+    # <head>
+    #     <meta charset="UTF-8">
+    #     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    #     <script src="https://cdn.tailwindcss.com"></script>
+    #     <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
+    #     <title>{title}</title>
+    # </head>
+    # <body>"""
 
-def pre_assemble_pages(website_componentised_structure, component_codes):
-    """
-    Creates markdown formatted pages from components before AI enhancement
-    """
-    html_boilerplate_start = """<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
-    <title>{title}</title>
-</head>
-<body>"""
+    #     html_boilerplate_end = """<div class="AI WEBSITE BUILDER POPUP fixed bottom-0 left-0 right-0 bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-3 text-center shadow-lg">
+    #   <div class="container mx-auto flex flex-col sm:flex-row items-center justify-center gap-4">
+    #     <p class="text-sm font-medium">
+    #       This website was created with AI Website Builder
+    #     </p>
+    #     <a
+    #       href="https://aiwebsitebuilder.tech"
+    #       target="_blank"
+    #       rel="noopener noreferrer"
+    #       class="inline-flex items-center px-4 py-1.5 text-sm font-semibold bg-white text-purple-600 rounded-full hover:bg-purple-50 transition-colors duration-200"
+    #     >
+    #       Build Your Free Website →
+    #     </a>
+    #   </div>
+    # </div>
+    # </body>
+    # </html>"""
 
-    html_boilerplate_end = """<div class="AI WEBSITE BUILDER POPUP fixed bottom-0 left-0 right-0 bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-3 text-center shadow-lg">
-  <div class="container mx-auto flex flex-col sm:flex-row items-center justify-center gap-4">
-    <p class="text-sm font-medium">
-      This website was created with AI Website Builder
-    </p>
-    <a 
-      href="https://aiwebsitebuilder.tech" 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      class="inline-flex items-center px-4 py-1.5 text-sm font-semibold bg-white text-purple-600 rounded-full hover:bg-purple-50 transition-colors duration-200"
-    >
-      Build Your Free Website →
-    </a>
-  </div>
-</div>
-</body>
-</html>"""
+    #     markdown_output = ""
 
-    markdown_output = ""
+    #     try:
+    #         structure = json.loads(website_componentised_structure)
 
+    #         for page_name, components in structure.items():
+    #             page_content = []
+    #             page_content.append(html_boilerplate_start.format(title=page_name))
+
+    #             for component_id in components:
+    #                 if component_id in component_codes:
+    #                     page_content.append(component_codes[component_id])
+    #                 else:
+    #                     logging.warning(
+    #                         f"Missing component {component_id} for page {page_name}"
+    #                     )
+
+    #             page_content.append(html_boilerplate_end)
+
+    #             markdown_output += f"\n## {page_name}.html\n```html\n"
+    #             markdown_output += "\n".join(page_content)
+    #             markdown_output += "\n```\n"
+
+    #         markdown_output += "\n## All Files Completed"
+    #         # print(markdown_output)
+    #         return markdown_output
+
+    #     except Exception as e:
+    #         logging.error(f"Error pre-assembling pages: {e}")
+    #         raise
+
+
+def delete_existing_pages(user_id: str, website_id: str) -> bool:
+    """Delete existing pages for the website before generating new ones"""
     try:
-        structure = json.loads(website_componentised_structure)
-
-        for page_name, components in structure.items():
-            page_content = []
-            page_content.append(html_boilerplate_start.format(title=page_name))
-
-            for component_id in components:
-                if component_id in component_codes:
-                    page_content.append(component_codes[component_id])
-                else:
-                    logging.warning(
-                        f"Missing component {component_id} for page {page_name}"
-                    )
-
-            page_content.append(html_boilerplate_end)
-
-            markdown_output += f"\n## {page_name}.html\n```html\n"
-            markdown_output += "\n".join(page_content)
-            markdown_output += "\n```\n"
-
-        markdown_output += "\n## All Files Completed"
-        # print(markdown_output)
-        return markdown_output
-
+        result = supabase.table("pages").delete().eq("website_id", website_id).execute()
+        return True
     except Exception as e:
-        logging.error(f"Error pre-assembling pages: {e}")
-        raise
+        raise Exception(f"Failed to delete existing pages: {str(e)}")
 
 
-def get_website_pages_codes(
-    website_componentised_structure,
-    chat_conversation,
-    website_name,
-    website_description,
-    assembled_pages_md,
-    model,
-):
-    system_prompt = f"""Please create an amazing, mesmerising, custom website for the user, based on the user's requirements and the template the user has provided. 
-    The template is a starting point, and you are expected to use your knowledge, user's requirements and experience to fully furnish the website. from colours, to styling, to layout, to text, to images, to links, to consistant header and footer, to everything, you are expected to make sure the website is a masterpiece. Full complete implementation of the website, using HTML, Tailwind CSS and JavaScript(where needed). Do not add placeholder content, comment for further instructions or further implementations etc. Your job is to create a complete, fully functional, ready to publish website.
-    
-    Your job is not to fill the template, but to customise the website for the user. You can add, edit or remove any elements from the template, to make sure the website is a masterpiece.
-    
-    Expected Output:
-    For the output you are expected to give the full code for each page in markdown format, as shown below, and nothing else. Do not add any Placeholders, comments, backticks (```) or any other text in your response.
-
-    Only Respond with a Properly Formatted MARKDOWN with the HTML code for each HTML file(each page) of the website and Write ## All Files Completed at the end of the markdown file, after all the HTML code for each page.
-
-    the markdown should include each codeblock seperatly with language specified as HTML, and heading as name of the file, and a final heading of code completed.
-    
-    Also, on each page there is an AI WEBSITE BUILDER POPUP, which should be added to the bottom of each page, and not removed.
-    
-
-    such as
-
-    ## index.html
-    ```html
-    <html code here>
-    ```
-    
-    ## about_us.html
-    ```html
-    <html code here>
-    ```
-    
-    ## contact_us.html
-    ```html
-    <html code here>
-    ```
-    
-    ## All Files Completed
-    
-    """
-    user_prompt = f"""
-    
-    Here is the details of the website the user wants to create: 
-                         Website Name: {website_name} \n
-                         Website Description: {website_description} \n
-                         Chat Conversation: 
-                         {chat_conversation}
-                         
-                         assembled pages markdown:
-                         {assembled_pages_md}
-                         """
-    messages = [
-        {
-            "role": "system",
-            "content": system_prompt,
-        },
-        {
-            "role": "user",
-            "content": user_prompt,
-        },
-    ]
-
-    # Call GPT-4 API
+def fetch_conversation_data(user_id: str, website_id: str) -> dict:
+    """Fetch website details and chat conversation from Supabase"""
     try:
-        final_response = ""
-        while True:
-            response_json = call_gpt4_api(messages, model)
-            # logging.info(f"response_json: {response_json}")
-            if model == "claude-3-5-sonnet-20241022":
-                response_text = response_json.get("content")[0].get("text")
-            elif model == "gemini-1.5-flash-002" or model == "gemini-1.5-pro-002":
-                # last_chunk = response_json[-1]  # Get the last item in the response list
-                response_text = response_json["candidates"][0]["content"]["parts"][0][
-                    "text"
-                ]
-            else:
-                response_text = (
-                    response_json.get("choices")[0].get("message").get("content")
-                )
-            final_response += response_text + "\n"
-
-            if response_text.strip().endswith("## All Files Completed"):
-                break
-            messages.append({"role": "assistant", "content": response_text})
-            time.sleep(0.5)
-
-        page_code = final_response
-        # logging.info(f"page_code: {page_code}")
-        return page_code
-    except requests.RequestException as e:
-        logging.error(f"Error calling GPT-4 API 3 for website Code: {e}")
-        return "error calling GPT-4 API  4 for website code. \n Error: {e}"
-
-
-def fetch_component_base_code(components):
-    base_codes = {}
-    missing_components = []
-
-    try:
-        # Single efficient query using in_
         response = (
-            supabase.table("components")
-            .select("component_id, code")
-            .in_("component_id", components)
+            supabase.table("websites")
+            .select("website_name, website_description, chat_conversation")
+            .eq("user_id", user_id)
+            .eq("id", website_id)
             .execute()
         )
 
-        # Create mapping of fetched components
-        supabase_components = {
-            comp["component_id"]: comp["code"] for comp in response.data
-        }
+        if not response.data:
+            raise Exception(f"No data found for website_id: {website_id}")
 
-        # Map requested components to their codes
-        for component in components:
-            if component in supabase_components:
-                base_codes[component] = supabase_components[component]
-            else:
-                missing_components.append(component)
-                logging.warning(
-                    f"Component {component} not found in database - skipping"
-                )
-
+        return response.data[0]
     except Exception as e:
-        logging.error(f"Error fetching components from Supabase: {e}")
-        raise
+        raise Exception(f"Failed to fetch website data: {str(e)}")
 
-    return base_codes
+
+def save_generated_pages(user_id: str, website_id: str, website_code: str) -> bool:
+    """Parse and save generated pages to Supabase"""
+    try:
+        # Parse markdown into separate pages
+        page_codes = parse_markdown(website_code)
+        all_pages = []
+
+        # Prepare bulk insert data
+        pages_to_insert = [
+            {
+                "user_id": user_id,
+                "website_id": website_id,
+                "title": page_name,
+                "content": page_code,
+            }
+            for page_name, page_code in page_codes
+        ]
+
+        # Save all pages in one operation
+        supabase.table("pages").insert(pages_to_insert).execute()
+
+        # Update website with page list
+        supabase.table("websites").update(
+            {"pages": [page[0] for page in page_codes], "status": "completed"}
+        ).eq("user_id", user_id).eq("id", website_id).execute()
+
+        return True
+    except Exception as e:
+        raise Exception(f"Failed to save generated pages: {str(e)}")
+
+
+def create_website_plan(website_data: dict, model: str) -> str:
+    """
+    Step 1: Create structured website plan from user conversation
+    """
+    messages = [
+        {"role": "system", "content": WEBSITE_PLAN_PROMPT},
+        {
+            "role": "user",
+            "content": f""" Here are the details of the website added by the user and the conversation where the user explains what they want for the website:
+
+Website Name: {website_data['website_name']}
+
+Description: {website_data['website_description']}
+
+User Conversation: 
+
+{website_data['chat_conversation']}
+
+Please refine this into a detailed website plan using the provided guidelines.
+        """,
+        },
+    ]
+
+    response = call_gpt4_api(messages, model)
+    return parse_ai_response(response, model)
+
+
+def create_design_blueprint(structured_plan: str, model: str) -> str:
+    """
+    Step 2: Expand plan into detailed design blueprint
+    """
+    messages = [
+        {"role": "system", "content": DESIGN_BLUEPRINT_PROMPT},
+        {
+            "role": "user",
+            "content": f"""Here is the website plan: 
+         
+        {structured_plan}
+        
+        Please create a detailed design blueprint for each section following the provided guidelines. 
+        """,
+        },
+    ]
+
+    response = call_gpt4_api(messages, model)
+    return parse_ai_response(response, model)
+
+
+def generate_website_code(design_blueprint: str, model: str) -> str:
+    """
+    Step 3: Generate initial website code
+    """
+    messages = [
+        {"role": "system", "content": WEBSITE_CODE_PROMPT},
+        {
+            "role": "user",
+            "content": f"""Here is the design blueprint: 
+            
+            {design_blueprint}
+            
+            Please generate the complete code for the website following the provided instructions.
+            
+            """,
+        },
+    ]
+
+    response = call_gpt4_api(messages, model)
+    return parse_ai_response(response, model)
+
+
+def generate_design_feedback(website_code: str, model: str) -> str:
+    """
+    Step 4: Generate feedback on the website design
+    """
+    messages = [
+        {"role": "system", "content": DESIGN_FEEDBACK_PROMPT},
+        {
+            "role": "user",
+            "content": f"""
+         
+            Here is the website code generated according to the user requirements:  
+
+            {website_code}
+
+            Your task is to:  
+            1. Review the code thoroughly for layout, design, and user experience.  
+            2. Provide detailed feedback on how to make the design more visually stunning, unique, and functional.  
+            3. Highlight specific suggestions for improving layout, color schemes, animations, interactivity, responsiveness, and usability.  
+            4. Ensure the feedback aligns with the user's original intent while enhancing the website's overall quality.  
+
+            Respond with actionable recommendations in the specified format.""",
+        },
+    ]
+
+    response = call_gpt4_api(messages, model)
+    return parse_ai_response(response, model)
+
+
+def refine_website_code(initial_code: str, feedback: str, model: str) -> str:
+    """
+    Step 5: Refine website code based on feedback
+    """
+    messages = [
+        {"role": "system", "content": CODE_REFINEMENT_PROMPT},
+        {
+            "role": "user",
+            "content": f""" Here is the initial website code:
+            
+            {initial_code}
+            
+            Here are the identified issues and suggestions:
+            
+            {feedback}
+            
+            """,
+        },
+    ]
+
+    response = call_gpt4_api(messages, model)
+    return parse_ai_response(response, model)
+
+
+def parse_ai_response(response: dict, model: str) -> str:
+    """
+    Parse AI response based on model type
+    """
+    try:
+        if model == "claude-3-5-sonnet-20241022":
+            return response.get("content")[0].get("text")
+        elif model in ["gemini-1.5-flash-002", "gemini-1.5-pro-002"]:
+            return response["candidates"][0]["content"]["parts"][0]["text"]
+        else:  # GPT models
+            return response.get("choices")[0].get("message").get("content")
+    except Exception as e:
+        raise Exception(f"Failed to parse AI response: {str(e)}")
+
+
+def extract_request_params(req: func.HttpRequest) -> dict:
+    """Helper function to extract and validate request parameters"""
+    params = {
+        "user_id": req.params.get("user_id"),
+        "website_id": req.params.get("website_id"),
+        "model": req.params.get("model", "gpt-4o-mini"),
+    }
+
+    # Try getting params from body if not in query
+    if not params["user_id"] or not params["website_id"]:
+        try:
+            body = req.get_json()
+            params["user_id"] = params["user_id"] or body.get("user_id")
+            params["website_id"] = params["website_id"] or body.get("website_id")
+        except ValueError:
+            pass
+
+    return params
 
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
@@ -621,248 +778,130 @@ app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
 @app.route(route="code_website")
 def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
-    logger = logging.getLogger()
-    # Create logs directory in a location we're sure has write permissions
+    try:
+        # Extract and validate parameters
+        params = extract_request_params(req)
+        user_id = params["user_id"]
+        website_id = params["website_id"]
+        model = params["model"]
 
-    logger.info("Logging initialized successfully1")
-
-    logger.info("Logging initialized successfully2")
-    logging.info("Logging initialized successfully")
-
-    logging.info("Python HTTP trigger function processed a request.")
-
-    user_id = req.params.get("user_id")
-    website_id = req.params.get("website_id")
-    model = req.params.get("model")
-
-    logging.info(f"user_id: {user_id}, website_id: {website_id}, model: {model}")
-    if not user_id or not website_id:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            user_id = req_body.get("user_id")
-            website_id = req_body.get("website_id")
-
-    if user_id and website_id:
-        # Fetch data from Supabase
-
-        try:
-            result = (
-                supabase.table("pages").delete().eq("website_id", website_id).execute()
-            )
-            logging.info(
-                f"Deleted {len(result.data)} existing pages for website_id: {website_id}"
-            )
-            print("working here 2")
-            response = (
-                supabase.table("websites")
-                .select("website_name, website_description, chat_conversation")
-                .eq("user_id", user_id)
-                .eq("id", website_id)
-                .execute()
-            )
-            print("working here 3")
-            data = response.data
-            if data:
-                website_data = data[0]
-                website_name = website_data.get("website_name")
-                website_description = website_data.get("website_description")
-                chat_conversation = website_data.get("chat_conversation")
-                print("working here 4")
-
-                try:
-                    response_json = get_componentized_structure(
-                        website_name,
-                        website_description,
-                        chat_conversation,
-                        # sections,
-                        model,
-                    )
-                    print("working here 5")
-                    if response_json:
-                        try:
-                            if model == "claude-3-5-sonnet-20241022":
-                                website_componentised_structure = response_json.get(
-                                    "content"
-                                )[0].get("text")
-                            elif (
-                                model == "gemini-1.5-flash-002"
-                                or model == "gemini-1.5-pro-002"
-                            ):  # last_chunk = response_json[-1]  # Get the last item in the response list
-                                website_componentised_structure = response_json[
-                                    "candidates"
-                                ][0]["content"]["parts"][0]["text"]
-                            else:
-                                website_componentised_structure = (
-                                    response_json.get("choices")[0]
-                                    .get("message")
-                                    .get("content")
-                                )
-
-                            logging.info(
-                                f"website_componentised_structure: {website_componentised_structure}"
-                            )
-                            logging.info("working here 6")
-                            # Save website componentised structure to Supabase
-                            response = (
-                                supabase.table("websites")
-                                .update(
-                                    {
-                                        "website_componentised_structure": website_componentised_structure
-                                    }
-                                )
-                                .eq("user_id", user_id)
-                                .eq("id", website_id)
-                                .execute()
-                            )
-                            logging.info("working here 7")
-
-                            ## update website status
-
-                            response = (
-                                supabase.table("websites")
-                                .update({"status": "45%"})
-                                .eq("user_id", user_id)
-                                .eq("id", website_id)
-                                .execute()
-                            )
-                            logging.info("working here 8")
-                            ## next step: website code
-
-                            if response:
-                                try:
-                                    logging.info("working here 9")
-                                    # Step 1: Extract all components
-                                    try:
-                                        website_componentized_structure_dict = (
-                                            json.loads(website_componentised_structure)
-                                        )
-                                    except json.JSONDecodeError as e:
-
-                                        logging.info(
-                                            "Failed to parse the componentized structure:",
-                                            e,
-                                        )
-                                    logging.info("working here 10")
-                                    all_components = set()
-                                    for (
-                                        page_components
-                                    ) in website_componentized_structure_dict.values():
-                                        all_components.update(page_components)
-
-                                    # Convert to list
-                                    component_list = list(all_components)
-
-                                    # Fetch component codes from Supabase
-                                    components = fetch_component_base_code(
-                                        component_list
-                                    )
-
-                                    assembled_pages_md = pre_assemble_pages(
-                                        website_componentised_structure, components
-                                    )
-
-                                    website_code = get_website_pages_codes(
-                                        website_componentised_structure,
-                                        chat_conversation,
-                                        website_name,
-                                        website_description,
-                                        assembled_pages_md,
-                                        model,
-                                    )
-
-                                    logging.info("working here 12")
-                                    ## parse markdown to get each page code seperatly, and then save to supabase
-
-                                    page_codes = parse_markdown(website_code)
-                                    logging.info("working here 13")
-                                    ## save each page code to supabase
-                                    all_pages = []
-                                    for page_code2 in page_codes:
-                                        page_name, page_code = page_code2
-                                        all_pages.append(page_name)
-                                        response = (
-                                            supabase.table("pages")
-                                            .insert(
-                                                {
-                                                    "user_id": user_id,
-                                                    "website_id": website_id,
-                                                    "title": page_name,
-                                                    "content": page_code,
-                                                }
-                                            )
-                                            .execute()
-                                        )
-                                        logging.info(
-                                            f"{page_name} code saved successfully."
-                                        )
-                                    logging.info("working here 14")
-                                    response = (
-                                        supabase.table("websites")
-                                        .update({"pages": all_pages})
-                                        .eq("user_id", user_id)
-                                        .eq("id", website_id)
-                                        .execute()
-                                    )
-                                    logging.info("working here 15")
-                                    ## update website status
-
-                                    response = (
-                                        supabase.table("websites")
-                                        .update({"status": "completed"})
-                                        .eq("user_id", user_id)
-                                        .eq("id", website_id)
-                                        .execute()
-                                    )
-                                    logging.info("working here 16")
-                                    return func.HttpResponse(
-                                        ## dont output the full code here, just a success message and a few lines of code
-                                        f""" website code generated successfully. \n\nwebsite_code \n\n. This HTTP triggered function executed successfully. website code generated and saved successfully to supabase.""",
-                                        status_code=200,
-                                        headers={
-                                            "Access-Control-Allow-Origin": "http://localhost:3000",
-                                            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-                                            "Access-Control-Allow-Headers": "Content-Type",
-                                        },
-                                    )
-                                except Exception as e:
-                                    logging.error(f"Error getting website code {e}")
-                                    return func.HttpResponse(
-                                        f"Componentised structure generated but error in getting website code: {e}",
-                                    )
-
-                        except Exception as e:
-                            logging.error(
-                                f"Error getting or saving website componentised structure: {e}"
-                            )
-
-                            return func.HttpResponse(
-                                f"Error getting or saving website componentised structure: {e}",
-                                status_code=500,
-                            )
-                    else:
-                        return func.HttpResponse(
-                            "GPT 4 call for website componentised structure error"
-                        )
-
-                except requests.RequestException as e:
-                    logging.error(f"Error calling GPT-4 API 6 : {e}")
-                    return func.HttpResponse(
-                        f"Error calling GPT-4 API 7 : {e}", status_code=500
-                    )
-            else:
-                return func.HttpResponse(
-                    f"No data found for user_id: {user_id} and website_id: {website_id}."
-                )
-        except Exception as e:
-            logging.error(f"Error fetching data from Supabase: {e}")
+        if not user_id or not website_id:
             return func.HttpResponse(
-                f"Error fetching data from Supabase: {e}", status_code=500
+                json.dumps(
+                    {
+                        "success": False,
+                        "error": "Missing required parameters: user_id and website_id",
+                    }
+                ),
+                status_code=400,
             )
-    else:
+
+        # Initialize request tracking
+        request_id = generate_request_id(user_id, website_id)
+        logging.info(f"Starting website generation - Request ID: {request_id}")
+
+        # Update website status to 'processing'
+        supabase.table("websites").update({"status": "processing"}).eq(
+            "id", website_id
+        ).execute()
+
+        try:
+            # Step 0: Delete existing pages
+            execute_step(
+                "delete_pages",
+                request_id,
+                delete_existing_pages,
+                user_id=user_id,
+                website_id=website_id,
+            )
+
+            # Step 1: Fetch conversation data
+            website_data = execute_step(
+                "fetch_data",
+                request_id,
+                fetch_conversation_data,
+                user_id=user_id,
+                website_id=website_id,
+            )
+
+            # Step 2: Create structured plan
+            structured_plan = execute_step(
+                "create_plan",
+                request_id,
+                create_website_plan,
+                website_data=website_data,
+                model=model,
+            )
+
+            # Step 3: Design blueprint
+            design_blueprint = execute_step(
+                "create_blueprint",
+                request_id,
+                create_design_blueprint,
+                structured_plan=structured_plan,
+                model=model,
+            )
+
+            # Step 4: Generate initial code
+            initial_code = execute_step(
+                "generate_code",
+                request_id,
+                generate_website_code,
+                design_blueprint=design_blueprint,
+                model=model,
+            )
+
+            # Step 5: Generate feedback
+            feedback = execute_step(
+                "generate_feedback",
+                request_id,
+                generate_design_feedback,
+                website_code=initial_code,
+                model=model,
+            )
+
+            # Step 6: Final code refinement
+            final_code = execute_step(
+                "refine_code",
+                request_id,
+                refine_website_code,
+                initial_code=initial_code,
+                feedback=feedback,
+                model=model,
+            )
+
+            # Step 7: Save generated pages
+            execute_step(
+                "save_pages",
+                request_id,
+                save_generated_pages,
+                user_id=user_id,
+                website_id=website_id,
+                website_code=final_code,
+            )
+
+            return func.HttpResponse(
+                json.dumps(
+                    {
+                        "success": True,
+                        "request_id": request_id,
+                        "message": "Website generated successfully",
+                    }
+                )
+            )
+
+        except Exception as e:
+            # Rollback: Update website status to 'failed' and delete any generated pages
+            supabase.table("websites").update({"status": "failed"}).eq(
+                "id", website_id
+            ).execute()
+            delete_existing_pages(user_id, website_id)
+            raise e
+
+    except Exception as e:
+        error_msg = str(e)
+        logging.error(f"Error in website generation: {error_msg}")
+
         return func.HttpResponse(
-            "This HTTP triggered function executed successfully. Pass user_id and website_id in the query string or in the request body for a personalized response.",
-            status_code=200,
+            json.dumps({"success": False, "error": error_msg}), status_code=500
         )

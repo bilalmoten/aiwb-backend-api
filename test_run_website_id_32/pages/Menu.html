@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>Menu - newestq Coffee House</title>
+</head>
+<body class="font-sans bg-cream text-gray-800">
+    <!-- Header -->
+    <header class="bg-brown text-white shadow-md">
+        <nav class="container mx-auto flex justify-between items-center p-4" aria-label="Main Navigation">
+            <a href="home.html" class="text-2xl font-bold">newestq</a>
+            <button class="md:hidden text-white focus:outline-none" aria-label="Toggle Menu" onclick="toggleMenu()">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="home.html" class="hover:text-light-green transition-colors">Home</a></li>
+                <li><a href="about_us.html" class="hover:text-light-green transition-colors">About Us</a></li>
+                <li><a href="menu.html" class="hover:text-light-green transition-colors">Menu</a></li>
+                <li><a href="contact_us.html" class="hover:text-light-green transition-colors">Contact Us</a></li>
+            </ul>
+            <div class="hidden md:flex space-x-4">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-light-green"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-light-green"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="hover:text-light-green"><i class="fab fa-twitter"></i></a>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brown text-white">
+            <ul class="flex flex-col space-y-4 p-4">
+                <li><a href="home.html" class="hover:text-light-green transition-colors">Home</a></li>
+                <li><a href="about_us.html" class="hover:text-light-green transition-colors">About Us</a></li>
+                <li><a href="menu.html" class="hover:text-light-green transition-colors">Menu</a></li>
+                <li><a href="contact_us.html" class="hover:text-light-green transition-colors">Contact Us</a></li>
+                <div class="flex space-x-4 mt-4">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-light-green"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-light-green"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="hover:text-light-green"><i class="fab fa-twitter"></i></a>
+                </div>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Coffee Menu -->
+    <section class="py-16 bg-cream">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6 text-center">Our Menu</h2>
+            <!-- Coffee Menu -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-center">Coffee</h3>
+                <div class="space-y-8">
+                    <!-- Espresso Category -->
+                    <div>
+                        <h4 class="text-xl font-bold mb-4">Espresso</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Espresso Item 1 -->
+                            <div class="text-center">
+                                <img src="https://source.unsplash.com/100x100/?espresso" alt="Single Espresso" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full">
+                                <h5 class="font-semibold">Single Espresso</h5>
+                                <p class="text-gray-600">$3.00</p>
+                            </div>
+                            <!-- Espresso Item 2 -->
+                            <div class="text-center">
+                                <img src="https://source.unsplash.com/100x100/?double-espresso" alt="Double Espresso" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full">
+                                <h5 class="font-semibold">Double Espresso</h5>
+                                <p class="text-gray-600">$5.50</p>
+                            </div>
+                            <!-- Espresso Item 3 -->
+                            <div class="text-center">
+                                <img src="https://source.unsplash.com/100x100/?ristretto" alt="Ristretto" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full">
+                                <h5 class="font-semibold">Ristretto</h5>
+                                <p class="text-gray-600">$4.00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Lattes Category -->
+                    <div>
+                        <h4 class="text-xl font-bold mb-4">Lattes</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Latte Item 1 -->
+                            <div class="text-center">
+                                <img src="https://source.unsplash.com/100x100/?latte" alt="Vanilla Latte" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full">
+                                <h5 class="font-semibold">Vanilla Latte</h5>
+                                <p class="text-gray-600">$4.50</p>
+                            </div>
+                            <!-- Latte Item 2 -->
+                            <div class="text-center">
+                                <img src="https://source.unsplash.com/100x100/?caramel-latte" alt="Caramel Latte" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full">
+                                <h5 class="font-semibold">Caramel Latte</h5>
+                                <p class="text-gray-600">$5.00</p>
+                            </div>
+                            <!-- Latte Item 3 -->
+                            <div class="text-center">
+                                <img src="https://source.unsplash.com/100x100/?matcha-latte" alt="Matcha Latte" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full">
+                                <h5 class="font-semibold">Matcha Latte</h5>
+                                <p class="text-gray-600">$5.50</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Cold Brews Category -->
+                    <div>
+                        <h4 class="text-xl font-bold mb-4">Cold Brews</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Cold Brew Item 1 -->
+                            <div class="text-center">
+                                <img src="https://source.unsplash.com/100x100/?coldbrew" alt="Classic Cold Brew" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full">
+                                <h5 class="font-semibold">Classic Cold Brew</h5>
+                                <p class="text-gray-600">$4.00</p>
+                            </div>
+                            <!-- Cold Brew Item 2 -->
+                            <div class="text-center">
+                                <img src="https://source.unsplash.com/100x100/?nitro-coldbrew" alt="Nitro Cold Brew" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full">
+                                <h5 class="font-semibold">Nitro Cold Brew</h5>
+                                <p class="text-gray-600">$5.00</p>
+                            </div>
+                            <!-- Cold Brew Item 3 -->
+                            <div class="text-center">
+                                <img src="https://source.unsplash.com/100x100/?vanilla-coldbrew" alt="Vanilla Cold Brew" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full">
+                                <h5 class="font-semibold">Vanilla Cold Brew</h5>
+                                <p class="text-gray-600">$5.50</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Snacks & Bites -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-center">Snacks & Bites</h3>
+                <div class="flex flex-col md:flex-row justify-center items-center md:space-x-8 space-y-8 md:space-y-0">
+                    <!-- Pastries Section -->
+                    <div>
+                        <h4 class="text-xl font-bold mb-4">Pastries</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Pastry Item 1 -->
+                            <div class="text-center">
+                                <img src="https://source.unsplash.com/100x100/?croissant" alt="Butter Croissant" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full">
+                                <h5 class="font-semibold">Butter Croissant</h5>
+                                <p class="text-gray-600">$3.00</p>
+                            </div>
+                            <!-- Pastry Item 2 -->
+                            <div class="text-center">
+                                <img src="https://source.unsplash.com/100x100/?muffin" alt="Blueberry Muffin" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full">
+                                <h5 class="font-semibold">Blueberry Muffin</h5>
+                                <p class="text-gray-600">$2.50</p>
+                            </div>
+                            <!-- Pastry Item 3 -->
+                            <div class="text-center">
+                                <img src="https://source.unsplash.com/100x100/?scone" alt="Chocolate Scone" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full">
+                                <h5 class="font-semibold">Chocolate Scone</h5>
+                                <p class="text-gray-600">$3.50</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sandwiches Section -->
+                    <div>
+                        <h4 class="text-xl font-bold mb-4">Sandwiches</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Sandwich Item 1 -->
+                            <div class="text-center">
+                                <img src="https://source.unsplash.com/100x100/?sandwich" alt="Turkey Sandwich" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full">
+                                <h5 class="font-semibold">Turkey Sandwich</h5>
+                                <p class="text-gray-600">$5.00</p>
+                            </div>
+                            <!-- Sandwich Item 2 -->
+                            <div class="text-center">
+                                <img src="https://source.unsplash.com/100x100/?vegan-sandwich" alt="Vegan Sandwich" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full">
+                                <h5 class="font-semibold">Vegan Sandwich</h5>
+                                <p class="text-gray-600">$5.50</p>
+                            </div>
+                            <!-- Sandwich Item 3 -->
+                            <div class="text-center">
+                                <img src="https://source.unsplash.com/100x100/?club-sandwich" alt="Club Sandwich" class="mx-auto mb-4 w-24 h-24 object-cover rounded-full">
+                                <h5 class="font-semibold">Club Sandwich</h5>
+                                <p class="text-gray-600">$6.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <a href="menu.html" class="inline-flex items-center bg-light-green hover:bg-dark-green text-white font-semibold py-3 px-6 rounded shadow-lg transition transform hover:scale-105">
+                        View Full Menu
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Specials Section -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6 text-center">Specials</h3>
+                <div class="flex flex-col md:flex-row justify-center items-center md:space-x-8 space-y-8 md:space-y-0">
+                    <!-- Special Item 1 -->
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg hover:shadow-2xl transition-shadow transform hover:scale-105">
+                        <img class="w-full h-48 object-cover" src="https://source.unsplash.com/600x400/?pumpkin-spice-latte" alt="Pumpkin Spice Latte">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Pumpkin Spice Latte</div>
+                            <p class="text-gray-700 text-base">A seasonal favorite with spices and creamy milk.</p>
+                        </div>
+                    </div>
+                    <!-- Special Item 2 -->
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg hover:shadow-2xl transition-shadow transform hover:scale-105">
+                        <img class="w-full h-48 object-cover" src="https://source.unsplash.com/600x400/?iced-mocha" alt="Iced Mocha">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Iced Mocha</div>
+                            <p class="text-gray-700 text-base">Cold brew coffee with rich chocolate flavor.</p>
+                        </div>
+                    </div>
+                    <!-- Special Item 3 -->
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg hover:shadow-2xl transition-shadow transform hover:scale-105">
+                        <img class="w-full h-48 object-cover" src="https://source.unsplash.com/600x400/?affogato" alt="Affogato">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Affogato</div>
+                            <p class="text-gray-700 text-base">Vanilla ice cream "drowned" in a shot of hot espresso.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brown text-white py-8">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <!-- Social Media Links -->
+            <div class="flex space-x-4 mb-4 md:mb-0">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-light-green"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-light-green"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="hover:text-light-green"><i class="fab fa-twitter"></i></a>
+            </div>
+            <!-- Quick Links -->
+            <div class="flex space-x-6 mb-4 md:mb-0">
+                <a href="home.html" class="hover:text-light-green transition-colors">Home</a>
+                <a href="about_us.html" class="hover:text-light-green transition-colors">About Us</a>
+                <a href="menu.html" class="hover:text-light-green transition-colors">Menu</a>
+                <a href="contact_us.html" class="hover:text-light-green transition-colors">Contact Us</a>
+            </div>
+            <!-- Contact Information -->
+            <div class="text-center md:text-right">
+                <p class="font-bold">newestq Coffee House</p>
+                <p>123 Coffee Lane, Brewtown</p>
+                <p>Phone: <a href="tel:+1234567890" class="hover:underline">+1 (234) 567-890</a></p>
+                <p>Email: <a href="mailto:contact@newestq.com" class="hover:underline">contact@newestq.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // GSAP Animations
+        gsap.from(".animate-fade-in", { opacity: 0, y: 20, duration: 1, stagger: 0.3 });
+
+        // Framer Motion can be used if needed for more complex animations
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            --bg-cream: #f5f5dc;
+            --bg-brown: #4b2e2e;
+            --text-light-green: #a8d5ba;
+            --text-dark-green: #4c9a92;
+            background-color: var(--bg-cream);
+        }
+        .bg-brown {
+            background-color: var(--bg-brown);
+        }
+        .bg-light-green {
+            background-color: var(--text-light-green);
+        }
+        .hover\:bg-dark-green:hover {
+            background-color: var(--text-dark-green);
+        }
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+        }
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>Cozyville - Contact</title>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <header class="bg-amber-100 shadow-md fixed w-full z-20">
+        <nav class="container mx-auto flex justify-between items-center p-4">
+            <a href="index.html" class="text-3xl font-bold text-brown-800">Cozyville</a>
+            <button class="md:hidden text-brown-700 focus:outline-none" aria-label="Toggle Menu" onclick="toggleMenu()">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <ul class="hidden md:flex space-x-8 text-brown-700">
+                <li><a href="index.html" class="hover:text-green-600 transition">Home</a></li>
+                <li><a href="menu.html" class="hover:text-green-600 transition">Menu</a></li>
+                <li><a href="contact.html" class="hover:text-green-600 transition">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-amber-100 shadow-lg">
+            <ul class="flex flex-col space-y-4 p-4">
+                <li><a href="index.html" class="hover:text-green-600 transition">Home</a></li>
+                <li><a href="menu.html" class="hover:text-green-600 transition">Menu</a></li>
+                <li><a href="contact.html" class="hover:text-green-600 transition">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Contact Information -->
+    <section class="pt-20 bg-amber-50 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl font-bold text-brown-800 mb-4">Get in Touch</h1>
+            <p class="text-gray-700 max-w-2xl mx-auto">
+                We'd love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out to us.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Details -->
+    <section class="py-12">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <!-- Location Details -->
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h2 class="text-2xl font-semibold text-brown-800 mb-4">Our Locations</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-brown-800">Bean Town</h3>
+                        <p class="text-gray-700">123 Coffee Lane, Bean Town, Brew State</p>
+                        <a href="https://www.google.com/maps" target="_blank" class="text-green-600 hover:underline flex items-center">
+                            View on Map
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-brown-800">Harvest City</h3>
+                        <p class="text-gray-700">456 Espresso Ave, Harvest City, Roast Province</p>
+                        <a href="https://www.google.com/maps" target="_blank" class="text-green-600 hover:underline flex items-center">
+                            View on Map
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Embedded Map -->
+            <div class="md:w-1/2">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019229728008!2d-122.41941508468106!3d37.77492977975863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c5d0e4c55%3A0x936e9a7f6c8b7622!2sCozyville%20Coffee%20Shop!5e0!3m2!1sen!2sus!4v1615555555555!5m2!1sen!2sus" 
+                    width="600" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    class="w-full h-64 rounded-lg shadow-lg">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opening Hours -->
+    <section class="bg-amber-50 py-12">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl font-semibold text-brown-800 mb-6 text-center">Opening Hours</h2>
+            <div class="max-w-md mx-auto">
+                <ul class="space-y-4">
+                    <li class="flex justify-between">
+                        <span>Monday - Friday</span>
+                        <span>7:00 AM - 7:00 PM</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span>Saturday</span>
+                        <span>8:00 AM - 5:00 PM</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span>Sunday</span>
+                        <span>Closed</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Links -->
+    <section class="py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl font-semibold text-brown-800 mb-4">Follow Us</h2>
+            <div class="flex justify-center space-x-6">
+                <a href="#" aria-label="Facebook" class="text-brown-700 hover:text-green-600 transition">
+                    <i class="fab fa-facebook-f fa-2x"></i>
+                </a>
+                <a href="#" aria-label="Instagram" class="text-brown-700 hover:text-green-600 transition">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+                <a href="#" aria-label="Twitter" class="text-brown-700 hover:text-green-600 transition">
+                    <i class="fab fa-twitter fa-2x"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-amber-100 py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h2 class="text-2xl font-bold text-brown-800">Cozyville</h2>
+                    <p class="text-gray-700">123 Coffee Lane, Bean Town, Brew State</p>
+                    <p class="text-gray-700">Phone: (123) 456-7890 | Email: contact@cozyville.com</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" aria-label="Facebook" class="text-brown-700 hover:text-green-600 transition">
+                        <i class="fab fa-facebook-f fa-lg"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="text-brown-700 hover:text-green-600 transition">
+                        <i class="fab fa-instagram fa-lg"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter" class="text-brown-700 hover:text-green-600 transition">
+                        <i class="fab fa-twitter fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-6 text-center text-gray-600">
+                &copy; 2024 Cozyville. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // GSAP Animations
+        gsap.from(".container div", { duration: 1, opacity: 0, y: 50, ease: "power2.out", stagger: 0.2 });
+    </script>
+</body>
+</html>

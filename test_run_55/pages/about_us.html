@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About & Products - Cosmetica</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-green-700">Cosmetica</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-green-700 transition duration-300">Home</a>
+                    <a href="about_us.html" class="text-gray-600 hover:text-green-700 transition duration-300">About &
+                        Products</a>
+                    <a href="contact_blog.html"
+                        class="text-gray-600 hover:text-green-700 transition duration-300">Contact & Blog</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-button"
+                        class="text-gray-600 hover:text-green-700 focus:outline-none focus:text-green-700">
+                        <i class="fas fa-bars fa-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-green-700 hover:bg-gray-50 transition">Home</a>
+                <a href="about_us.html"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-green-700 hover:bg-gray-50 transition">About
+                    & Products</a>
+                <a href="contact_blog.html"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-green-700 hover:bg-gray-50 transition">Contact
+                    & Blog</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Us Section -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2">
+                    <img src="https://source.unsplash.com/600x400/?skincare,team" alt="Cosmetica Team"
+                        class="rounded-lg shadow-lg mb-6 md:mb-0">
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h2 class="text-3xl font-bold text-green-700 mb-4">Our Story</h2>
+                    <p class="text-gray-600 mb-4">Founded in 2022, Cosmetica was born out of a passion for natural
+                        beauty and ethical skincare. Our mission is to provide high-quality, organic products that are
+                        kind to your skin and the planet.</p>
+                    <p class="text-gray-600">We believe in transparency, sustainability, and delivering results. Each of
+                        our products is crafted with care, using only the finest organic ingredients to ensure
+                        effectiveness and safety.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Ingredients Section -->
+    <section class="py-12 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-green-700 mb-4">Our Ingredients</h2>
+                <p class="text-gray-600">We use only the best natural ingredients that nourish and protect your skin.
+                </p>
+            </div>
+            <div class="flex flex-wrap -mx-4">
+                <!-- Ingredient 1 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://source.unsplash.com/100x100/?aloe,gel" alt="Aloe Vera"
+                            class="w-20 h-20 mx-auto mb-4">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Aloe Vera</h3>
+                        <p class="text-gray-600">Hydrates and soothes the skin, reducing redness and irritation.</p>
+                    </div>
+                </div>
+                <!-- Ingredient 2 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://source.unsplash.com/100x100/?lavender,flower" alt="Lavender Extract"
+                            class="w-20 h-20 mx-auto mb-4">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Lavender Extract</h3>
+                        <p class="text-gray-600">Calms the skin and provides a soothing aroma for relaxation.</p>
+                    </div>
+                </div>
+                <!-- Ingredient 3 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://source.unsplash.com/100x100/?green,tea" alt="Green Tea"
+                            class="w-20 h-20 mx-auto mb-4">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Green Tea</h3>
+                        <p class="text-gray-600">Rich in antioxidants, it helps protect the skin from environmental
+                            damage.</p>
+                    </div>
+                </div>
+                <!-- Ingredient 4 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://source.unsplash.com/100x100/?jojoba,oil" alt="Jojoba Oil"
+                            class="w-20 h-20 mx-auto mb-4">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Jojoba Oil</h3>
+                        <p class="text-gray-600">Moisturizes without clogging pores, balancing oil production.</p>
+                    </div>
+                </div>
+                <!-- Ingredient 5 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://source.unsplash.com/100x100/?vitamin,C" alt="Vitamin C"
+                            class="w-20 h-20 mx-auto mb-4">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Vitamin C</h3>
+                        <p class="text-gray-600">Brightens the complexion and helps reduce signs of aging.</p>
+                    </div>
+                </div>
+                <!-- Ingredient 6 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                        <img src="https://source.unsplash.com/100x100/?rose,hip" alt="Rose Hip Oil"
+                            class="w-20 h-20 mx-auto mb-4">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Rose Hip Oil</h3>
+                        <p class="text-gray-600">Promotes skin regeneration and improves texture and tone.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Gallery -->
+    <section class="py-12 bg-white" id="products">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-green-700 mb-4">Our Products</h2>
+                <p class="text-gray-600">Browse through our extensive range of organic skincare products.</p>
+            </div>
+            <div class="flex flex-wrap justify-center mb-6">
+                <button
+                    class="m-2 px-4 py-2 bg-green-100 text-green-700 rounded-full hover:bg-green-200 transition">Cleansers</button>
+                <button
+                    class="m-2 px-4 py-2 bg-green-100 text-green-700 rounded-full hover:bg-green-200 transition">Moisturizers</button>
+                <button
+                    class="m-2 px-4 py-2 bg-green-100 text-green-700 rounded-full hover:bg-green-200 transition">Serums</button>
+                <button
+                    class="m-2 px-4 py-2 bg-green-100 text-green-700 rounded-full hover:bg-green-200 transition">Masks</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Product Card 1 -->
+                <div
+                    class="bg-gray-100 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://source.unsplash.com/600x400/?skincare,cleanser" alt="Gentle Cleanser"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Gentle Cleanser</h3>
+                        <p class="text-gray-600 mb-4">A mild cleanser that removes impurities without stripping natural
+                            oils.</p>
+                        <a href="#0" class="text-yellow-500 hover:underline">Learn More &rarr;</a>
+                    </div>
+                </div>
+                <!-- Product Card 2 -->
+                <div
+                    class="bg-gray-100 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://source.unsplash.com/600x400/?skincare,moisturizer" alt="Hydrating Moisturizer"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Hydrating Moisturizer</h3>
+                        <p class="text-gray-600 mb-4">Provides long-lasting hydration while revitalizing the skin's
+                            barrier.</p>
+                        <a href="#0" class="text-yellow-500 hover:underline">Learn More &rarr;</a>
+                    </div>
+                </div>
+                <!-- Product Card 3 -->
+                <div
+                    class="bg-gray-100 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://source.unsplash.com/600x400/?skincare,serum" alt="Vitamin C Serum"
+                        class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Vitamin C Serum</h3>
+                        <p class="text-gray-600 mb-4">Brightens complexion and reduces the appearance of fine lines.</p>
+                        <a href="#0" class="text-yellow-500 hover:underline">Learn More &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="index.html#products"
+                    class="bg-green-700 hover:bg-green-800 text-white font-semibold py-3 px-6 rounded-full transition transform hover:scale-105">View
+                    All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="mb-4 md:mb-0">
+                    <a href="index.html" class="text-2xl font-bold text-green-700">Cosmetica</a>
+                    <p class="text-gray-600 mt-2">100% Organic | Cruelty-Free</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-green-700 transition"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-green-700 transition"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-green-700 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-green-700 transition"><i
+                            class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <ul class="flex space-x-6">
+                        <li><a href="index.html" class="text-gray-600 hover:text-green-700 transition">Home</a></li>
+                        <li><a href="about_us.html" class="text-gray-600 hover:text-green-700 transition">About &
+                                Products</a></li>
+                        <li><a href="contact_blog.html" class="text-gray-600 hover:text-green-700 transition">Contact &
+                                Blog</a></li>
+                    </ul>
+                </div>
+                <div class="text-gray-500">
+                    &copy; 2024 Cosmetica. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper JS for Testimonials Carousel -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper
+        const swiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // GSAP Animations
+        gsap.from(".about-us-section h2", { duration: 1, y: -50, opacity: 0, ease: "bounce" });
+        gsap.from(".about-us-section p", { duration: 1, y: 50, opacity: 0, delay: 0.5, ease: "power1.out" });
+    </script>
+</body>
+
+</html>

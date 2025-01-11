@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>About Us - newestq Coffee House</title>
+</head>
+<body class="font-sans bg-cream text-gray-800">
+    <!-- Header -->
+    <header class="bg-brown text-white shadow-md">
+        <nav class="container mx-auto flex justify-between items-center p-4" aria-label="Main Navigation">
+            <a href="home.html" class="text-2xl font-bold">newestq</a>
+            <button class="md:hidden text-white focus:outline-none" aria-label="Toggle Menu" onclick="toggleMenu()">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="home.html" class="hover:text-light-green transition-colors">Home</a></li>
+                <li><a href="about_us.html" class="hover:text-light-green transition-colors">About Us</a></li>
+                <li><a href="menu.html" class="hover:text-light-green transition-colors">Menu</a></li>
+                <li><a href="contact_us.html" class="hover:text-light-green transition-colors">Contact Us</a></li>
+            </ul>
+            <div class="hidden md:flex space-x-4">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-light-green"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-light-green"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="hover:text-light-green"><i class="fab fa-twitter"></i></a>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brown text-white">
+            <ul class="flex flex-col space-y-4 p-4">
+                <li><a href="home.html" class="hover:text-light-green transition-colors">Home</a></li>
+                <li><a href="about_us.html" class="hover:text-light-green transition-colors">About Us</a></li>
+                <li><a href="menu.html" class="hover:text-light-green transition-colors">Menu</a></li>
+                <li><a href="contact_us.html" class="hover:text-light-green transition-colors">Contact Us</a></li>
+                <div class="flex space-x-4 mt-4">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-light-green"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-light-green"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="hover:text-light-green"><i class="fab fa-twitter"></i></a>
+                </div>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Our Story -->
+    <section class="py-16 bg-cream">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6 text-center">Our Story</h2>
+            <div class="flex flex-col md:flex-row items-center md:space-x-8 space-y-8 md:space-y-0">
+                <div class="md:w-1/2">
+                    <img src="https://source.unsplash.com/600x400/?coffee,beans" alt="Coffee Beans" class="rounded-lg shadow-lg">
+                </div>
+                <div class="md:w-1/2">
+                    <p class="text-lg mb-4">Founded in 2020, newestq Coffee House was born from a deep love for exceptional coffee and the desire to create a community hub. Our founders, passionate about sustainable sourcing and artisanal roasting, embarked on a journey to serve the finest brews while fostering connections among coffee enthusiasts.</p>
+                    <p class="text-lg">From our humble beginnings in a small storefront, we've grown into a beloved local spot known for our cozy atmosphere, delectable pastries, and friendly baristas. At newestq, every cup tells a story, and we're excited to share ours with you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6 text-center">Our Mission</h2>
+            <ul class="max-w-3xl mx-auto space-y-4">
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-light-green mt-1 mr-3"></i>
+                    <span class="text-lg">Sourcing Sustainable Beans: We prioritize ethically sourced coffee beans to support farmers and protect the environment.</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-light-green mt-1 mr-3"></i>
+                    <span class="text-lg">Fostering Community: newestq serves as a gathering place where friends and neighbors can connect over great coffee.</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-light-green mt-1 mr-3"></i>
+                    <span class="text-lg">Artisanal Roasting: Our expert roasters craft each batch to highlight the unique flavors of every bean.</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-light-green mt-1 mr-3"></i>
+                    <span class="text-lg">Excellence in Service: We train our staff to provide friendly, knowledgeable service to enhance your coffee experience.</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 bg-cream">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6 text-center">Meet Our Team</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center md:space-x-8 space-y-8 md:space-y-0">
+                <!-- Team Member 1 -->
+                <div class="text-center">
+                    <img src="https://source.unsplash.com/300x300/?person,barista" alt="Jane Doe, Founder" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-semibold">Jane Doe</h3>
+                    <p class="text-gray-700">Founder & Head Roaster</p>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="text-center">
+                    <img src="https://source.unsplash.com/300x300/?person,manager" alt="John Smith, Manager" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-semibold">John Smith</h3>
+                    <p class="text-gray-700">Manager</p>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="text-center">
+                    <img src="https://source.unsplash.com/300x300/?person,barista,2" alt="Alice Johnson, Barista" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-semibold">Alice Johnson</h3>
+                    <p class="text-gray-700">Senior Barista</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brown text-white py-8">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <!-- Social Media Links -->
+            <div class="flex space-x-4 mb-4 md:mb-0">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-light-green"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-light-green"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="hover:text-light-green"><i class="fab fa-twitter"></i></a>
+            </div>
+            <!-- Quick Links -->
+            <div class="flex space-x-6 mb-4 md:mb-0">
+                <a href="home.html" class="hover:text-light-green transition-colors">Home</a>
+                <a href="about_us.html" class="hover:text-light-green transition-colors">About Us</a>
+                <a href="menu.html" class="hover:text-light-green transition-colors">Menu</a>
+                <a href="contact_us.html" class="hover:text-light-green transition-colors">Contact Us</a>
+            </div>
+            <!-- Contact Information -->
+            <div class="text-center md:text-right">
+                <p class="font-bold">newestq Coffee House</p>
+                <p>123 Coffee Lane, Brewtown</p>
+                <p>Phone: <a href="tel:+1234567890" class="hover:underline">+1 (234) 567-890</a></p>
+                <p>Email: <a href="mailto:contact@newestq.com" class="hover:underline">contact@newestq.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // GSAP Animations
+        gsap.from(".animate-fade-in", { opacity: 0, y: 20, duration: 1, stagger: 0.3 });
+
+        // Framer Motion can be used if needed for more complex animations
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            --bg-cream: #f5f5dc;
+            --bg-brown: #4b2e2e;
+            --text-light-green: #a8d5ba;
+            --text-dark-green: #4c9a92;
+            background-color: var(--bg-cream);
+        }
+        .bg-brown {
+            background-color: var(--bg-brown);
+        }
+        .bg-light-green {
+            background-color: var(--text-light-green);
+        }
+        .hover\:bg-dark-green:hover {
+            background-color: var(--text-dark-green);
+        }
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+        }
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body>
+</html>

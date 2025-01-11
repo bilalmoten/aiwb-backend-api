@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>newestq - Menu</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+            <div class="flex items-center">
+                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc2M3wwfDF8c2VhcmNofDF8fGNvZmZlZSUyMGxvZ298ZW58MHx8fHwxNjk4NTUyMzM2&ixlib=rb-4.0.3&q=80&w=100" alt="newestq Logo" class="h-10 w-10 mr-2">
+                <span class="text-2xl font-bold">newestq</span>
+            </div>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="Home Page.html" class="hover:text-gray-300 transition">Home</a></li>
+                    <li><a href="About Page.html" class="hover:text-gray-300 transition">About</a></li>
+                    <li><a href="Menu Page.html" class="hover:text-gray-300 transition">Menu</a></li>
+                    <li><a href="Contact Page.html" class="hover:text-gray-300 transition">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Menu Sections -->
+    <section class="bg-white py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-semibold text-center mb-8">Our Menu</h2>
+
+            <!-- Beverages -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold mb-6">Beverages</h3>
+                <div class="space-y-6">
+                    <!-- Coffee Category -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4">Coffee</h4>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between items-center">
+                                <div>
+                                    <span class="font-semibold">Espresso</span>
+                                    <p class="text-gray-600">Strong and bold espresso shot.</p>
+                                </div>
+                                <span class="font-semibold">$3.00</span>
+                            </li>
+                            <li class="flex justify-between items-center">
+                                <div>
+                                    <span class="font-semibold">Cappuccino</span>
+                                    <p class="text-gray-600">Espresso with steamed milk and foam.</p>
+                                </div>
+                                <span class="font-semibold">$4.50</span>
+                            </li>
+                            <li class="flex justify-between items-center">
+                                <div>
+                                    <span class="font-semibold">Latte</span>
+                                    <p class="text-gray-600">Espresso with steamed milk.</p>
+                                </div>
+                                <span class="font-semibold">$4.00</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Tea Category -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4">Tea</h4>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between items-center">
+                                <div>
+                                    <span class="font-semibold">Green Tea</span>
+                                    <p class="text-gray-600">Refreshing and antioxidant-rich.</p>
+                                </div>
+                                <span class="font-semibold">$3.50</span>
+                            </li>
+                            <li class="flex justify-between items-center">
+                                <div>
+                                    <span class="font-semibold">Chai Latte</span>
+                                    <p class="text-gray-600">Spiced tea with steamed milk.</p>
+                                </div>
+                                <span class="font-semibold">$4.50</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Specialty Drinks Category -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4">Specialty Drinks</h4>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between items-center">
+                                <div>
+                                    <span class="font-semibold">Iced Caramel Macchiato</span>
+                                    <p class="text-gray-600">Espresso with caramel and milk over ice.</p>
+                                </div>
+                                <span class="font-semibold">$5.50</span>
+                            </li>
+                            <li class="flex justify-between items-center">
+                                <div>
+                                    <span class="font-semibold">Mocha</span>
+                                    <p class="text-gray-600">Espresso with chocolate and steamed milk.</p>
+                                </div>
+                                <span class="font-semibold">$5.00</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Snacks & Pastries -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-6">Snacks & Pastries</h3>
+                <div class="space-y-6">
+                    <!-- Baked Goods Category -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4">Baked Goods</h4>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between items-center">
+                                <div>
+                                    <span class="font-semibold">Blueberry Muffin</span>
+                                    <p class="text-gray-600">Freshly baked with juicy blueberries.</p>
+                                </div>
+                                <span class="font-semibold">$2.50</span>
+                            </li>
+                            <li class="flex justify-between items-center">
+                                <div>
+                                    <span class="font-semibold">Croissant</span>
+                                    <p class="text-gray-600">Buttery and flaky French pastry.</p>
+                                </div>
+                                <span class="font-semibold">$3.00</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Sandwiches Category -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4">Sandwiches</h4>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between items-center">
+                                <div>
+                                    <span class="font-semibold">Turkey Club Sandwich</span>
+                                    <p class="text-gray-600">Sliced turkey, bacon, lettuce, and tomato.</p>
+                                </div>
+                                <span class="font-semibold">$6.50</span>
+                            </li>
+                            <li class="flex justify-between items-center">
+                                <div>
+                                    <span class="font-semibold">Veggie Delight</span>
+                                    <p class="text-gray-600">Fresh vegetables with hummus spread.</p>
+                                </div>
+                                <span class="font-semibold">$5.50</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start">
+                <!-- Quick Links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="Home Page.html" class="hover:text-gray-400 transition">Home</a></li>
+                        <li><a href="About Page.html" class="hover:text-gray-400 transition">About</a></li>
+                        <li><a href="Menu Page.html" class="hover:text-gray-400 transition">Menu</a></li>
+                        <li><a href="Contact Page.html" class="hover:text-gray-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Social Media -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com" target="_blank" class="hover:text-gray-400 transition" aria-label="Facebook">
+                            <i class="fab fa-facebook fa-lg"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" class="hover:text-gray-400 transition" aria-label="Instagram">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="hover:text-gray-400 transition" aria-label="Twitter">
+                            <i class="fab fa-twitter fa-lg"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="hover:text-gray-400 transition" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Contact Information -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                    <p class="text-gray-400">Phone: +1 (123) 456-7890</p>
+                    <p class="text-gray-400">Email: contact@newestq.com</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-gray-500 text-sm">
+                &copy; 2024 newestq. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fade-in Animation -->
+    <style>
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in {
+            animation: fade-in 1s ease-out forwards;
+        }
+        .delay-300 {
+            animation-delay: 0.3s;
+            animation-fill-mode: both;
+        }
+    </style>
+
+    <!-- GSAP Animations -->
+    <script>
+        gsap.from(".animate-fade-in", { opacity: 0, y: 20, duration: 1, stagger: 0.3 });
+    </script>
+
+</body>
+</html>

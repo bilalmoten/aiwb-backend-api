@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>Home - newestq Coffee House</title>
+</head>
+<body class="font-sans bg-cream text-gray-800">
+    <!-- Header -->
+    <header class="bg-brown text-white shadow-md">
+        <nav class="container mx-auto flex justify-between items-center p-4" aria-label="Main Navigation">
+            <a href="home.html" class="text-2xl font-bold">newestq</a>
+            <button class="md:hidden text-white focus:outline-none" aria-label="Toggle Menu" onclick="toggleMenu()">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="home.html" class="hover:text-light-green transition-colors">Home</a></li>
+                <li><a href="about_us.html" class="hover:text-light-green transition-colors">About Us</a></li>
+                <li><a href="menu.html" class="hover:text-light-green transition-colors">Menu</a></li>
+                <li><a href="contact_us.html" class="hover:text-light-green transition-colors">Contact Us</a></li>
+            </ul>
+            <div class="hidden md:flex space-x-4">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-light-green"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-light-green"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="hover:text-light-green"><i class="fab fa-twitter"></i></a>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brown text-white">
+            <ul class="flex flex-col space-y-4 p-4">
+                <li><a href="home.html" class="hover:text-light-green transition-colors">Home</a></li>
+                <li><a href="about_us.html" class="hover:text-light-green transition-colors">About Us</a></li>
+                <li><a href="menu.html" class="hover:text-light-green transition-colors">Menu</a></li>
+                <li><a href="contact_us.html" class="hover:text-light-green transition-colors">Contact Us</a></li>
+                <div class="flex space-x-4 mt-4">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-light-green"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-light-green"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="hover:text-light-green"><i class="fab fa-twitter"></i></a>
+                </div>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative">
+        <img src="https://source.unsplash.com/1600x900/?coffee,interior" alt="Cozy Coffee House" class="w-full h-screen object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+            <div class="text-center text-white px-4">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">Welcome to newestq</h1>
+                <p class="text-lg md:text-2xl mb-6 animate-fade-in delay-200">Your Cozy Coffee Haven</p>
+                <a href="about_us.html" class="inline-block bg-light-green hover:bg-dark-green text-white font-semibold py-3 px-6 rounded shadow-lg transition transform hover:scale-105 animate-fade-in delay-400">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Preview -->
+    <section class="py-16 bg-cream">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">About Us</h2>
+            <p class="text-lg max-w-2xl mx-auto mb-6">At newestq, we blend passion with quality to bring you the finest coffee experience. Our mission is to create a welcoming space where coffee lovers can enjoy exceptional brews and delightful treats.</p>
+            <a href="about_us.html" class="inline-flex items-center bg-light-green hover:bg-dark-green text-white font-semibold py-2 px-4 rounded transition transform hover:scale-105">
+                Read More
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Featured Menu Items -->
+    <section class="py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Featured Menu Items</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center md:space-x-8 space-y-8 md:space-y-0">
+                <!-- Item 1 -->
+                <div class="max-w-sm rounded overflow-hidden shadow-lg hover:shadow-2xl transition-shadow transform hover:scale-105">
+                    <img class="w-full h-48 object-cover" src="https://source.unsplash.com/600x400/?latte,art" alt="Latte Art">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl mb-2">Vanilla Latte</div>
+                        <p class="text-gray-700 text-base">A smooth blend of espresso, steamed milk, and sweet vanilla syrup.</p>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="max-w-sm rounded overflow-hidden shadow-lg hover:shadow-2xl transition-shadow transform hover:scale-105">
+                    <img class="w-full h-48 object-cover" src="https://source.unsplash.com/600x400/?espresso" alt="Espresso Shot">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl mb-2">Espresso Shot</div>
+                        <p class="text-gray-700 text-base">Rich and bold, our single shot of espresso is perfect for a quick energy boost.</p>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="max-w-sm rounded overflow-hidden shadow-lg hover:shadow-2xl transition-shadow transform hover:scale-105">
+                    <img class="w-full h-48 object-cover" src="https://source.unsplash.com/600x400/?coldbrew" alt="Cold Brew">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl mb-2">Cold Brew</div>
+                        <p class="text-gray-700 text-base">Smooth and refreshing, our cold brew is steeped for 24 hours for maximum flavor.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8">
+                <a href="menu.html" class="inline-flex items-center bg-light-green hover:bg-dark-green text-white font-semibold py-3 px-6 rounded shadow-lg transition transform hover:scale-105">
+                    View Full Menu
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brown text-white py-8">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <!-- Social Media Links -->
+            <div class="flex space-x-4 mb-4 md:mb-0">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-light-green"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-light-green"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="hover:text-light-green"><i class="fab fa-twitter"></i></a>
+            </div>
+            <!-- Quick Links -->
+            <div class="flex space-x-6 mb-4 md:mb-0">
+                <a href="home.html" class="hover:text-light-green transition-colors">Home</a>
+                <a href="about_us.html" class="hover:text-light-green transition-colors">About Us</a>
+                <a href="menu.html" class="hover:text-light-green transition-colors">Menu</a>
+                <a href="contact_us.html" class="hover:text-light-green transition-colors">Contact Us</a>
+            </div>
+            <!-- Contact Information -->
+            <div class="text-center md:text-right">
+                <p class="font-bold">newestq Coffee House</p>
+                <p>123 Coffee Lane, Brewtown</p>
+                <p>Phone: <a href="tel:+1234567890" class="hover:underline">+1 (234) 567-890</a></p>
+                <p>Email: <a href="mailto:contact@newestq.com" class="hover:underline">contact@newestq.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // GSAP Animations
+        gsap.from(".animate-fade-in", { opacity: 0, y: 20, duration: 1, stagger: 0.3 });
+
+        // Framer Motion can be used if needed for more complex animations
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            --bg-cream: #f5f5dc;
+            --bg-brown: #4b2e2e;
+            --text-light-green: #a8d5ba;
+            --text-dark-green: #4c9a92;
+            background-color: var(--bg-cream);
+        }
+        .bg-brown {
+            background-color: var(--bg-brown);
+        }
+        .bg-light-green {
+            background-color: var(--text-light-green);
+        }
+        .hover\:bg-dark-green:hover {
+            background-color: var(--text-dark-green);
+        }
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+        }
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body>
+</html>

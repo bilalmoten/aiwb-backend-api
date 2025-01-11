@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>Cozyville - Menu</title>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <header class="bg-amber-100 shadow-md fixed w-full z-20">
+        <nav class="container mx-auto flex justify-between items-center p-4">
+            <a href="index.html" class="text-3xl font-bold text-brown-800">Cozyville</a>
+            <button class="md:hidden text-brown-700 focus:outline-none" aria-label="Toggle Menu" onclick="toggleMenu()">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <ul class="hidden md:flex space-x-8 text-brown-700">
+                <li><a href="index.html" class="hover:text-green-600 transition">Home</a></li>
+                <li><a href="menu.html" class="hover:text-green-600 transition">Menu</a></li>
+                <li><a href="contact.html" class="hover:text-green-600 transition">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-amber-100 shadow-lg">
+            <ul class="flex flex-col space-y-4 p-4">
+                <li><a href="index.html" class="hover:text-green-600 transition">Home</a></li>
+                <li><a href="menu.html" class="hover:text-green-600 transition">Menu</a></li>
+                <li><a href="contact.html" class="hover:text-green-600 transition">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Menu Introduction -->
+    <section class="pt-20 bg-amber-50 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl font-bold text-brown-800 mb-4">Our Menu</h1>
+            <p class="text-gray-700 max-w-2xl mx-auto">
+                Explore our selection of handcrafted coffee beverages, delectable snacks, and indulgent desserts, all made with the finest ingredients to satisfy your cravings.
+            </p>
+        </div>
+    </section>
+
+    <!-- Menu Categories -->
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+            <!-- Coffee Category -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-semibold text-brown-800 mb-6">Coffee</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Example Coffee Item -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" alt="Espresso" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-brown-800">Espresso</h3>
+                            <p class="text-gray-700 mt-2">Rich and bold, our classic espresso is the perfect start to your day.</p>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="text-green-600 font-semibold">$3.00</span>
+                                <a href="#" class="text-green-600 hover:underline"><i class="fas fa-info-circle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repeat Coffee Items as Needed -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1522770179533-24471fcdba45?auto=format&fit=crop&w=800&q=80" alt="Cappuccino" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-brown-800">Cappuccino</h3>
+                            <p class="text-gray-700 mt-2">A delightful mix of espresso, steamed milk, and foam.</p>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="text-green-600 font-semibold">$4.50</span>
+                                <a href="#" class="text-green-600 hover:underline"><i class="fas fa-info-circle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80" alt="Latte" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-brown-800">Latte</h3>
+                            <p class="text-gray-700 mt-2">Smooth espresso with steamed milk, perfect for any time of day.</p>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="text-green-600 font-semibold">$4.00</span>
+                                <a href="#" class="text-green-600 hover:underline"><i class="fas fa-info-circle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Snacks Category -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-semibold text-brown-800 mb-6">Snacks</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Example Snack Item -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" alt="Croissant" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-brown-800">Butter Croissant</h3>
+                            <p class="text-gray-700 mt-2">Flaky and buttery croissants, baked fresh daily.</p>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="text-green-600 font-semibold">$2.50</span>
+                                <a href="#" class="text-green-600 hover:underline"><i class="fas fa-info-circle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repeat Snack Items as Needed -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f5b?auto=format&fit=crop&w=800&q=80" alt="Sandwich" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-brown-800">Club Sandwich</h3>
+                            <p class="text-gray-700 mt-2">Triple-layered sandwich with fresh ingredients.</p>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="text-green-600 font-semibold">$5.00</span>
+                                <a href="#" class="text-green-600 hover:underline"><i class="fas fa-info-circle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f86?auto=format&fit=crop&w=800&q=80" alt="Pastries" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-brown-800">Assorted Pastries</h3>
+                            <p class="text-gray-700 mt-2">A selection of our finest pastries, perfect with your coffee.</p>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="text-green-600 font-semibold">$3.50</span>
+                                <a href="#" class="text-green-600 hover:underline"><i class="fas fa-info-circle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts Category -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-semibold text-brown-800 mb-6">Desserts</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Example Dessert Item -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1510626176961-4b56c3f7e1b9?auto=format&fit=crop&w=800&q=80" alt="Cheesecake" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-brown-800">Classic Cheesecake</h3>
+                            <p class="text-gray-700 mt-2">Creamy and smooth cheesecake with a graham cracker crust.</p>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="text-green-600 font-semibold">$4.50</span>
+                                <a href="#" class="text-green-600 hover:underline"><i class="fas fa-info-circle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repeat Dessert Items as Needed -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1617196034280-9da4aa5d5505?auto=format&fit=crop&w=800&q=80" alt="Brownies" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-brown-800">Chocolate Brownie</h3>
+                            <p class="text-gray-700 mt-2">Rich and fudgy brownies loaded with chocolate chunks.</p>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="text-green-600 font-semibold">$3.00</span>
+                                <a href="#" class="text-green-600 hover:underline"><i class="fas fa-info-circle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1610631783523-03ed562f51c1?auto=format&fit=crop&w=800&q=80" alt="Tiramisu" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-brown-800">Tiramisu</h3>
+                            <p class="text-gray-700 mt-2">Layered Italian dessert with coffee-soaked ladyfingers and mascarpone cream.</p>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="text-green-600 font-semibold">$5.00</span>
+                                <a href="#" class="text-green-600 hover:underline"><i class="fas fa-info-circle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Downloadable Menu -->
+            <div class="text-center">
+                <a href="menu.pdf" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-full transition transform hover:scale-105" download>
+                    Download Full Menu
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-amber-100 py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h2 class="text-2xl font-bold text-brown-800">Cozyville</h2>
+                    <p class="text-gray-700">123 Coffee Lane, Bean Town, Brew State</p>
+                    <p class="text-gray-700">Phone: (123) 456-7890 | Email: contact@cozyville.com</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" aria-label="Facebook" class="text-brown-700 hover:text-green-600 transition">
+                        <i class="fab fa-facebook-f fa-lg"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="text-brown-700 hover:text-green-600 transition">
+                        <i class="fab fa-instagram fa-lg"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter" class="text-brown-700 hover:text-green-600 transition">
+                        <i class="fab fa-twitter fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-6 text-center text-gray-600">
+                &copy; 2024 Cozyville. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // GSAP Animations
+        gsap.from(".container", { duration: 1, opacity: 0, y: 50, ease: "power2.out", stagger: 0.2 });
+    </script>
+</body>
+</html>

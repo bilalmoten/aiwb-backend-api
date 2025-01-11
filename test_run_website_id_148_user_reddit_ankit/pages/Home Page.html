@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>newestq - Home</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+            <div class="flex items-center">
+                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc2M3wwfDF8c2VhcmNofDF8fGNvZmZlZSUyMGxvZ298ZW58MHx8fHwxNjk4NTUyMzM2&ixlib=rb-4.0.3&q=80&w=100" alt="newestq Logo" class="h-10 w-10 mr-2">
+                <span class="text-2xl font-bold">newestq</span>
+            </div>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="Home Page.html" class="hover:text-gray-300 transition">Home</a></li>
+                    <li><a href="About Page.html" class="hover:text-gray-300 transition">About</a></li>
+                    <li><a href="Menu Page.html" class="hover:text-gray-300 transition">Menu</a></li>
+                    <li><a href="Contact Page.html" class="hover:text-gray-300 transition">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center h-screen" style="background-image: url('https://images.unsplash.com/photo-1526045612212-70caf35c14df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc2M3wwfDF8c2VhcmNofDR8fGNvZmZlZSUyMGhvb2R8ZW58MHx8fHwxNjk4NTUyMzg0&ixlib=rb-4.0.3&q=80&w=1920');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">Welcome to newestq</h1>
+            <p class="text-lg md:text-xl mb-8 animate-fade-in delay-300">Your Cozy Coffee Haven</p>
+            <a href="Menu Page.html" class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded transition transform hover:scale-105">
+                <i class="fas fa-mug-hot mr-2"></i>
+                View Menu
+            </a>
+        </div>
+    </section>
+
+    <!-- About Preview -->
+    <section class="bg-white py-12">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-semibold mb-4">About Us</h2>
+            <p class="text-gray-700 mb-6">At newestq, we are passionate about crafting the perfect cup of coffee in a welcoming and cozy environment. Our mission is to create a space where coffee enthusiasts can relax, connect, and enjoy exceptional beverages.</p>
+            <a href="About Page.html" class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded transition transform hover:scale-105">
+                <i class="fas fa-info-circle mr-2"></i>
+                Learn More
+            </a>
+        </div>
+    </section>
+
+    <!-- Featured Menu Items -->
+    <section class="bg-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-semibold text-center mb-8">Featured Menu Items</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc2M3wwfDF8c2VhcmNofDJ8fGNvZmZlZXxlbnwwfHx8fDE2OTg1NTI0Mzc&ixlib=rb-4.0.3&q=80&w=400" alt="Cappuccino" class="w-full h-48 object-cover">
+                    <div class="p-4 text-center">
+                        <h3 class="text-xl font-semibold mb-2">Cappuccino</h3>
+                        <p class="text-gray-600 mb-4">A classic Italian coffee drink with steamed milk foam.</p>
+                        <span class="text-green-600 font-bold">$4.50</span>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1521302082553-8f53d93d83b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc2M3wwfDF8c2VhcmNofDJ8fG1lY2hhdCUyMGRvbmV8ZW58MHx8fHwxNjk4NTUyNDM0&ixlib=rb-4.0.3&q=80&w=400" alt="Green Tea Latte" class="w-full h-48 object-cover">
+                    <div class="p-4 text-center">
+                        <h3 class="text-xl font-semibold mb-2">Green Tea Latte</h3>
+                        <p class="text-gray-600 mb-4">A soothing blend of matcha and steamed milk.</p>
+                        <span class="text-green-600 font-bold">$5.00</span>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1599785209707-78128a7a3ef4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc2M3wwfDF8c2VhcmNofDJ8fHBhcyUyMHBhc3RyZXl8ZW58MHx8fHwxNjk4NTUyNDQx&ixlib=rb-4.0.3&q=80&w=400" alt="Chocolate Croissant" class="w-full h-48 object-cover">
+                    <div class="p-4 text-center">
+                        <h3 class="text-xl font-semibold mb-2">Chocolate Croissant</h3>
+                        <p class="text-gray-600 mb-4">Flaky buttery croissant filled with rich chocolate.</p>
+                        <span class="text-green-600 font-bold">$3.50</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="Menu Page.html" class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded transition transform hover:scale-105">
+                    <i class="fas fa-list mr-2"></i>
+                    View Full Menu
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start">
+                <!-- Quick Links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="Home Page.html" class="hover:text-gray-400 transition">Home</a></li>
+                        <li><a href="About Page.html" class="hover:text-gray-400 transition">About</a></li>
+                        <li><a href="Menu Page.html" class="hover:text-gray-400 transition">Menu</a></li>
+                        <li><a href="Contact Page.html" class="hover:text-gray-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Social Media -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com" target="_blank" class="hover:text-gray-400 transition" aria-label="Facebook">
+                            <i class="fab fa-facebook fa-lg"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" class="hover:text-gray-400 transition" aria-label="Instagram">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="hover:text-gray-400 transition" aria-label="Twitter">
+                            <i class="fab fa-twitter fa-lg"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="hover:text-gray-400 transition" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Contact Information -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                    <p class="text-gray-400">Phone: +1 (123) 456-7890</p>
+                    <p class="text-gray-400">Email: contact@newestq.com</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-gray-500 text-sm">
+                &copy; 2024 newestq. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fade-in Animation -->
+    <style>
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in {
+            animation: fade-in 1s ease-out forwards;
+        }
+        .delay-300 {
+            animation-delay: 0.3s;
+            animation-fill-mode: both;
+        }
+    </style>
+
+    <!-- GSAP Animations -->
+    <script>
+        gsap.from(".animate-fade-in", { opacity: 0, y: 20, duration: 1, stagger: 0.3 });
+    </script>
+
+</body>
+</html>

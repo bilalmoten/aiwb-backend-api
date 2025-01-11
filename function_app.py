@@ -4,6 +4,7 @@ import json
 import logging
 import os
 import time
+import random
 
 # Third-party imports
 import azure.functions as func
@@ -21,13 +22,43 @@ from prompts import (
     WEBSITE_CODE_PROMPT,
     DESIGN_FEEDBACK_PROMPT,
     CODE_REFINEMENT_PROMPT,
+    COMPONENT_STRUCTURE_PROMPT,
 )
 
 sections = sections2
 # Initialize the Supabase client
 supabase_url: str = os.environ.get("SUPABASE_URL")
 supabase_key: str = os.environ.get("SUPABASE_KEY")
-supabase: Client = create_client(supabase_url, supabase_key)
+
+if not supabase_url or not supabase_key:
+    error_details = {
+        "error_type": "ConfigError",
+        "error_message": "Supabase credentials not found in environment variables",
+        "missing_vars": [
+            k
+            for k, v in {
+                "SUPABASE_URL": supabase_url,
+                "SUPABASE_KEY": supabase_key,
+            }.items()
+            if not v
+        ],
+    }
+    raise Exception(json.dumps(error_details))
+
+try:
+    supabase: Client = create_client(supabase_url, supabase_key)
+    # Test connection
+    supabase.table("websites").select("count").limit(1).execute()
+    logging.info("Supabase client initialized and connected successfully")
+except Exception as e:
+    error_details = {
+        "error_type": type(e).__name__,
+        "error_message": str(e),
+        "supabase_url": (
+            supabase_url[:10] + "..." if supabase_url else None
+        ),  # Only show part of URL for security
+    }
+    raise Exception(json.dumps(error_details))
 
 # Initialize Azure GPT-4 API settings
 AZURE_KEY = os.environ.get("AZURE_KEY")
@@ -47,6 +78,10 @@ ALLOWED_ORIGINS = [
     "https://www.aiwebsitebuilder.tech",
 ]
 
+# Load mock responses
+with open("mock_responses_2.json", "r") as f:
+    MOCK_RESPONSES = json.load(f)
+
 
 def pre_assemble_pages(website_componentised_structure, component_codes):
     """
@@ -57,29 +92,17 @@ def pre_assemble_pages(website_componentised_structure, component_codes):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!--PAID Tailwind CSS CDN -- DO NOT CHANGE -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome CDN  -- DO NOT CHANGE  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <script src=https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js></script>
     <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
     <title>{title}</title>
 </head>
 <body>"""
 
-    html_boilerplate_end = """<div class="AI WEBSITE BUILDER POPUP fixed bottom-0 left-0 right-0 bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-3 text-center shadow-lg">
-  <div class="container mx-auto flex flex-col sm:flex-row items-center justify-center gap-4">
-    <p class="text-sm font-medium">
-      This website was created with AI Website Builder
-    </p>
-    <a 
-      href="https://aiwebsitebuilder.tech" 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      class="inline-flex items-center px-4 py-1.5 text-sm font-semibold bg-white text-purple-600 rounded-full hover:bg-purple-50 transition-colors duration-200"
-    >
-      Build Your Free Website →
-    </a>
-  </div>
-</div>
+    html_boilerplate_end = """
 </body>
 </html>"""
 
@@ -124,12 +147,34 @@ def generate_request_id(user_id: str, website_id: str) -> str:
     return f"{user_id}__{website_id}__{timestamp}"
 
 
-def execute_step(step_name: str, request_id: str, func, *args, **kwargs):
+def execute_step(
+    step_name: str, request_id: str, func, test_mode: bool = False, *args, **kwargs
+):
     """
-    Wrapper function to handle execution, retries, and logging
+    Wrapper function to handle execution, retries, and logging.
+    Now supports test mode with mock responses.
     """
     max_retries = 2
     attempt = 0
+
+    # If test mode is enabled and we have a mock response, return it
+    if test_mode:
+        if step_name not in MOCK_RESPONSES:
+            logging.warning(f"No mock response for {step_name}, using real function")
+        else:
+            log_entry = {
+                "request_id": request_id,
+                "user_id": kwargs.get("user_id"),
+                "website_id": kwargs.get("website_id"),
+                "step": step_name,
+                "status": "success (mock)",
+                "timestamp": datetime.now().isoformat(),
+            }
+            try:
+                supabase.table("website_generation_logs").insert(log_entry).execute()
+            except Exception as e:
+                logging.warning(f"Failed to log mock step: {e}")
+            return MOCK_RESPONSES[step_name]
 
     while attempt < max_retries:
         try:
@@ -149,35 +194,60 @@ def execute_step(step_name: str, request_id: str, func, *args, **kwargs):
                 "error": None,
             }
 
-            supabase.table("website_generation_logs").insert(log_entry).execute()
+            try:
+                supabase.table("website_generation_logs").insert(log_entry).execute()
+            except Exception as e:
+                logging.warning(f"Failed to log success: {e}")
             return result
 
         except Exception as e:
             attempt += 1
-            error_msg = str(e)
-
-            log_entry = {
-                "request_id": request_id,
+            error_details = {
+                "step": step_name,
+                "error_type": type(e).__name__,
+                "error_message": str(e),
+                "attempt": attempt,
                 "user_id": kwargs.get("user_id"),
                 "website_id": kwargs.get("website_id"),
-                "step": step_name,
-                "status": "failed",
-                "attempt": attempt,
-                "error": error_msg,
-                "timestamp": datetime.now().isoformat(),
             }
 
-            supabase.table("website_generation_logs").insert(log_entry).execute()
+            # Try to get more error details if it's a Supabase error
+            if hasattr(e, "code") or hasattr(e, "details"):
+                error_details.update(
+                    {
+                        "error_code": getattr(e, "code", None),
+                        "error_details": getattr(e, "details", None),
+                        "error_hint": getattr(e, "hint", None),
+                    }
+                )
+
+            logging.error(
+                f"Step {step_name} failed: {json.dumps(error_details, indent=2)}"
+            )
+
+            try:
+                log_entry = {
+                    "request_id": request_id,
+                    "user_id": kwargs.get("user_id"),
+                    "website_id": kwargs.get("website_id"),
+                    "step": step_name,
+                    "status": "failed",
+                    "attempt": attempt,
+                    "error": json.dumps(error_details),
+                    "timestamp": datetime.now().isoformat(),
+                }
+                supabase.table("website_generation_logs").insert(log_entry).execute()
+            except Exception as log_error:
+                logging.warning(f"Failed to log error: {log_error}")
 
             if attempt == max_retries:
-                raise Exception(
-                    f"Step {step_name} failed after {max_retries} attempts: {error_msg}"
-                )
+                raise Exception(json.dumps(error_details))
 
             time.sleep(2**attempt)
 
 
-def call_google_ai_api(messages, model="gemini-1.5-flash-002"):
+def call_google_ai_api(messages, model="gemini-2.0-flash-exp"):
+    # gemini-1.5-flash-002
     """
     Call Google's Vertex AI API with the provided messages.
     """
@@ -434,7 +504,7 @@ def call_gpt4_api(messages, model="gpt-4o-mini"):
             "messages": messages,
             "max_completion_tokens": 50000,
         }
-        # logging.info(payload)
+        # print(payload)
     else:
         endpoint = GPT4o_ENDPOINT
         payload = {
@@ -569,6 +639,7 @@ def delete_existing_pages(user_id: str, website_id: str) -> bool:
 def fetch_conversation_data(user_id: str, website_id: str) -> dict:
     """Fetch website details and chat conversation from Supabase"""
     try:
+        # Use the exact same query that works in the test
         response = (
             supabase.table("websites")
             .select("website_name, website_description, chat_conversation")
@@ -580,9 +651,23 @@ def fetch_conversation_data(user_id: str, website_id: str) -> dict:
         if not response.data:
             raise Exception(f"No data found for website_id: {website_id}")
 
+        logging.info(f"Supabase response: {response}")
+        logging.info(f"Data: {response.data}")
+
         return response.data[0]
+
     except Exception as e:
-        raise Exception(f"Failed to fetch website data: {str(e)}")
+        error_details = {
+            "error_type": type(e).__name__,
+            "error_message": str(e),
+            "error_code": getattr(e, "code", None),
+            "error_details": getattr(e, "details", None),
+            "error_hint": getattr(e, "hint", None),
+            "user_id": user_id,
+            "website_id": website_id,
+        }
+        logging.error(f"Database error details: {json.dumps(error_details, indent=2)}")
+        raise Exception(json.dumps(error_details))
 
 
 def save_generated_pages(user_id: str, website_id: str, website_code: str) -> bool:
@@ -643,6 +728,12 @@ Please refine this into a detailed website plan using the provided guidelines.
     return parse_ai_response(response, model)
 
 
+###########################################
+# Original Website Generation Functions   #
+# (Kept for reference/fallback)          #
+###########################################
+
+
 def create_design_blueprint(structured_plan: str, model: str) -> str:
     """
     Step 2: Expand plan into detailed design blueprint
@@ -677,6 +768,224 @@ def generate_website_code(design_blueprint: str, model: str) -> str:
             {design_blueprint}
             
             Please generate the complete code for the website following the provided instructions.
+            
+            """,
+        },
+    ]
+
+    response = call_gpt4_api(messages, model)
+    return parse_ai_response(response, model)
+
+
+###########################################
+# New Component-Based Generation System   #
+###########################################
+
+
+def fetch_available_categories() -> list:
+    """
+    Fetch only unique component categories from Supabase
+    """
+    try:
+        response = (
+            supabase.table("components")
+            .select("section_type")
+            .eq("is_active", True)
+            .execute()
+        )
+
+        # Get unique categories
+        categories = list(set(item["section_type"] for item in response.data))
+        return categories
+    except Exception as e:
+        raise Exception(f"Failed to fetch categories: {str(e)}")
+
+
+def fetch_random_component(category: str) -> dict:
+    """
+    Fetch one random component from a category
+    """
+    try:
+        response = (
+            supabase.table("random_components")
+            .select("id, component_id")
+            .eq("section_type", category)
+            .eq("is_active", True)
+            .limit(1)
+            .execute()
+            # .select("id, component_id")
+            # .eq("section_type", category)
+            # .eq("is_active", True)
+            # .order("id", desc=None)  # Order by id to get consistent results
+            # .execute()
+        )
+
+        if not response.data:
+            raise Exception(f"No components found for category: {category}")
+
+        # Get all matching components and randomly select one using Python
+
+        return random.choice(response.data)
+    except Exception as e:
+        raise Exception(f"Failed to fetch random component: {str(e)}")
+
+
+def fetch_component_codes(component_ids: list) -> dict:
+    """
+    Fetch code only for selected components
+    """
+    try:
+        response = (
+            supabase.table("components")
+            .select("component_id, code")
+            .in_("component_id", component_ids)
+            .execute()
+        )
+
+        return {comp["component_id"]: comp["code"] for comp in response.data}
+    except Exception as e:
+        raise Exception(f"Failed to fetch component codes: {str(e)}")
+
+
+def generate_component_structure(
+    structured_plan: str, available_categories: list, model: str
+) -> dict:
+    """
+    Generate component category structure based on website plan
+    """
+    # Format available categories for the prompt
+    categories_text = "\n".join(f"- {cat}" for cat in available_categories)
+
+    messages = [
+        {
+            "role": "system",
+            "content": COMPONENT_STRUCTURE_PROMPT,
+        },
+        {
+            "role": "user",
+            "content": f"""
+            Available component categories:
+            {categories_text}
+            
+            Here is the website plan:
+            {structured_plan}
+            Please assign appropriate component categories to each section.
+            
+            Remember:
+            1. Only use categories from the provided list
+            2. Return a valid JSON object
+            3. Use the exact category names as provided
+            4. Do not add any extra text or formatting, just the JSON""",
+        },
+    ]
+
+    response = call_gpt4_api(messages, model)
+    raw_response = parse_ai_response(response, model)
+    logging.info(f"AI Response for component structure: {raw_response}")
+
+    try:
+        # Try to clean the response if it has extra text
+        if "```json" in raw_response:
+            raw_response = raw_response.split("```json")[1].split("```")[0]
+        elif "```" in raw_response:
+            raw_response = raw_response.split("```")[1].split("```")[0]
+
+        # Remove any leading/trailing whitespace
+        raw_response = raw_response.strip()
+
+        structure = json.loads(raw_response)
+
+        # Validate structure against available categories
+        for page in structure.values():
+            for category in page.values():
+                if category not in available_categories:
+                    raise ValueError(f"Invalid category in response: {category}")
+        return structure
+    except json.JSONDecodeError as e:
+        error_details = {
+            "error": "Invalid JSON structure",
+            "raw_response": raw_response,
+            "json_error": str(e),
+        }
+        logging.error(f"JSON Parse Error: {json.dumps(error_details, indent=2)}")
+        raise Exception(
+            f"AI returned invalid JSON structure: {json.dumps(error_details, indent=2)}"
+        )
+    except Exception as e:
+        raise Exception(f"Error processing AI response: {str(e)}")
+
+
+def select_random_components(
+    category_structure: dict, available_categories: list
+) -> dict:
+    """
+    Select random components for each category in the structure
+    First fetches a navbar to use across all pages
+    """
+    try:
+        # First get a random navbar
+        navbar = fetch_random_component("Navbar")
+        navbar_id = navbar["component_id"]
+        selected_ids = [navbar_id]  # Start with navbar
+        structure_with_ids = {}
+
+        # For each page, start with navbar and add other components
+        for page, sections in category_structure.items():
+            structure_with_ids[page] = [navbar_id]  # Add navbar first
+            for section, category in sections.items():
+                if category in available_categories and category != "Navbar":
+                    component = fetch_random_component(category)
+                    component_id = component["component_id"]
+                    structure_with_ids[page].append(component_id)
+                    if (
+                        component_id not in selected_ids
+                    ):  # Avoid duplicating navbar in selected_ids
+                        selected_ids.append(component_id)
+
+        # Fetch codes for all components (including navbar)
+        component_codes = fetch_component_codes(selected_ids)
+
+        return {"structure": json.dumps(structure_with_ids), "codes": component_codes}
+    except Exception as e:
+        error_details = {
+            "error_type": type(e).__name__,
+            "error_message": str(e),
+            "step": "select_components",
+            "details": "Error while selecting components and navbar",
+        }
+        logging.error(
+            f"Component selection error: {json.dumps(error_details, indent=2)}"
+        )
+        raise Exception(json.dumps(error_details))
+
+
+def assemble_template(components_data: dict) -> str:
+    """
+    Wrapper for pre_assemble_pages
+    """
+    return pre_assemble_pages(components_data["structure"], components_data["codes"])
+
+
+def generate_website_code(
+    website_plan: str, website_assembled_template: str, model: str
+) -> str:
+    """
+    Step 3: Generate initial website code
+    """
+    messages = [
+        {"role": "system", "content": WEBSITE_CODE_PROMPT},
+        {
+            "role": "user",
+            "content": f"""Here is the website plan: 
+            
+            {website_plan}
+            
+            Here is the template that is generated, 
+            
+            {website_assembled_template}
+            
+            
+            Please customise and furnish the code according to the plan, and make it ready to go live.
             
             """,
         },
@@ -831,53 +1140,81 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                 create_website_plan,
                 website_data=website_data,
                 model=model,
+                # test_mode=True,  # This will use mock response from mock_responses_2.json
             )
 
-            # Step 3: Design blueprint
-            design_blueprint = execute_step(
-                "create_blueprint",
+            # Step 3: Fetch available categories
+            available_categories = execute_step(
+                "fetch_categories",
                 request_id,
-                create_design_blueprint,
+                fetch_available_categories,
+            )
+
+            # Step 4: Generate component structure
+            component_structure = execute_step(
+                "generate_structure",
+                request_id,
+                generate_component_structure,
                 structured_plan=structured_plan,
+                available_categories=available_categories,
                 model=model,
             )
 
-            # Step 4: Generate initial code
+            # Step 5: Select random components
+            selected_components = execute_step(
+                "select_components",
+                request_id,
+                select_random_components,
+                category_structure=component_structure,
+                available_categories=available_categories,
+            )
+
+            # Step 6: Assemble template
             initial_code = execute_step(
+                "assemble_template",
+                request_id,
+                assemble_template,
+                components_data=selected_components,
+            )
+
+            # Step 7: Generate initial website code
+            website_code = execute_step(
                 "generate_code",
                 request_id,
                 generate_website_code,
-                design_blueprint=design_blueprint,
+                website_plan=structured_plan,
+                website_assembled_template=initial_code,
                 model=model,
             )
 
-            # Step 5: Generate feedback
-            feedback = execute_step(
-                "generate_feedback",
-                request_id,
-                generate_design_feedback,
-                website_code=initial_code,
-                model=model,
-            )
+            # # Step 8: Generate feedback
+            # feedback = execute_step(
+            #     "generate_feedback",
+            #     request_id,
+            #     generate_design_feedback,
+            #     website_code=website_code,
+            #     model=model,
+            # )
 
-            # Step 6: Final code refinement
-            final_code = execute_step(
-                "refine_code",
-                request_id,
-                refine_website_code,
-                initial_code=initial_code,
-                feedback=feedback,
-                model=model,
-            )
+            # # Step 9: Final code refinement
+            # final_code = execute_step(
+            #     "refine_code",
+            #     request_id,
+            #     refine_website_code,
+            #     initial_code=website_code,
+            #     feedback=feedback,
+            #     model=model,
+            # )
 
-            # Step 7: Save generated pages
+            # Step 10: Save generated pages
             execute_step(
                 "save_pages",
                 request_id,
                 save_generated_pages,
                 user_id=user_id,
                 website_id=website_id,
-                website_code=final_code,
+                # changed final_code to website_code for removing feedback and refinement
+                website_code=website_code,
             )
 
             return func.HttpResponse(

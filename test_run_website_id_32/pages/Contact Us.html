@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>Contact Us - newestq Coffee House</title>
+</head>
+<body class="font-sans bg-cream text-gray-800">
+    <!-- Header -->
+    <header class="bg-brown text-white shadow-md">
+        <nav class="container mx-auto flex justify-between items-center p-4" aria-label="Main Navigation">
+            <a href="home.html" class="text-2xl font-bold">newestq</a>
+            <button class="md:hidden text-white focus:outline-none" aria-label="Toggle Menu" onclick="toggleMenu()">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="home.html" class="hover:text-light-green transition-colors">Home</a></li>
+                <li><a href="about_us.html" class="hover:text-light-green transition-colors">About Us</a></li>
+                <li><a href="menu.html" class="hover:text-light-green transition-colors">Menu</a></li>
+                <li><a href="contact_us.html" class="hover:text-light-green transition-colors">Contact Us</a></li>
+            </ul>
+            <div class="hidden md:flex space-x-4">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-light-green"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-light-green"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="hover:text-light-green"><i class="fab fa-twitter"></i></a>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brown text-white">
+            <ul class="flex flex-col space-y-4 p-4">
+                <li><a href="home.html" class="hover:text-light-green transition-colors">Home</a></li>
+                <li><a href="about_us.html" class="hover:text-light-green transition-colors">About Us</a></li>
+                <li><a href="menu.html" class="hover:text-light-green transition-colors">Menu</a></li>
+                <li><a href="contact_us.html" class="hover:text-light-green transition-colors">Contact Us</a></li>
+                <div class="flex space-x-4 mt-4">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-light-green"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-light-green"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="hover:text-light-green"><i class="fab fa-twitter"></i></a>
+                </div>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Contact Information -->
+    <section class="py-16 bg-cream">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6 text-center">Get in Touch</h2>
+            <div class="flex flex-col md:flex-row md:space-x-8 space-y-8 md:space-y-0">
+                <!-- Contact Details -->
+                <div class="md:w-1/2">
+                    <div class="space-y-6">
+                        <!-- Address -->
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Our Location</h3>
+                            <p class="text-gray-700">123 Coffee Lane, Brewtown, BT 12345</p>
+                            <a href="https://www.google.com/maps" target="_blank" class="text-blue-500 hover:underline flex items-center">
+                                View on Google Maps
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                        <!-- Phone -->
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Phone</h3>
+                            <p class="text-gray-700"><a href="tel:+1234567890" class="hover:underline">+1 (234) 567-890</a></p>
+                        </div>
+                        <!-- Email -->
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Email</h3>
+                            <p class="text-gray-700"><a href="mailto:contact@newestq.com" class="hover:underline">contact@newestq.com</a></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contact Form -->
+                <div class="md:w-1/2">
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-gray-700">Name</label>
+                            <input type="text" id="name" placeholder="Your Name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-light-green">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700">Email</label>
+                            <input type="email" id="email" placeholder="Your Email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-light-green">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700">Message</label>
+                            <textarea id="message" rows="5" placeholder="Your Message" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-light-green"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-light-green hover:bg-dark-green text-white font-semibold py-2 px-6 rounded shadow-lg transition transform hover:scale-105">
+                                Send Message
+                            </button>
+                        </div>
+                        <p class="text-sm text-gray-600 text-center">Note: This form is static and does not submit data.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Embedded Google Map -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6 text-center">Find Us</h2>
+            <div class="flex justify-center">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0191424410524!2d-122.41941528468154!3d37.77492927975951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808058c7b6a1%3A0x91576a6e1a4a4a4a!2snewestq%20Coffee%20House!5e0!3m2!1sen!2sus!4v1690837123456!5m2!1sen!2sus"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brown text-white py-8">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <!-- Social Media Links -->
+            <div class="flex space-x-4 mb-4 md:mb-0">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="hover:text-light-green"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="hover:text-light-green"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="hover:text-light-green"><i class="fab fa-twitter"></i></a>
+            </div>
+            <!-- Quick Links -->
+            <div class="flex space-x-6 mb-4 md:mb-0">
+                <a href="home.html" class="hover:text-light-green transition-colors">Home</a>
+                <a href="about_us.html" class="hover:text-light-green transition-colors">About Us</a>
+                <a href="menu.html" class="hover:text-light-green transition-colors">Menu</a>
+                <a href="contact_us.html" class="hover:text-light-green transition-colors">Contact Us</a>
+            </div>
+            <!-- Contact Information -->
+            <div class="text-center md:text-right">
+                <p class="font-bold">newestq Coffee House</p>
+                <p>123 Coffee Lane, Brewtown</p>
+                <p>Phone: <a href="tel:+1234567890" class="hover:underline">+1 (234) 567-890</a></p>
+                <p>Email: <a href="mailto:contact@newestq.com" class="hover:underline">contact@newestq.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // GSAP Animations
+        gsap.from(".animate-fade-in", { opacity: 0, y: 20, duration: 1, stagger: 0.3 });
+
+        // Framer Motion can be used if needed for more complex animations
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            --bg-cream: #f5f5dc;
+            --bg-brown: #4b2e2e;
+            --text-light-green: #a8d5ba;
+            --text-dark-green: #4c9a92;
+            background-color: var(--bg-cream);
+        }
+        .bg-brown {
+            background-color: var(--bg-brown);
+        }
+        .bg-light-green {
+            background-color: var(--text-light-green);
+        }
+        .hover\:bg-dark-green:hover {
+            background-color: var(--text-dark-green);
+        }
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+        }
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body>
+</html>

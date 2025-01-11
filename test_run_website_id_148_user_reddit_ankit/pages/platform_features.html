@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform & Features - AI Product Cataloging</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <style>
+        /* Custom Animations */
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-indigo-600">AI Catalog</a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">Home</a></li>
+                    <li><a href="platform_features.html" class="text-indigo-600 font-semibold">Platform & Features</a></li>
+                    <li><a href="resources_contact.html" class="text-gray-700 hover:text-indigo-600 transition">Resources & Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">How It Works</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 text-center mb-6 md:mb-0">
+                    <i class="fas fa-camera text-indigo-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Capture Image/Video</h3>
+                    <p class="text-gray-600">Use your smartphone to capture high-quality images or videos of your products.</p>
+                </div>
+                <div class="md:w-1/3 text-center mb-6 md:mb-0">
+                    <i class="fas fa-cogs text-indigo-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">AI Processing</h3>
+                    <p class="text-gray-600">Our AI analyzes and extracts essential product data seamlessly.</p>
+                </div>
+                <div class="md:w-1/3 text-center">
+                    <i class="fas fa-download text-indigo-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Download & Integrate</h3>
+                    <p class="text-gray-600">Export the information or integrate it directly with your preferred eCommerce platform.</p>
+                </div>
+            </div>
+            <div class="mt-10 flex justify-center">
+                <video width="640" height="360" controls class="rounded-lg shadow-lg">
+                    <source src="https://videos.pexels.com/videos/technology-ai-6768212.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Features -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">Detailed Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="flex">
+                    <i class="fas fa-lightbulb text-indigo-600 text-3xl mr-4"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">AI-Powered Data Generation</h3>
+                        <p class="text-gray-600">Automatically create detailed product descriptions, extract colors, and generate high-quality images using advanced AI algorithms.</p>
+                    </div>
+                </div>
+                <div class="flex">
+                    <i class="fas fa-file-excel text-indigo-600 text-3xl mr-4"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Multi-Format Output</h3>
+                        <p class="text-gray-600">Export your product data in Excel or CSV formats for easy integration and flexibility in data management.</p>
+                    </div>
+                </div>
+                <div class="flex">
+                    <i class="fas fa-store text-indigo-600 text-3xl mr-4"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">eCommerce Integrations</h3>
+                        <p class="text-gray-600">Directly connect with platforms like Shopify, Wix, WooCommerce, Amazon, Flipkart, Meesho, ONDC, and more.</p>
+                    </div>
+                </div>
+                <div class="flex">
+                    <i class="fas fa-tools text-indigo-600 text-3xl mr-4"></i>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Additional Tools</h3>
+                        <p class="text-gray-600">Create product brochures, POS systems, and online stores effortlessly with our comprehensive suite of tools.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">Pricing Plans</h2>
+            <div class="flex justify-center mb-8">
+                <button id="monthly-btn" class="px-4 py-2 bg-indigo-600 text-white rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-500">Monthly</button>
+                <button id="yearly-btn" class="px-4 py-2 bg-gray-200 text-indigo-600 rounded-r-md focus:outline-none focus:ring-2 focus:ring-indigo-500">Yearly</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Basic Plan -->
+                <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-xl transition-shadow">
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-4">Basic</h3>
+                    <p class="text-3xl font-bold mb-4" id="basic-price">$19<span class="text-lg font-medium">/mo</span></p>
+                    <ul class="mb-6">
+                        <li class="flex items-center mb-2"><i class="fas fa-check text-green-500 mr-2"></i>AI Data Generation</li>
+                        <li class="flex items-center mb-2"><i class="fas fa-check text-green-500 mr-2"></i>Basic Integrations</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Export to CSV</li>
+                    </ul>
+                    <a href="#" class="block text-center bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition">Get Started</a>
+                </div>
+                <!-- Pro Plan -->
+                <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-xl transition-shadow">
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-4">Pro</h3>
+                    <p class="text-3xl font-bold mb-4" id="pro-price">$49<span class="text-lg font-medium">/mo</span></p>
+                    <ul class="mb-6">
+                        <li class="flex items-center mb-2"><i class="fas fa-check text-green-500 mr-2"></i>All Basic Features</li>
+                        <li class="flex items-center mb-2"><i class="fas fa-check text-green-500 mr-2"></i>Advanced Integrations</li>
+                        <li class="flex items-center mb-2"><i class="fas fa-check text-green-500 mr-2"></i>Export to Excel</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Priority Support</li>
+                    </ul>
+                    <a href="#" class="block text-center bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition">Get Started</a>
+                </div>
+                <!-- Enterprise Plan -->
+                <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-xl transition-shadow">
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-4">Enterprise</h3>
+                    <p class="text-3xl font-bold mb-4" id="enterprise-price">$99<span class="text-lg font-medium">/mo</span></p>
+                    <ul class="mb-6">
+                        <li class="flex items-center mb-2"><i class="fas fa-check text-green-500 mr-2"></i>All Pro Features</li>
+                        <li class="flex items-center mb-2"><i class="fas fa-check text-green-500 mr-2"></i>Custom Integrations</li>
+                        <li class="flex items-center mb-2"><i class="fas fa-check text-green-500 mr-2"></i>Dedicated Account Manager</li>
+                        <li class="flex items-center mb-2"><i class="fas fa-check text-green-500 mr-2"></i>Unlimited Exports</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>24/7 Support</li>
+                    </ul>
+                    <a href="#" class="block text-center bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+            <div class="max-w-2xl mx-auto space-y-4">
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <button class="w-full text-left flex justify-between items-center focus:outline-none faq-toggle">
+                        <span class="font-semibold">How does the AI data generation work?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="mt-2 hidden">
+                        <p class="text-gray-600">Our AI algorithms analyze your product images to extract relevant data and generate descriptions automatically, saving you time and ensuring consistency.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <button class="w-full text-left flex justify-between items-center focus:outline-none faq-toggle">
+                        <span class="font-semibold">Which eCommerce platforms are supported?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="mt-2 hidden">
+                        <p class="text-gray-600">We support major platforms including Shopify, WooCommerce, Amazon, Flipkart, Meesho, Wix, and ONDC, with more integrations to come.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <button class="w-full text-left flex justify-between items-center focus:outline-none faq-toggle">
+                        <span class="font-semibold">Is there a free trial available?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="mt-2 hidden">
+                        <p class="text-gray-600">Yes, we offer a 14-day free trial with full access to all features. No credit card required.</p>
+                    </div>
+                </div>
+                <!-- Add more FAQs as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-indigo-600 text-white py-6">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <p>&copy; 2023 AI Cataloging. All rights reserved.</p>
+            <div class="flex space-x-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-linkedin fa-lg"></i></a>
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-instagram fa-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts for Interactive Elements -->
+    <script>
+        // Toggle FAQ Answers
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                const isOpen = !answer.classList.contains('hidden');
+
+                document.querySelectorAll('.faq-toggle').forEach(btn => {
+                    btn.nextElementSibling.classList.add('hidden');
+                    btn.querySelector('i').classList.remove('fa-minus');
+                    btn.querySelector('i').classList.add('fa-plus');
+                });
+
+                if (!isOpen) {
+                    answer.classList.remove('hidden');
+                    icon.classList.remove('fa-plus');
+                    icon.classList.add('fa-minus');
+                }
+            });
+        });
+
+        // Pricing Toggle
+        const monthlyBtn = document.getElementById('monthly-btn');
+        const yearlyBtn = document.getElementById('yearly-btn');
+        const basicPrice = document.getElementById('basic-price');
+        const proPrice = document.getElementById('pro-price');
+        const enterprisePrice = document.getElementById('enterprise-price');
+
+        monthlyBtn.addEventListener('click', () => {
+            monthlyBtn.classList.add('bg-indigo-600', 'text-white');
+            monthlyBtn.classList.remove('bg-gray-200', 'text-indigo-600');
+            yearlyBtn.classList.remove('bg-indigo-600', 'text-white');
+            yearlyBtn.classList.add('bg-gray-200', 'text-indigo-600');
+
+            basicPrice.innerHTML = '$19<span class="text-lg font-medium">/mo</span>';
+            proPrice.innerHTML = '$49<span class="text-lg font-medium">/mo</span>';
+            enterprisePrice.innerHTML = '$99<span class="text-lg font-medium">/mo</span>';
+        });
+
+        yearlyBtn.addEventListener('click', () => {
+            yearlyBtn.classList.add('bg-indigo-600', 'text-white');
+            yearlyBtn.classList.remove('bg-gray-200', 'text-indigo-600');
+            monthlyBtn.classList.remove('bg-indigo-600', 'text-white');
+            monthlyBtn.classList.add('bg-gray-200', 'text-indigo-600');
+
+            basicPrice.innerHTML = '$190<span class="text-lg font-medium">/yr</span>';
+            proPrice.innerHTML = '$490<span class="text-lg font-medium">/yr</span>';
+            enterprisePrice.innerHTML = '$990<span class="text-lg font-medium">/yr</span>';
+        });
+
+        // Default to Monthly on Load
+        window.onload = () => {
+            monthlyBtn.click();
+        };
+    </script>
+</body>
+</html>

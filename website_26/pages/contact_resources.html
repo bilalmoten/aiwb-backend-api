@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>Hehe - Contact & Resources</title>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <div class="text-2xl font-bold text-gray-800">Hehe</div>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="index.html" class="text-gray-700 hover:text-blue-500 transition-colors">Home</a></li>
+                <li><a href="pricing.html" class="text-gray-700 hover:text-blue-500 transition-colors">Pricing</a></li>
+                <li><a href="contact_resources.html" class="text-blue-500">Contact & Resources</a></li>
+            </ul>
+            <button class="md:hidden text-gray-700 focus:outline-none" aria-label="Toggle Menu" onclick="toggleMenu()">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <ul class="p-4 space-y-2">
+                <li><a href="index.html" class="block text-gray-700 hover:text-blue-500 transition-colors">Home</a></li>
+                <li><a href="pricing.html" class="block text-gray-700 hover:text-blue-500 transition-colors">Pricing</

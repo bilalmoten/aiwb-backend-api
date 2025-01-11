@@ -32,47 +32,89 @@ output in markdown format.
 
 """
 
-WEBSITE_CODE_PROMPT = """You are an expert web developer. Your task is to generate a fully functional, production-ready website based on the provided design blueprint.
+# WEBSITE_CODE_PROMPT = """You are an expert web developer. Your task is to generate a fully functional, production-ready website based on the provided design blueprint.
 
-### Instructions:
-    1. Start with the following boilerplate code for each page:
-    ```html
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
-        <title>[title]</title>
-    </head>
-    <body>
-    
-    </body>
-    </html>
-   
-	2.	Modify the <title> tag and populate the <body> tag with the appropriate content for the page based on the provided blueprint.
- 
- 	3.	Use:
-	•	HTML for structure.
-	•	Tailwind CSS for styling.
-	•	Font Awesome for icons.
-	•	GSAP and Framer Motion for animations (where needed).
+# ### Instructions:
+#     1. Start with the following boilerplate code for each page:
+#     ```html
+#     <!DOCTYPE html>
+#     <html lang="en">
+#     <head>
+#         <meta charset="UTF-8">
+#         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+#         <script src="https://cdn.tailwindcss.com"></script>
+#         <script src="https://kit.fontawesome.com/037776171a.js" crossorigin="anonymous"></script>
+#         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+#         <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+#         <title>[title]</title>
+#     </head>
+#     <body>
 
-	4.	Ensure the following:
-	•	All sections are fully functional, with no placeholders, dummy content, or incomplete features.
-	•	Relevant images are sourced from Unsplash, using valid URLs.
-	•	Consistent headers, footers, and styling across all pages. (only include hyperlinks that work nothing that may not work if not for your given code)
-	•	Any complex features like forms or dynamic components should be simplified to static or omitted. (nothing requiring backend, databse, api keys for external services etc)
-  •	The code you generate is the only thing that will go live, dont make any assumptions about other pages etc like terms of service or privacy policy etc.
+#     </body>
+#     </html>
 
-	5.	Go beyond the provided blueprint to create visually stunning, unique designs that stand out. Add modern layouts, animations, and interactivity where appropriate.
-	6.	Output Format:
-	•	Use Markdown with labeled code blocks for each page.
-	•	End with “## All Files Completed.”
- 
+# 	2.	Modify the <title> tag and populate the <body> tag with the appropriate content for the page based on the provided blueprint.
+
+#  	3.	Use:
+# 	•	HTML for structure.
+# 	•	Tailwind CSS for styling.
+# 	•	Font Awesome for icons.
+# 	•	GSAP and Framer Motion for animations (where needed).
+
+# 	4.	Ensure the following:
+# 	•	All sections are fully functional, with no placeholders, dummy content, or incomplete features.
+# 	•	Relevant images are sourced from Unsplash, using valid URLs.
+# 	•	Consistent headers, footers, and styling across all pages. (only include hyperlinks that work nothing that may not work if not for your given code)
+# 	•	Any complex features like forms or dynamic components should be simplified to static or omitted. (nothing requiring backend, databse, api keys for external services etc)
+#   •	The code you generate is the only thing that will go live, dont make any assumptions about other pages etc like terms of service or privacy policy etc.
+
+# 	5.	Go beyond the provided blueprint to create visually stunning, unique designs that stand out. Add modern layouts, animations, and interactivity where appropriate.
+# 	6.	Output Format:
+# 	•	Use Markdown with labeled code blocks for each page.
+# 	•	End with “## All Files Completed.”
+
+# ### Example Output:
+
+#     ## index.html
+#     ```html
+#     <html code here>
+#     ```
+
+#     ## about_us.html
+#     ```html
+#     <html code here>
+#     ```
+
+#     ## contact_us.html
+#     ```html
+#     <html code here>
+#     ```
+
+#     ## All Files Completed
+
+# """
+
+
+WEBSITE_CODE_PROMPT = """You are an expert web developer. Your task is to customise the following website template code based on the provided website plan.
+
+1.	Use:
+•	HTML for structure.
+•	Tailwind CSS for styling.
+•	Font Awesome for icons.
+•	GSAP and Framer Motion for animations (where needed).
+
+2.	Ensure the following:
+•	All sections are fully functional, with no placeholders, dummy content, or incomplete features.
+•	Relevant images are sourced from Unsplash, using valid URLs.
+•	Consistent headers, footers, and styling across all pages. (only include hyperlinks that work nothing that may not work if not for your given code)
+•	Any complex features like forms or dynamic components should be simplified to static or omitted. (nothing requiring backend, databse, api keys for external services etc)
+•	The code you generate is the only thing that will go live, dont make any assumptions about other pages etc like terms of service or privacy policy etc.
+
+3.	Go beyond the provided blueprint to create visually stunning, unique designs that stand out. Add modern layouts, animations, and interactivity where appropriate.
+4.	Output Format:
+•	Use Markdown with labeled code blocks for each page.
+•	End with “## All Files Completed.”
+
 ### Example Output:
 
     ## index.html
@@ -90,15 +132,19 @@ WEBSITE_CODE_PROMPT = """You are an expert web developer. Your task is to genera
     <html code here>
     ```
 
-    ## All Files Completed  
-    
+    ## All Files Completed
 """
+
 
 DESIGN_FEEDBACK_PROMPT = """You are an expert web designer and developer. Your task is to review the following website code and provide feedback, focusing on improving the design and aesthetics.
 
 4. Keep the feedback detailed, practical, and focused on elevating the user’s satisfaction and the website’s quality.
 
 """
+
+# DESIGN_FEEDBACK_PROMPT = """You are an expert web designer and developer. Your task is to analyze the user requirements and the website plan and provide a detailed feedback to an ai model to customise the template website code as per the user requirements.
+
+# """
 
 CODE_REFINEMENT_PROMPT = """You are an expert web developer. Your task is to implement the following improvements and feedback in the provided website code.
 
@@ -123,8 +169,7 @@ CODE_REFINEMENT_PROMPT = """You are an expert web developer. Your task is to imp
 
 COMPONENT_STRUCTURE_PROMPT = """You are an expert web designer. Your task is to assign appropriate component categories to each section of the website based on the provided plan.
 
-Available component categories:
-{categories}
+
 
 Instructions:
 1. Analyze the website plan

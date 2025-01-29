@@ -83,6 +83,110 @@ with open("mock_responses_2.json", "r") as f:
     MOCK_RESPONSES = json.load(f)
 
 
+###
+###
+###
+###
+# TODO : remove after testing
+
+
+########
+def fetch_specific_components(category: str, component_numbers: list) -> str:
+    """
+    Fetch specific numbered components from a category (e.g., 1.html, 2.html, etc.)
+
+    Args:
+        category (str): The category of components (e.g., 'Hero', 'Navbar')
+        component_numbers (list): List of component numbers to fetch (e.g., [1, 2, 3, 5, 26])
+
+    Returns:
+        str: Combined code of all specified components as text
+    """
+    try:
+        # Create the list of component IDs to fetch
+        component_ids = [f"{category.lower()}-{num}" for num in component_numbers]
+
+        # Fetch the code for these specific components
+        code_response = (
+            supabase.table("components_new")
+            .select("component_id, code")
+            .in_("component_id", component_ids)
+            .execute()
+        )
+
+        if not code_response.data:
+            raise Exception(f"No components found for category: {category}")
+
+        # Combine all component codes with separators
+        combined_code = ""
+        for comp_id in component_ids:  # Maintain the requested order
+            # Find the matching component
+            comp = next(
+                (c for c in code_response.data if c["component_id"] == comp_id), None
+            )
+            if comp:
+                combined_code += f"\n\n/* {comp_id} */\n"
+                combined_code += comp["code"]
+                combined_code += f"\n/* End {comp_id} */\n"
+            else:
+                combined_code += f"\n\n/* Warning: {comp_id} not found */\n"
+
+        return combined_code
+
+    except Exception as e:
+        error_details = {
+            "error_type": type(e).__name__,
+            "error_message": str(e),
+            "category": category,
+            "requested_components": component_numbers,
+        }
+        logging.error(
+            f"Error fetching specific components: {json.dumps(error_details, indent=2)}"
+        )
+        raise Exception(json.dumps(error_details))
+
+
+def log_ai_request(messages: list, response: dict):
+    """Log AI request and response to a file"""
+    timestamp = datetime.now().isoformat()
+    log_entry = {
+        "timestamp": timestamp,
+        # "request_id": request_id,
+        # "step": step_name,
+        "messages": messages,
+        "response": response,
+    }
+
+    # Create logs directory if it doesn't exist
+    os.makedirs("ai_logs", exist_ok=True)
+
+    # Log to a file named with the date
+    log_file = f'ai_logs/ai_requests9_{datetime.now().strftime("%Y%m%d")}.json'
+
+    try:
+        # Read existing logs if file exists
+        existing_logs = []
+        if os.path.exists(log_file):
+            with open(log_file, "r") as f:
+                existing_logs = json.load(f)
+
+        # Append new log
+        existing_logs.append(log_entry)
+
+        # Write back to file
+        with open(log_file, "w") as f:
+            json.dump(existing_logs, f, indent=2)
+
+    except Exception as e:
+        logging.error(f"Failed to log AI request: {str(e)}")
+
+
+#######
+######
+#########
+########
+
+
 def pre_assemble_pages(website_componentised_structure, component_codes):
     """
     Creates markdown formatted pages from components before AI enhancement
@@ -92,13 +196,17 @@ def pre_assemble_pages(website_componentised_structure, component_codes):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!--PAID Tailwind CSS CDN -- DO NOT CHANGE -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome CDN  -- DO NOT CHANGE  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-    <script src=https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js></script>
-    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
     <title>{title}</title>
+     <!--PAID CDNs -- DO NOT CHANGE -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+  <!-- Add required scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://aiwebsitebuilder.tech/form-capture.js"></script>
 </head>
 <body>"""
 
@@ -524,6 +632,7 @@ def call_gpt4_api(messages, model="gpt-4o-mini"):
     try:
         gpt4_response = requests.post(endpoint, headers=headers, json=payload)
         gpt4_response.raise_for_status()
+        log_ai_request(messages, gpt4_response.json())
         return gpt4_response.json()
     except requests.RequestException as e:
         error_details = {
@@ -701,7 +810,7 @@ def save_generated_pages(user_id: str, website_id: str, website_code: str) -> bo
         raise Exception(f"Failed to save generated pages: {str(e)}")
 
 
-def create_website_plan(website_data: dict, model: str) -> str:
+def create_website_plan(website_data: dict, model: str, website_id: str) -> str:
     """
     Step 1: Create structured website plan from user conversation
     """
@@ -755,40 +864,19 @@ def create_design_blueprint(structured_plan: str, model: str) -> str:
     return parse_ai_response(response, model)
 
 
-def generate_website_code(design_blueprint: str, model: str) -> str:
-    """
-    Step 3: Generate initial website code
-    """
-    messages = [
-        {"role": "system", "content": WEBSITE_CODE_PROMPT},
-        {
-            "role": "user",
-            "content": f"""Here is the design blueprint: 
-            
-            {design_blueprint}
-            
-            Please generate the complete code for the website following the provided instructions.
-            
-            """,
-        },
-    ]
-
-    response = call_gpt4_api(messages, model)
-    return parse_ai_response(response, model)
-
-
 ###########################################
 # New Component-Based Generation System   #
 ###########################################
 
 
-def fetch_available_categories() -> list:
+def fetch_available_categories(website_id: str) -> list:
     """
     Fetch only unique component categories from Supabase
     """
     try:
         response = (
-            supabase.table("components")
+            # TODO: remove after testing
+            supabase.table("components_new")
             .select("section_type")
             .eq("is_active", True)
             .execute()
@@ -836,7 +924,7 @@ def fetch_component_codes(component_ids: list) -> dict:
     """
     try:
         response = (
-            supabase.table("components")
+            supabase.table("components_new")
             .select("component_id, code")
             .in_("component_id", component_ids)
             .execute()
@@ -848,7 +936,7 @@ def fetch_component_codes(component_ids: list) -> dict:
 
 
 def generate_component_structure(
-    structured_plan: str, available_categories: list, model: str
+    structured_plan: str, available_categories: list, model: str, website_id: str
 ) -> dict:
     """
     Generate component category structure based on website plan
@@ -916,7 +1004,7 @@ def generate_component_structure(
 
 
 def select_random_components(
-    category_structure: dict, available_categories: list
+    category_structure: dict, available_categories: list, website_id: str
 ) -> dict:
     """
     Select random components for each category in the structure
@@ -959,7 +1047,7 @@ def select_random_components(
         raise Exception(json.dumps(error_details))
 
 
-def assemble_template(components_data: dict) -> str:
+def assemble_template(components_data: dict, website_id: str) -> str:
     """
     Wrapper for pre_assemble_pages
     """
@@ -967,35 +1055,53 @@ def assemble_template(components_data: dict) -> str:
 
 
 def generate_website_code(
-    website_plan: str, website_assembled_template: str, model: str
+    # website_plan: str,
+    # website_assembled_template: str,
+    model: str,
+    website_id: str,
+    user_conversation: str,
+    components: str,
 ) -> str:
     """
     Step 3: Generate initial website code
     """
+    # messages = [
+    #     {"role": "system", "content": WEBSITE_CODE_PROMPT},
+    #     {
+    #         "role": "user",
+    #         "content": f"""Here is the website plan:
+
+    #         {website_plan}
+
+    #         Here is the template that that u have to customise,
+
+    #         {website_assembled_template}
+
+    #         Please customise and furnish the code according to the plan, and make it ready to go live.
+
+    #         """,
+    #     },
+    # ]
     messages = [
         {"role": "system", "content": WEBSITE_CODE_PROMPT},
         {
             "role": "user",
-            "content": f"""Here is the website plan: 
+            "content": f"""this is a conversation between a user and a website builder AI.
             
-            {website_plan}
+            {user_conversation}
             
-            Here is the template that is generated, 
+            and here are some components to give you an idea/inspiration of the kind of designs we use here at the agency, so u can build the website for the user as per our high and professional standards.
             
-            {website_assembled_template}
-            
-            
-            Please customise and furnish the code according to the plan, and make it ready to go live.
-            
-            """,
+            {components}
+             
+             """,
         },
     ]
-
     response = call_gpt4_api(messages, model)
     return parse_ai_response(response, model)
 
 
-def generate_design_feedback(website_code: str, model: str) -> str:
+def generate_design_feedback(website_code: str, model: str, website_id: str) -> str:
     """
     Step 4: Generate feedback on the website design
     """
@@ -1023,7 +1129,9 @@ def generate_design_feedback(website_code: str, model: str) -> str:
     return parse_ai_response(response, model)
 
 
-def refine_website_code(initial_code: str, feedback: str, model: str) -> str:
+def refine_website_code(
+    initial_code: str, feedback: str, model: str, website_id: str
+) -> str:
     """
     Step 5: Refine website code based on feedback
     """
@@ -1139,6 +1247,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                 request_id,
                 create_website_plan,
                 website_data=website_data,
+                website_id=website_id,
                 model=model,
                 # test_mode=True,  # This will use mock response from mock_responses_2.json
             )
@@ -1148,6 +1257,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                 "fetch_categories",
                 request_id,
                 fetch_available_categories,
+                website_id=website_id,
             )
 
             # Step 4: Generate component structure
@@ -1158,6 +1268,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                 structured_plan=structured_plan,
                 available_categories=available_categories,
                 model=model,
+                website_id=website_id,
             )
 
             # Step 5: Select random components
@@ -1167,24 +1278,39 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                 select_random_components,
                 category_structure=component_structure,
                 available_categories=available_categories,
+                website_id=website_id,
             )
 
-            # Step 6: Assemble template
-            initial_code = execute_step(
-                "assemble_template",
-                request_id,
-                assemble_template,
-                components_data=selected_components,
-            )
+            # Convert selected components to string
+            components = ""
+            for comp_id, code in selected_components["codes"].items():
+                components += f"\n\n/* Component {comp_id} */\n"
+                components += code
+                components += f"\n/* End Component {comp_id} */\n"
+
+            # # Step 6: Assemble template
+            # initial_code = execute_step(
+            #     "assemble_template",
+            #     request_id,
+            #     assemble_template,
+            #     components_data=selected_components,
+            #     website_id=website_id,
+            # )
+
+            # # Fetch specific Hero components
+            # components_hero = fetch_specific_components("Hero", [1, 2, 3, 5, 26])
 
             # Step 7: Generate initial website code
             website_code = execute_step(
                 "generate_code",
                 request_id,
                 generate_website_code,
-                website_plan=structured_plan,
-                website_assembled_template=initial_code,
+                # website_plan=structured_plan,
+                # website_assembled_template=initial_code,
+                user_conversation=website_data,
+                components=components,
                 model=model,
+                website_id=website_id,
             )
 
             # # Step 8: Generate feedback
@@ -1193,6 +1319,8 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
             #     request_id,
             #     generate_design_feedback,
             #     website_code=website_code,
+            #     website_id=website_id,
+            #     # changed website_code to initial_code for removing ai code generation, and directly getting feedback
             #     model=model,
             # )
 
@@ -1202,6 +1330,8 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
             #     request_id,
             #     refine_website_code,
             #     initial_code=website_code,
+            #     website_id=website_id,
+            #     # changed feedback to initial_code for removing ai code generation, and directly acting on feedback on assembled pages
             #     feedback=feedback,
             #     model=model,
             # )
@@ -1214,6 +1344,7 @@ def get_website_code(req: func.HttpRequest) -> func.HttpResponse:
                 user_id=user_id,
                 website_id=website_id,
                 # changed final_code to website_code for removing feedback and refinement
+                # changed website_code to initial_code for removing ai code generation, and directly saving assembled pages
                 website_code=website_code,
             )
 

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Delights Bakery | Home</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Swiper for Carousel -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.4.1/swiper-bundle.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.4.1/swiper-bundle.min.js"></script>
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-cream text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-warm-brown">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-white">
+                <a href="index.html">Sweet Delights</a>
+            </div>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="index.html" class="text-white hover:text-cream transition">Home</a></li>
+                <li><a href="about.html" class="text-white hover:text-cream transition">About</a></li>
+                <li><a href="#bestsellers" class="text-white hover:text-cream transition">Bestsellers</a></li>
+                <li><a href="contact.html" class="text-white hover:text-cream transition">Contact</a></li>
+                <li><a href="contact.html" class="bg-pastel-pink text-white px-4 py-2 rounded hover:bg-pastel-peach transition">Order Now</a></li>
+            </ul>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden bg-warm-brown">
+            <ul class="flex flex-col space-y-4 py-4 px-6">
+                <li><a href="index.html" class="text-cream hover:text-white transition">Home</a></li>
+                <li><a href="about.html" class="text-cream hover:text-white transition">About</a></li>
+                <li><a href="#bestsellers" class="text-cream hover:text-white transition">Bestsellers</a></li>
+                <li><a href="contact.html" class="text-cream hover:text-white transition">Contact</a></li>
+                <li><a href="contact.html" class="bg-pastel-pink text-white px-4 py-2 rounded hover:bg-pastel-peach transition text-center">Order Now</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gray-800 text-center text-white">
+        <img src="https://source.unsplash.com/1600x900/?bakery,pastries" alt="Signature Pastries" class="absolute inset-0 w-full h-full object-cover opacity-50">
+        <div class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">Experience the Sweetest Moments</h1>
+            <p class="text-lg md:text-2xl mb-8 animate-fade-in delay-200">Indulge in our handcrafted pastries and desserts</p>
+            <a href="contact.html" class="bg-pastel-pink text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-pastel-peach transition animate-fade-in delay-400">Order Now</a>
+        </div>
+    </section>
+
+    <!-- Daily Specials -->
+    <section class="py-12 bg-cream">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">Daily Specials</h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Daily Special Item -->
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                            <img src="https://source.unsplash.com/400x300/?croissant" alt="Croissant Special" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-xl font-semibold mb-2">Butter Croissant</h3>
+                                <p class="text-gray-600">Flaky and buttery croissants baked fresh daily.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repeat for more specials -->
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                            <img src="https://source.unsplash.com/400x300/?cupcake" alt="Cupcake Special" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-xl font-semibold mb-2">Red Velvet Cupcake</h3>
+                                <p class="text-gray-600">Rich red velvet cupcakes with cream cheese frosting.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                            <img src="https://source.unsplash.com/400x300/?macaron" alt="Macaron Special" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-xl font-semibold mb-2">Assorted Macarons</h3>
+                                <p class="text-gray-600">Delicate and colorful macarons in various flavors.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more slides as needed -->
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bestsellers -->
+    <section id="bestsellers" class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">Bestsellers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Bestseller Item -->
+                <div class="group">
+                    <div class="overflow-hidden rounded-lg shadow-lg">
+                        <img src="https://source.unsplash.com/400x300/?cake" alt="Chocolate Cake" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="text-xl font-semibold">Chocolate Cake</h3>
+                        <p class="text-gray-600">$25</p>
+                        <div class="hidden group-hover:block mt-2">
+                            <p class="text-gray-500 text-sm">Rich chocolate layers with creamy frosting.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repeat for more bestsellers -->
+                <div class="group">
+                    <div class="overflow-hidden rounded-lg shadow-lg">
+                        <img src="https://source.unsplash.com/400x300/?cookies" alt="Oatmeal Cookies" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="text-xl font-semibold">Oatmeal Cookies</h3>
+                        <p class="text-gray-600">$15</p>
+                        <div class="hidden group-hover:block mt-2">
+                            <p class="text-gray-500 text-sm">Chewy cookies packed with oats and raisins.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="overflow-hidden rounded-lg shadow-lg">
+                        <img src="https://source.unsplash.com/400x300/?brownie" alt="Fudge Brownie" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="text-xl font-semibold">Fudge Brownie</h3>
+                        <p class="text-gray-600">$18</p>
+                        <div class="hidden group-hover:block mt-2">
+                            <p class="text-gray-500 text-sm">Decadent brownies with a gooey center.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="overflow-hidden rounded-lg shadow-lg">
+                        <img src="https://source.unsplash.com/400x300/?tart" alt="Fruit Tart" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="text-xl font-semibold">Fruit Tart</h3>
+                        <p class="text-gray-600">$20</p>
+                        <div class="hidden group-hover:block mt-2">
+                            <p class="text-gray-500 text-sm">Crispy tart shell filled with custard and fresh fruits.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more bestsellers as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-12 bg-cream">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">What Our Customers Say</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-8">
+                <!-- Testimonial -->
+                <div class="max-w-sm bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
+                    <img src="https://source.unsplash.com/100x100/?person,1" alt="Customer 1" class="w-24 h-24 rounded-full mb-4 object-cover">
+                    <p class="text-gray-600 mb-4">"Sweet Delights offers the most amazing pastries! Every bite is a delight."</p>
+                    <h3 class="text-lg font-semibold">Emily R.</h3>
+                </div>
+                <!-- Testimonial -->
+                <div class="max-w-sm bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
+                    <img src="https://source.unsplash.com/100x100/?person,2" alt="Customer 2" class="w-24 h-24 rounded-full mb-4 object-cover">
+                    <p class="text-gray-600 mb-4">"The ambiance and the treats are perfect for any occasion. Highly recommend!"</p>
+                    <h3 class="text-lg font-semibold">Michael S.</h3>
+                </div>
+                <!-- Testimonial -->
+                <div class="max-w-sm bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
+                    <img src="https://source.unsplash.com/100x100/?person,3" alt="Customer 3" class="w-24 h-24 rounded-full mb-4 object-cover">
+                    <p class="text-gray-600 mb-4">"Their seasonal specials never disappoint. Always fresh and delicious."</p>
+                    <h3 class="text-lg font-semibold">Sophia L.</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-warm-brown text-cream py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start">
+                <!-- Quick Links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-pastel-pink transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-pastel-pink transition">About</a></li>
+                        <li><a href="#bestsellers" class="hover:text-pastel-pink transition">Bestsellers</a></li>
+                        <li><a href="contact.html" class="hover:text-pastel-pink transition">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Information -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                    <p class="mb-2">123 Sweet Street,<br>Sydney NSW 2000, Australia</p>
+                    <p class="mb-2"><i class="fas fa-phone mr-2"></i> +61 2 1234 5678</p>
+                    <p><i class="fas fa-envelope mr-2"></i> info@sweetdelights.com</p>
+                </div>
+                <!-- Social Media -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-pastel-pink transition" aria-label="Facebook"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="hover:text-pastel-pink transition" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="hover:text-pastel-pink transition" aria-label="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="hover:text-pastel-pink transition" aria-label="Pinterest"><i class="fab fa-pinterest fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p>&copy; 2024 Sweet Delights Bakery. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper Initialization -->
+    <script>
+        const swiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // Mobile Menu Toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // GSAP Animations
+        gsap.from('.animate-fade-in', { opacity: 0, y: 50, duration: 1, stagger: 0.3 });
+    </script>
+
+</body>
+</html>

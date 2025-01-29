@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah's Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@gsap/core"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-sans bg-white text-gray-900">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 w-full bg-transparent transition-all duration-300 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-serif uppercase tracking-wider">Sarah's Portfolio</h1>
+            <nav>
+                <ul class="flex space-x-6 text-lg">
+                    <li><a href="#hero" class="hover:underline">Home</a></li>
+                    <li><a href="#portfolio" class="hover:underline">Portfolio</a></li>
+                    <li><a href="#about" class="hover:underline">About</a></li>
+                    <li><a href="#contact" class="hover:underline">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="h-screen flex items-center justify-center bg-white relative">
+        <div class="container mx-auto flex items-center">
+            <div class="w-1/2">
+                <h2 class="text-5xl font-serif font-bold mb-4">Designing Dreams</h2>
+                <p class="text-lg mb-6">Creative solutions for modern brands.</p>
+                <a href="#portfolio"
+                    class="inline-block px-8 py-4 text-white bg-gradient-to-r from-pink-500 to-gray-300 rounded-lg shadow-lg hover:scale-105 transition-transform duration-200">View
+                    Portfolio</a>
+            </div>
+            <div class="w-1/2 flex justify-center">
+                <div class="relative">
+                    <img src="https://via.placeholder.com/200" alt="Profile" class="rounded-full w-64 h-64">
+                    <div class="absolute inset-0 rounded-full border-4 border-gradient-to-r from-pink-500 to-gray-300">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="bg-gray-100 py-16">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-serif text-center mb-8">Portfolio</h2>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <!-- Repeat this slide for each project -->
+                    <div class="swiper-slide">
+                        <div class="p-4 bg-white shadow-lg rounded-lg">
+                            <img src="https://via.placeholder.com/300x200" alt="Project 1"
+                                class="rounded-lg hover:scale-105 transition-transform duration-200">
+                            <h3 class="mt-4 text-xl font-bold">Project 1</h3>
+                            <p class="text-gray-700">A short description of the project.</p>
+                        </div>
+                    </div>
+                    <!-- Add more slides -->
+                </div>
+                <!-- Arrows -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16">
+        <div class="container mx-auto text-center">
+            <img src="https://via.placeholder.com/150" alt="Sarah" class="rounded-full mx-auto mb-8">
+            <h2 class="text-3xl font-serif mb-4">About Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <p>Hi, I'm Sarah, a passionate designer dedicated to crafting innovative and user-centric solutions.</p>
+                <p>From concept to completion, I create designs that inspire and captivate audiences worldwide.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-pink-500 to-gray-300 opacity-30"></div>
+        <div class="container mx-auto relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-serif mb-4">Let's Work Together</h2>
+                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your
+                        vision.</p>
+                </div>
+                <div>
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block text-sm font-semibold">Name</label>
+                            <input type="text" id="name"
+                                class="w-full px-4 py-2 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-semibold">Email</label>
+                            <input type="email" id="email"
+                                class="w-full px-4 py-2 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-sm font-semibold">Message</label>
+                            <textarea id="message" rows="4"
+                                class="w-full px-4 py-2 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="px-6 py-3 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition duration-200">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-white', 'shadow-lg');
+            } else {
+                header.classList.remove('bg-white', 'shadow-lg');
+            }
+        });
+
+        // Swiper initialization
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+
+</body>
+
+</html>

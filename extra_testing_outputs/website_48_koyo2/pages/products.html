@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>Koyo Skincare Products</title>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center text-2xl font-bold text-green-700">
+                <i class="fas fa-leaf mr-2 text-green-600"></i>
+                Koyo Skincare
+            </a>
+            <!-- Navigation Links -->
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-700 transition">Home</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-700 transition">Products</a></li>
+                <li><a href="about_contact.html" class="text-gray-700 hover:text-green-700 transition">About & Contact</a></li>
+            </ul>
+            <!-- Mobile Menu Button -->
+            <button id="menu-button" class="md:hidden text-gray-700 hover:text-green-700 focus:outline-none">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+            <ul class="flex flex-col space-y-4 py-4 px-6">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-700 transition">Home</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-700 transition">Products</a></li>
+                <li><a href="about_contact.html" class="text-gray-700 hover:text-green-700 transition">About & Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Products Page Hero -->
+    <section class="relative bg-cover bg-center h-64" style="background-image: url('https://images.unsplash.com/photo-1585386959984-a41552265dae?auto=format&fit=crop&w=1950&q=80');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="container mx-auto px-4 h-full flex flex-col justify-center items-center text-center relative">
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-2">Our Products</h1>
+            <p class="text-xl md:text-2xl text-gray-300">Discover our range of organic skincare solutions</p>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center" x-data="{ activeCategory: 'all' }">
+            <h2 class="text-3xl font-bold text-green-700 mb-12">Categories</h2>
+            <div class="flex justify-center space-x-6 mb-12">
+                <button @click="activeCategory = 'all'" :class="{ 'bg-green-700 text-white': activeCategory === 'all', 'bg-gray-200 text-gray-700': activeCategory !== 'all' }" class="px-6 py-2 rounded-full text-sm font-medium transition">All</button>
+                <button @click="activeCategory = 'cleansers'" :class="{ 'bg-green-700 text-white': activeCategory === 'cleansers', 'bg-gray-200 text-gray-700': activeCategory !== 'cleansers' }" class="px-6 py-2 rounded-full text-sm font-medium transition">Cleansers</button>
+                <button @click="activeCategory = 'moisturizers'" :class="{ 'bg-green-700 text-white': activeCategory === 'moisturizers', 'bg-gray-200 text-gray-700': activeCategory !== 'moisturizers' }" class="px-6 py-2 rounded-full text-sm font-medium transition">Moisturizers</button>
+                <button @click="activeCategory = 'serums'" :class="{ 'bg-green-700 text-white': activeCategory === 'serums', 'bg-gray-200 text-gray-700': activeCategory !== 'serums' }" class="px-6 py-2 rounded-full text-sm font-medium transition">Serums</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Example Product -->
+                <div x-show="activeCategory === 'all' || activeCategory === 'cleansers'" class="bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1585386959984-a41552265dae?auto=format&fit=crop&w=400&q=80" alt="Organic Cleanser" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Organic Cleanser</h3>
+                        <p class="text-gray-600 mb-4">A gentle cleanser with all-natural ingredients for a fresh start.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-green-700">$29.99</span>
+                            <a href="#" class="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- More Products -->
+                <div x-show="activeCategory === 'all' || activeCategory === 'moisturizers'" class="bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1589987607518-9191aaefef19?auto=format&fit=crop&w=400&q=80" alt="Luxury Moisturizer" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Luxury Moisturizer</h3>
+                        <p class="text-gray-600 mb-4">Hydrate and nourish your skin with our premium moisturizer.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-green-700">$49.99</span>
+                            <a href="#" class="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div x-show="activeCategory === 'all' || activeCategory === 'serums'" class="bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1579352266528-4fefcc388a0d?auto=format&fit=crop&w=400&q=80" alt="Vitamin C Serum" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Vitamin C Serum</h3>
+                        <p class="text-gray-600 mb-4">Brighten and rejuvenate your skin with our potent Vitamin C serum.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-green-700">$39.99</span>
+                            <a href="#" class="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Additional Products can be added similarly -->
+                <div x-show="activeCategory === 'all' || activeCategory === 'cleansers'" class="bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=400&q=80" alt="Herbal Cleanser" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Herbal Cleanser</h3>
+                        <p class="text-gray-600 mb-4">Cleanse your skin with the goodness of herbs and natural oils.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-green-700">$34.99</span>
+                            <a href="#" class="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div x-show="activeCategory === 'all' || activeCategory === 'moisturizers'" class="bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?auto=format&fit=crop&w=400&q=80" alt="Daily Moisturizer" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Daily Moisturizer</h3>
+                        <p class="text-gray-600 mb-4">Keep your skin hydrated and healthy every day.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-green-700">$24.99</span>
+                            <a href="#" class="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div x-show="activeCategory === 'all' || activeCategory === 'serums'" class="bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1576518820664-7e5a4f8f7ecc?auto=format&fit=crop&w=400&q=80" alt="Hyaluronic Acid Serum" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Hyaluronic Acid Serum</h3>
+                        <p class="text-gray-600 mb-4">Plump and smooth your skin with our Hyaluronic Acid serum.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-green-700">$44.99</span>
+                            <a href="#" class="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-green-700 mb-12">Customer Reviews</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <p class="text-gray-700 mb-4">"Koyo Skincare products have transformed my skin. I've never felt more confident."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jane Doe" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-green-700">Jane Doe</h4>
+                            <span class="text-gray-500">Chicago, IL</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <p class="text-gray-700 mb-4">"I've tried many skincare brands, but Koyo Skincare stands out with its commitment to organic ingredients."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="John Smith" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-green-700">John Smith</h4>
+                            <span class="text-gray-500">New York, NY</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 3 -->
+                <div class="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <p class="text-gray-700 mb-4">"Koyo Skincare's serum has reduced my fine lines noticeably. Highly recommend it!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Samantha Lee" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-green-700">Samantha Lee</h4>
+                            <span class="text-gray-500">Los Angeles, CA</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Additional Reviews can be added similarly -->
+                <div class="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <p class="text-gray-700 mb-4">"The cleanser removes all impurities without drying my skin. Love it!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Daniel Martinez" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-green-700">Daniel Martinez</h4>
+                            <span class="text-gray-500">San Francisco, CA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <p class="text-gray-700 mb-4">"I appreciate Koyo Skincare's dedication to sustainability. Great products!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Olivia Wilson" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-green-700">Olivia Wilson</h4>
+                            <span class="text-gray-500">Denver, CO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <p class="text-gray-700 mb-4">"The moisturizer is lightweight yet deeply hydrating. Perfect for daily use."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James Davis" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-green-700">James Davis</h4>
+                            <span class="text-gray-500">Atlanta, GA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-green-700">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Ready to Transform Your Skin?</h2>
+            <p class="text-gray-200 mb-8">Browse our products and find the perfect skincare solutions for your needs.</p>
+            <a href="products.html" class="px-8 py-3 bg-white text-green-700 rounded-full text-lg font-semibold hover:bg-gray-100 transition">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-200 py-8">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About -->
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Koyo Skincare</h4>
+                <p class="text-gray-400">All-organic, premium luxury skincare dedicated to enhancing beauty and promoting healthy skin.</p>
+            </div>
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                    <li><a href="products.html" class="hover:text-white transition">Products</a></li>
+                    <li><a href="about_contact.html" class="hover:text-white transition">About & Contact</a></li>
+                    <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                </ul>
+            </div>
+            <!-- Social Media -->
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Follow Us</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-facebook-f fa-lg"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-twitter fa-lg"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 mt-8">
+            © 2023 Koyo Skincare. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // GSAP Animations
+        gsap.from('.category-buttons button', {
+            duration: 1,
+            y: 20,
+            opacity: 0,
+            stagger: 0.2,
+            ease: 'power3.out',
+            delay: 0.5
+        });
+
+        gsap.from('.grid div', {
+            duration: 1,
+            y: 20,
+            opacity: 0,
+            stagger: 0.2,
+            ease: 'power3.out',
+            delay: 1
+        });
+    </script>
+    
+    <!-- Alpine.js for category filtering -->
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</body>
+</html>

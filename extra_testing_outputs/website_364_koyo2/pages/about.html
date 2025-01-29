@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - new9240</title>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion -->
+    <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+    <!-- Alpine.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js" defer></script>
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* GSAP Animations */
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html">
+                <img src="https://lervpgatcoelsswuahga.supabase.co/storage/v1/object/public/user_website_data/a8d5d92f-b745-4b8c-b29e-d704ead7209b/364/logo-1737140072847.jpg" alt="new9240 Logo" class="h-10">
+            </a>
+            <nav>
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="index.html" class="text-gray-700 hover:text-blue-500">Home</a></li>
+                    <li><a href="about.html" class="text-gray-700 hover:text-blue-500">About</a></li>
+                    <li><a href="contact.html" class="text-gray-700 hover:text-blue-500">Contact</a></li>
+                </ul>
+                <button id="menu-toggle" class="md:hidden text-2xl text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+        <!-- Mobile Menu -->
+        <nav id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+            <ul class="flex flex-col space-y-4 px-4 py-4">
+                <li><a href="index.html" class="text-gray-700 hover:text-blue-500">Home</a></li>
+                <li><a href="about.html" class="text-gray-700 hover:text-blue-500">About</a></li>
+                <li><a href="contact.html" class="text-gray-700 hover:text-blue-500">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Our Mission Section -->
+    <section id="our-mission" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 animate-fade-in">Our Mission</h2>
+            <p class="text-gray-600 text-lg max-w-3xl mx-auto animate-fade-in delay-200">At new9240, our mission is to revolutionize mental health support through innovative AI technology. We strive to provide accessible, personalized, and confidential therapy solutions to empower individuals on their journey to well-being.</p>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section id="our-team" class="py-16 bg-light-blue-500">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-12">Our Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 animate-fade-in">
+                    <img src="https://source.unsplash.com/400x400/?portrait,person" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold text-gray-700">Dr. Aisha Khan</h3>
+                    <p class="text-gray-600">Chief Executive Officer</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 animate-fade-in delay-100">
+                    <img src="https://source.unsplash.com/400x400/?person,smile" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold text-gray-700">Mr. Bilal Ahmed</h3>
+                    <p class="text-gray-600">Lead AI Engineer</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300 animate-fade-in delay-200">
+                    <img src="https://source.unsplash.com/400x400/?person,confident" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold text-gray-700">Ms. Fatima Noor</h3>
+                    <p class="text-gray-600">Head of Mental Health Research</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="our-story" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-800 text-center mb-8 animate-fade-in">Our Story</h2>
+            <div class="flex flex-col md:flex-row items-center space-y-8 md:space-y-0">
+                <div class="md:w-1/2">
+                    <img src="https://source.unsplash.com/600x400/?technology,ai" alt="Our Story" class="w-full rounded-lg shadow-lg animate-fade-in">
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <p class="text-gray-600 text-lg mb-4 animate-fade-in delay-100">Founded in 2023, new9240 emerged from a shared passion for leveraging technology to enhance mental health support. Our team of experts in artificial intelligence and mental wellness came together with a common goal: to create an accessible and effective therapeutic companion for individuals seeking help.</p>
+                    <p class="text-gray-600 text-lg animate-fade-in delay-200">Through continuous innovation and dedication, we have developed an AI-powered therapist that adapts to your unique needs, providing personalized guidance and support whenever you need it most. Our journey is driven by the belief that mental health care should be accessible to everyone, and we are committed to making that a reality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Address & Contact Information Section -->
+    <section id="address-contact" class="py-16 bg-light-blue-500">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Our Location</h2>
+            <p class="text-gray-600 text-lg">A-14 Al-Rehman Premier Apartments,<br>Block-16 Gulshan-e-Iqbal, Karachi</p>
+            <div class="mt-8 flex justify-center space-x-6">
+                <a href="contact.html" class="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 transition">Contact Us</a>
+                <a href="#" class="text-gray-700 hover:text-blue-500"><i class="fas fa-map-marker-alt fa-2x"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <p class="mb-4 md:mb-0">&copy; 2023 new9240. All rights reserved.</p>
+            <div class="flex space-x-6">
+                <a href="https://facebook.com" class="hover:text-white" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" class="hover:text-white" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com" class="hover:text-white" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://twitter.com" class="hover:text-white" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP Animations -->
+    <script>
+        gsap.from(".animate-fade-in", { duration: 1, opacity: 0, y: 50, stagger: 0.3 });
+    </script>
+
+    <!-- Mobile Menu Toggle -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+    </script>
+</body>
+</html>

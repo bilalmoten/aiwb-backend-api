@@ -95,48 +95,127 @@ output in markdown format.
 # """
 
 
-WEBSITE_CODE_PROMPT = """You are an expert web developer. Your task is to customise the following website template code based on the provided website plan.
+# WEBSITE_CODE_PROMPT = """You are an expert web developer. Your task is to customise the following website template code based on the provided website plan.
 
-1.	Use:
-•	HTML for structure.
-•	Tailwind CSS for styling.
-•	Font Awesome for icons.
-•	GSAP and Framer Motion for animations (where needed).
+# 1.	Use:
+# •	HTML for structure.
+# •	Tailwind CSS for styling.
+# •	Font Awesome for icons.
+# •	GSAP and Framer Motion for animations (where needed).
 
-2.	Ensure the following:
-•	All sections are fully functional, with no placeholders, dummy content, or incomplete features.
-•	Relevant images are sourced from Unsplash, using valid URLs.
-•	Consistent headers, footers, and styling across all pages. (only include hyperlinks that work nothing that may not work if not for your given code)
-•	Any complex features like forms or dynamic components should be simplified to static or omitted. (nothing requiring backend, databse, api keys for external services etc)
-•	The code you generate is the only thing that will go live, dont make any assumptions about other pages etc like terms of service or privacy policy etc.
+# 2.	Ensure the following:
+# •	All sections are fully functional, with no placeholders, dummy content, or incomplete features.
+# •	Relevant images are sourced from Unsplash, using valid URLs.
+# •	Consistent headers, footers, and styling across all pages. (only include hyperlinks that work nothing that may not work if not for your given code)
+# •	Any complex features like forms or dynamic components should be simplified to static or omitted. (nothing requiring backend, databse, api keys for external services etc)
+# •	The code you generate is the only thing that will go live, dont make any assumptions about other pages etc like terms of service or privacy policy etc.
 
-3.	Go beyond the provided blueprint to create visually stunning, unique designs that stand out. Add modern layouts, animations, and interactivity where appropriate.
-4.	Output Format:
-•	Use Markdown with labeled code blocks for each page.
-•	End with “## All Files Completed.”
+# 3.	Go beyond the provided blueprint to create visually stunning, unique designs that stand out. Add modern layouts, animations, and interactivity where appropriate.
+# 4.	Output Format:
+# •	Use Markdown with labeled code blocks for each page.
+# •	End with “## All Files Completed.”
+
+# IMPORTANT: within the code for the first page, add a comment that explains the website and your decisions related to the template that u were given, things you found useful, things that u changed. a detailed description of how you went from the template you recieved and the wesite you generated, focusing on the design and UI of the template vs your final website.
+
+# ### Example Output:
+
+#     ## index.html
+#     ```html
+#     <html code here>
+#     ```
+
+#     ## about_us.html
+#     ```html
+#     <html code here>
+#     ```
+
+#     ## contact_us.html
+#     ```html
+#     <html code here>
+#     ```
+
+#     ## All Files Completed
+# """
+
+# WEBSITE_CODE_PROMPT = """ I need you to make a website for the following user on my AI Website Builder.
+# in order to help you, i have found some great design sections that u can use or customise to make the wesite for the user.
+# i have also written a basic website plan where i outline the requirements the user had, that might help you out.
+
+# just one thing, the code you generate is the only thing that will go live, dont make any assumptions about other pages etc like terms of service or privacy policy etc. and since it will e sent to the user to view directly, no placeholders etc, actual proper content please.
+
+# and please maintain code output format as shown below. else the user will not be able to use the website due to parsing errors.
+
+# ### Example Output:
+
+#     ## index.html
+#     ```html
+#     <html code here>
+#     ```
+
+#     ## about_us.html
+#     ```html
+#     <html code here>
+#     ```
+
+#     ## contact_us.html
+#     ```html
+#     <html code here>
+#     ```
+
+#     ## All Files Completed
+# """
+
+
+WEBSITE_CODE_PROMPT = """ I want you to create a website, based on the details in the next message. I want you to give me the final HTML code for the website in the format as shown below.
+
+For the website code, remember, to use only Tailwind Css for styling and vanilla JS for functionality. You can use the following CDNs to Improve the website design and Interactivty:
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+<!-- Add required scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js" defer></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://aiwebsitebuilder.tech/form-capture.js"></script>
+
+WEBSITE DESIGN: 
+Create the website as if u are a professional web designer, and the user is a professional client, the user details and conversation is there to guide your design, but professionalism, Amazing Ui, unique layouts and advanced interactions and animations are the corner stone of this agency. So i am also including a couple of example components that u can get inspiration form and have an idea of the designs we like here at the agency.
+
+Remember: proper navbar, footer, and detailed sections as per user guidelines please. also make sure website is complete and ready to go, with no dummy text or placeholders that would need adjustments. Add data from your own mind and make it an amazing website please.
+
 
 ### Example Output:
 
-    ## index.html
-    ```html
-    <html code here>
-    ```
+## index.html
+```html
+<html code here>
+```
 
-    ## about_us.html
-    ```html
-    <html code here>
-    ```
+## about_us.html
+```html
+<html code here>
+```
 
-    ## contact_us.html
-    ```html
-    <html code here>
-    ```
+## contact_us.html
+```html
+<html code here>
+```
 
-    ## All Files Completed
+## All Files Completed
 """
 
 
+# WEBSITE_CODE_PROMPT = """ Create a website based on the users requirements by customizing the following template code provided to you. This template features advanced animations, gradient overlay backgrounds, and dynamic JS functionality. Use this and change the content and styling according the the website for the skin care brand considering the template for the overall UI/UX, ensuring a seamless, modern aesthetic with smooth interactions
+
+# Keep the existing UI and layout of section intact, adapting each section to fit the skincare website homepage needs and text.
+
+# """
+
 DESIGN_FEEDBACK_PROMPT = """You are an expert web designer and developer. Your task is to review the following website code and provide feedback, focusing on improving the design and aesthetics.
+
+
 
 4. Keep the feedback detailed, practical, and focused on elevating the user’s satisfaction and the website’s quality.
 

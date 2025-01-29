@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Delights Bakery | About Us</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-warm-brown">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-white">
+                <a href="index.html">Sweet Delights</a>
+            </div>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="index.html" class="text-white hover:text-cream transition">Home</a></li>
+                <li><a href="about.html" class="text-white hover:text-cream transition">About</a></li>
+                <li><a href="#bestsellers" class="text-white hover:text-cream transition">Bestsellers</a></li>
+                <li><a href="contact.html" class="text-white hover:text-cream transition">Contact</a></li>
+                <li><a href="contact.html" class="bg-pastel-pink text-white px-4 py-2 rounded hover:bg-pastel-peach transition">Order Now</a></li>
+            </ul>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden bg-warm-brown">
+            <ul class="flex flex-col space-y-4 py-4 px-6">
+                <li><a href="index.html" class="text-cream hover:text-white transition">Home</a></li>
+                <li><a href="about.html" class="text-cream hover:text-white transition">About</a></li>
+                <li><a href="#bestsellers" class="text-cream hover:text-white transition">Bestsellers</a></li>
+                <li><a href="contact.html" class="text-cream hover:text-white transition">Contact</a></li>
+                <li><a href="contact.html" class="bg-pastel-pink text-white px-4 py-2 rounded hover:bg-pastel-peach transition text-center">Order Now</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Our Story -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2">
+                <img src="https://source.unsplash.com/600x400/?bakery,interior" alt="Bakery Interior" class="rounded-lg shadow-lg mb-6 md:mb-0">
+            </div>
+            <div class="md:w-1/2 md:pl-12">
+                <h2 class="text-3xl font-bold mb-4">Our Story</h2>
+                <p class="text-gray-600 mb-4">Founded in 2010, Sweet Delights started as a small family-owned bakery in the heart of Sydney. Our passion for baking and commitment to quality have made us a beloved destination for delicious pastries and desserts.</p>
+                <p class="text-gray-600">From sourcing the finest ingredients to perfecting our artisanal baking methods, we strive to create sweet moments for our customers every day. Join us on our journey of flavor and tradition.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Makes Us Special -->
+    <section class="py-12 bg-cream">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">What Makes Us Special</h2>
+            <div class="flex flex-col md:flex-row justify-around items-start space-y-8 md:space-y-0">
+                <!-- Unique Ingredient -->
+                <div class="max-w-sm text-center">
+                    <i class="fas fa-seedling text-pastel-pink text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Organic Ingredients</h3>
+                    <p class="text-gray-600">We use only the freshest organic ingredients, ensuring that every bite is both delicious and wholesome.</p>
+                </div>
+                <!-- Artisanal Methods -->
+                <div class="max-w-sm text-center">
+                    <i class="fas fa-tools text-pastel-pink text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Artisanal Baking</h3>
+                    <p class="text-gray-600">Our skilled bakers employ traditional techniques to craft masterpieces that delight the senses.</p>
+                </div>
+                <!-- Commitment to Quality -->
+                <div class="max-w-sm text-center">
+                    <i class="fas fa-heart text-pastel-pink text-4xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Commitment to Quality</h3>
+                    <p class="text-gray-600">Quality is at the heart of everything we do, from selection to presentation, ensuring an exceptional experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">Our Customers Love Us</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-8">
+                <!-- Testimonial -->
+                <div class="max-w-sm bg-cream p-6 rounded-lg shadow-lg text-center">
+                    <img src="https://source.unsplash.com/100x100/?person,4" alt="Customer 4" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <p class="text-gray-600 mb-4">"Sweet Delights has become my go-to spot for birthdays and special occasions. Their cakes are simply amazing!"</p>
+                    <h3 class="text-lg font-semibold">Lily M.</h3>
+                </div>
+                <!-- Testimonial -->
+                <div class="max-w-sm bg-cream p-6 rounded-lg shadow-lg text-center">
+                    <img src="https://source.unsplash.com/100x100/?person,5" alt="Customer 5" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <p class="text-gray-600 mb-4">"The variety of pastries here is incredible. Each one is a little piece of heaven."</p>
+                    <h3 class="text-lg font-semibold">James K.</h3>
+                </div>
+                <!-- Testimonial -->
+                <div class="max-w-sm bg-cream p-6 rounded-lg shadow-lg text-center">
+                    <img src="https://source.unsplash.com/100x100/?person,6" alt="Customer 6" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <p class="text-gray-600 mb-4">"Fantastic customer service and delightful treats! I always leave with a smile."</p>
+                    <h3 class="text-lg font-semibold">Olivia S.</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet the Team -->
+    <section class="py-12 bg-cream">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8">Meet the Team</h2>
+            <div class="flex flex-wrap justify-center space-x-0 space-y-8 md:space-y-0 md:space-x-8">
+                <!-- Team Member -->
+                <div class="max-w-xs bg-white p-6 rounded-lg shadow-lg text-center">
+                    <img src="https://source.unsplash.com/200x200/?person,chef" alt="Chef Emma" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-semibold">Emma Wilson</h3>
+                    <p class="text-gray-600">Head Baker</p>
+                    <p class="mt-2 text-gray-500">Emma brings over 15 years of baking expertise, crafting exquisite pastries and desserts that are the heart of Sweet Delights.</p>
+                </div>
+                <!-- Team Member -->
+                <div class="max-w-xs bg-white p-6 rounded-lg shadow-lg text-center">
+                    <img src="https://source.unsplash.com/200x200/?person,manager" alt="Manager Liam" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-semibold">Liam Johnson</h3>
+                    <p class="text-gray-600">Store Manager</p>
+                    <p class="mt-2 text-gray-500">Liam ensures that every customer experience is exceptional, managing operations with a passion for quality and service.</p>
+                </div>
+                <!-- Team Member -->
+                <div class="max-w-xs bg-white p-6 rounded-lg shadow-lg text-center">
+                    <img src="https://source.unsplash.com/200x200/?person,designer" alt="Designer Ava" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-semibold">Ava Martinez</h3>
+                    <p class="text-gray-600">Pastry Chef</p>
+                    <p class="mt-2 text-gray-500">Ava combines creativity and skill to design stunning pastries that are as beautiful as they are delicious.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-warm-brown text-cream py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start">
+                <!-- Quick Links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-pastel-pink transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-pastel-pink transition">About</a></li>
+                        <li><a href="#bestsellers" class="hover:text-pastel-pink transition">Bestsellers</a></li>
+                        <li><a href="contact.html" class="hover:text-pastel-pink transition">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Information -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                    <p class="mb-2">123 Sweet Street,<br>Sydney NSW 2000, Australia</p>
+                    <p class="mb-2"><i class="fas fa-phone mr-2"></i> +61 2 1234 5678</p>
+                    <p><i class="fas fa-envelope mr-2"></i> info@sweetdelights.com</p>
+                </div>
+                <!-- Social Media -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-pastel-pink transition" aria-label="Facebook"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="hover:text-pastel-pink transition" aria-label="Instagram"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="hover:text-pastel-pink transition" aria-label="Twitter"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="hover:text-pastel-pink transition" aria-label="Pinterest"><i class="fab fa-pinterest fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p>&copy; 2024 Sweet Delights Bakery. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP Animations -->
+    <script>
+        gsap.from('.animate-fade-in', { opacity: 0, y: 50, duration: 1, stagger: 0.3 });
+
+        // Mobile Menu Toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>

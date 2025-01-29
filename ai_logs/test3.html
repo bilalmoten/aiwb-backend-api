@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <!--PAID CDNs -- DO NOT CHANGE -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <!-- Add required scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://aiwebsitebuilder.tech/form-capture.js"></script>
+</head>
+
+<body>
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50"
+        x-data="{ mobileMenu: false, activeDropdown: null }">
+        <div class="container mx-auto px-4">
+            <nav class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl flex items-center justify-center transform hover:rotate-6 transition-transform duration-200">
+                        <i class="fas fa-rocket text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">LaunchPad</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#features"
+                        class="text-gray-700 hover:text-purple-600 transition-colors duration-200 group relative">
+                        Features
+                        <span
+                            class="absolute inset-x-0 -bottom-1 h-0.5 bg-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+                    </a>
+                    <div class="relative" @mouseleave="activeDropdown = null">
+                        <button @mouseover="activeDropdown = 'solutions'"
+                            @click="activeDropdown = activeDropdown === 'solutions' ? null : 'solutions'"
+                            class="text-gray-700 hover:text-purple-600 transition-colors duration-200 group relative flex items-center space-x-1">
+                            <span>Solutions</span>
+                            <i class="fas fa-chevron-down text-xs transition-transform duration-200"
+                                :class="{ 'rotate-180': activeDropdown === 'solutions' }"></i>
+                            <span
+                                class="absolute inset-x-0 -bottom-1 h-0.5 bg-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+                        </button>
+                        <div x-show="activeDropdown === 'solutions'"
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 translate-y-1"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 translate-y-1"
+                            class="absolute right-0 w-64 bg-white rounded-xl shadow-lg border border-gray-100">
+                            <div class="p-4 space-y-3">
+                                <a href="#startups"
+                                    class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200 group">
+                                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                                        <i
+                                            class="fas fa-lightbulb text-purple-600 group-hover:scale-110 transition-transform duration-200"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-medium text-gray-900">For Startups</div>
+                                        <div class="text-xs text-gray-500">Launch your business</div>
+                                    </div>
+                                </a>
+                                <a href="#enterprise"
+                                    class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200 group">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                                        <i
+                                            class="fas fa-building text-blue-600 group-hover:scale-110 transition-transform duration-200"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-medium text-gray-900">Enterprise</div>
+                                        <div class="text-xs text-gray-500">Scale your company</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#pricing"
+                        class="text-gray-700 hover:text-purple-600 transition-colors duration-200 group relative">
+                        Pricing
+                        <span
+                            class="absolute inset-x-0 -bottom-1 h-0.5 bg-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+                    </a>
+                    <a href="#resources"
+                        class="text-gray-700 hover:text-purple-600 transition-colors duration-200 group relative">
+                        Resources
+                        <span
+                            class="absolute inset-x-0 -bottom-1 h-0.5 bg-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+                    </a>
+                </div>
+
+                <!-- Right Navigation -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <button class="text-gray-700 hover:text-purple-600 transition-colors duration-200">
+                        Sign in
+                    </button>
+                    <button
+                        class="px-4 py-2 text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition-colors duration-200 flex items-center space-x-2 group">
+                        <span>Get Started</span>
+                        <i
+                            class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform duration-200"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button @click="mobileMenu = !mobileMenu"
+                    class="lg:hidden p-2 rounded-lg text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-colors duration-200">
+                    <i class="fas" :class="mobileMenu ? 'fa-times' : 'fa-bars'"></i>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Mobile menu -->
+        <div x-show="mobileMenu" class="lg:hidden bg-white border-t border-gray-200"
+            x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1"
+            x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-1">
+            <div class="container mx-auto px-4 py-4 space-y-1">
+                <a href="#features"
+                    class="block px-3 py-2 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors duration-200">
+                    Features
+                </a>
+                <button @click="activeDropdown = activeDropdown === 'mobile-solutions' ? null : 'mobile-solutions'"
+                    class="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors duration-200">
+                    <span>Solutions</span>
+                    <i class="fas fa-chevron-down transition-transform duration-200"
+                        :class="{ 'rotate-180': activeDropdown === 'mobile-solutions' }"></i>
+                </button>
+                <div x-show="activeDropdown === 'mobile-solutions'" class="pl-4 space-y-1">
+                    <a href="#startups"
+                        class="flex items-center space-x-2 px-3 py-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors duration-200">
+                        <i class="fas fa-lightbulb text-purple-600"></i>
+                        <span>For Startups</span>
+                    </a>
+                    <a href="#enterprise"
+                        class="flex items-center space-x-2 px-3 py-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors duration-200">
+                        <i class="fas fa-building text-blue-600"></i>
+                        <span>Enterprise</span>
+                    </a>
+                </div>
+                <a href="#pricing"
+                    class="block px-3 py-2 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors duration-200">
+                    Pricing
+                </a>
+                <a href="#resources"
+                    class="block px-3 py-2 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors duration-200">
+                    Resources
+                </a>
+                <div class="pt-4 mt-4 border-t border-gray-200 space-y-4">
+                    <button
+                        class="block w-full px-3 py-2 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors duration-200 text-left">
+                        Sign in
+                    </button>
+                    <button
+                        class="w-full px-4 py-2 text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition-colors duration-200 flex items-center justify-center space-x-2">
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Architectural Visualization Studio Hero -->
+    <section class="relative min-h-screen bg-zinc-950 overflow-hidden" x-data="{ activeProject: 1 }">
+        <!-- Dynamic background grid -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0" style="background-image: linear-gradient(to right, #18181b 1px, transparent 1px),
+            linear-gradient(to bottom, #18181b 1px, transparent 1px);
+            background-size: 4rem 4rem;
+            mask-image: radial-gradient(circle at 50% 50%, black, transparent 70%);">
+            </div>
+        </div>
+
+        <!-- Diagonal content wrapper -->
+        <div class="relative">
+            <!-- Navigation -->
+            <nav class="absolute top-0 right-0 h-screen w-24 flex flex-col items-center justify-center z-10"
+                style="background: linear-gradient(to left, rgba(24, 24, 27, 0.9), transparent);">
+                <div class="flex flex-col gap-12">
+                    <a href="#work" class="group relative">
+                        <span
+                            class="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-emerald-500 rounded-r opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                        <i class="fas fa-cube text-zinc-500 text-xl group-hover:text-emerald-500 transition-colors"></i>
+                    </a>
+                    <a href="#services" class="group relative">
+                        <span
+                            class="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-emerald-500 rounded-r opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                        <i
+                            class="fas fa-vector-square text-zinc-500 text-xl group-hover:text-emerald-500 transition-colors"></i>
+                    </a>
+                    <a href="#contact" class="group relative">
+                        <span
+                            class="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-emerald-500 rounded-r opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                        <i
+                            class="fas fa-envelope text-zinc-500 text-xl group-hover:text-emerald-500 transition-colors"></i>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Main content -->
+            <div class="grid grid-cols-12 min-h-screen">
+                <!-- Left content -->
+                <div class="col-span-6 flex items-center pl-16 pr-8">
+                    <div class="space-y-8 max-w-xl transform -rotate-6">
+                        <!-- Logo -->
+                        <div class="flex items-center gap-3 mb-12">
+                            <div class="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-cube text-emerald-500 text-2xl"></i>
+                            </div>
+                            <span class="text-2xl font-light tracking-wider text-white">ARCHVIZ</span>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="inline-flex items-center gap-3">
+                                <span class="text-emerald-500 font-medium tracking-wider">ARCHITECTURAL
+                                    VISUALIZATION</span>
+                                <span class="w-12 h-[1px] bg-emerald-500/50"></span>
+                            </div>
+
+                            <h1 class="text-7xl font-light tracking-tight text-white">
+                                <span class="block">Bringing</span>
+                                <span class="block mt-2">Architecture</span>
+                                <span
+                                    class="block mt-2 bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">to
+                                    Life</span>
+                            </h1>
+
+                            <p class="text-lg text-zinc-400 leading-relaxed">
+                                We create stunning architectural visualizations that transform concepts into immersive
+                                experiences,
+                                helping architects and developers communicate their vision.
+                            </p>
+                        </div>
+
+                        <!-- Interactive CTA -->
+                        <div class="flex items-center gap-8 pt-4">
+                            <a href="#portfolio" class="group relative">
+                                <div
+                                    class="absolute inset-0 bg-emerald-500 rounded-xl blur-lg opacity-20 group-hover:opacity-30 transition-opacity">
+                                </div>
+                                <button
+                                    class="relative px-8 py-4 bg-emerald-500 text-white rounded-xl font-medium flex items-center gap-3 group-hover:bg-emerald-600 transition-colors">
+                                    View Portfolio
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </button>
+                            </a>
+                            <a href="#showreel"
+                                class="text-zinc-400 hover:text-emerald-500 transition-colors flex items-center gap-2">
+                                <i class="fas fa-play-circle text-xl"></i>
+                                <span>Watch Showreel</span>
+                            </a>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-8 pt-12">
+                            <div class="space-y-2">
+                                <div class="text-3xl font-light text-white">150+</div>
+                                <div class="text-sm text-zinc-500">Projects Completed</div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="text-3xl font-light text-white">15+</div>
+                                <div class="text-sm text-zinc-500">Countries Served</div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="text-3xl font-light text-white">98%</div>
+                                <div class="text-sm text-zinc-500">Client Satisfaction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right content - Project Showcase -->
+                <div class="col-span-6 relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="relative w-[140%] aspect-[4/3] transform rotate-6">
+                            <!-- Project carousel -->
+                            <template x-for="i in 3" :key="i">
+                                <div x-show="activeProject === i" class="absolute inset-0 transition-all duration-700"
+                                    :class="activeProject === i ? 'opacity-100 scale-100' : 'opacity-0 scale-95'">
+                                    <img :src="`https://source.unsplash.com/random/1200x900?architecture,modern,${i}`"
+                                        :alt="`Project ${i}`" class="w-full h-full object-cover rounded-xl">
+
+                                    <!-- Content overlay -->
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-l from-transparent via-zinc-950/50 to-zinc-950/90">
+                                        <div class="absolute bottom-12 left-12">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <span
+                                                    class="px-3 py-1 bg-emerald-500/20 text-emerald-500 text-sm rounded-full">Featured</span>
+                                                <span class="text-zinc-400">Project 0<span x-text="i"></span></span>
+                                            </div>
+                                            <h3 class="text-2xl font-light text-white mb-2"
+                                                x-text="`Modern Living ${i}`"></h3>
+                                            <p class="text-zinc-400 mb-6">Residential Complex, Dubai</p>
+                                            <a href="#details"
+                                                class="text-emerald-500 hover:text-emerald-400 transition-colors flex items-center gap-2">
+                                                <span>View Project</span>
+                                                <i class="fas fa-arrow-right text-sm"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <!-- Project navigation -->
+                            <div class="absolute -right-6 top-1/2 -translate-y-1/2 flex flex-col gap-3">
+                                <template x-for="i in 3" :key="i">
+                                    <button @click="activeProject = i"
+                                        class="w-3 h-12 rounded-full transition-all duration-300"
+                                        :class="activeProject === i ? 'bg-emerald-500' : 'bg-zinc-700 hover:bg-emerald-700'">
+                                    </button>
+                                </template>
+                            </div>
+
+                            <!-- Floating info cards -->
+                            <div
+                                class="absolute top-12 right-12 w-64 bg-zinc-900/90 backdrop-blur-sm rounded-xl p-6 transform rotate-6">
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                                        <i class="fas fa-vr-cardboard text-emerald-500"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-medium mb-1">VR Ready</h4>
+                                        <p class="text-zinc-400 text-sm">Immersive virtual reality experiences</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="absolute bottom-12 right-1/4 w-64 bg-zinc-900/90 backdrop-blur-sm rounded-xl p-6 transform rotate-6">
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                                        <i class="fas fa-cube text-emerald-500"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-medium mb-1">3D Modeling</h4>
+                                        <p class="text-zinc-400 text-sm">High-fidelity architectural models</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mouse scroll indicator -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
+            <div class="w-6 h-10 rounded-full border-2 border-zinc-700 flex items-start p-1">
+                <div class="w-full h-2 bg-emerald-500 rounded-full animate-scroll-mouse"></div>
+            </div>
+            <span class="text-zinc-500 text-sm tracking-wider">SCROLL</span>
+        </div>
+
+        <style>
+            @keyframes scroll-mouse {
+
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(300%);
+                }
+            }
+
+            .animate-scroll-mouse {
+                animation: scroll-mouse 2s ease-in-out infinite;
+            }
+        </style>
+    </section>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!DOCTYPE html>
+    <section class="min-h-screen bg-gray-900 relative overflow-hidden py-20 font-['Inter']" x-data="{ 
+    currentSlide: 0,
+    products: [
+        { id: 1, title: 'Premium Headphones', price: 299.99, description: 'Immersive sound experience with noise cancellation' },
+        { id: 2, title: 'Smart Watch Pro', price: 399.99, description: 'Advanced fitness tracking and notifications' },
+        { id: 3, title: 'Wireless Earbuds', price: 199.99, description: 'Crystal clear audio with long battery life' },
+        { id: 4, title: 'Gaming Console', price: 499.99, description: 'Next-gen gaming with 4K graphics' }
+    ]
+}">
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-violet-900 to-indigo-900"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_800px_at_100%_200px,#4F46E5,transparent)]"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_800px_at_0%_800px,#7E22CE,transparent)]"></div>
+        </div>
+
+        <!-- Content Container -->
+        <div class="max-w-7xl mx-auto px-4 relative">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <span class="text-violet-400 text-sm font-semibold tracking-wider uppercase mb-4 block">Featured
+                    Products</span>
+                <h2 class="text-4xl font-bold text-white mb-4">Premium Collection</h2>
+                <p class="text-violet-200 max-w-2xl mx-auto">Experience our flagship products with cutting-edge
+                    technology
+                    and premium design.</p>
+            </div>
+
+            <!-- Product Slider -->
+            <div class="relative">
+                <!-- Navigation Arrows -->
+                <button @click="currentSlide = (currentSlide - 1 + products.length) % products.length"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 z-10 w-16 h-16 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors backdrop-blur-sm">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                        </path>
+                    </svg>
+                </button>
+                <button @click="currentSlide = (currentSlide + 1) % products.length"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 z-10 w-16 h-16 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors backdrop-blur-sm">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+
+                <!-- Slides Container -->
+                <div class="relative h-[600px] overflow-hidden rounded-3xl">
+                    <template x-for="(product, index) in products" :key="product.id">
+                        <div x-show="currentSlide === index" x-transition:enter="transition ease-out duration-500"
+                            x-transition:enter-start="opacity-0 transform translate-x-full"
+                            x-transition:enter-end="opacity-100 transform translate-x-0"
+                            x-transition:leave="transition ease-in duration-500"
+                            x-transition:leave-start="opacity-100 transform translate-x-0"
+                            x-transition:leave-end="opacity-0 transform -translate-x-full" class="absolute inset-0">
+                            <!-- Product Content -->
+                            <div class="h-full grid grid-cols-2 gap-8">
+                                <!-- Product Image -->
+                                <div class="relative overflow-hidden rounded-2xl">
+                                    <img :src="'/images/products/product' + product.id + '.jpg'" :alt="product.title"
+                                        class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-tr from-black/50 to-transparent"></div>
+                                </div>
+                                <!-- Product Info -->
+                                <div class="flex flex-col justify-center p-8">
+                                    <h3 class="text-4xl font-bold text-white mb-4" x-text="product.title"></h3>
+                                    <p class="text-violet-200 text-lg mb-8" x-text="product.description"></p>
+                                    <div class="flex items-center space-x-6 mb-8">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="flex items-center text-yellow-400">
+                                                <template x-for="i in 5">
+                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path
+                                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                                        </path>
+                                                    </svg>
+                                                </template>
+                                            </div>
+                                            <span class="text-violet-200">(128 reviews)</span>
+                                        </div>
+                                        <span class="text-3xl font-bold text-white" x-text="'$' + product.price"></span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <button
+                                            class="flex-1 px-8 py-4 bg-violet-600 text-white font-medium rounded-xl hover:bg-violet-700 transition-colors">
+                                            Add to Cart
+                                        </button>
+                                        <button
+                                            class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20 transition-colors">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Slide Indicators -->
+                <div class="flex justify-center space-x-3 mt-8">
+                    <template x-for="(product, index) in products" :key="index">
+                        <button @click="currentSlide = index"
+                            :class="{ 'w-12 bg-violet-600': currentSlide === index, 'w-3 bg-white/20': currentSlide !== index }"
+                            class="h-3 rounded-full transition-all duration-300">
+                        </button>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Auto-advance slides
+        let slideInterval;
+
+        function startSlideShow() {
+            slideInterval = setInterval(() => {
+                const nextSlide = (currentSlide + 1) % products.length;
+                document.querySelector('[x-data]').__x.$data.currentSlide = nextSlide;
+            }, 5000);
+        }
+
+        function stopSlideShow() {
+            clearInterval(slideInterval);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            startSlideShow();
+
+            // Pause on hover
+            const slider = document.querySelector('section');
+            slider.addEventListener('mouseenter', stopSlideShow);
+            slider.addEventListener('mouseleave', startSlideShow);
+        });
+    </script>
+    <section class="min-h-screen bg-gradient-to-br from-cyan-950 to-blue-950 py-24 overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_-30%,rgba(34,211,238,0.15),transparent)]">
+            </div>
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_800px_at_80%_60%,rgba(59,130,246,0.15),transparent)]">
+            </div>
+            <!-- Particle Container -->
+            <div id="particles-js" class="absolute inset-0 opacity-30"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative">
+            <!-- Header -->
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <div class="relative inline-block">
+                    <div
+                        class="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-500 blur-lg opacity-20 animate-pulse">
+                    </div>
+                    <h2
+                        class="relative text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 gsap-title">
+                        Success Timeline</h2>
+                </div>
+                <p class="mt-4 text-cyan-200/80">Journey of growth with our clients</p>
+            </div>
+
+            <!-- Timeline Grid -->
+            <div class="max-w-7xl mx-auto gsap-timeline">
+                <!-- Timeline Item 1 -->
+                <div class="relative group mb-24">
+                    <!-- Timeline Line -->
+                    <div class="absolute left-8 top-8 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500/50 to-transparent">
+                    </div>
+
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-6 top-8 w-5 h-5">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur group-hover:blur-lg transition-all duration-300">
+                        </div>
+                        <div class="relative w-full h-full bg-cyan-500 rounded-full"></div>
+                    </div>
+
+                    <!-- Content Card -->
+                    <div class="ml-20 relative">
+                        <div
+                            class="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 transition-all duration-300 hover:bg-white/10">
+                            <!-- Glow Effect -->
+                            <div
+                                class="absolute -inset-px bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl opacity-0 group-hover:opacity-20 blur transition-opacity">
+                            </div>
+                            <div
+                                class="absolute -inset-[2px] bg-gradient-to-r from-cyan-500/50 to-blue-500/50 rounded-3xl opacity-0 group-hover:opacity-100 group-hover:blur-sm transition-all duration-300">
+                            </div>
+
+                            <div class="relative">
+                                <!-- Year Badge -->
+                                <div
+                                    class="inline-flex items-center px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-6">
+                                    <span class="text-cyan-400 text-sm font-medium">2024</span>
+                                </div>
+
+                                <!-- Content -->
+                                <div class="mb-8">
+                                    <h3 class="text-xl font-semibold text-white mb-4">Revolutionary Impact</h3>
+                                    <p class="text-cyan-100/90 leading-relaxed">"The innovative solutions provided by
+                                        the
+                                        team have completely transformed our business operations. Their expertise and
+                                        dedication to excellence have helped us achieve unprecedented growth."</p>
+                                </div>
+
+                                <!-- Metrics -->
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                                    <div class="text-center p-4 rounded-2xl bg-white/5">
+                                        <div class="text-2xl font-bold text-cyan-400">300%</div>
+                                        <div class="text-sm text-cyan-200/80">Growth</div>
+                                    </div>
+                                    <div class="text-center p-4 rounded-2xl bg-white/5">
+                                        <div class="text-2xl font-bold text-cyan-400">95%</div>
+                                        <div class="text-sm text-cyan-200/80">Satisfaction</div>
+                                    </div>
+                                    <div class="text-center p-4 rounded-2xl bg-white/5">
+                                        <div class="text-2xl font-bold text-cyan-400">24/7</div>
+                                        <div class="text-sm text-cyan-200/80">Support</div>
+                                    </div>
+                                    <div class="text-center p-4 rounded-2xl bg-white/5">
+                                        <div class="text-2xl font-bold text-cyan-400">50+</div>
+                                        <div class="text-sm text-cyan-200/80">Features</div>
+                                    </div>
+                                </div>
+
+                                <!-- Author -->
+                                <div class="flex items-center">
+                                    <div class="relative w-12 h-12 mr-4">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur opacity-50">
+                                        </div>
+                                        <img src="https://randomuser.me/api/portraits/women/13.jpg" alt="Sarah Chen"
+                                            class="relative w-full h-full object-cover rounded-full border-2 border-white/10">
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold">Sarah Chen</h4>
+                                        <p class="text-cyan-300/80">CTO, FutureScale</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative group mb-24">
+                    <!-- Timeline Line -->
+                    <div class="absolute left-8 top-8 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500/50 to-transparent">
+                    </div>
+
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-6 top-8 w-5 h-5">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur group-hover:blur-lg transition-all duration-300">
+                        </div>
+                        <div class="relative w-full h-full bg-cyan-500 rounded-full"></div>
+                    </div>
+
+                    <!-- Content Card -->
+                    <div class="ml-20 relative">
+                        <div
+                            class="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 transition-all duration-300 hover:bg-white/10">
+                            <!-- Glow Effect -->
+                            <div
+                                class="absolute -inset-px bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl opacity-0 group-hover:opacity-20 blur transition-opacity">
+                            </div>
+                            <div
+                                class="absolute -inset-[2px] bg-gradient-to-r from-cyan-500/50 to-blue-500/50 rounded-3xl opacity-0 group-hover:opacity-100 group-hover:blur-sm transition-all duration-300">
+                            </div>
+
+                            <div class="relative">
+                                <!-- Year Badge -->
+                                <div
+                                    class="inline-flex items-center px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-6">
+                                    <span class="text-cyan-400 text-sm font-medium">2023</span>
+                                </div>
+
+                                <!-- Content -->
+                                <div class="mb-8">
+                                    <h3 class="text-xl font-semibold text-white mb-4">Strategic Partnership</h3>
+                                    <p class="text-cyan-100/90 leading-relaxed">"Their strategic insights and technical
+                                        expertise have been instrumental in our digital transformation journey. The
+                                        team's
+                                        commitment to innovation has helped us stay ahead of the competition."</p>
+                                </div>
+
+                                <!-- Metrics -->
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                                    <div class="text-center p-4 rounded-2xl bg-white/5">
+                                        <div class="text-2xl font-bold text-cyan-400">200%</div>
+                                        <div class="text-sm text-cyan-200/80">ROI</div>
+                                    </div>
+                                    <div class="text-center p-4 rounded-2xl bg-white/5">
+                                        <div class="text-2xl font-bold text-cyan-400">98%</div>
+                                        <div class="text-sm text-cyan-200/80">Uptime</div>
+                                    </div>
+                                    <div class="text-center p-4 rounded-2xl bg-white/5">
+                                        <div class="text-2xl font-bold text-cyan-400">1M+</div>
+                                        <div class="text-sm text-cyan-200/80">Users</div>
+                                    </div>
+                                    <div class="text-center p-4 rounded-2xl bg-white/5">
+                                        <div class="text-2xl font-bold text-cyan-400">30+</div>
+                                        <div class="text-sm text-cyan-200/80">Markets</div>
+                                    </div>
+                                </div>
+
+                                <!-- Author -->
+                                <div class="flex items-center">
+                                    <div class="relative w-12 h-12 mr-4">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur opacity-50">
+                                        </div>
+                                        <img src="https://randomuser.me/api/portraits/men/14.jpg" alt="David Park"
+                                            class="relative w-full h-full object-cover rounded-full border-2 border-white/10">
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold">David Park</h4>
+                                        <p class="text-cyan-300/80">CEO, TechForward</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="relative group">
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-6 top-8 w-5 h-5">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur group-hover:blur-lg transition-all duration-300">
+                        </div>
+                        <div class="relative w-full h-full bg-cyan-500 rounded-full"></div>
+                    </div>
+
+                    <!-- Content Card -->
+                    <div class="ml-20 relative">
+                        <div
+                            class="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 transition-all duration-300 hover:bg-white/10">
+                            <!-- Glow Effect -->
+                            <div
+                                class="absolute -inset-px bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl opacity-0 group-hover:opacity-20 blur transition-opacity">
+                            </div>
+                            <div
+                                class="absolute -inset-[2px] bg-gradient-to-r from-cyan-500/50 to-blue-500/50 rounded-3xl opacity-0 group-hover:opacity-100 group-hover:blur-sm transition-all duration-300">
+                            </div>
+
+                            <div class="relative">
+                                <!-- Year Badge -->
+                                <div
+                                    class="inline-flex items-center px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-6">
+                                    <span class="text-cyan-400 text-sm font-medium">2022</span>
+                                </div>
+
+                                <!-- Content -->
+                                <div class="mb-8">
+                                    <h3 class="text-xl font-semibold text-white mb-4">Transformative Solutions</h3>
+                                    <p class="text-cyan-100/90 leading-relaxed">"The team's ability to understand our
+                                        unique
+                                        challenges and deliver customized solutions has been remarkable. Their
+                                        innovative
+                                        approach has helped us achieve significant operational efficiency."</p>
+                                </div>
+
+                                <!-- Metrics -->
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                                    <div class="text-center p-4 rounded-2xl bg-white/5">
+                                        <div class="text-2xl font-bold text-cyan-400">150%</div>
+                                        <div class="text-sm text-cyan-200/80">Efficiency</div>
+                                    </div>
+                                    <div class="text-center p-4 rounded-2xl bg-white/5">
+                                        <div class="text-2xl font-bold text-cyan-400">90%</div>
+                                        <div class="text-sm text-cyan-200/80">Cost Reduction</div>
+                                    </div>
+                                    <div class="text-center p-4 rounded-2xl bg-white/5">
+                                        <div class="text-2xl font-bold text-cyan-400">500K</div>
+                                        <div class="text-sm text-cyan-200/80">Transactions</div>
+                                    </div>
+                                    <div class="text-center p-4 rounded-2xl bg-white/5">
+                                        <div class="text-2xl font-bold text-cyan-400">20+</div>
+                                        <div class="text-sm text-cyan-200/80">Integrations</div>
+                                    </div>
+                                </div>
+
+                                <!-- Author -->
+                                <div class="flex items-center">
+                                    <div class="relative w-12 h-12 mr-4">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur opacity-50">
+                                        </div>
+                                        <img src="https://randomuser.me/api/portraits/women/15.jpg"
+                                            alt="Emily Rodriguez"
+                                            class="relative w-full h-full object-cover rounded-full border-2 border-white/10">
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-semibold">Emily Rodriguez</h4>
+                                        <p class="text-cyan-300/80">COO, InnovateX</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Particles.js
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 50,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: '#22d3ee'
+                    },
+                    shape: {
+                        type: 'circle'
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: true
+                    },
+                    size: {
+                        value: 3,
+                        random: true
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#22d3ee',
+                        opacity: 0.2,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: 'none',
+                        random: true,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: 'grab'
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: 'push'
+                        },
+                        resize: true
+                    }
+                },
+                retina_detect: true
+            });
+
+            // GSAP Animations
+            gsap.from('.gsap-title', {
+                duration: 1,
+                y: 40,
+                opacity: 0,
+                ease: 'back.out(1.7)'
+            });
+
+            gsap.from('.gsap-timeline > *', {
+                duration: 1,
+                x: -60,
+                opacity: 0,
+                stagger: 0.3,
+                ease: 'back.out(1.2)'
+            });
+        });
+    </script>
+    <section
+        class="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 relative overflow-hidden py-20 font-['Satoshi']">
+        <!-- 3D Scene Container -->
+        <div class="absolute inset-0 perspective-[1000px]">
+            <!-- Floating Planes -->
+            <div class="absolute inset-0">
+                <div
+                    class="absolute top-1/4 left-1/4 w-64 h-64 bg-cyan-500/10 rounded-lg transform -rotate-12 translate-z-12 animate-float-slow">
+                </div>
+                <div
+                    class="absolute top-1/3 right-1/4 w-48 h-48 bg-pink-500/10 rounded-lg transform rotate-12 translate-z-24 animate-float-delayed">
+                </div>
+                <div
+                    class="absolute bottom-1/4 left-1/3 w-56 h-56 bg-yellow-500/10 rounded-lg transform -rotate-6 translate-z-36 animate-float">
+                </div>
+            </div>
+
+            <!-- Grid Lines -->
+            <div class="absolute inset-0 transform-style-3d rotate-x-60 scale-150">
+                <div
+                    class="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] [transform:rotateX(60deg)]">
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Container -->
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <!-- Header -->
+            <div class="text-center mb-16 transform hover:translate-z-12 transition-transform duration-500">
+                <span
+                    class="inline-block text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4 transform hover:scale-110 transition-transform">Newsletter</span>
+                <h2 class="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight perspective-text">
+                    Experience the Future
+                </h2>
+                <p class="text-slate-300 text-lg max-w-2xl mx-auto">
+                    Join our newsletter to stay ahead of the curve with cutting-edge updates.
+                </p>
+            </div>
+
+            <!-- Newsletter Form -->
+            <div class="transform-style-3d hover:translate-z-12 transition-transform duration-500">
+                <div
+                    class="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+                    <form class="space-y-6" onsubmit="handleSubmit(event)">
+                        <!-- Name Input -->
+                        <div class="relative transform-style-3d group">
+                            <label class="block text-sm font-medium text-slate-300 mb-2 transform translate-z-4">Full
+                                Name</label>
+                            <div class="relative">
+                                <div
+                                    class="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg blur opacity-20 group-hover:opacity-30 transition duration-500">
+                                </div>
+                                <input type="text" required
+                                    class="relative w-full px-6 py-4 bg-slate-800/50 border border-white/10 rounded-lg text-white placeholder-slate-400 outline-none transition-all duration-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transform hover:translate-z-4"
+                                    placeholder="John Doe">
+                            </div>
+                        </div>
+
+                        <!-- Email Input -->
+                        <div class="relative transform-style-3d group">
+                            <label class="block text-sm font-medium text-slate-300 mb-2 transform translate-z-4">Email
+                                Address</label>
+                            <div class="relative">
+                                <div
+                                    class="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg blur opacity-20 group-hover:opacity-30 transition duration-500">
+                                </div>
+                                <input type="email" required
+                                    class="relative w-full px-6 py-4 bg-slate-800/50 border border-white/10 rounded-lg text-white placeholder-slate-400 outline-none transition-all duration-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transform hover:translate-z-4"
+                                    placeholder="john@example.com">
+                            </div>
+                        </div>
+
+                        <!-- Preferences -->
+                        <div class="grid grid-cols-3 gap-4 transform-style-3d">
+                            <label class="relative cursor-pointer transform hover:translate-z-8 transition-transform">
+                                <input type="radio" name="type" class="peer sr-only">
+                                <div
+                                    class="p-4 text-center rounded-lg bg-slate-800/50 border border-white/10 text-slate-300 transition-all duration-300 peer-checked:border-cyan-500 peer-checked:text-cyan-400 peer-checked:bg-cyan-500/10 hover:bg-slate-700/50">
+                                    <span class="text-sm">Design</span>
+                                </div>
+                            </label>
+                            <label class="relative cursor-pointer transform hover:translate-z-8 transition-transform">
+                                <input type="radio" name="type" class="peer sr-only">
+                                <div
+                                    class="p-4 text-center rounded-lg bg-slate-800/50 border border-white/10 text-slate-300 transition-all duration-300 peer-checked:border-cyan-500 peer-checked:text-cyan-400 peer-checked:bg-cyan-500/10 hover:bg-slate-700/50">
+                                    <span class="text-sm">Development</span>
+                                </div>
+                            </label>
+                            <label class="relative cursor-pointer transform hover:translate-z-8 transition-transform">
+                                <input type="radio" name="type" class="peer sr-only">
+                                <div
+                                    class="p-4 text-center rounded-lg bg-slate-800/50 border border-white/10 text-slate-300 transition-all duration-300 peer-checked:border-cyan-500 peer-checked:text-cyan-400 peer-checked:bg-cyan-500/10 hover:bg-slate-700/50">
+                                    <span class="text-sm">Business</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit"
+                            class="relative w-full transform hover:translate-z-12 transition-transform duration-500 group">
+                            <div
+                                class="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-500">
+                            </div>
+                            <div
+                                class="relative px-8 py-4 bg-slate-800 rounded-lg leading-none flex items-center justify-center">
+                                <span class="text-white font-medium">Subscribe Now</span>
+                            </div>
+                        </button>
+
+                        <!-- Privacy Notice -->
+                        <p class="text-center text-sm text-slate-400">
+                            By subscribing, you agree to our <a href="#"
+                                class="text-cyan-400 hover:text-cyan-300 transition-colors">Privacy Policy</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Success Message (Hidden by default) -->
+            <div id="success-message" class="hidden mt-8 transform-style-3d">
+                <div
+                    class="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/10 text-center transform hover:translate-z-12 transition-transform duration-500">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-cyan-500/20 mb-6">
+                        <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Welcome to the future!</h3>
+                    <p class="text-slate-300">Check your inbox to confirm your subscription.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .perspective-1000px {
+            perspective: 1000px;
+        }
+
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+
+        .translate-z-4 {
+            transform: translateZ(4px);
+        }
+
+        .translate-z-8 {
+            transform: translateZ(8px);
+        }
+
+        .translate-z-12 {
+            transform: translateZ(12px);
+        }
+
+        .translate-z-24 {
+            transform: translateZ(24px);
+        }
+
+        .translate-z-36 {
+            transform: translateZ(36px);
+        }
+
+        .rotate-x-60 {
+            transform: rotateX(60deg);
+        }
+
+        .perspective-text {
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateZ(0) translateY(0);
+            }
+
+            50% {
+                transform: translateZ(20px) translateY(-20px);
+            }
+        }
+
+        @keyframes float-delayed {
+
+            0%,
+            100% {
+                transform: translateZ(0) translateY(0);
+            }
+
+            50% {
+                transform: translateZ(30px) translateY(-30px);
+            }
+        }
+
+        @keyframes float-slow {
+
+            0%,
+            100% {
+                transform: translateZ(0) translateY(0);
+            }
+
+            50% {
+                transform: translateZ(40px) translateY(-40px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+            animation: float-delayed 8s ease-in-out infinite;
+        }
+
+        .animate-float-slow {
+            animation: float-slow 10s ease-in-out infinite;
+        }
+    </style>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            // Get form and success message elements
+            const form = event.target;
+            const formContainer = form.closest('.bg-white\\\\/10');
+            const successMessage = document.getElementById('success-message');
+
+            // Disable form elements
+            const inputs = form.querySelectorAll('input, button');
+            inputs.forEach(input => input.disabled = true);
+
+            // Add loading state to button
+            const button = form.querySelector('button');
+            const buttonContent = button.querySelector('.relative');
+            const originalText = buttonContent.innerHTML;
+            buttonContent.innerHTML = `
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Processing...
+        `;
+
+            // Simulate API call
+            setTimeout(() => {
+                // Hide form with fade out and 3D transform
+                formContainer.style.opacity = '0';
+                formContainer.style.transform = 'translateZ(-100px) rotateX(10deg)';
+                formContainer.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+
+                // Show success message with fade in and 3D transform
+                setTimeout(() => {
+                    formContainer.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    successMessage.style.opacity = '0';
+                    successMessage.style.transform = 'translateZ(100px) rotateX(-10deg)';
+
+                    requestAnimationFrame(() => {
+                        successMessage.style.opacity = '1';
+                        successMessage.style.transform = 'translateZ(0) rotateX(0)';
+                        successMessage.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                    });
+                }, 500);
+            }, 1500);
+        }
+    </script>
+    <section class="min-h-screen bg-gray-50 py-24 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <!-- Header -->
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 gsap-title">
+                    Portfolio Gallery
+                </h2>
+                <p class="text-lg text-gray-600 mb-12">Explore our diverse collection of creative works</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12 gsap-filters" x-data="{ activeFilter: 'all' }">
+                <button @click="activeFilter = 'all'"
+                    :class="{ 'bg-indigo-600 text-white': activeFilter === 'all', 'bg-white text-gray-600 hover:bg-gray-50': activeFilter !== 'all' }"
+                    class="px-6 py-2 rounded-full shadow-sm transition-all duration-300">
+                    All Projects
+                </button>
+                <button @click="activeFilter = 'web'"
+                    :class="{ 'bg-indigo-600 text-white': activeFilter === 'web', 'bg-white text-gray-600 hover:bg-gray-50': activeFilter !== 'web' }"
+                    class="px-6 py-2 rounded-full shadow-sm transition-all duration-300">
+                    Web Design
+                </button>
+                <button @click="activeFilter = 'mobile'"
+                    :class="{ 'bg-indigo-600 text-white': activeFilter === 'mobile', 'bg-white text-gray-600 hover:bg-gray-50': activeFilter !== 'mobile' }"
+                    class="px-6 py-2 rounded-full shadow-sm transition-all duration-300">
+                    Mobile Apps
+                </button>
+                <button @click="activeFilter = 'branding'"
+                    :class="{ 'bg-indigo-600 text-white': activeFilter === 'branding', 'bg-white text-gray-600 hover:bg-gray-50': activeFilter !== 'branding' }"
+                    class="px-6 py-2 rounded-full shadow-sm transition-all duration-300">
+                    Branding
+                </button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gsap-gallery">
+                <!-- Item 1 -->
+                <div class="group" x-show="activeFilter === 'all' || activeFilter === 'web'">
+                    <div class="relative rounded-2xl overflow-hidden bg-white shadow-lg">
+                        <img src="https://source.unsplash.com/800x600?website" alt="Project 1"
+                            class="w-full aspect-[4/3] object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="text-indigo-400 text-sm font-medium mb-2 block">Web Design</span>
+                                <h3 class="text-xl font-semibold text-white mb-2">E-commerce Platform</h3>
+                                <p class="text-gray-300 mb-4">Modern online shopping experience</p>
+                                <button
+                                    class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-300">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="group" x-show="activeFilter === 'all' || activeFilter === 'mobile'">
+                    <div class="relative rounded-2xl overflow-hidden bg-white shadow-lg">
+                        <img src="https://source.unsplash.com/800x600?app" alt="Project 2"
+                            class="w-full aspect-[4/3] object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="text-indigo-400 text-sm font-medium mb-2 block">Mobile App</span>
+                                <h3 class="text-xl font-semibold text-white mb-2">Fitness Tracker</h3>
+                                <p class="text-gray-300 mb-4">Personal training companion</p>
+                                <button
+                                    class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-300">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="group" x-show="activeFilter === 'all' || activeFilter === 'branding'">
+                    <div class="relative rounded-2xl overflow-hidden bg-white shadow-lg">
+                        <img src="https://source.unsplash.com/800x600?branding" alt="Project 3"
+                            class="w-full aspect-[4/3] object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="text-indigo-400 text-sm font-medium mb-2 block">Branding</span>
+                                <h3 class="text-xl font-semibold text-white mb-2">Brand Identity</h3>
+                                <p class="text-gray-300 mb-4">Corporate rebranding project</p>
+                                <button
+                                    class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-300">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="group" x-show="activeFilter === 'all' || activeFilter === 'web'">
+                    <div class="relative rounded-2xl overflow-hidden bg-white shadow-lg">
+                        <img src="https://source.unsplash.com/800x600?dashboard" alt="Project 4"
+                            class="w-full aspect-[4/3] object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="text-indigo-400 text-sm font-medium mb-2 block">Web Design</span>
+                                <h3 class="text-xl font-semibold text-white mb-2">Analytics Dashboard</h3>
+                                <p class="text-gray-300 mb-4">Data visualization platform</p>
+                                <button
+                                    class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-300">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="group" x-show="activeFilter === 'all' || activeFilter === 'mobile'">
+                    <div class="relative rounded-2xl overflow-hidden bg-white shadow-lg">
+                        <img src="https://source.unsplash.com/800x600?mobile" alt="Project 5"
+                            class="w-full aspect-[4/3] object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="text-indigo-400 text-sm font-medium mb-2 block">Mobile App</span>
+                                <h3 class="text-xl font-semibold text-white mb-2">Social Network</h3>
+                                <p class="text-gray-300 mb-4">Community platform design</p>
+                                <button
+                                    class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-300">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="group" x-show="activeFilter === 'all' || activeFilter === 'branding'">
+                    <div class="relative rounded-2xl overflow-hidden bg-white shadow-lg">
+                        <img src="https://source.unsplash.com/800x600?brand" alt="Project 6"
+                            class="w-full aspect-[4/3] object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="text-indigo-400 text-sm font-medium mb-2 block">Branding</span>
+                                <h3 class="text-xl font-semibold text-white mb-2">Brand Guidelines</h3>
+                                <p class="text-gray-300 mb-4">Style guide documentation</p>
+                                <button
+                                    class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-300">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More -->
+            <div class="text-center mt-16 gsap-button">
+                <button
+                    class="px-8 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105">
+                    Load More Projects
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // GSAP Animations
+            gsap.from('.gsap-title', {
+                duration: 1,
+                y: 40,
+                opacity: 0,
+                ease: 'back.out(1.7)'
+            });
+
+            gsap.from('.gsap-filters > *', {
+                duration: 0.8,
+                y: 20,
+                opacity: 0,
+                stagger: 0.1,
+                ease: 'back.out(1.2)',
+                delay: 0.4
+            });
+
+            gsap.from('.gsap-gallery > *', {
+                duration: 0.8,
+                y: 60,
+                opacity: 0,
+                stagger: 0.1,
+                ease: 'back.out(1.2)',
+                delay: 0.6
+            });
+
+            gsap.from('.gsap-button', {
+                duration: 0.8,
+                y: 20,
+                opacity: 0,
+                ease: 'back.out(1.2)',
+                delay: 1.4
+            });
+        });
+    </script>
+    <section class="min-h-screen bg-white py-24 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <!-- Header -->
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2
+                    class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 mb-6 gsap-title">
+                    Featured Works
+                </h2>
+                <p class="text-lg text-gray-600 mb-12">A collection of our best projects and creative endeavors</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gsap-gallery">
+                <!-- Video Item 1 -->
+                <div class="relative group">
+                    <div class="aspect-video rounded-2xl overflow-hidden">
+                        <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+                            <source
+                                src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4"
+                                type="video/mp4">
+                        </video>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="text-xl font-semibold text-white mb-2">Cinematic Reel</h3>
+                                <p class="text-gray-300">Brand storytelling through motion</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Item 1 -->
+                <div class="relative group">
+                    <div class="aspect-video rounded-2xl overflow-hidden">
+                        <img src="https://source.unsplash.com/800x600?design" alt="Design Project"
+                            class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="text-xl font-semibold text-white mb-2">Web Design</h3>
+                                <p class="text-gray-300">Modern e-commerce platform</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Item 2 -->
+                <div class="relative group">
+                    <div class="aspect-video rounded-2xl overflow-hidden">
+                        <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+                            <source
+                                src="https://assets.mixkit.co/videos/preview/mixkit-tree-with-yellow-flowers-1173-large.mp4"
+                                type="video/mp4">
+                        </video>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="text-xl font-semibold text-white mb-2">Nature Series</h3>
+                                <p class="text-gray-300">Environmental documentary</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Item 2 -->
+                <div class="relative group">
+                    <div class="aspect-video rounded-2xl overflow-hidden">
+                        <img src="https://source.unsplash.com/800x600?branding" alt="Branding Project"
+                            class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="text-xl font-semibold text-white mb-2">Brand Identity</h3>
+                                <p class="text-gray-300">Corporate rebranding project</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Item 3 -->
+                <div class="relative group">
+                    <div class="aspect-video rounded-2xl overflow-hidden">
+                        <video class="w-full h-full object-cover" autoplay loop muted playsinline>
+                            <source
+                                src="https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4"
+                                type="video/mp4">
+                        </video>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="text-xl font-semibold text-white mb-2">Ocean Life</h3>
+                                <p class="text-gray-300">Marine conservation film</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Item 3 -->
+                <div class="relative group">
+                    <div class="aspect-video rounded-2xl overflow-hidden">
+                        <img src="https://source.unsplash.com/800x600?app" alt="Mobile App"
+                            class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="text-xl font-semibold text-white mb-2">Mobile App</h3>
+                                <p class="text-gray-300">Fitness tracking platform</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More -->
+            <div class="text-center mt-16 gsap-button">
+                <button
+                    class="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+                    View All Projects
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // GSAP Animations
+            gsap.from('.gsap-title', {
+                duration: 1,
+                y: 40,
+                opacity: 0,
+                ease: 'back.out(1.7)'
+            });
+
+            gsap.from('.gsap-gallery > *', {
+                duration: 0.8,
+                y: 60,
+                opacity: 0,
+                stagger: 0.1,
+                ease: 'back.out(1.2)',
+                delay: 0.4
+            });
+
+            gsap.from('.gsap-button', {
+                duration: 0.8,
+                y: 20,
+                opacity: 0,
+                ease: 'back.out(1.2)',
+                delay: 1.2
+            });
+        });
+    </script>
+
+</body>
+
+</html>

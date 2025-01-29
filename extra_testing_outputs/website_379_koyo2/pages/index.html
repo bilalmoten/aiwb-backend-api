@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.Aclothing</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Framer Motion (React library; not applicable in plain HTML) -->
+    <!-- Removed Framer Motion as it requires React. Instead, using GSAP for animations -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+            <div class="text-2xl font-bold text-[#03002d]">
+                A.Aclothing
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#home" class="text-lg font-semibold text-gray-700 hover:text-[#0004ff] transition-colors">Home</a>
+                <a href="#products" class="text-lg font-semibold text-gray-700 hover:text-[#0004ff] transition-colors">Products</a>
+                <a href="#contact" class="text-lg font-semibold text-gray-700 hover:text-[#0004ff] transition-colors">Contact</a>
+            </nav>
+            <button id="menu-toggle" class="md:hidden text-2xl text-gray-700 focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <nav id="mobile-nav" class="md:hidden hidden bg-white shadow-inner">
+            <a href="#home" class="block px-4 py-2 text-gray-700 hover:bg-[#cee1ff]">Home</a>
+            <a href="#products" class="block px-4 py-2 text-gray-700 hover:bg-[#cee1ff]">Products</a>
+            <a href="#contact" class="block px-4 py-2 text-gray-700 hover:bg-[#cee1ff]">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1950&q=80');">
+        <div class="bg-white bg-opacity-70 p-8 rounded-lg text-center max-w-lg">
+            <h1 class="text-4xl font-bold text-[#03002d] mb-4">Elevate Your Style with A.Aclothing</h1>
+            <p class="text-lg text-gray-700 mb-6">Discover the latest trends in modern fashion. Quality, comfort, and style combined just for you.</p>
+            <a href="#products" class="inline-block bg-[#0004ff] text-white px-6 py-3 rounded-md shadow-lg hover:bg-[#03002d] transition-colors">
+                Shop Now
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-[#cee1ff]">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-[#03002d] mb-8">About A.Aclothing</h2>
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2">
+                    <p class="text-lg text-gray-700 mb-4">
+                        At A.Aclothing, our mission is to bring you high-quality, trendy apparel that stands out. We blend modern designs with sustainable practices to offer clothing that not only looks good but also feels good.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-6">
+                        Our commitment to excellence ensures that every piece we offer meets the highest standards of comfort and durability. Whether you're dressing for a casual day out or a special occasion, A.Aclothing has something perfect for you.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-leaf text-[#0004ff] text-2xl mr-2"></i>
+                            <span class="text-lg font-semibold text-gray-700">Sustainable Materials</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-palette text-[#0004ff] text-2xl mr-2"></i>
+                            <span class="text-lg font-semibold text-gray-700">Trendy Designs</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-shield-alt text-[#0004ff] text-2xl mr-2"></i>
+                            <span class="text-lg font-semibold text-gray-700">Premium Quality</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 mt-8 lg:mt-0 grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=60" alt="Quality Materials" class="rounded-lg shadow-md hover:scale-105 transition-transform">
+                    <img src="https://images.unsplash.com/photo-1521335629791-ce4aec67ddc4?auto=format&fit=crop&w=800&q=60" alt="Trendy Designs" class="rounded-lg shadow-md hover:scale-105 transition-transform">
+                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=60" alt="Sustainable Practices" class="rounded-lg shadow-md hover:scale-105 transition-transform">
+                    <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=60" alt="Premium Quality" class="rounded-lg shadow-md hover:scale-105 transition-transform">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-[#03002d] mb-12">Our Products</h2>
+            <div class="flex justify-center mb-8">
+                <div class="space-x-4">
+                    <button class="px-4 py-2 bg-[#0004ff] text-white rounded-md">All</button>
+                    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md">Trousers</button>
+                    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md">Jerseys</button>
+                    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md">Shirts</button>
+                    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md">Hoodies</button>
+                    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md">Jackets</button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product Card 1 -->
+                <div class="border rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1593032457860-3b6236e3b265?auto=format&fit=crop&w=800&q=80" alt="Classic Trousers" class="w-full h-56 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-[#03002d]">Classic Trousers</h3>
+                        <p class="text-gray-700">$49.99</p>
+                        <p class="mt-2 text-gray-600">Comfortable and stylish trousers perfect for any occasion.</p>
+                    </div>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="border rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1603789149301-9f3a109a23a0?auto=format&fit=crop&w=800&q=80" alt="Sporty Jerseys" class="w-full h-56 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-[#03002d]">Sporty Jerseys</h3>
+                        <p class="text-gray-700">$39.99</p>
+                        <p class="mt-2 text-gray-600">Breathable jerseys designed for peak performance.</p>
+                    </div>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="border rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1523381215593-3d1cb07066e5?auto=format&fit=crop&w=800&q=80" alt="Casual Shirts" class="w-full h-56 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-[#03002d]">Casual Shirts</h3>
+                        <p class="text-gray-700">$29.99</p>
+                        <p class="mt-2 text-gray-600">Versatile shirts that blend comfort with trendy styles.</p>
+                    </div>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="border rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1580815078165-8d2fdb6402d5?auto=format&fit=crop&w=800&q=80" alt="Printed Hoodies" class="w-full h-56 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-[#03002d]">Printed Hoodies</h3>
+                        <p class="text-gray-700">$59.99</p>
+                        <p class="mt-2 text-gray-600">Stylish hoodies with unique printed designs.</p>
+                    </div>
+                </div>
+                <!-- Product Card 5 -->
+                <div class="border rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?auto=format&fit=crop&w=800&q=80" alt="Denim Jackets" class="w-full h-56 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-[#03002d]">Denim Jackets</h3>
+                        <p class="text-gray-700">$89.99</p>
+                        <p class="mt-2 text-gray-600">Classic denim jackets that never go out of style.</p>
+                    </div>
+                </div>
+                <!-- Add more product cards as needed -->
+                <div class="border rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1600718372385-7a767c7a5c39?auto=format&fit=crop&w=800&q=80" alt="Slim Fit Trousers" class="w-full h-56 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-[#03002d]">Slim Fit Trousers</h3>
+                        <p class="text-gray-700">$54.99</p>
+                        <p class="mt-2 text-gray-600">Modern slim fit trousers for a sleek look.</p>
+                    </div>
+                </div>
+                <div class="border rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1559064190-8aeb7291c5b4?auto=format&fit=crop&w=800&q=80" alt="Graphic Hoodies" class="w-full h-56 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-[#03002d]">Graphic Hoodies</h3>
+                        <p class="text-gray-700">$69.99</p>
+                        <p class="mt-2 text-gray-600">Hoodies featuring exclusive graphic prints.</p>
+                    </div>
+                </div>
+                <div class="border rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1563720221263-4c5baf2d66c5?auto=format&fit=crop&w=800&q=80" alt="Classic Jerseys" class="w-full h-56 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold text-[#03002d]">Classic Jerseys</h3>
+                        <p class="text-gray-700">$44.99</p>
+                        <p class="mt-2 text-gray-600">Timeless jerseys perfect for any sports enthusiast.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-[#cee1ff]">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-[#03002d] mb-8">Contact Us</h2>
+            <form class="bg-white p-8 rounded-lg shadow-md" action="#" method="POST">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" id="name" name="name" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-[#0004ff] focus:border-[#0004ff]">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" id="email" name="email" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-[#0004ff] focus:border-[#0004ff]">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" name="phone" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-[#0004ff] focus:border-[#0004ff]">
+                    </div>
+                    <div>
+                        <label for="product" class="block text-sm font-medium text-gray-700">Product Selection</label>
+                        <select id="product" name="product" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-[#0004ff] focus:border-[#0004ff]">
+                            <option value="">-- Select a Product --</option>
+                            <option value="Classic Trousers">Classic Trousers</option>
+                            <option value="Sporty Jerseys">Sporty Jerseys</option>
+                            <option value="Casual Shirts">Casual Shirts</option>
+                            <option value="Printed Hoodies">Printed Hoodies</option>
+                            <option value="Denim Jackets">Denim Jackets</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="quantity" class="block text-sm font-medium text-gray-700">Quantity</label>
+                        <input type="number" id="quantity" name="quantity" min="1" value="1" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-[#0004ff] focus:border-[#0004ff]">
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <label for="message" class="block text-sm font-medium text-gray-700">Additional Instructions</label>
+                    <textarea id="message" name="message" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-[#0004ff] focus:border-[#0004ff]" placeholder="Your message..."></textarea>
+                </div>
+                <div class="mt-6 flex items-center">
+                    <input type="checkbox" id="privacy" name="privacy" required class="h-4 w-4 text-[#0004ff] focus:ring-[#0004ff] border-gray-300 rounded">
+                    <label for="privacy" class="ml-2 block text-sm text-gray-700">
+                        I agree to the <a href="#" class="text-[#0004ff] underline">Privacy Policy</a> and understand that my information will be kept confidential.
+                    </label>
+                </div>
+                <div class="mt-8">
+                    <button type="submit" class="w-full bg-[#0004ff] text-white py-3 rounded-md hover:bg-[#03002d] transition-colors">
+                        Place Order
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white text-[#03002d]">
+        <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-semibold mb-4">A.Aclothing</h3>
+                <p class="text-gray-700">Your one-stop destination for modern and trendy clothing. Quality and style combined.</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
+                <p class="flex items-center mb-2"><i class="fas fa-phone mr-2 text-[#0004ff]"></i>1800 123 4567</p>
+                <p class="flex items-center mb-2"><i class="fas fa-envelope mr-2 text-[#0004ff]"></i>info@aaclothing.com</p>
+                <p class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-[#0004ff]"></i>123 Fashion Ave, New York, NY 10001</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-2xl text-gray-700 hover:text-[#0004ff] transition-colors" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-2xl text-gray-700 hover:text-[#0004ff] transition-colors" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-2xl text-gray-700 hover:text-[#0004ff] transition-colors" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-2xl text-gray-700 hover:text-[#0004ff] transition-colors" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-600">&copy; 2024 A.Aclothing. All rights reserved.</p>
+                <nav class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#privacy" class="text-sm text-gray-600 hover:text-[#0004ff] transition-colors">Privacy Policy</a>
+                    <a href="#terms" class="text-sm text-gray-600 hover:text-[#0004ff] transition-colors">Terms of Service</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="hidden fixed bottom-6 right-6 bg-[#0004ff] text-white p-3 rounded-full shadow-lg hover:bg-[#03002d] transition-colors">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        menuToggle.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('hidden');
+            } else {
+                backToTop.classList.add('hidden');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Fade In Sections
+        gsap.utils.toArray('section').forEach(section => {
+            gsap.from(section, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

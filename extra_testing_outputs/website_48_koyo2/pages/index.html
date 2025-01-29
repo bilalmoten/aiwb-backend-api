@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <title>Koyo Skincare</title>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center text-2xl font-bold text-green-700">
+                <i class="fas fa-leaf mr-2 text-green-600"></i>
+                Koyo Skincare
+            </a>
+            <!-- Navigation Links -->
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-700 transition">Home</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-700 transition">Products</a></li>
+                <li><a href="about_contact.html" class="text-gray-700 hover:text-green-700 transition">About & Contact</a></li>
+            </ul>
+            <!-- Mobile Menu Button -->
+            <button id="menu-button" class="md:hidden text-gray-700 hover:text-green-700 focus:outline-none">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+            <ul class="flex flex-col space-y-4 py-4 px-6">
+                <li><a href="index.html" class="text-gray-700 hover:text-green-700 transition">Home</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-green-700 transition">Products</a></li>
+                <li><a href="about_contact.html" class="text-gray-700 hover:text-green-700 transition">About & Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center h-screen" style="background-image: url('https://images.unsplash.com/photo-1606761560640-ae69591fff8c?auto=format&fit=crop&w=1950&q=80');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="container mx-auto px-4 h-full flex flex-col justify-center items-center text-center relative">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 animate-text">Pure. Organic. Radiant.</h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8">All-organic skincare for naturally beautiful skin</p>
+            <a href="products.html" class="px-6 py-3 bg-green-600 text-white rounded-full text-lg font-semibold hover:bg-green-700 transition">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-green-700 mb-12">Featured Products</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1581579182307-df6f595f8fbf?auto=format&fit=crop&w=400&q=80" alt="Organic Cleanser" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Organic Cleanser</h3>
+                        <p class="text-gray-600 mb-4">A gentle cleanser with all-natural ingredients for a fresh start.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-green-700">$29.99</span>
+                            <a href="#" class="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1589987607518-9191aaefef19?auto=format&fit=crop&w=400&q=80" alt="Luxury Moisturizer" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Luxury Moisturizer</h3>
+                        <p class="text-gray-600 mb-4">Hydrate and nourish your skin with our premium moisturizer.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-green-700">$49.99</span>
+                            <a href="#" class="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1579352266528-4fefcc388a0d?auto=format&fit=crop&w=400&q=80" alt="Vitamin C Serum" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Vitamin C Serum</h3>
+                        <p class="text-gray-600 mb-4">Brighten and rejuvenate your skin with our potent Vitamin C serum.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-green-700">$39.99</span>
+                            <a href="#" class="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Additional Products -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=400&q=80" alt="Herbal Cleanser" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Herbal Cleanser</h3>
+                        <p class="text-gray-600 mb-4">Cleanse your skin with the goodness of herbs and natural oils.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-green-700">$34.99</span>
+                            <a href="#" class="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?auto=format&fit=crop&w=400&q=80" alt="Daily Moisturizer" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Daily Moisturizer</h3>
+                        <p class="text-gray-600 mb-4">Keep your skin hydrated and healthy every day.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-green-700">$24.99</span>
+                            <a href="#" class="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1576518820664-7e5a4f8f7ecc?auto=format&fit=crop&w=400&q=80" alt="Hyaluronic Acid Serum" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Hyaluronic Acid Serum</h3>
+                        <p class="text-gray-600 mb-4">Plump and smooth your skin with our Hyaluronic Acid serum.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-bold text-green-700">$44.99</span>
+                            <a href="#" class="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Story -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-green-700 mb-12">Our Story</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Image -->
+                <div>
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80" alt="Our Mission" class="w-full h-full rounded-lg object-cover shadow-md">
+                </div>
+                <!-- Text Content -->
+                <div class="flex flex-col justify-center">
+                    <p class="text-gray-700 mb-4">Founded in 2020, Koyo Skincare is dedicated to providing premium, all-organic skincare products that enhance beauty and promote healthy skin. Our mission is to harness the power of nature to create effective, luxurious skincare solutions that are safe for both our customers and the environment.</p>
+                    <p class="text-gray-700 mb-4">Our commitment to sustainability drives us to use eco-friendly packaging, ethically sourced ingredients, and sustainable farming practices. We believe in transparency and strive to educate our customers about the benefits of using organic skincare products.</p>
+                    <p class="text-gray-700">At Koyo Skincare, we value innovation, integrity, and customer satisfaction. Our team of skincare experts works tirelessly to develop products that meet the highest standards of quality and efficacy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-green-700 mb-12">What Our Customers Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <p class="text-gray-700 mb-4">"Koyo Skincare products have transformed my skin. I've never felt more confident."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jane Doe" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-green-700">Jane Doe</h4>
+                            <span class="text-gray-500">Chicago, IL</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <p class="text-gray-700 mb-4">"I've tried many skincare brands, but Koyo Skincare stands out with its commitment to organic ingredients."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="John Smith" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-green-700">John Smith</h4>
+                            <span class="text-gray-500">New York, NY</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <p class="text-gray-700 mb-4">"Koyo Skincare's serum has reduced my fine lines noticeably. Highly recommend it!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Samantha Lee" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-green-700">Samantha Lee</h4>
+                            <span class="text-gray-500">Los Angeles, CA</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Additional Testimonials -->
+                <div class="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <p class="text-gray-700 mb-4">"The cleanser removes all impurities without drying my skin. Love it!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Daniel Martinez" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-green-700">Daniel Martinez</h4>
+                            <span class="text-gray-500">San Francisco, CA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <p class="text-gray-700 mb-4">"I appreciate Koyo Skincare's dedication to sustainability. Great products!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Olivia Wilson" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-green-700">Olivia Wilson</h4>
+                            <span class="text-gray-500">Denver, CO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <p class="text-gray-700 mb-4">"The moisturizer is lightweight yet deeply hydrating. Perfect for daily use."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James Davis" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-green-700">James Davis</h4>
+                            <span class="text-gray-500">Atlanta, GA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-green-700">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Join Our Skincare Community</h2>
+            <p class="text-gray-200 mb-8">Subscribe to our newsletter for the latest updates, special offers, and skincare tips.</p>
+            <a href="about_contact.html#newsletter" class="px-8 py-3 bg-white text-green-700 rounded-full text-lg font-semibold hover:bg-gray-100 transition">Subscribe Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-200 py-8">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About -->
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Koyo Skincare</h4>
+                <p class="text-gray-400">All-organic, premium luxury skincare dedicated to enhancing beauty and promoting healthy skin.</p>
+            </div>
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                    <li><a href="products.html" class="hover:text-white transition">Products</a></li>
+                    <li><a href="about_contact.html" class="hover:text-white transition">About & Contact</a></li>
+                    <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                </ul>
+            </div>
+            <!-- Social Media -->
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Follow Us</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-facebook-f fa-lg"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-twitter fa-lg"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 mt-8">
+            © 2023 Koyo Skincare. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // GSAP Animations
+        gsap.from('.animate-text', {
+            duration: 2,
+            y: -50,
+            opacity: 0,
+            ease: 'power3.out'
+        });
+
+        gsap.from('.featured-products .grid div', {
+            duration: 1,
+            y: 20,
+            opacity: 0,
+            stagger: 0.2,
+            ease: 'power3.out',
+            delay: 1
+        });
+
+        gsap.from('.brand-story div', {
+            duration: 1,
+            y: 20,
+            opacity: 0,
+            ease: 'power3.out',
+            delay: 1.5
+        });
+
+        gsap.from('.testimonials .grid div', {
+            duration: 1,
+            y: 20,
+            opacity: 0,
+            stagger: 0.2,
+            ease: 'power3.out',
+            delay: 2
+        });
+
+        gsap.from('.cta a', {
+            duration: 1,
+            scale: 0.8,
+            opacity: 0,
+            ease: 'power3.out',
+            delay: 2.5
+        });
+    </script>
+</body>
+</html>

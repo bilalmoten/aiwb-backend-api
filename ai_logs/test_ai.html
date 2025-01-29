@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="
+en">
+
+<head>
+    <meta charset="
+UTF-8">
+    <meta name="
+viewport" content="
+width=device-width, initial-scale=1.0">
+    <title>Illouve Skin - Luxury Skincare</title>
+    <!-- Font Awesome -->
+    <link href="
+https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="
+stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="
+https://cdn.tailwindcss.com"></script>
+    <!-- GSAP -->
+    <script src="
+https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion -->
+    <script src="
+https://cdnjs.cloudflare.com/ajax/libs/framer-motion/11.15.0/framer-motion.min.js"></script>
+    <!-- Swiper JS for Carousel -->
+    <link rel="
+stylesheet" href="
+https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.4.1/swiper-bundle.min.css" />
+    <script src="
+https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.4.1/swiper-bundle.min.js"></script>
+    <!-- Alpine.js for interactivity -->
+    <script src="
+https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js" defer></script>
+</head>
+
+<body class="
+bg-[#f4f4f8] font-sans">
+    <!-- 
+    Illouve Skin Website - Homepage
+    This customized template transforms the original placeholder LaunchPad template into a luxurious skincare brand website.
+    Decisions Made:
+    - Changed color scheme to match the brand aesthetic: soft white, blush pink, and light coral.
+    - Replaced placeholder content and images with relevant skincare-related sections.
+    - Utilized Swiper.js for the featured products carousel to ensure smooth navigation and auto-scrolling functionality.
+    - Simplified complex features like forms to static elements without backend integration.
+    - Sourced all images from Unsplash using valid URLs to maintain high-quality visuals.
+    - Added consistent headers and footers across all pages for uniformity.
+    - Implemented modern layouts with subtle animations using GSAP for enhanced user engagement.
+    -->
+
+    <!-- Header -->
+    <header class="
+bg-white shadow-md sticky top-0 z-50">
+        <div class="
+container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="
+Homepage.html" class="
+flex items-center space-x-3">
+                <img src="
+https://source.unsplash.com/40x40/?skincare,beauty" alt="
+Illouve Skin Logo" class="
+w-10 h-10 rounded-full">
+                <span class="
+text-xl font-bold text-gray-800">Illouve Skin</span>
+            </a>
+            <!-- Navigation -->
+            <nav class="
+hidden lg:flex space-x-6">
+                <a href="
+Homepage.html" class="
+text-gray-700 hover:text-pink-500 transition-colors duration-200">Home</a>
+                <a href="
+About & Blog.html" class="
+text-gray-700 hover:text-pink-500 transition-colors duration-200">About & Blog</a>
+                <a href="
+Contact & Support.html" class="
+text-gray-700 hover:text-pink-500 transition-colors duration-200">Contact & Support</a>
+            </nav>
+            <!-- CTA Buttons -->
+            <div class="
+hidden lg:flex space-x-4">
+                <a href="
+#shop" class="
+px-4 py-2 border border-pink-500 text-pink-500 rounded-lg hover:bg-pink-500 hover:text-white transition-colors duration-200">Shop
+                    Now</a>
+                <a href="
+About & Blog.html" class="
+px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors duration-200">Learn More</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="
+lg:hidden flex items-center">
+                <button @click="
+mobileMenu = !mobileMenu" class="
+text-gray-700 focus:outline-none">
+                    <i class="
+fas" :class="
+mobileMenu ? 'fa-times' : 'fa-bars'"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div x-data="
+{ mobileMenu: false }">
+            <div x-show="
+mobileMenu" class="
+lg:hidden">
+                <a href="
+Homepage.html" class="
+block px-6 py-2 text-gray-700 hover:bg-pink-100">Home</a>
+                <a href="
+About & Blog.html" class="
+block px-6 py-2 text-gray-700 hover:bg-pink-100">About & Blog</a>
+                <a href="
+Contact & Support.html" class="
+block px-6 py-2 text-gray-700 hover:bg-pink-100">Contact & Support</a>
+                <div class="
+px-6 py-4 flex space-x-4">
+                    <a href="
+#shop" class="
+px-4 py-2 border border-pink-500 text-pink-500 rounded-lg hover:bg-pink-500 hover:text-white transition-colors duration-200">Shop
+                        Now</a>
+                    <a href="
+About & Blog.html" class="
+px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors duration-200">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="
+relative bg-[#e89090] text-white">
+        <div class="
+container mx-auto px-6 py-20 flex flex-col-reverse lg:flex-row items-center">
+            <!-- Text Content -->
+            <div class="
+w-full lg:w-1/2 mt-10 lg:mt-0">
+                <h1 class="
+text-5xl font-bold mb-4">Enhance Your Natural Beauty Overnight</h1>
+                <p class="
+text-lg mb-6">Discover our luxury skincare products designed to boost collagen and reduce face marks while you sleep.
+                </p>
+                <div class="
+flex space-x-4">
+                    <a href="
+#shop" class="
+px-6 py-3 bg-white text-pink-500 rounded-lg font-semibold hover:bg-pink-100 transition-colors duration-200">Shop
+                        Now</a>
+                    <a href="
+About & Blog.html" class="
+px-6 py-3 border border-white rounded-lg font-semibold hover:bg-white hover:text-pink-500 transition-colors duration-200">Learn
+                        More</a>
+                </div>
+            </div>
+            <!-- Image -->
+            <div class="
+w-full lg:w-1/2">
+                <img src="
+https://source.unsplash.com/600x400/?skincare,serum" alt="
+Best Selling Serum" class="
+rounded-lg shadow-lg">
+            </div>
+        </div>
+        <!-- Subtle Animation -->
+        <div class="
+absolute inset-0 opacity-20">
+            <svg class="
+w-full h-full" xmlns="
+http://www.w3.org/2000/svg" preserveAspectRatio="
+none" viewBox="
+0 0 600 400">
+                <defs>
+                    <linearGradient id="
+grad1" x1="
+0%" y1="
+0%" x2="
+100%" y2="
+0%">
+                        <stop offset="
+0%" style="
+stop-color:#ffffff; stop-opacity:0" />
+                        <stop offset="
+100%" style="
+stop-color:#ffffff; stop-opacity:0.1" />
+                    </linearGradient>
+                </defs>
+                <rect width="
+600" height="
+400" fill="
+url(#grad1)" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- Featured Products Carousel -->
+    <section id="
+shop" class="
+py-16 bg-[#f4f4f8]">
+        <div class="
+container mx-auto px-6">
+            <h2 class="
+text-3xl font-bold text-center mb-8">Our Best Sellers</h2>
+            <div class="
+swiper-container">
+                <div class="
+swiper-wrapper">
+                    <!-- Product Item -->
+                    <div class="
+swiper-slide bg-white rounded-lg shadow-md p-6 flex flex-col items-center">
+                        <img src="
+https://source.unsplash.com/400x400/?skincare,cream" alt="
+Collagen Boost Cream" class="
+w-40 h-40 object-cover mb-4 rounded-full">
+                        <h3 class="
+text-xl font-semibold mb-2">Collagen Boost Cream</h3>
+                        <p class="
+text-gray-600 text-center mb-4">Enhances skin elasticity and reduces fine lines.</p>
+                        <div class="
+flex space-x-2 mb-4">
+                            <span class="
+px-2 py-1 bg-pink-100 text-pink-800 rounded-full text-xs">#Hydrating</span>
+                            <span class="
+px-2 py-1 bg-pink-100 text-pink-800 rounded-full text-xs">#AntiAging</span>
+                        </div>
+                        <button
+                            class="
+mt-auto px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors duration-200 flex items-center space-x-2">
+                            <span>Add to Cart</span>
+                            <i class="
+fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                    <!-- Repeat Product Items as Needed -->
+                    <div class="
+swiper-slide bg-white rounded-lg shadow-md p-6 flex flex-col items-center">
+                        <img src="
+https://source.unsplash.com/400x400/?skincare,oil" alt="
+Night Repair Oil" class="
+w-40 h-40 object-cover mb-4 rounded-full">
+                        <h3 class="
+text-xl font-semibold mb-2">Night Repair Oil</h3>
+                        <p class="
+text-gray-600 text-center mb-4">Deeply nourishes and repairs skin overnight.</p>
+                        <div class="
+flex space-x-2 mb-4">
+                            <span class="
+px-2 py-1 bg-pink-100 text-pink-800 rounded-full text-xs">#Repairing</span>
+                            <span class="
+px-2 py-1 bg-pink-100 text-pink-800 rounded-full text-xs">#Nourishing</span>
+                        </div>
+                        <button
+                            class="
+mt-auto px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors duration-200 flex items-center space-x-2">
+                            <span>Add to Cart</span>
+                            <i class="
+fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                    <!-- Add more products as needed -->
+                </div>
+                <!-- Add Pagination -->
+                <div class="
+swiper-pagination"></div>
+                <!-- Add Navigation -->
+                <div class="
+swiper-button-prev"></div>
+                <div class="
+swiper-button-next"></div>
+            </div>
+        </div>
+        <!-- Initialize Swiper -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const swiper = new Swiper('.swiper-container', {
+                    loop: true,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    breakpoints: {
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 30,
+                        },
+                    },
+                });
+            });
+        </script>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="
+py-16 bg-white">
+        <div class="
+container mx-auto px-6">
+            <h2 class="
+text-3xl font-bold text-center mb-8">What Our Customers Say</h2>
+            <div class="
+grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="
+bg-[#f4f4f8] rounded-lg p-6 shadow-md flex flex-col">
+                    <img src="
+https://source.unsplash.com/100x100/?woman,face" alt="
+Customer 1" class="
+w-24 h-24 object-cover rounded-full mx-auto mb-4">
+                    <p class="
+text-gray-700 mb-4 flex-1">"
+                        Illouve Skin serum has transformed my skin! I wake up with a glowing complexion every morning."
+                    </p>
+                    <div class="
+flex items-center justify-center space-x-2">
+                        <i class="
+fas fa-star text-yellow-400"></i>
+                        <i class="
+fas fa-star text-yellow-400"></i>
+                        <i class="
+fas fa-star text-yellow-400"></i>
+                        <i class="
+fas fa-star text-yellow-400"></i>
+                        <i class="
+fas fa-star-half-alt text-yellow-400"></i>
+                    </div>
+                    <h4 class="
+text-center text-lg font-semibold mt-2">Emily R.</h4>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="
+bg-[#f4f4f8] rounded-lg p-6 shadow-md flex flex-col">
+                    <img src="
+https://source.unsplash.com/100x100/?man,face" alt="
+Customer 2" class="
+w-24 h-24 object-cover rounded-full mx-auto mb-4">
+                    <p class="
+text-gray-700 mb-4 flex-1">"
+                        I've tried many skincare products, but Illouve Skin's collagen booster is the only one that
+                        worked for me."
+                    </p>
+                    <div class="
+flex items-center justify-center space-x-2">
+                        <i class="
+fas fa-star text-yellow-400"></i>
+                        <i class="
+fas fa-star text-yellow-400"></i>
+                        <i class="
+fas fa-star text-yellow-400"></i>
+                        <i class="
+fas fa-star text-yellow-400"></i>
+                        <i class="
+fas fa-star text-yellow-400"></i>
+                    </div>
+                    <h4 class="
+text-center text-lg font-semibold mt-2">James T.</h4>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="
+bg-[#f4f4f8] rounded-lg p-6 shadow-md flex flex-col">
+                    <img src="
+https://source.unsplash.com/100x100/?woman,portrait" alt="
+Customer 3" class="
+w-24 h-24 object-cover rounded-full mx-auto mb-4">
+                    <p class="
+text-gray-700 mb-4 flex-1">"
+                        The before and after results are incredible. My skin feels firmer and looks more radiant."
+                    </p>
+                    <div class="
+flex items-center justify-center space-x-2">
+                        <i class="
+fas fa-star text-yellow-400"></i>
+                        <i class="
+fas fa-star text-yellow-400"></i>
+                        <i class="
+fas fa-star text-yellow-400"></i>
+                        <i class="
+fas fa-star text-yellow-400"></i>
+                        <i class="
+fas fa-star text-yellow-400"></i>
+                    </div>
+                    <h4 class="
+text-center text-lg font-semibold mt-2">Sophia L.</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="
+py-16 bg-[#e9b7b7] text-white">
+        <div class="
+container mx-auto px-6 text-center">
+            <h2 class="
+text-3xl font-bold mb-4">Join Our Newsletter</h2>
+            <p class="
+mb-8">Subscribe now and get 10% off your first purchase.</p>
+            <form class="
+max-w-md mx-auto flex flex-col sm:flex-row items-center">
+                <input type="
+email" placeholder="
+Enter your email" class="
+w-full sm:flex-1 px-4 py-2 rounded-lg mb-4 sm:mb-0 sm:mr-4 focus:outline-none">
+                <button type="
+submit" class="
+px-6 py-2 bg-white text-pink-500 rounded-lg font-semibold hover:bg-pink-100 transition-colors duration-200">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Integration (Static) -->
+    <section class="
+py-16 bg-white">
+        <div class="
+container mx-auto px-6">
+            <h2 class="
+text-3xl font-bold text-center mb-8">Follow Us on Instagram</h2>
+            <div class="
+grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <!-- Instagram Image 1 -->
+                <img src="
+https://source.unsplash.com/400x400/?skincare,glow" alt="
+Instagram 1" class="
+rounded-lg shadow-md hover:opacity-80 transition-opacity duration-200">
+                <!-- Instagram Image 2 -->
+                <img src="
+https://source.unsplash.com/400x400/?skincare,serum" alt="
+Instagram 2" class="
+rounded-lg shadow-md hover:opacity-80 transition-opacity duration-200">
+                <!-- Instagram Image 3 -->
+                <img src="
+https://source.unsplash.com/400x400/?skincare,beauty" alt="
+Instagram 3" class="
+rounded-lg shadow-md hover:opacity-80 transition-opacity duration-200">
+                <!-- Instagram Image 4 -->
+                <img src="
+https://source.unsplash.com/400x400/?skincare,facial" alt="
+Instagram 4" class="
+rounded-lg shadow-md hover:opacity-80 transition-opacity duration-200">
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Gallery -->
+    <section class="
+py-16 bg-white">
+        <div class="
+container mx-auto px-6">
+            <h2 class="
+text-3xl font-bold text-center mb-8">Before & After</h2>
+            <div class="
+grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Before and After Slider -->
+                <div class="
+relative">
+                    <img src="
+https://source.unsplash.com/600x400/?skincare,before" alt="
+Before 1" class="
+w-full rounded-lg shadow-md">
+                    <img src="
+https://source.unsplash.com/600x400/?skincare,after" alt="
+After 1" class="
+w-full rounded-lg shadow-md absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                </div>
+                <!-- Another Before and After Slider -->
+                <div class="
+relative">
+                    <img src="
+https://source.unsplash.com/600x400/?skincare,before2" alt="
+Before 2" class="
+w-full rounded-lg shadow-md">
+                    <img src="
+https://source.unsplash.com/600x400/?skincare,after2" alt="
+After 2" class="
+w-full rounded-lg shadow-md absolute top-0 left-0 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="
+bg-white shadow-md">
+        <div class="
+container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center">
+            <p class="
+text-gray-700">&copy; 2024 Illouve Skin. All rights reserved.</p>
+            <div class="
+flex space-x-4 mt-2 md:mt-0">
+                <a href="
+#" class="
+text-gray-700 hover:text-pink-500 transition-colors duration-200"><i class="
+fab fa-facebook-f"></i></a>
+                <a href="
+#" class="
+text-gray-700 hover:text-pink-500 transition-colors duration-200"><i class="
+fab fa-instagram"></i></a>
+                <a href="
+#" class="
+text-gray-700 hover:text-pink-500 transition-colors duration-200"><i class="
+fab fa-twitter"></i></a>
+                <a href="
+#" class="
+text-gray-700 hover:text-pink-500 transition-colors duration-200"><i class="
+fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP Animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Fade-in animations for sections
+            gsap.from('.bg-[#e89090]', {
+                opacity: 0,
+                y: -50,
+                duration: 1,
+                ease: 'power3.out'
+            });
+
+            gsap.from('.swiper-container', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: 0.5,
+                ease: 'power3.out'
+            });
+
+            gsap.from('.section-testimonials', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: 1,
+                ease: 'power3.out'
+            });
+
+            gsap.from('.section-newsletter', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: 1.5,
+                ease: 'power3.out'
+            });
+
+            gsap.from('.section-instagram', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: 2,
+                ease: 'power3.out'
+            });
+
+            gsap.from('.section-before-after', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: 2.5,
+                ease: 'power3.out'
+            });
+        });
+    </script>
+</body>
+
+</html>

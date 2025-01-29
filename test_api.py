@@ -22,11 +22,11 @@ from function_app import (
 
 # Test data
 # TEST_USER_ID = "a8d5d92f-b745-4b8c-b29e-d704ead7209b"
-TEST_USER_ID = "cc37e6d6-97f5-4a23-8c50-b2a1429d1808"
-TEST_WEBSITE_ID = "327"
-version = "2"
-MODEL = f"claude-3-5-sonnet-20241022{version}"
-DIRECTORY_NAME = "website_26"
+TEST_USER_ID = "a8d5d92f-b745-4b8c-b29e-d704ead7209b"
+TEST_WEBSITE_ID = "380"
+# version = "2"
+MODEL = f"o1-mini"
+DIRECTORY_NAME = "website_380"
 
 
 def log_to_file(message: str, filename: str):

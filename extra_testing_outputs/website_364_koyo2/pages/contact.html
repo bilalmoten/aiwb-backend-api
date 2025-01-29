@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - new9240</title>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Framer Motion -->
+    <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+    <!-- Alpine.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js" defer></script>
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* GSAP Animations */
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Light Blue Background */
+        .bg-light-blue-500 {
+            background-color: #dae1ee;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html">
+                <img src="https://lervpgatcoelsswuahga.supabase.co/storage/v1/object/public/user_website_data/a8d5d92f-b745-4b8c-b29e-d704ead7209b/364/logo-1737140072847.jpg" alt="new9240 Logo" class="h-10">
+            </a>
+            <nav>
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="index.html" class="text-gray-700 hover:text-blue-500">Home</a></li>
+                    <li><a href="about.html" class="text-gray-700 hover:text-blue-500">About</a></li>
+                    <li><a href="contact.html" class="text-gray-700 hover:text-blue-500">Contact</a></li>
+                </ul>
+                <button id="menu-toggle" class="md:hidden text-2xl text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+        <!-- Mobile Menu -->
+        <nav id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+            <ul class="flex flex-col space-y-4 px-4 py-4">
+                <li><a href="index.html" class="text-gray-700 hover:text-blue-500">Home</a></li>
+                <li><a href="about.html" class="text-gray-700 hover:text-blue-500">About</a></li>
+                <li><a href="contact.html" class="text-gray-700 hover:text-blue-500">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contact Form Section -->
+    <section id="contact-form" class="pt-24 py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-800 text-center mb-8 animate-fade-in">Get in Touch</h2>
+            <div class="flex flex-col md:flex-row justify-around items-start space-y-12 md:space-y-0">
+                <!-- Contact Information -->
+                <div class="md:w-1/3 space-y-6 animate-fade-in">
+                    <div class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-pink-500 text-2xl mr-4"></i>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-700">Address</h3>
+                            <p class="text-gray-600">A-14 Al-Rehman Premier Apartments,<br>Block-16 Gulshan-e-Iqbal, Karachi</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-envelope text-pink-500 text-2xl mr-4"></i>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-700">Email</h3>
+                            <p class="text-gray-600">support@new9240.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-phone text-pink-500 text-2xl mr-4"></i>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-700">Phone</h3>
+                            <p class="text-gray-600">+92 300 1234567</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="https://facebook.com" class="text-gray-700 hover:text-pink-500" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com" class="text-gray-700 hover:text-pink-500" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com" class="text-gray-700 hover:text-pink-500" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" class="text-gray-700 hover:text-pink-500" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="md:w-2/3 bg-light-blue-100 p-8 rounded-lg shadow-lg animate-fade-in delay-100">
+                    <form action="#" method="POST" class="space-y-6" novalidate>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="first-name" class="block text-sm font-medium text-gray-700">First Name</label>
+                                <input type="text" id="first-name" name="first-name" placeholder="First name" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-pink-500 focus:border-pink-500 transition duration-300">
+                            </div>
+                            <div>
+                                <label for="last-name" class="block text-sm font-medium text-gray-700">Last Name</label>
+                                <input type="text" id="last-name" name="last-name" placeholder="Last name" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-pink-500 focus:border-pink-500 transition duration-300">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Email" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-pink-500 focus:border-pink-500 transition duration-300">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Phone number" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-pink-500 focus:border-pink-500 transition duration-300">
+                        </div>
+                        <div>
+                            <label for="topic" class="block text-sm font-medium text-gray-700">Topic</label>
+                            <select id="topic" name="topic" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-pink-500 focus:border-pink-500 transition duration-300">
+                                <option>Choose a topic</option>
+                                <option>General Inquiry</option>
+                                <option>Support</option>
+                                <option>Feedback</option>
+                            </select>
+                        </div>
+                        <fieldset class="space-y-2">
+                            <legend class="block text-sm font-medium text-gray-700">Which best describes you?</legend>
+                            <div class="flex flex-wrap gap-4">
+                                <label class="inline-flex items-center text-sm text-gray-700">
+                                    <input type="radio" name="description" value="Individual" class="form-radio focus:ring-pink-500" required>
+                                    <span class="ml-2">Individual</span>
+                                </label>
+                                <label class="inline-flex items-center text-sm text-gray-700">
+                                    <input type="radio" name="description" value="Therapist" class="form-radio focus:ring-pink-500">
+                                    <span class="ml-2">Therapist</span>
+                                </label>
+                                <label class="inline-flex items-center text-sm text-gray-700">
+                                    <input type="radio" name="description" value="Administrator" class="form-radio focus:ring-pink-500">
+                                    <span class="ml-2">Administrator</span>
+                                </label>
+                                <label class="inline-flex items-center text-sm text-gray-700">
+                                    <input type="radio" name="description" value="Other" class="form-radio focus:ring-pink-500">
+                                    <span class="ml-2">Other</span>
+                                </label>
+                            </div>
+                        </fieldset>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Type your message..." required class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-pink-500 focus:border-pink-500 transition duration-300"></textarea>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="terms" name="terms" required class="h-4 w-4 text-pink-600 border-gray-300 rounded">
+                            <label for="terms" class="ml-2 block text-sm text-gray-700">
+                                I accept the <a href="#" class="text-pink-500 hover:underline">Terms</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="w-full bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Links Section -->
+    <section id="social-media" class="py-16 bg-light-blue-500">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 animate-fade-in">Connect with Us</h2>
+            <div class="flex justify-center space-x-6 animate-fade-in delay-200">
+                <a href="https://facebook.com" class="text-gray-700 hover:text-pink-500" aria-label="Facebook"><i class="fab fa-facebook-f fa-2x"></i></a>
+                <a href="https://instagram.com" class="text-gray-700 hover:text-pink-500" aria-label="Instagram"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="https://linkedin.com" class="text-gray-700 hover:text-pink-500" aria-label="LinkedIn"><i class="fab fa-linkedin-in fa-2x"></i></a>
+                <a href="https://twitter.com" class="text-gray-700 hover:text-pink-500" aria-label="Twitter"><i class="fab fa-twitter fa-2x"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <p class="mb-4 md:mb-0">&copy; 2023 new9240. All rights reserved.</p>
+            <div class="flex space-x-6">
+                <a href="https://facebook.com" class="hover:text-white" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" class="hover:text-white" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com" class="hover:text-white" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://twitter.com" class="hover:text-white" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP Animations -->
+    <script>
+        gsap.from(".animate-fade-in", { duration: 1, opacity: 0, y: 50, stagger: 0.3 });
+    </script>
+
+    <!-- Mobile Menu Toggle -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+    </script>
+</body>
+</html>

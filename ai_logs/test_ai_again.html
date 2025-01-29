@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>illouve skin</title>
+    <!--PAID CDNs -- DO NOT CHANGE -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <!-- Add required scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://aiwebsitebuilder.tech/form-capture.js"></script>
+</head>
+
+<body>
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50"
+        x-data="{ mobileMenu: false, activeDropdown: null }">
+        <div class="container mx-auto px-4">
+            <nav class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-pink-400 to-rose-500 rounded-xl flex items-center justify-center transform hover:rotate-6 transition-transform duration-200">
+                        <i class="fas fa-leaf text-white text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">illouve skin</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home"
+                        class="text-gray-700 hover:text-pink-500 transition-colors duration-200 group relative">
+                        Home
+                        <span
+                            class="absolute inset-x-0 -bottom-1 h-0.5 bg-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+                    </a>
+                    <div class="relative" @mouseleave="activeDropdown = null">
+                        <button @mouseover="activeDropdown = 'products'"
+                            @click="activeDropdown = activeDropdown === 'products' ? null : 'products'"
+                            class="text-gray-700 hover:text-pink-500 transition-colors duration-200 group relative flex items-center space-x-1">
+                            <span>Products</span>
+                            <i class="fas fa-chevron-down text-xs transition-transform duration-200"
+                                :class="{ 'rotate-180': activeDropdown === 'products' }"></i>
+                            <span
+                                class="absolute inset-x-0 -bottom-1 h-0.5 bg-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+                        </button>
+                        <div x-show="activeDropdown === 'products'"
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 translate-y-1"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 translate-y-1"
+                            class="absolute right-0 w-64 bg-white rounded-xl shadow-lg border border-gray-100">
+                            <div class="p-4 space-y-3">
+                                <a href="#serums"
+                                    class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200 group">
+                                    <div class="w-10 h-10 bg-pink-100 rounded-lg flex items-center justify-center">
+                                        <i
+                                            class="fas fa-recycle text-pink-600 group-hover:scale-110 transition-transform duration-200"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-medium text-gray-900">Serums</div>
+                                        <div class="text-xs text-gray-500">Targeted skincare solutions</div>
+                                    </div>
+                                </a>
+                                <a href="#moisturizers"
+                                    class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200 group">
+                                    <div class="w-10 h-10 bg-rose-100 rounded-lg flex items-center justify-center">
+                                        <i
+                                            class="fas fa-tint text-rose-600 group-hover:scale-110 transition-transform duration-200"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-medium text-gray-900">Moisturizers</div>
+                                        <div class="text-xs text-gray-500">Hydrating creams & lotions</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#blog"
+                        class="text-gray-700 hover:text-pink-500 transition-colors duration-200 group relative">
+                        Blog
+                        <span
+                            class="absolute inset-x-0 -bottom-1 h-0.5 bg-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+                    </a>
+                    <a href="#contact"
+                        class="text-gray-700 hover:text-pink-500 transition-colors duration-200 group relative">
+                        Contact
+                        <span
+                            class="absolute inset-x-0 -bottom-1 h-0.5 bg-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+                    </a>
+                </div>
+
+                <!-- Right Navigation -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <button class="text-gray-700 hover:text-pink-500 transition-colors duration-200">
+                        Sign in
+                    </button>
+                    <button
+                        class="px-4 py-2 text-white bg-pink-500 rounded-lg hover:bg-pink-600 transition-colors duration-200 flex items-center space-x-2 group">
+                        <span>Shop Now</span>
+                        <i
+                            class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform duration-200"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button @click="mobileMenu = !mobileMenu"
+                    class="lg:hidden p-2 rounded-lg text-gray-700 hover:text-pink-500 hover:bg-pink-50 transition-colors duration-200">
+                    <i class="fas" :class="mobileMenu ? 'fa-times' : 'fa-bars'"></i>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Mobile menu -->
+        <div x-show="mobileMenu" class="lg:hidden bg-white border-t border-gray-200"
+            x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1"
+            x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-1">
+            <div class="container mx-auto px-4 py-4 space-y-1">
+                <a href="#home"
+                    class="block px-3 py-2 text-gray-700 hover:text-pink-500 hover:bg-pink-50 rounded-lg transition-colors duration-200">
+                    Home
+                </a>
+                <button @click="activeDropdown = activeDropdown === 'mobile-products' ? null : 'mobile-products'"
+                    class="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-pink-500 hover:bg-pink-50 rounded-lg transition-colors duration-200">
+                    <span>Products</span>
+                    <i class="fas fa-chevron-down transition-transform duration-200"
+                        :class="{ 'rotate-180': activeDropdown === 'mobile-products' }"></i>
+                </button>
+                <div x-show="activeDropdown === 'mobile-products'" class="pl-4 space-y-1">
+                    <a href="#serums"
+                        class="flex items-center space-x-2 px-3 py-2 text-gray-600 hover:text-pink-500 hover:bg-pink-50 rounded-lg transition-colors duration-200">
+                        <i class="fas fa-recycle text-pink-600"></i>
+                        <span>Serums</span>
+                    </a>
+                    <a href="#moisturizers"
+                        class="flex items-center space-x-2 px-3 py-2 text-gray-600 hover:text-pink-500 hover:bg-pink-50 rounded-lg transition-colors duration-200">
+                        <i class="fas fa-tint text-rose-600"></i>
+                        <span>Moisturizers</span>
+                    </a>
+                </div>
+                <a href="#blog"
+                    class="block px-3 py-2 text-gray-700 hover:text-pink-500 hover:bg-pink-50 rounded-lg transition-colors duration-200">
+                    Blog
+                </a>
+                <a href="#contact"
+                    class="block px-3 py-2 text-gray-700 hover:text-pink-500 hover:bg-pink-50 rounded-lg transition-colors duration-200">
+                    Contact
+                </a>
+                <div class="pt-4 mt-4 border-t border-gray-200 space-y-4">
+                    <button
+                        class="block w-full px-3 py-2 text-gray-700 hover:text-pink-500 hover:bg-pink-50 rounded-lg transition-colors duration-200 text-left">
+                        Sign in
+                    </button>
+                    <button
+                        class="w-full px-4 py-2 text-white bg-pink-500 rounded-lg hover:bg-pink-600 transition-colors duration-200 flex items-center justify-center space-x-2">
+                        <span>Shop Now</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen bg-pink-50 overflow-hidden" x-data="{ activeProduct: 1 }">
+        <!-- Dynamic background -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-tr from-pink-200 to-rose-300 opacity-50"></div>
+        </div>
+
+        <!-- Main content -->
+        <div class="relative grid grid-cols-12 min-h-screen">
+            <!-- Left content -->
+            <div class="col-span-6 flex items-center pl-16 pr-8">
+                <div class="space-y-8 max-w-xl">
+                    <!-- Logo or Banner if needed -->
+                    <div class="space-y-6">
+                        <span class="text-3xl font-semibold text-pink-700">illouve skin</span>
+                        <h1 class="text-6xl font-light tracking-tight text-gray-900">
+                            Reveal Your Natural Glow
+                        </h1>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            Discover our bestselling serum, crafted with pure ingredients to rejuvenate and nourish your
+                            skin.
+                        </p>
+                    </div>
+
+                    <!-- Interactive CTA -->
+                    <div class="flex items-center gap-8 pt-4">
+                        <a href="#shop" class="group relative">
+                            <div
+                                class="absolute inset-0 bg-pink-500 rounded-xl blur-lg opacity-20 group-hover:opacity-30 transition-opacity">
+                            </div>
+                            <button
+                                class="relative px-8 py-4 bg-pink-500 text-white rounded-xl font-medium flex items-center gap-3 group-hover:bg-pink-600 transition-colors">
+                                Shop Now
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </path>
+                                </svg>
+                            </button>
+                        </a>
+                        <a href="#video"
+                            class="text-gray-700 hover:text-pink-500 transition-colors flex items-center gap-2">
+                            <i class="fas fa-play-circle text-xl"></i>
+                            <span>Watch Video</span>
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-8 pt-12">
+                        <div class="space-y-2">
+                            <div class="text-3xl font-light text-gray-900">200+</div>
+                            <div class="text-sm text-gray-500">Happy Customers</div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="text-3xl font-light text-gray-900">150+</div>
+                            <div class="text-sm text-gray-500">Products Available</div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="text-3xl font-light text-gray-900">99%</div>
+                            <div class="text-sm text-gray-500">Customer Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right content - Product Showcase -->
+            <div class="col-span-6 relative">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="relative w-full h-full transform hover:scale-105 transition-transform duration-500">
+                        <!-- Product Image -->
+                        <img src="https://source.unsplash.com/800x800?serum" alt="Bestselling Serum"
+                            class="w-full h-full object-cover rounded-xl shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mouse scroll indicator -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
+            <div class="w-6 h-10 rounded-full border-2 border-gray-700 flex items-start p-1">
+                <div class="w-full h-2 bg-pink-500 rounded-full animate-scroll-mouse"></div>
+            </div>
+            <span class="text-gray-500 text-sm tracking-wider">SCROLL</span>
+        </div>
+
+        <style>
+            @keyframes scroll-mouse {
+
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(10px);
+                }
+            }
+
+            .animate-scroll-mouse {
+                animation: scroll-mouse 2s ease-in-out infinite;
+            }
+        </style>
+    </section>
+
+    <!-- Featured Products Carousel -->
+    <section class="min-h-screen bg-pink-50 relative overflow-hidden py-20 font-['Inter']" x-data="{   
+        currentSlide: 0,  
+        products: [  
+            { id: 1, title: 'Radiance Serum', price: 59.99, description: 'Enhance your skin\'s natural glow with our Radiance Serum.' },  
+            { id: 2, title: 'Hydrating Moisturizer', price: 39.99, description: 'Deeply hydrate your skin with our Moisturizer.' },  
+            { id: 3, title: 'Revitalizing Cleanser', price: 29.99, description: 'Refresh your skin with our gentle Cleanser.' },  
+            { id: 4, title: 'Brightening Eye Cream', price: 49.99, description: 'Reduce dark circles with our Eye Cream.' }  
+        ]  
+    }">
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-pink-300 to-rose-400"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_800px_at_100%_200px,#f9a8d4,transparent)]"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_800px_at_0%_800px,#f472b6,transparent)]"></div>
+        </div>
+
+        <!-- Content Container -->
+        <div class="max-w-7xl mx-auto px-4 relative">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <span class="text-pink-400 text-sm font-semibold tracking-wider uppercase mb-4 block">Featured
+                    Products</span>
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Premium Collection</h2>
+                <p class="text-pink-200 max-w-2xl mx-auto">Experience our flagship products with cutting-edge
+                    formulations and luxurious textures.</p>
+            </div>
+
+            <!-- Product Slider -->
+            <div class="relative">
+                <!-- Navigation Arrows -->
+                <button @click="currentSlide = (currentSlide - 1 + products.length) % products.length"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 z-10 w-16 h-16 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors backdrop-blur-sm">
+                    <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                        </path>
+                    </svg>
+                </button>
+                <button @click="currentSlide = (currentSlide + 1) % products.length"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 z-10 w-16 h-16 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors backdrop-blur-sm">
+                    <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+
+                <!-- Slides Container -->
+                <div class="relative h-[600px] overflow-hidden rounded-3xl">
+                    <template x-for="(product, index) in products" :key="product.id">
+                        <div x-show="currentSlide === index" x-transition:enter="transition ease-out duration-500"
+                            x-transition:enter-start="opacity-0 transform translate-x-full"
+                            x-transition:enter-end="opacity-100 transform translate-x-0"
+                            x-transition:leave="transition ease-in duration-500"
+                            x-transition:leave-start="opacity-100 transform translate-x-0"
+                            x-transition:leave-end="opacity-0 transform -translate-x-full" class="absolute inset-0">
+                            <!-- Product Content -->
+                            <div class="h-full grid grid-cols-2 gap-8">
+                                <!-- Product Image -->
+                                <div class="relative overflow-hidden rounded-2xl">
+                                    <img :src="'https://source.unsplash.com/800x800?skincare,serum-'+ product.id"
+                                        :alt="product.title" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-tr from-pink-500 to-rose-600"></div>
+                                </div>
+                                <!-- Product Info -->
+                                <div class="flex flex-col justify-center p-8">
+                                    <h3 class="text-4xl font-bold text-gray-900 mb-4" x-text="product.title"></h3>
+                                    <p class="text-pink-300 text-lg mb-8" x-text="product.description"></p>
+                                    <div class="flex items-center space-x-6 mb-8">
+                                        <span class="text-3xl font-bold text-gray-900"
+                                            x-text="'$' + product.price"></span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <button
+                                            class="flex-1 px-8 py-4 bg-pink-500 text-white font-medium rounded-xl hover:bg-pink-600 transition-colors">
+                                            Add to Cart
+                                        </button>
+                                        <button
+                                            class="w-14 h-14 bg-gray-200 rounded-xl flex items-center justify-center hover:bg-gray-300 transition-colors">
+                                            <svg class="w-6 h-6 text-pink-500" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 13.364l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Slide Indicators -->
+                <div class="flex justify-center space-x-3 mt-8">
+                    <template x-for="(product, index) in products" :key="index">
+                        <button @click="currentSlide = index"
+                            :class="{ 'w-12 bg-pink-500': currentSlide === index, 'w-3 bg-white/20': currentSlide !== index }"
+                            class="h-3 rounded-full transition-all duration-300">
+                        </button>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="min-h-screen bg-rose-50 py-24 overflow-hidden">
+        <div class="container mx-auto px-4 relative">
+            <!-- Header -->
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span
+                    class="text-pink-500 text-sm font-semibold tracking-wider uppercase mb-4 block">Testimonials</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 gsap-title">
+                    What Our Customers Say
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Hear from those who have experienced the luxury and efficacy of illouve skin products.
+                </p>
+            </div>
+
+            <!-- Testimonials Grid -->
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gsap-testimonials">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-2xl shadow-lg p-6">
+                    <p class="text-gray-700 mb-4">"The Radiance Serum has transformed my skin. It's smoother, brighter,
+                        and feels incredibly hydrated."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emma Johnson"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-gray-900 font-semibold">Emma Johnson</h4>
+                            <p class="text-gray-500">Beauty Blogger</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white rounded-2xl shadow-lg p-6">
+                    <p class="text-gray-700 mb-4">"I love the Hydrating Moisturizer! My skin stays soft and supple all
+                        day long."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Lee"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-gray-900 font-semibold">Michael Lee</h4>
+                            <p class="text-gray-500">Skincare Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-2xl shadow-lg p-6">
+                    <p class="text-gray-700 mb-4">"The Revitalizing Cleanser leaves my skin feeling fresh without any
+                        dryness. Highly recommended!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sophia Martinez"
+                            class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="text-gray-900 font-semibold">Sophia Martinez</h4>
+                            <p class="text-gray-500">Health Coach</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup Section -->
+    <section class="min-h-screen bg-pink-100 relative overflow-hidden py-24 font-['Inter']" x-data="{   
+        currentSlide: 0,  
+        products: [  
+            { id: 1, title: 'Radiance Serum', price: 59.99, description: 'Enhance your skin\'s natural glow with our Radiance Serum.' },  
+            { id: 2, title: 'Hydrating Moisturizer', price: 39.99, description: 'Deeply hydrate your skin with our Moisturizer.' },  
+            { id: 3, title: 'Revitalizing Cleanser', price: 29.99, description: 'Refresh your skin with our gentle Cleanser.' },  
+            { id: 4, title: 'Brightening Eye Cream', price: 49.99, description: 'Reduce dark circles with our Eye Cream.' }  
+        ]  
+    }">
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-pink-300 to-rose-400"></div>
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_-30%,rgba(244, 114, 182,0.15),transparent)]">
+            </div>
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_800px_at_80%_60%,rgba(236, 72, 153,0.15),transparent)]">
+            </div>
+            <!-- Particle Container -->
+            <div id="particles-js" class="absolute inset-0 opacity-30"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative">
+            <!-- Header -->
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <div class="relative inline-block">
+                    <div
+                        class="absolute -inset-4 bg-gradient-to-r from-pink-400 to-rose-500 blur-lg opacity-20 animate-pulse">
+                    </div>
+                    <h2
+                        class="relative text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-rose-500 gsap-title">
+                        Subscribe to Our Newsletter</h2>
+                </div>
+                <p class="mt-4 text-pink-200/80">Join the illouve community to receive exclusive updates and offers.</p>
+            </div>
+
+            <!-- Timeline Grid -->
+            <div class="max-w-7xl mx-auto gsap-timeline">
+                <!-- Newsletter Form -->
+                <div class="relative group">
+                    <div
+                        class="relative bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/10 transition-all duration-300 hover:bg-white/20">
+                        <!-- Glow Effect -->
+                        <div
+                            class="absolute -inset-px bg-gradient-to-r from-pink-500 to-rose-500 rounded-3xl opacity-0 group-hover:opacity-20 blur transition-opacity">
+                        </div>
+                        <div
+                            class="absolute -inset-[2px] bg-gradient-to-r from-pink-500/50 to-rose-500/50 rounded-3xl opacity-0 group-hover:opacity-100 group-hover:blur-sm transition-all duration-300">
+                        </div>
+
+                        <div class="relative">
+                            <!-- Year Badge -->
+                            <div
+                                class="inline-flex items-center px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/20 mb-6">
+                                <span class="text-pink-400 text-sm font-medium">Newsletter</span>
+                            </div>
+
+                            <!-- Content -->
+                            <div class="mb-8">
+                                <h3 class="text-xl font-semibold text-white mb-4">Stay Updated</h3>
+                                <p class="text-pink-100/90 leading-relaxed">Receive the latest news, product launches,
+                                    and exclusive discounts directly to your inbox.</p>
+                            </div>
+
+                            <!-- Newsletter Form -->
+                            <form class="space-y-6" onsubmit="handleNewsletterSubmit(event)">
+                                <!-- Email Input -->
+                                <div class="relative group">
+                                    <label class="block text-sm font-medium text-pink-300 mb-2">Email Address</label>
+                                    <div class="relative">
+                                        <div
+                                            class="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg blur opacity-20 group-hover:opacity-30 transition duration-500">
+                                        </div>
+                                        <input type="email" required
+                                            class="relative w-full px-6 py-4 bg-white/20 border border-white/10 rounded-lg text-white placeholder-pink-400 outline-none transition-all duration-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20"
+                                            placeholder="john@example.com">
+                                    </div>
+                                </div>
+
+                                <!-- Preferences -->
+                                <div class="grid grid-cols-3 gap-4">
+                                    <label class="relative cursor-pointer group">
+                                        <input type="radio" name="interest" value="serums" class="peer sr-only">
+                                        <div
+                                            class="p-4 text-center rounded-lg bg-white/10 border border-white/10 text-pink-300 transition-all duration-300 peer-checked:border-pink-500 peer-checked:text-pink-400 peer-checked:bg-pink-500/10 hover:bg-white/20">
+                                            <span class="text-sm">Serums</span>
+                                        </div>
+                                    </label>
+                                    <label class="relative cursor-pointer group">
+                                        <input type="radio" name="interest" value="moisturizers" class="peer sr-only">
+                                        <div
+                                            class="p-4 text-center rounded-lg bg-white/10 border border-white/10 text-pink-300 transition-all duration-300 peer-checked:border-pink-500 peer-checked:text-pink-400 peer-checked:bg-pink-500/10 hover:bg-white/20">
+                                            <span class="text-sm">Moisturizers</span>
+                                        </div>
+                                    </label>
+                                    <label class="relative cursor-pointer group">
+                                        <input type="radio" name="interest" value="cleanser" class="peer sr-only">
+                                        <div
+                                            class="p-4 text-center rounded-lg bg-white/10 border border-white/10 text-pink-300 transition-all duration-300 peer-checked:border-pink-500 peer-checked:text-pink-400 peer-checked:bg-pink-500/10 hover:bg-white/20">
+                                            <span class="text-sm">Cleanser</span>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit"
+                                    class="w-full px-8 py-4 bg-pink-500 text-white font-medium rounded-xl hover:bg-pink-600 transition-colors duration-300">
+                                    Subscribe Now
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Message (Hidden by default) -->
+                <div id="success-message" class="hidden mt-8">
+                    <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/10 text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-pink-500/20 mb-6">
+                            <svg class="w-8 h-8 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Thank You!</h3>
+                        <p class="text-pink-200">You've successfully subscribed to our newsletter.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .animate-pulse-glow {
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+    </style>
+
+    <script>
+        function handleNewsletterSubmit(event) {
+            event.preventDefault();
+
+            // Get form and success message elements  
+            const form = event.target;
+            const formContainer = form.closest('.bg-white\\/10');
+            const successMessage = document.getElementById('success-message');
+
+            // Disable form elements  
+            const inputs = form.querySelectorAll('input, button');
+            inputs.forEach(input => input.disabled = true);
+
+            // Add loading state to button  
+            const button = form.querySelector('button');
+            const originalText = button.innerHTML;
+            button.innerHTML = `  
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">  
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>  
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>  
+            </svg>  
+            Processing...  
+        `;
+
+            // Simulate API call  
+            setTimeout(() => {
+                // Hide form with fade out and 3D transform  
+                formContainer.style.opacity = '0';
+                formContainer.style.transform = 'translateZ(-100px) rotateX(10deg)';
+                formContainer.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+
+                // Show success message with fade in and 3D transform  
+                setTimeout(() => {
+                    formContainer.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    successMessage.style.opacity = '0';
+                    successMessage.style.transform = 'translateZ(100px) rotateX(-10deg)';
+
+                    requestAnimationFrame(() => {
+                        successMessage.style.opacity = '1';
+                        successMessage.style.transform = 'translateZ(0) rotateX(0)';
+                        successMessage.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                    });
+                }, 500);
+            }, 1500);
+        }  
+    </script>
+
+    <!-- Filterable Product Grid -->
+    <section class="min-h-screen bg-pink-50 py-24 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <!-- Header -->
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <div class="relative inline-block">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 gsap-title">
+                        Our Products
+                    </h2>
+                </div>
+                <p class="text-lg text-gray-600 mb-12">Explore our wide range of skincare products designed to cater to
+                    all your needs.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12 gsap-filters" x-data="{ activeFilter: 'all' }">
+                <button @click="activeFilter = 'all'"
+                    :class="{ 'bg-pink-500 text-white': activeFilter === 'all', 'bg-white text-gray-600 hover:bg-gray-100': activeFilter !== 'all' }"
+                    class="px-6 py-2 rounded-full shadow-sm transition-all duration-300">
+                    All Products
+                </button>
+                <button @click="activeFilter = 'serums'"
+                    :class="{ 'bg-pink-500 text-white': activeFilter === 'serums', 'bg-white text-gray-600 hover:bg-gray-100': activeFilter !== 'serums' }"
+                    class="px-6 py-2 rounded-full shadow-sm transition-all duration-300">
+                    Serums
+                </button>
+                <button @click="activeFilter = 'moisturizers'"
+                    :class="{ 'bg-pink-500 text-white': activeFilter === 'moisturizers', 'bg-white text-gray-600 hover:bg-gray-100': activeFilter !== 'moisturizers' }"
+                    class="px-6 py-2 rounded-full shadow-sm transition-all duration-300">
+                    Moisturizers
+                </button>
+                <button @click="activeFilter = 'cleaners'"
+                    :class="{ 'bg-pink-500 text-white': activeFilter === 'cleaners', 'bg-white text-gray-600 hover:bg-gray-100': activeFilter !== 'cleaners' }"
+                    class="px-6 py-2 rounded-full shadow-sm transition-all duration-300">
+                    Cleaners
+                </button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gsap-gallery">
+                <!-- Item 1 -->
+                <div class="group" x-show="activeFilter === 'all' || activeFilter === 'serums'">
+                    <div class="relative rounded-2xl overflow-hidden bg-white shadow-lg">
+                        <img src="https://source.unsplash.com/800x800?serum" alt="Radiance Serum"
+                            class="w-full aspect-[4/3] object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-pink-500 via-pink-400 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="text-pink-400 text-sm font-medium mb-2 block">Serum</span>
+                                <h3 class="text-xl font-semibold text-white mb-2">Radiance Serum</h3>
+                                <p class="text-gray-300 mb-4">Enhance your skin's natural glow with our best-selling
+                                    Radiance Serum.</p>
+                                <button
+                                    class="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors duration-300">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="group" x-show="activeFilter === 'all' || activeFilter === 'moisturizers'">
+                    <div class="relative rounded-2xl overflow-hidden bg-white shadow-lg">
+                        <img src="https://source.unsplash.com/800x800?moisturizer" alt="Hydrating Moisturizer"
+                            class="w-full aspect-[4/3] object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-pink-500 via-pink-400 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="text-pink-400 text-sm font-medium mb-2 block">Moisturizer</span>
+                                <h3 class="text-xl font-semibold text-white mb-2">Hydrating Moisturizer</h3>
+                                <p class="text-gray-300 mb-4">Deeply hydrate your skin with our luxurious moisturizers.
+                                </p>
+                                <button
+                                    class="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors duration-300">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="group" x-show="activeFilter === 'all' || activeFilter === 'cleaners'">
+                    <div class="relative rounded-2xl overflow-hidden bg-white shadow-lg">
+                        <img src="https://source.unsplash.com/800x800?cleanser" alt="Revitalizing Cleanser"
+                            class="w-full aspect-[4/3] object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-pink-500 via-pink-400 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="text-pink-400 text-sm font-medium mb-2 block">Cleanser</span>
+                                <h3 class="text-xl font-semibold text-white mb-2">Revitalizing Cleanser</h3>
+                                <p class="text-gray-300 mb-4">Refresh and purify your skin with our gentle cleansers.
+                                </p>
+                                <button
+                                    class="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors duration-300">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Items ... -->
+                <!-- Repeat similar blocks for other products -->
+            </div>
+
+            <!-- Load More -->
+            <div class="text-center mt-16 gsap-button">
+                <button
+                    class="px-8 py-3 bg-pink-500 text-white rounded-xl hover:bg-pink-600 transition-all duration-300 transform hover:scale-105">
+                    Load More Products
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="min-h-screen bg-pink-50 py-24 overflow-hidden">
+        <div class="container mx-auto px-4 relative">
+            <!-- Header -->
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="text-pink-500 text-sm font-semibold tracking-wider uppercase mb-4 block">Latest
+                    Articles</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 gsap-title">
+                    Skincare Insights
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Read our latest articles on skincare routines, product benefits, and beauty tips.
+                </p>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gsap-blog">
+                <!-- Blog Post 1 -->
+                <div class="group">
+                    <div class="relative rounded-2xl overflow-hidden bg-white shadow-lg">
+                        <img src="https://source.unsplash.com/800x600?skincare,cream" alt="Article 1"
+                            class="w-full aspect-[4/3] object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-pink-500 via-pink-400 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="text-pink-400 text-sm font-medium mb-2 block">Skincare Tips</span>
+                                <h3 class="text-xl font-semibold text-white mb-2">Achieving Radiant Skin</h3>
+                                <p class="text-gray-300 mb-4">Discover the secrets to maintaining a healthy and glowing
+                                    complexion.</p>
+                                <button
+                                    class="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors duration-300">
+                                    Read More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div class="group">
+                    <div class="relative rounded-2xl overflow-hidden bg-white shadow-lg">
+                        <img src="https://source.unsplash.com/800x600?skincare,recipe" alt="Article 2"
+                            class="w-full aspect-[4/3] object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-pink-500 via-pink-400 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="text-pink-400 text-sm font-medium mb-2 block">DIY Beauty</span>
+                                <h3 class="text-xl font-semibold text-white mb-2">Homemade Moisturizer Recipes</h3>
+                                <p class="text-gray-300 mb-4">Learn how to make your own moisturizing creams at home.
+                                </p>
+                                <button
+                                    class="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors duration-300">
+                                    Read More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Post 3 -->
+                <div class="group">
+                    <div class="relative rounded-2xl overflow-hidden bg-white shadow-lg">
+                        <img src="https://source.unsplash.com/800x600?skincare,benefits" alt="Article 3"
+                            class="w-full aspect-[4/3] object-cover">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-pink-500 via-pink-400 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div class="absolute bottom-0 left-0 right-0 p-6">
+                                <span class="text-pink-400 text-sm font-medium mb-2 block">Product Benefits</span>
+                                <h3 class="text-xl font-semibold text-white mb-2">The Power of Vitamin C</h3>
+                                <p class="text-gray-300 mb-4">Explore how Vitamin C can enhance your skincare routine.
+                                </p>
+                                <button
+                                    class="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors duration-300">
+                                    Read More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Blog Posts ... -->
+                <!-- Repeat similar blocks for other blog articles -->
+            </div>
+
+            <!-- Load More -->
+            <div class="text-center mt-16 gsap-button">
+                <button
+                    class="px-8 py-3 bg-pink-500 text-white rounded-xl hover:bg-pink-600 transition-all duration-300 transform hover:scale-105">
+                    Load More Articles
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Support Page -->
+    <section class="min-h-screen bg-pink-100 py-24 overflow-hidden">
+        <div class="container mx-auto px-4 relative">
+            <!-- Header -->
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 gsap-title">
+                    Get in Touch
+                </h2>
+                <p class="text-lg text-gray-600">
+                    We're here to help you with any questions or concerns you may have.
+                </p>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-8 gsap-contact">
+                <form class="space-y-6" onsubmit="handleContactSubmit(event)">
+                    <!-- Name Input -->
+                    <div class="relative group">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                        <div class="relative">
+                            <div
+                                class="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg blur opacity-20 group-hover:opacity-30 transition duration-500">
+                            </div>
+                            <input type="text" required
+                                class="relative w-full px-6 py-4 bg-gray-100 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 outline-none transition-all duration-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20"
+                                placeholder="John Doe">
+                        </div>
+                    </div>
+
+                    <!-- Email Input -->
+                    <div class="relative group">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                        <div class="relative">
+                            <div
+                                class="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg blur opacity-20 group-hover:opacity-30 transition duration-500">
+                            </div>
+                            <input type="email" required
+                                class="relative w-full px-6 py-4 bg-gray-100 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 outline-none transition-all duration-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20"
+                                placeholder="john@example.com">
+                        </div>
+                    </div>
+
+                    <!-- Message Input -->
+                    <div class="relative group">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                        <div class="relative">
+                            <div
+                                class="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg blur opacity-20 group-hover:opacity-30 transition duration-500">
+                            </div>
+                            <textarea required
+                                class="relative w-full px-6 py-4 bg-gray-100 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 outline-none transition-all duration-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20"
+                                rows="6" placeholder="Your message here..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full px-8 py-4 bg-pink-500 text-white font-medium rounded-xl hover:bg-pink-600 transition-colors duration-300">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <!-- Success Message (Hidden by default) -->
+            <div id="contact-success-message" class="hidden mt-8">
+                <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/10 text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-pink-500/20 mb-6">
+                        <svg class="w-8 h-8 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Thank You!</h3>
+                    <p class="text-pink-200">Your message has been sent. We'll get back to you shortly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function handleContactSubmit(event) {
+            event.preventDefault();
+
+            // Get form and success message elements  
+            const form = event.target;
+            const formContainer = form.closest('.max-w-3xl');
+            const successMessage = document.getElementById('contact-success-message');
+
+            // Disable form elements  
+            const inputs = form.querySelectorAll('input, textarea, button');
+            inputs.forEach(input => input.disabled = true);
+
+            // Add loading state to button  
+            const button = form.querySelector('button');
+            const originalText = button.innerHTML;
+            button.innerHTML = `  
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">  
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>  
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>  
+            </svg>  
+            Sending...  
+        `;
+
+            // Simulate API call  
+            setTimeout(() => {
+                // Hide form with fade out and 3D transform  
+                formContainer.style.opacity = '0';
+                formContainer.style.transform = 'translateZ(-100px) rotateX(10deg)';
+                formContainer.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+
+                // Show success message with fade in and 3D transform  
+                setTimeout(() => {
+                    formContainer.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    successMessage.style.opacity = '0';
+                    successMessage.style.transform = 'translateZ(100px) rotateX(-10deg)';
+
+                    requestAnimationFrame(() => {
+                        successMessage.style.opacity = '1';
+                        successMessage.style.transform = 'translateZ(0) rotateX(0)';
+                        successMessage.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                    });
+                }, 500);
+            }, 1500);
+        }  
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12">
+        <div class="container mx-auto px-4 flex flex-wrap justify-between">
+            <!-- About -->
+            <div class="w-full md:w-1/4 mb-8 md:mb-0">
+                <h4 class="text-lg font-semibold mb-4">About illouve skin</h4>
+                <p class="text-gray-400">illouve skin is dedicated to providing luxurious and effective skincare
+                    solutions using the finest natural ingredients.</p>
+            </div>
+            <!-- Links -->
+            <div class="w-full md:w-1/4 mb-8 md:mb-0">
+                <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                <ul>
+                    <li class="mb-2"><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                    <li class="mb-2"><a href="#products" class="hover:text-white transition-colors">Products</a></li>
+                    <li class="mb-2"><a href="#blog" class="hover:text-white transition-colors">Blog</a></li>
+                    <li class="mb-2"><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Social -->
+            <div class="w-full md:w-1/4 mb-8 md:mb-0">
+                <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <!-- Contact -->
+            <div class="w-full md:w-1/4">
+                <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                <p class="mb-2">123 Beauty Ave,<br> Glamour City, GC 45678</p>
+                <p class="mb-2">Email: support@illouveskin.com</p>
+                <p>Phone: (123) 456-7890</p>
+            </div>
+        </div>
+        <div class="mt-8 text-center text-gray-500 text-sm">
+            &copy; 2024 illouve skin. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Particles.js if used elsewhere  
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 50,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: '#f472b6'
+                    },
+                    shape: {
+                        type: 'circle'
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: true
+                    },
+                    size: {
+                        value: 3,
+                        random: true
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: 'none',
+                        random: true,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: 'grab'
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: 'push'
+                        },
+                        resize: true
+                    }
+                },
+                retina_detect: true
+            });
+
+            // GSAP Animations  
+            gsap.from('.gsap-title', {
+                duration: 1,
+                y: 40,
+                opacity: 0,
+                ease: 'back.out(1.7)'
+            });
+
+            gsap.from('.gsap-filters > *', {
+                duration: 0.8,
+                y: 20,
+                opacity: 0,
+                stagger: 0.1,
+                ease: 'back.out(1.2)',
+                delay: 0.4
+            });
+
+            gsap.from('.gsap-gallery > *', {
+                duration: 0.8,
+                y: 60,
+                opacity: 0,
+                stagger: 0.1,
+                ease: 'back.out(1.2)',
+                delay: 0.6
+            });
+
+            gsap.from('.gsap-button', {
+                duration: 0.8,
+                y: 20,
+                opacity: 0,
+                ease: 'back.out(1.2)',
+                delay: 1.4
+            });
+
+            gsap.from('.gsap-testimonials > *', {
+                duration: 0.8,
+                y: 60,
+                opacity: 0,
+                stagger: 0.2,
+                ease: 'back.out(1.2)',
+                delay: 1.0
+            });
+
+            gsap.from('.gsap-blog > *', {
+                duration: 0.8,
+                y: 60,
+                opacity: 0,
+                stagger: 0.2,
+                ease: 'back.out(1.2)',
+                delay: 1.0
+            });
+
+            gsap.from('.gsap-contact', {
+                duration: 1,
+                y: 40,
+                opacity: 0,
+                ease: 'back.out(1.7)',
+                delay: 0.5
+            });
+        });  
+    </script>
+</body>
+
+</html>

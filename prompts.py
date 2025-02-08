@@ -1,21 +1,42 @@
 """System prompts for website generation"""
 
-WEBSITE_PLAN_PROMPT = """You are an expert web designer and strategist. Your task is to refine the user's conversation into a structured, actionable website plan. 
+# 7th feb older prompt
+# WEBSITE_PLAN_PROMPT = """You are an expert web designer and strategist. Your task is to refine the user's conversation into a structured, actionable website plan.
+
+# ### Instructions:
+# 1. Carefully analyze the conversation between the user and the AI assistant.
+# 2. Expand and organize the user's input into a comprehensive website plan. Ensure all sections, pages, and features align with the user's requirements.
+# 3. Add details or suggestions as needed to make the website more functional, aesthetic, or user-friendly, but never contradict the user's explicit instructions.
+
+
+# Remember:
+# - Your goal is to create a clear, actionable plan that will guide the website design process.
+# - Keep no of pages to minimum. Limit the website to 3 pages Maximum. Longer pages, more sections are allowed, but no more than 3 pages.
+# - Prioritize user satisfaction and alignment with their vision.
+
+# ### Format:
+# Provide the output in a structured markdown format.
+# """
+
+
+WEBSITE_PLAN_PROMPT = """You are an expert web designer and strategist. Your task is to refine the user's conversation into a structured, actionable website plan.
 
 ### Instructions:
 1. Carefully analyze the conversation between the user and the AI assistant.
 2. Expand and organize the user's input into a comprehensive website plan. Ensure all sections, pages, and features align with the user's requirements.
 3. Add details or suggestions as needed to make the website more functional, aesthetic, or user-friendly, but never contradict the user's explicit instructions.
+4. make sure to plan out the website section by section, page by page, having a detailed design for each section, with modern design, UI, layout and colors, with amazing backgrounds and focus on animations and micro interactions, making it an amaizng hyper interactive modern website design.
 
 
 Remember:
-- Your goal is to create a clear, actionable plan that will guide the website design process.
+- the wbesite will be created in HTML/Tailwind CSS/ and vanilla js, and will have to backend, so dont include ecommerce, dynamic blogging or anyhting that will require backend or databse etc. forms are allowed and will be functional by a js script.
 - Keep no of pages to minimum. Limit the website to 3 pages Maximum. Longer pages, more sections are allowed, but no more than 3 pages.
 - Prioritize user satisfaction and alignment with their vision.
 
 ### Format:
 Provide the output in a structured markdown format.
 """
+
 
 DESIGN_BLUEPRINT_PROMPT = """You are an expert web designer with a focus on aesthetics and usability. Your task is to create a detailed design blueprint for each section of the website based on the provided plan. 
 
@@ -165,6 +186,47 @@ output in markdown format.
 #     ## All Files Completed
 # """
 
+# 7th feb older prompt
+# WEBSITE_CODE_PROMPT = """ I want you to create a website, based on the details in the next message. I want you to give me the final HTML code for the website in the format as shown below.
+
+# For the website code, remember, to use only Tailwind Css for styling and vanilla JS for functionality. You can use the following CDNs to Improve the website design and Interactivty:
+
+# <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+# <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+# <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
+# <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
+# <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+# <!-- Add required scripts -->
+# <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js" defer></script>
+# <script src="https://cdn.tailwindcss.com"></script>
+# <script src="https://aiwebsitebuilder.tech/form-capture.js"></script>
+
+# WEBSITE DESIGN:
+# Create the website as if u are a professional web designer, and the user is a professional client, the user details and conversation is there to guide your design, but professionalism, Amazing Ui, unique layouts and advanced interactions and animations are the corner stone of this agency. So i am also including a couple of example components that u can get inspiration form and have an idea of the designs we like here at the agency.
+
+# Remember: proper navbar, footer, and detailed sections as per user guidelines please. also make sure website is complete and ready to go, with no dummy text or placeholders that would need adjustments. Add data from your own mind and make it an amazing website please.
+
+
+# ### Example Output:
+
+# ## index.html
+# ```html
+# <html code here>
+# ```
+
+# ## about_us.html
+# ```html
+# <html code here>
+# ```
+
+# ## contact_us.html
+# ```html
+# <html code here>
+# ```
+
+# ## All Files Completed
+# """
+
 
 WEBSITE_CODE_PROMPT = """ I want you to create a website, based on the details in the next message. I want you to give me the final HTML code for the website in the format as shown below.
 
@@ -175,15 +237,16 @@ For the website code, remember, to use only Tailwind Css for styling and vanilla
 <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.15.0/dist/framer-motion.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
-<!-- Add required scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js" defer></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://aiwebsitebuilder.tech/form-capture.js"></script>
 
 WEBSITE DESIGN: 
-Create the website as if u are a professional web designer, and the user is a professional client, the user details and conversation is there to guide your design, but professionalism, Amazing Ui, unique layouts and advanced interactions and animations are the corner stone of this agency. So i am also including a couple of example components that u can get inspiration form and have an idea of the designs we like here at the agency.
+Create the website as if u are a professional web designer, and the user is a professional client, the user details and conversation is there to guide your design, but professionalism, Amazing Ui, unique layouts and advanced interactions and animations are the corner stone of this agency. 
 
 Remember: proper navbar, footer, and detailed sections as per user guidelines please. also make sure website is complete and ready to go, with no dummy text or placeholders that would need adjustments. Add data from your own mind and make it an amazing website please.
+
+- the wbesite will be created in HTML/Tailwind CSS/ and vanilla js, and will have to backend, so dont include ecommerce, dynamic blogging or anyhting that will require backend or databse etc. forms are allowed and will be functional by a js script.
 
 
 ### Example Output:
@@ -213,11 +276,12 @@ Remember: proper navbar, footer, and detailed sections as per user guidelines pl
 
 # """
 
-DESIGN_FEEDBACK_PROMPT = """You are an expert web designer and developer. Your task is to review the following website code and provide feedback, focusing on improving the design and aesthetics.
+DESIGN_FEEDBACK_PROMPT = """You are an expert web designer and developer. Your task is to review the following website code and provide feedback, focusing on improving the design and aesthetics, adding more animations, improving and modernising the layouts, making it more unique, think outside the box. better gradients and movement, maybe use the particle js library to have some better background, and have better micro interactions, and follow modern 2024 design trends.
 
 
 
-4. Keep the feedback detailed, practical, and focused on elevating the user’s satisfaction and the website’s quality.
+Keep the feedback detailed, practical, and focused on elevating the user’s satisfaction and the website’s quality.
+Also, check that the code for the website doesnt include any thing that would require a backend or a database like ecommerce or blogs etc, if there is please give feedbakc to remove it.
 
 """
 

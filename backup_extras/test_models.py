@@ -13,6 +13,8 @@ GPT4O_ENDPOINT = os.environ.get("GPT4o_ENDPOINT")
 GPT4O_MINI_ENDPOINT = os.environ.get("GPT4o_MINI_ENDPOINT")
 O1_PREVIEW_ENDPOINT = os.environ.get("O1_PREVIEW_ENDPOINT")
 O1_MINI_ENDPOINT = os.environ.get("O1_MINI_ENDPOINT")
+O3_MINI_ENDPOINT = os.environ.get("O3_MINI_ENDPOINT")
+O3_MINI_AZURE_FOUNDRY_KEY = os.environ.get("O3_MINI_AZURE_FOUNDRY_KEY")
 
 # Add debug print statements
 print("Environment variables loaded:")
@@ -31,6 +33,17 @@ def call_model(endpoint, messages, model_name):
 
     if "o1" in model_name.lower():
         print("O1 model")
+        payload = {
+            "messages": messages,
+            "max_completion_tokens": 5000,
+        }
+    elif "o3" in model_name.lower():
+        print("O3 model")
+        headers = {
+            "Content-Type": "application/json",
+            "api-key": O3_MINI_AZURE_FOUNDRY_KEY,
+        }
+
         payload = {
             "messages": messages,
             "max_completion_tokens": 5000,
@@ -65,6 +78,7 @@ def test_model(model_name):
         "gpt4o-mini": GPT4O_MINI_ENDPOINT,
         "o1-preview": O1_PREVIEW_ENDPOINT,
         "o1-mini": O1_MINI_ENDPOINT,
+        "o3-mini": O3_MINI_ENDPOINT,
     }
 
     endpoint = endpoints.get(model_name)
@@ -105,10 +119,11 @@ def test_model(model_name):
 
 def main():
     models = [
-        "gpt4o",
+        # "gpt4o",
         "gpt4o-mini",
         "o1-mini",
-        "o1-preview",
+        # "o1-preview",
+        "o3-mini",
     ]
 
     # models = ["gpt4o"]
